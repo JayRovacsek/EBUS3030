@@ -25,7 +25,7 @@
         \parbox[b][\paperheight]{\paperwidth}{
         \vfill
         \centering
-        \includegraphics[height=\paperheight]{\graphicspath{background.jpg}}
+        \includegraphics[height=\paperheight]{Images/background.jpg}
         \vfill
     }}}
 
@@ -59,6 +59,7 @@
     \setlist[legal]{label*=\arabic*.}
 
     \begin{document}
+    \AddToShipoutPicture{\backgroundimage}
 
     \begin{titlingpage}
         \maketitle
