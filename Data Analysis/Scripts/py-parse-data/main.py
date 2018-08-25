@@ -1,6 +1,7 @@
 #!/usr/bin/env python3.7
 import openpyxl
 
+# Item class, to imitate item entries in receipt 
 class Item:
     def __init__(self,item_id,item_description,item_price,item_quantity):
         self.id = item_id
@@ -8,11 +9,13 @@ class Item:
         self.price = item_price
         self.quantity = item_quantity
 
+# Office class, to imitate office entries in staff
 class Office:
     def __init__(self,office_id,office_location):
         self.id = office_id
         self.location = office_location
 
+# Staff class, to emulate staff 
 class Staff:
     def __init__(self,staff_id,staff_first_name,staff_surname,office):
         self.id = staff_id
@@ -23,12 +26,14 @@ class Staff:
         self.sales_total = 0
         self.item_count = 0
 
+# Customer class to emulate customers
 class Customer:
     def __init__(self,customer_id,customer_first_name,customer_surname):
         self.id = customer_id
         self.first_name = customer_first_name
         self.surname = customer_surname
 
+# Receipt class to hold data for a sale
 class Receipt:
     def __init__(self,receipt_id,customer,staff):
         self.id = receipt_id
@@ -38,19 +43,24 @@ class Receipt:
         self.item_count = 0
         self.total = 0
 
+    # Function to add items to receipt
     def add_item(self,item):
         self.items[self.item_count] = item
         self.item_count += 1
 
+# Sale class to hold one receipt (Kinda redundant)
 class Sale:
     def __init__(self,date,receipt):
         self.date = date
         self.receipt = receipt
 
+# Sales class to hold record of all sales
 class Sales:
     def __init__(self):
         self.sales = {}
     
+    # Parse row function, intended to determine if row is a header row or contains formula
+    # awaiting Peter's response re; cells B13777 to B13865.
     def parse_row(self,row,employees):
         if row[0].value != 'Sale Date' and isinstance(row[1].value,int):
             item = Item(row[11].value,row[12].value,row[14].value,row[13].value)
@@ -69,32 +79,39 @@ class Sales:
         else:
             print("Skipped row, either it was a row header: {} or it was a formula: {}".format(row[0].value,row[1].value))
 
+    # Add items to sale if the receipt already exists
     def add_items_to_sale(self,row,existing_sale_identifier):
         item = Item(row[11].value,row[12].value,row[14].value,row[13].value)
         self.sales[existing_sale_identifier].receipt.add_item(item)
         print("Added items to receipt {} : ID: {}, Desc: {}, Price: {}, Quantity: {}".format(existing_sale_identifier,item.id,item.description,item.price,item.quantity))
 
+# Employees class to hold all staff
 class Employees:
     def __init__(self):
         self.employees = {}
 
+    # Function to add new employees if they currently don't exist
     def add_employee(self,employee,employee_id):
         self.employees[employee_id] = employee
 
-def populate_receipt_totals(receipt_identifier,sale,employees):
+# Function to parse all receipts once populated and add to employee totals
+def populate_receipt_totals(receipt_id,sale,employees):
     total = 0
-    for k,v in sale.receipt.items.items():
-        total = total + (v.quantity * v.price)
-    print("Total calculated for receipt {} is: {}, Items count was: {}".format(receipt_identifier,total,len(sale.receipt.items.items())))
+    for item_id,item in sale.receipt.items.items():
+        total = total + (item.quantity * item.price)
+    print("Total calculated for receipt {} is: {}, Items count was: {}".format(receipt_id,total,len(sale.receipt.items.items())))
     employees.employees[sale.receipt.staff.id].sales_count += 1
     employees.employees[sale.receipt.staff.id].sales_total += total
     employees.employees[sale.receipt.staff.id].item_count += len(sale.receipt.items.items())
 
+# Main hook
 if __name__ == '__main__':
+    # Open excel file stored in child folder
     excel_file = openpyxl.load_workbook('Data/Assignment1Data.xlsx')
     data = excel_file['Asgn1 Data']
     sales = Sales()
     employees = Employees()
+    # Parse over all rows of file
     for row in data.rows:
         receipt_id = row[1].value
         if receipt_id in sales.sales:
@@ -103,8 +120,16 @@ if __name__ == '__main__':
         else:
             sales.parse_row(row,employees)
 
-    for k,v in sales.sales.items():
-       populate_receipt_totals(k,v,employees)
+    # Populate employee sale totals, item totals etc etc.
+    for receipt_id,sale in sales.sales.items():
+       populate_receipt_totals(receipt_id,sale,employees)
     
-    for k,v in employees.employees.items():
-        print("Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(k,v.first_name,v.surname,v.sales_total,v.sales_count,v.item_count))
+    # Print results
+    for employee_id,employee in employees.employees.items():
+        print("Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(
+            employee_id,
+            employee.first_name,
+            employee.surname,
+            employee.sales_total,
+            employee.sales_count,
+            employee.item_count))
