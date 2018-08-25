@@ -1,5 +1,9 @@
 #!/usr/bin/env python3.7
+import os
+import sys
 import openpyxl
+import traceback
+from multiprocessing import Pool
 
 # Item class, to imitate item entries in receipt 
 class Item:
@@ -104,6 +108,27 @@ def populate_receipt_totals(receipt_id,sale,employees):
     employees.employees[sale.receipt.staff.id].sales_total += total
     employees.employees[sale.receipt.staff.id].item_count += len(sale.receipt.items.items())
 
+def generate_results_structures():
+    try:
+        if not os.path.exists('Results'):
+            os.makedirs('Results')
+
+        open('Results/Employee_Results.txt','w+').close()
+        open('Results/Location_Results.txt','w+').close()
+        open('Results/Item_Results.txt','w+').close()
+        open('Results/Customer_Results.txt','w+').close()
+        
+    except Exception:
+        print("An error occurred: {}".format(traceback.format_exc()))
+
+def parse_row(row):
+    receipt_id = row[1].value
+    if receipt_id in sales.sales:
+        print("Found existing receipt {}, adding items instead".format(receipt_id))
+        sales.add_items_to_sale(row,receipt_id)
+    else:
+        sales.parse_row(row,employees)
+
 # Main hook
 if __name__ == '__main__':
     # Open excel file stored in child folder
@@ -111,6 +136,13 @@ if __name__ == '__main__':
     data = excel_file['Asgn1 Data']
     sales = Sales()
     employees = Employees()
+
+    # try:
+    #     pool = Pool()
+    #     pool.map(parse_row,data.rows)
+    # finally:
+    #     pool.close()
+    #     pool.join()
     # Parse over all rows of file
     for row in data.rows:
         receipt_id = row[1].value
@@ -119,17 +151,29 @@ if __name__ == '__main__':
             sales.add_items_to_sale(row,receipt_id)
         else:
             sales.parse_row(row,employees)
+    
+    generate_results_structures()
 
     # Populate employee sale totals, item totals etc etc.
     for receipt_id,sale in sales.sales.items():
        populate_receipt_totals(receipt_id,sale,employees)
     
     # Print results
+    output = ""
     for employee_id,employee in employees.employees.items():
-        print("Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(
+        output += "Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(
             employee_id,
             employee.first_name,
             employee.surname,
             employee.sales_total,
             employee.sales_count,
-            employee.item_count))
+            employee.item_count)
+        # print("Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(
+        #     employee_id,
+        #     employee.first_name,
+        #     employee.surname,
+        #     employee.sales_total,
+        #     employee.sales_count,
+        #     employee.item_count))
+    with open('Results/Employee_Results.txt','w+') as employee_results:
+        employee_results.write(output)
