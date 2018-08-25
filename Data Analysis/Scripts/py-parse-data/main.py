@@ -81,9 +81,6 @@ class Employees:
     def add_employee(self,employee,employee_id):
         self.employees[employee_id] = employee
 
-    def add_employee_total_sales(self,employee_id,total):
-        print('a')
-
 def populate_receipt_totals(receipt_identifier,sale,employees):
     total = 0
     for k,v in sale.receipt.items.items():
@@ -101,7 +98,7 @@ if __name__ == '__main__':
     for row in data.rows:
         receipt_id = row[1].value
         if receipt_id in sales.sales:
-            # print("Found existing receipt {}, adding items instead".format(receipt_id))
+            print("Found existing receipt {}, adding items instead".format(receipt_id))
             sales.add_items_to_sale(row,receipt_id)
         else:
             sales.parse_row(row,employees)
