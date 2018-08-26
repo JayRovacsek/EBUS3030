@@ -143,7 +143,20 @@
             \end{verbatim}
             \color{black}
             Leading us to recognise that either one of the entries could be incorrect, therefore
-            best to move the single line of data which was related to customer: C32.
+            best to investigate both records of the customer Id against the rest of the database:
+            \begin{verbatim}
+    select * from Assignment1Data where Customer_ID='C32' and Staff_ID='S15' and 
+    Sale_Date='2017-11-12 00:00:00.0000000';
+
+    select * from Assignment1Data where Customer_ID='C13' and Staff_ID='S4' and 
+    Sale_Date='2017-12-30 00:00:00.0000000';
+            \end{verbatim}
+            When both queries were performed it was apparent that the data associated with C32 was 
+            the likely broken record and modification of the data occured:
+            \begin{verbatim}
+    update Assignment1Data set Reciept_Id=51585 where Customer_ID='C32' and Staff_ID='S15' and 
+    Sale_Date='2017-11-12 00:00:00.0000000';
+            \end{verbatim}
 
 
         \subsection{Assumptions and Reasoning}
