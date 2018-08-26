@@ -100,9 +100,57 @@
 
     \newpage
     \section{Data Load Process (ETL/ELT)}
+        Initial import of the data supplied in the xlsx file generated a very basic table
+        that allowed us to analyse the data for potential outliers, confirm the business
+        requirements of the data and then create tables from which the data model was derived.
+        \\
+        The Imported table structure was as follows:
+        \begin{center}
+            \includegraphics{Images/Initial_Import.png}
+        \end{center}
         \subsection{Quality Assurance Processes}
         \subsection{Assumptions and Reasoning}
+            \subsubsection{Item Table}
+                An assumption of the ItemId never needing to be larger than a smallint
+                was followed, as a basic query into the maximum range within the test data
+                suggested that the maximum Id that currently existed was 30:
+                \begin{verbatim}
+    -- Some basic queries for us to determine potential outlier data:
+    -- What is the max of each column where datatype is int?
+    SELECT MAX(Item_ID) AS 'Max Item_ID'
+    FROM Assignment1Data;
+                \end{verbatim}
 
+                With the results:
+                \begin{verbatim}
+    Max Item_ID
+    30
+                \end{verbatim}
+                ItemDescription underwent some size optimisation, as the max datalength 
+                that currently existed within the supplied data was 52, and we are to assume
+                that into the future more items may be added, a value of 255 should allow
+                for a varied range of descriptions.
+                \\
+                SQL queried to determine to above assumption:
+                \begin{verbatim}
+    -- Determine current max varchar used in Item_Description
+    SELECT MAX(DATALENGTH(Item_Description)) 
+    FROM Assignment1Data;
+                \end{verbatim}
+                We do recognise the requirements for optimisation may not require such measures, and 
+                acknowledge that a varchar(max)/text datatype would also be reasonable.
+                \vspace{5mm}
+                \par\noindent
+                ItemPrice while imported as float type was considered too precise for the usecase of 
+                a monetary value. While MONEY and derivatives exist in the TSQL ecosphere, there are 
+                real concerns of accuracy of the datatype\cite{MoneyIssues}, and therefore we decided for 
+                a decimal(19,5) typing\cite{Numeric}.
+                \vspace{5mm}
+                \par\noindent
+                The final Item table structure is reflected as:
+                \begin{center}
+                    \includegraphics{Images/Item_Table.png}
+                \end{center}
     \newpage
     \section{Base Analysis}
         \subsection{Raw Results}
@@ -116,9 +164,12 @@
     \newpage
     \begin{thebibliography}{9}
         \raggedright
-        \bibitem{Placeholder}
-            Placeholder
-            \url{www.placeholder.com}
+        \bibitem{MoneyIssues}
+            Reasons against TSQL Money type: Stackoverflow User; \textit{SQLMenace}
+            \url{https://stackoverflow.com/questions/582797/should-you-choose-the-money-or-decimalx-y-datatypes-in-sql-server}
+        \bibitem{Numeric}
+            Microsoft TSQL documentation of Decimal/Numeric types
+            \url{https://docs.microsoft.com/en-us/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-2017}
     \end{thebibliography}
 
     \newpage
