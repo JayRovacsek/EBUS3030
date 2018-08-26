@@ -77,8 +77,8 @@
         interface and look up their record and that will flow with the sale.
         \item The sales associate can complete the order form/sale for the
         client.
-        \item Each sale will have a reciept number/id.
-        \item A reciept can have many line items.
+        \item Each sale will have a receipt number/id.
+        \item A receipt can have many line items.
         \item Each line item can only be for a single item, but the customer can
         purchase multiples of the same item.
         \item Where a customer has multiple line items, any sale with more than
@@ -97,6 +97,10 @@
 
     \newpage
     \section{Data Model}
+    The below data model is only a suggestion and is still subject to change into the future.
+        \begin{center}
+            \includegraphics{Images/Suggested_Schema.PNG}
+        \end{center}
 
     \newpage
     \section{Data Load Process (ETL/ELT)}
@@ -108,7 +112,40 @@
         \begin{center}
             \includegraphics{Images/Initial_Import.png}
         \end{center}
+
+        \newpage
+
         \subsection{Quality Assurance Processes}
+            A number of queries were written to look for data which did not adhere to the spec
+            outlined in business requirements and to ensure data was "clean" before entry.
+            The first instance of potential issues were encountered with a basic python script
+            which checked validity of column data, it was found that cells starting at B13777
+            to the end of file in the originally supplied excel file were formula values and 
+            not static values, this would not have caused an issue with importing into SSMS 
+            however certainly broke the script temporarily.
+            \vspace{5mm}
+            \par\noindent
+            The next potential issue encountered was not until a suggested schema structure 
+            was complete and data was being scripted to be added to the new schema for analysis.
+            The issue encountered was that receipt number 52136 seemed to be an incorrect 
+            entry, this was discovered when running the import query for the new schema:
+            \begin{verbatim}
+    INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId])
+    SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
+    FROM [Assignment1Data]
+    ORDER BY [Reciept_Id]
+            \end{verbatim}
+            Which resulted in the error:
+            \color{red}
+            \begin{verbatim}
+    Violation of PRIMARY KEY constraint 'PK_Receipt'. Cannot insert duplicate key in object 
+    'dbo.Receipt'. The duplicate key value is (52136).
+            \end{verbatim}
+            \color{black}
+            Leading us to recognise that either one of the entries could be incorrect, therefore
+            best to move the single line of data which was related to customer: C32.
+
+
         \subsection{Assumptions and Reasoning}
             \subsubsection{Item Table}
                 An assumption of the ItemId never needing to be larger than a smallint
