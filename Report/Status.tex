@@ -1,0 +1,80 @@
+\documentclass{article}
+    \usepackage{url}
+    \usepackage{cite}    
+    \usepackage{xcolor}
+    \usepackage{lscape}
+    \usepackage{amssymb}
+    \usepackage{titling}
+    \usepackage{pdfpages}
+    \usepackage{enumitem}
+    \usepackage{graphicx}
+    \usepackage{hyperref}
+    \usepackage{listings}
+    \usepackage{fancybox}
+    \usepackage{enumerate}
+    \usepackage{pdflscape}
+    \usepackage{afterpage}
+    \usepackage{lstautogobble}
+    \usepackage[margin=0.8in]{geometry}
+    \usepackage[nottoc,notlot,notlof]{tocbibind}
+
+    \begin{document}
+    Today:
+    \begin{itemize}
+        \item Created schema that roughly follows requirements, still is missing constraints,
+        however it does have relations and keys set.
+        \item Started writing scripts that would migrate data from the raw document that Peter
+        gave us into the new schema design
+        \item Hit snags with data that was intentionally against the rulesets that Peter had given (see below)
+    \end{itemize}
+
+    To create the schema, drop any schema named EBUS3030, then open and rune the sql 
+    file located at:
+    \\
+    EBUS3030\textbackslash Analysis\textbackslash Scripts\textbackslash sql\textbackslash create-schema.sql
+
+    Once created, import dataset from:
+    EBUS3030\textbackslash Analysis\textbackslash Scripts\textbackslash py-parse-data\textbackslash Data \textbackslash Assignment1Data.csv
+    \\
+    As a flat file, accept defaults on all screens.
+    \\
+    Once schema is loaded and data is populated into a table called Assignment1Data,
+    load the migration script located at:
+    \\
+    EBUS3030\textbackslash Analysis\textbackslash Scripts\textbackslash sql\textbackslash migration.sql
+    \\
+    This file is a mix of tests and import commands, details in the commenting,
+    \textbf{Dont} run the whole script, but rather the sections in order,
+    the initial issues start on the "Create Receipt" command, which encounters
+    the first discrepancy, outlined and resolved in the body of the main report,
+    the follow issues from receipt numbers: 52138 and 52147 exhibit issues with
+    either multiple customers, staff or both on each receipt. Viewable via:
+    \begin{verbatim}
+    SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
+    FROM [Assignment1Data]
+    WHERE Reciept_Id BETWEEN 52138 and 52147                 
+    ORDER BY [Reciept_Id]
+    \end{verbatim}
+    These can be resolved by commands such as:
+    \begin{verbatim}
+    update Assignment1Data set Reciept_Id=(select max(Reciept_Id)+1 
+    from Assignment1Data) 
+    where Customer_ID='C27' 
+    and Staff_ID='S4' 
+    and Sale_Date='2017-12-30 00:00:00.0000000';
+    \end{verbatim}
+    But it seems to miss the point of SQL to write updates for every broken record 
+    and instead update all in a similar command that could cover for both customer id
+    and staff id.
+    \\
+    The closest I got was:
+    \begin{verbatim}
+    SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
+    FROM [Assignment1Data]
+    WHERE 1=1
+    GROUP BY [Reciept_Id],[Customer_ID],[Staff_ID]
+    HAVING (count([Customer_ID]) > 1 OR count([Staff_ID]) > 1)
+    ORDER BY [Reciept_Id]
+    \end{verbatim}
+    Which is terribly wrong as it'll return all orders with greater than 1 item.
+    \end{document}

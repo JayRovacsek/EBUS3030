@@ -157,7 +157,22 @@
     update Assignment1Data set Reciept_Id=51585 where Customer_ID='C32' and Staff_ID='S15' and 
     Sale_Date='2017-11-12 00:00:00.0000000';
             \end{verbatim}
-
+            The next issue arose when again, attempting to run the aforementioned query to import
+            into the new Receipt table, this time not one stray record was found, but a complete
+            collision on the ReceiptId of 52137, this time as neither record seemed to have 
+            records that were correct, it was decided to move one to the maximum ReceiptId + 1:
+            \begin{verbatim}
+    update Assignment1Data set Reciept_Id=(select max(Reciept_Id)+1 from Assignment1Data) 
+    where Customer_ID='C27' and Staff_ID='S4' and Sale_Date='2017-12-30 00:00:00.0000000';
+            \end{verbatim}
+            The same issue was replicated on ReceiptId 52138, resolved via:
+            \begin{verbatim}
+    update Assignment1Data set Reciept_Id=(select max(Reciept_Id)+1 from Assignment1Data) 
+    where Customer_ID='C30' and Staff_ID='S19' and Sale_Date='2017-05-16 00:00:00.0000000';
+            \end{verbatim}
+            At this point we recognised the broken data likely continued for a while, and 
+            evaluated our hypothesis by looking at the original excel file. It turned
+            out that data with ReceiptId from 52137-52145 was all broken in the same manner.
 
         \subsection{Assumptions and Reasoning}
             \subsubsection{Item Table}
