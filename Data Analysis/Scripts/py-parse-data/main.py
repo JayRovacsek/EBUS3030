@@ -112,10 +112,15 @@ def populate_receipt_totals(receipt_id,sale,employees):
     total = 0
     for item_id,item in sale.receipt.items.items():
         total = total + (item.quantity * item.price)
+    if(len(sale.receipt.items.items()) > 4):
+        print("Total was adjusted from {} to {} due to business rules related to number\nof items in a sale.".format(total,total * 0.85))
+        total *= 0.85
     print("Total calculated for receipt {} is: {}, Items count was: {}".format(receipt_id,total,len(sale.receipt.items.items())))
     employees.employees[sale.receipt.staff.id].sales_count += 1
     employees.employees[sale.receipt.staff.id].sales_total += total
     employees.employees[sale.receipt.staff.id].item_count += len(sale.receipt.items.items())
+    
+    # Where a customer has multiple line items, any sale with more than 5 row items (containing at least 5 differentitems) is provided a 15% discount.
 
 def generate_results_structures():
     try:
