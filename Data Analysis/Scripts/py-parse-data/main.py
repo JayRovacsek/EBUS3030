@@ -39,11 +39,6 @@ def generate_results_structures():
     except Exception:
         print("An error occurred: {}".format(traceback.format_exc()))
 
-# Append lines to error log if required
-def log_error(error):
-    with open('Results/Errors.txt','a+') as error_log:
-        error_log.write(error + '\n')
-
 # Main branch of code to parse rows in excel file
 def parse_rows(rows,logged_errors):
     for row in rows:
