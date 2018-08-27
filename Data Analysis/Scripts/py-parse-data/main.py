@@ -103,7 +103,7 @@ class LoggedErrors:
         self.logged_errors = {}
     
     def add_error(self,receipt_id,error):
-        if error not in self.logged_errors:
+        if receipt_id not in self.logged_errors:
             self.logged_errors[receipt_id] = error
             log_error(error)
 
