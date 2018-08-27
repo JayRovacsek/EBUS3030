@@ -36,7 +36,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/elevennn/Development/EBUS3030/Data Analysis/Scripts/py-parse-data"
+set -gx VIRTUAL_ENV "/home/elevennn/Development/EBUS3030/Data Analysis/Scripts/parsedata"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH

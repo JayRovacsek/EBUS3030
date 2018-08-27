@@ -1,0 +1,15 @@
+Error in data row id: 52136; S15 is not the same as S4
+Error in data row id: 52137; S2 is not the same as S4
+Error in data row id: 52138; S19 is not the same as S13
+Error in data row id: 52139; S5 is not the same as S20
+Error in data row id: 52140; S10 is not the same as S4
+Error in data row id: 52141; S19 is not the same as S7
+Error in data row id: 52142; S6 is not the same as S8
+Error in data row id: 52143; S17 is not the same as S13
+Error in data row id: 52144; S4 is not the same as S10
+Error in data row id: 52145; S15 is not the same as S8
+Error in data row id: 52146; S16 is not the same as S5
+Error in data row id: 52147; S19 is not the same as S18
+Error in data row id: 52148; S8 is not the same as S16
+Error in data row id: 52149; S19 is not the same as S11
+Error in data row id: 52150; S10 is not the same as S7

@@ -1,5 +1,5 @@
 #!/bin/sh
-'''exec' "/home/elevennn/Development/EBUS3030/Data Analysis/Scripts/py-parse-data/bin/python" "$0" "$@"
+'''exec' "/home/elevennn/Development/EBUS3030/Data Analysis/Scripts/parsedata/bin/python" "$0" "$@"
 ' '''
 # -*- coding: utf-8 -*-
 import re

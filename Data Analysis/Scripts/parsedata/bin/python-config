@@ -1,4 +1,4 @@
-#!/home/elevennn/Development/EBUS3030/Data Analysis/Scripts/py-parse-data/bin/python
+#!/home/elevennn/Development/EBUS3030/Data Analysis/Scripts/parsedata/bin/python
 
 import sys
 import getopt
