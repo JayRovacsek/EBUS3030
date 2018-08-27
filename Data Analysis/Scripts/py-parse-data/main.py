@@ -4,7 +4,6 @@ import os
 import sys
 import openpyxl
 import traceback
-from multiprocessing import Pool
 
 # Function to parse all receipts once populated and add to employee totals
 def populate_receipt_totals(sales,employees,customers):
