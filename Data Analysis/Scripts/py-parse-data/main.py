@@ -98,6 +98,15 @@ class Employees:
     def add_employee(self,employee,employee_id):
         self.employees[employee_id] = employee
 
+class LoggedErrors:
+    def __init__(self):
+        self.logged_errors = {}
+    
+    def add_error(self,receipt_id,error):
+        if error not in self.logged_errors:
+            self.logged_errors[receipt_id] = error
+            log_error(error)
+
 # Function to parse all receipts once populated and add to employee totals
 def populate_receipt_totals(receipt_id,sale,employees):
     total = 0
@@ -121,13 +130,26 @@ def generate_results_structures():
     except Exception:
         print("An error occurred: {}".format(traceback.format_exc()))
 
-def parse_row(row):
-    receipt_id = row[1].value
-    if receipt_id in sales.sales:
-        print("Found existing receipt {}, adding items instead".format(receipt_id))
-        sales.add_items_to_sale(row,receipt_id)
-    else:
-        sales.parse_row(row,employees)
+def log_error(error):
+    with open('Results/Errors.txt','a+') as error_log:
+        error_log.write(error + '\n')
+
+def parse_rows(rows,logged_errors):
+    for row in rows:
+        receipt_id = row[1].value
+        if receipt_id in sales.sales:
+            staff_id = row[5].value
+            if sales.sales[receipt_id].receipt.staff.id != staff_id:
+                print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id))
+            else:
+                print("Found existing receipt {}, adding items instead".format(receipt_id))
+                sales.add_items_to_sale(row,receipt_id)
+        else:
+            sales.parse_row(row,employees)
+
+def clear_error_log():
+    open('Results/Errors.txt','w+').close()
 
 # Main hook
 if __name__ == '__main__':
@@ -136,21 +158,11 @@ if __name__ == '__main__':
     data = excel_file['Asgn1 Data']
     sales = Sales()
     employees = Employees()
+    logged_errors = LoggedErrors()
 
-    # try:
-    #     pool = Pool()
-    #     pool.map(parse_row,data.rows)
-    # finally:
-    #     pool.close()
-    #     pool.join()
-    # Parse over all rows of file
-    for row in data.rows:
-        receipt_id = row[1].value
-        if receipt_id in sales.sales:
-            print("Found existing receipt {}, adding items instead".format(receipt_id))
-            sales.add_items_to_sale(row,receipt_id)
-        else:
-            sales.parse_row(row,employees)
+    clear_error_log()
+
+    parse_rows(data.rows,logged_errors)
     
     generate_results_structures()
 
@@ -159,21 +171,15 @@ if __name__ == '__main__':
        populate_receipt_totals(receipt_id,sale,employees)
     
     # Print results
-    output = ""
+    employee_output = ""
     for employee_id,employee in employees.employees.items():
-        output += "Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(
+        employee_output += "Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n\n".format(
             employee_id,
             employee.first_name,
             employee.surname,
             employee.sales_total,
             employee.sales_count,
             employee.item_count)
-        # print("Employee: {}, {} {} \nSales Total={}\nSales Count={}\nTotal Items Sold:{}\n".format(
-        #     employee_id,
-        #     employee.first_name,
-        #     employee.surname,
-        #     employee.sales_total,
-        #     employee.sales_count,
-        #     employee.item_count))
+
     with open('Results/Employee_Results.txt','w+') as employee_results:
-        employee_results.write(output)
+        employee_results.write(employee_output)
