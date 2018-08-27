@@ -94,7 +94,6 @@ def clear_error_log():
 
 # Function to generate employee report and output to disk
 def generate_employee_report(employees):
-    # Print results
     employee_output = ""
     header = "Results for Employee analysis:"
     for employee_id,employee in employees.employees.items():
@@ -121,9 +120,8 @@ def generate_employee_report(employees):
             employee.sales_total / employee.item_count)
     write_report_results('Employee_Results',header,employee_output)
 
-# Function to generate employee report and output to disk
+# Function to generate customer report and output to disk
 def generate_customer_report(customers):
-    # Print results
     customer_output = ""
     header = "Results for Customer analysis:"
     for customer_id,customer in customers.customers.items():
@@ -150,8 +148,8 @@ def generate_customer_report(customers):
             customer.sales_total / customer.item_count)
     write_report_results('Customer_Results',header,customer_output)
 
+# Function to generate item report and output to disk
 def generate_items_report(items):
-    # Print results
     items_output = ""
     header = "Results for Item analysis:"
     for item_id,item in items.items.items():
