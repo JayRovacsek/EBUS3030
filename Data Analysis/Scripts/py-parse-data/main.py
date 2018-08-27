@@ -24,6 +24,26 @@ def populate_receipt_totals(sales,employees):
         employees.employees[sale.receipt.staff.id].sales_total += total
 
     generate_employee_report(employees)
+
+# Function to parse all receipts once populated and add to employee totals
+def populate_customer_totals(sales,customers):
+    print("stub")
+    # for receipt_id,sale in sales.sales.items():
+    #     total = 0
+    #     for item_id,item in sale.receipt.items.items():
+    #         total = total + (item.quantity * item.price)
+    #         employees.employees[sale.receipt.staff.id].item_count += item.quantity
+
+    #     if(len(sale.receipt.items.items()) > 4):
+    #         print("Total was adjusted from {} to {} due to business rules related to number\nof items in a sale.".format(total,total * 0.85))
+    #         total *= 0.85
+    #         employees.employees[sale.receipt.staff.id].discounted_sales += 1
+
+    #     print("Total calculated for receipt {} is: {}, Items count was: {}".format(receipt_id,total,len(sale.receipt.items.items())))
+    #     employees.employees[sale.receipt.staff.id].sales_count += 1
+    #     employees.employees[sale.receipt.staff.id].sales_total += total
+
+    # generate_customer_report(customers)
         
 # Generation of required output files
 def generate_results_structures():
