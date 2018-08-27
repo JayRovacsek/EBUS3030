@@ -7,6 +7,10 @@ class Item:
         self.description = item_description
         self.price = item_price
         self.quantity = item_quantity
+        self.sales_count = 0
+        self.sales_total = 0
+        self.item_count = 0
+        self.discounted_sales = 0
 
 # Office class, to imitate office entries in staff
 class Office:
@@ -64,8 +68,7 @@ class Sales:
         self.sales = {}
     
     # Parse row function, intended to determine if row is a header row or contains formula
-    # awaiting Peter's response re; cells B13777 to B13865.
-    def parse_row(self,row,employees,customers):
+    def parse_row(self,row,employees,customers,items):
         if row[0].value != 'Sale Date' and isinstance(row[1].value,int):
             item = Item(row[11].value,row[12].value,row[14].value,row[13].value)
             customer = Customer(row[2].value,row[3].value,row[4].value)
@@ -87,6 +90,12 @@ class Sales:
             else:
                 customers.add_customer(customer.id,customer)
 
+            # We itemed your items so you can .items() your items
+            if item.id in items.items.items():
+                print("Duplicate item: {}".format(item.id))
+            else:
+                items.add_item(item.id,item)
+
         else:
             print("Skipped row, either it was a row header: {} or it was a formula: {}".format(row[0].value,row[1].value))
 
@@ -105,14 +114,23 @@ class Employees:
     def add_employee(self,employee_id,employee):
         self.employees[employee_id] = employee
 
-# Employees class to hold all staff
+# Customers class to hold all customers
 class Customers:
     def __init__(self):
         self.customers = {}
 
-    # Function to add new employees if they currently don't exist
+    # Function to add new customer if they currently don't exist
     def add_customer(self,customer_id,customer):
         self.customers[customer_id] = customer
+
+# Items class to hold all items
+class Items:
+    def __init__(self):
+        self.items = {}
+
+    # Function to add new items if they currently don't exist
+    def add_item(self,item_id,item):
+        self.items[item_id] = item
 
 # Logged errors class to avoid logging the same error multiple times
 class LoggedErrors:

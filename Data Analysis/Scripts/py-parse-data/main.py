@@ -6,7 +6,7 @@ import openpyxl
 import traceback
 
 # Function to parse all receipts once populated and add to employee totals
-def populate_receipt_totals(sales,employees,customers):
+def populate_receipt_totals(sales,employees,customers,items):
     for receipt_id,sale in sales.sales.items():
         total = 0
         for item_id,item in sale.receipt.items.items():
@@ -23,8 +23,25 @@ def populate_receipt_totals(sales,employees,customers):
         employees.employees[sale.receipt.staff.id].sales_total += total
 
     populate_customer_totals(sales,customers)
+    populate_item_totals(sales,items)
     generate_employee_report(employees)
-    generate_customer_report(customers)
+
+# Function to parse all receipts once populated and add to customer totals
+def populate_item_totals(sales,items):
+    for receipt_id,sale in sales.sales.items():
+        total = 0
+        for item_id,item in sale.receipt.items.items():
+            total = total + (item.quantity * item.price)
+            items.items[sale.receipt.items[item_id].id].item_count += item.quantity
+
+        if(len(sale.receipt.items.items()) > 4):
+            total *= 0.85
+            items.items[sale.receipt.items[item_id].id].discounted_sales += 1
+
+        items.items[sale.receipt.items[item_id].id].sales_count += 1
+        items.items[sale.receipt.items[item_id].id].sales_total += total
+
+    generate_items_report(items)
 
 # Function to parse all receipts once populated and add to customer totals
 def populate_customer_totals(sales,customers):
@@ -50,7 +67,6 @@ def generate_results_structures():
             os.makedirs('Results')
 
         open('Results/Employee_Results.txt','w+').close()
-        open('Results/Location_Results.txt','w+').close()
         open('Results/Item_Results.txt','w+').close()
         open('Results/Customer_Results.txt','w+').close()
         
@@ -70,7 +86,7 @@ def parse_rows(rows,logged_errors):
                 print("Found existing receipt {}, adding items instead".format(receipt_id))
                 sales.add_items_to_sale(row,receipt_id)
         else:
-            sales.parse_row(row,employees,customers)
+            sales.parse_row(row,employees,customers,items)
 
 # Clear the current errors.txt file 
 def clear_error_log():
@@ -134,6 +150,32 @@ def generate_customer_report(customers):
             customer.sales_total / customer.item_count)
     write_report_results('Customer_Results',header,customer_output)
 
+def generate_items_report(items):
+    # Print results
+    items_output = ""
+    header = "Results for Item analysis:"
+    for item_id,item in items.items.items():
+        items_output += """Item: {}\n
+        Metrics: ###########################
+        Sales Count = {}
+        Total Discounted Sales: {}
+        Discounted Sales Ratio: {}
+        Total Items Sold: {}\n
+        Financials: ########################
+        Sales Total = ${}
+        Average Sale Value: ${}
+        Average Item Sold Value: ${}
+        \n""".format(
+            item_id,
+            item.sales_count,
+            item.discounted_sales,
+            item.discounted_sales / item.sales_count,
+            item.item_count,
+            item.sales_total,
+            item.sales_total / item.sales_count,
+            item.sales_total / item.item_count)
+    write_report_results('Item_Results',header,items_output)
+
 # Generalised function to write a report to disk
 def write_report_results(report_name,header,report_body):
     with open('Results/{}.txt'.format(report_name),'w+') as report:
@@ -148,6 +190,7 @@ if __name__ == '__main__':
     sales = Classes.Sales()
     employees = Classes.Employees()
     customers = Classes.Customers()
+    items = Classes.Items()
     logged_errors = Classes.LoggedErrors()
 
     clear_error_log()
@@ -159,4 +202,4 @@ if __name__ == '__main__':
     generate_results_structures()
 
     # Iterate over sales and employees to generate reports
-    populate_receipt_totals(sales,employees,customers)
+    populate_receipt_totals(sales,employees,customers,items)
