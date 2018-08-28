@@ -1,5 +1,13 @@
 USE EBUS3030;
 
+/*
+drop table customer
+drop table item
+drop table office
+drop table receipt
+drop table receiptitem
+drop table staff
+*/
 -- Create Item table from supplied data.
 INSERT INTO Item (ItemId,ItemDescription,ItemPrice)
 SELECT DISTINCT([Item_ID]),[Item_Description],[Item_Price]
@@ -64,3 +72,5 @@ FROM Assignment1Data;
 -- Determine current max varchar used in Item_Description
 SELECT MAX(DATALENGTH(Item_Description)) 
 FROM Assignment1Data;
+
+
