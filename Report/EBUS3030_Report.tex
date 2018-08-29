@@ -189,6 +189,26 @@
     ORDER BY Reciept_Id;
             \end{verbatim}
 
+            In order to clean this data we looked at a number of potential methods, with an 
+            emphasis on avoiding effort in the task if possible but not breaking the data further,
+            which to this point just appeared to be a collision of a number of receipts.
+            \\
+            We knew a structure such as a CTE\cite{CTE} would allow us to easily split
+            distinct records which shared a receiptId and filter by a value such as row number.
+            \begin{verbatim}
+    WITH CTE AS
+    (
+        SELECT ROW_NUMBER() OVER (ORDER BY Reciept_Id) AS RowNumber,
+                Reciept_Id,
+                Customer_ID,
+                Staff_ID
+        FROM  Assignment1Data
+        WHERE Reciept_Id BETWEEN 52137 AND 52150
+        GROUP BY Reciept_Id, Customer_ID,Staff_ID 
+    )
+    SELECT Reciept_Id,Customer_ID,Staff_ID FROM CTE WHERE (RowNumber % 2 = 0)
+            \end{verbatim}
+
         \subsection{Assumptions and Reasoning}
             \subsubsection{Item Table}
                 An assumption of the ItemId never needing to be larger than a smallint
@@ -250,6 +270,9 @@
         \bibitem{Numeric}
             Microsoft TSQL documentation of Decimal/Numeric types
             \url{https://docs.microsoft.com/en-us/sql/t-sql/data-types/decimal-and-numeric-transact-sql?view=sql-server-2017}
+        \bibitem{CTE}
+        Microsoft documentation: WITH common\_table\_expression (Transact-SQL)
+            \url{https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017}
     \end{thebibliography}
 
     \newpage
