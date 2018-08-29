@@ -30,4 +30,3 @@ go
 
 INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId]) SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID] FROM [Assignment1Data] ORDER BY [Reciept_Id]
 go
-

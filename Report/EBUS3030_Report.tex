@@ -145,34 +145,49 @@
             Leading us to recognise that either one of the entries could be incorrect, therefore
             best to investigate both records of the customer Id against the rest of the database:
             \begin{verbatim}
-    select * from Assignment1Data where Customer_ID='C32' and Staff_ID='S15' and 
+    SELECT * FROM Assignment1Data WHERE Customer_ID='C32' AND Staff_ID='S15' AND 
     Sale_Date='2017-11-12 00:00:00.0000000';
 
-    select * from Assignment1Data where Customer_ID='C13' and Staff_ID='S4' and 
+    SELECT * FROM Assignment1Data WHERE Customer_ID='C13' AND Staff_ID='S4' AND 
     Sale_Date='2017-12-30 00:00:00.0000000';
             \end{verbatim}
             When both queries were performed it was apparent that the data associated with C32 was 
             the likely broken record and modification of the data occured:
             \begin{verbatim}
-    update Assignment1Data set Reciept_Id=51585 where Customer_ID='C32' and Staff_ID='S15' and 
-    Sale_Date='2017-11-12 00:00:00.0000000';
+    UPDATE Assignment1Data 
+    SET Reciept_Id=51585, 
+    Reciept_Transaction_Row_ID=(
+        SELECT MAX(Reciept_Transaction_Row_ID)+1 
+        FROM Assignment1Data
+        WHERE Reciept_Id=51585)
+    WHERE Customer_ID='C32' 
+    AND Staff_ID='S15' 
+    AND Sale_Date='2017-11-12 00:00:00.0000000' 
+    AND Item_ID='14';
             \end{verbatim}
             The next issue arose when again, attempting to run the aforementioned query to import
             into the new Receipt table, this time not one stray record was found, but a complete
             collision on the ReceiptId of 52137, this time as neither record seemed to have 
             records that were correct, it was decided to move one to the maximum ReceiptId + 1:
             \begin{verbatim}
-    update Assignment1Data set Reciept_Id=(select max(Reciept_Id)+1 from Assignment1Data) 
-    where Customer_ID='C27' and Staff_ID='S4' and Sale_Date='2017-12-30 00:00:00.0000000';
+    UPDATE Assignment1Data SET Reciept_Id=(SELECT MAX(Reciept_Id)+1 FROM Assignment1Data) 
+    WHERE Customer_ID='C27' AND Staff_ID='S4' AND Sale_Date='2017-12-30 00:00:00.0000000';
             \end{verbatim}
             The same issue was replicated on ReceiptId 52138, resolved via:
             \begin{verbatim}
-    update Assignment1Data set Reciept_Id=(select max(Reciept_Id)+1 from Assignment1Data) 
-    where Customer_ID='C30' and Staff_ID='S19' and Sale_Date='2017-05-16 00:00:00.0000000';
+    UPDATE Assignment1Data SET Reciept_Id=(SELECT MAX(Reciept_Id)+1 FROM Assignment1Data) 
+    WHERE Customer_ID='C30' AND Staff_ID='S19' AND Sale_Date='2017-05-16 00:00:00.0000000';
             \end{verbatim}
             At this point we recognised the broken data likely continued for a while, and 
             evaluated our hypothesis by looking at the original excel file. It turned
             out that data with ReceiptId from 52137-52145 was all broken in the same manner.
+            The following query shows this well:
+            \begin{verbatim}
+    SELECT Reciept_Id, Customer_ID,Staff_ID FROM Assignment1Data 
+    WHERE Reciept_Id BETWEEN 52137 AND 52150
+    GROUP BY Reciept_Id, Customer_ID,Staff_ID 
+    ORDER BY Reciept_Id;
+            \end{verbatim}
 
         \subsection{Assumptions and Reasoning}
             \subsubsection{Item Table}
