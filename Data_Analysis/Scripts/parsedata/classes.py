@@ -1,4 +1,5 @@
 #!/usr/bin/env python3.7
+import hashlib
 
 # Item class, to imitate item entries in receipt 
 class Item:
@@ -132,21 +133,31 @@ class Items:
     def add_item(self,item_id,item):
         self.items[item_id] = item
 
+class Error_Log:
+    def __init__(self,trace,error_type,receipt_id):
+        self.trace = trace
+        self.receipt_id = receipt_id
+        self.error_type = error_type
+        hashcontent = trace + error_type + str(receipt_id)
+        self.hash = str(hashlib.sha1(hashcontent.encode(encoding='UTF-8',errors='strict')).hexdigest())
+
 # Logged errors class to avoid logging the same error multiple times
 class LoggedErrors:
     def __init__(self):
         self.logged_errors = {}
+        self.error_count = 0
     
     # Determine if error related to receipt is already logged
-    def add_error(self,receipt_id,error):
-        if receipt_id not in self.logged_errors:
-            self.logged_errors[receipt_id] = error
-            self.log_error(error)
-        else:
-            if self.logged_errors[receipt_id] != error:
-                self.log_error(error)
+    def add_error(self,receipt_id,trace,error_type):
+        error_log = Error_Log(trace,error_type,receipt_id)
+        if error_log.hash not in self.logged_errors:
+            self.logged_errors[error_log.hash] = error_log
+            # self.log_error(error)
+        # else:
+        #     if self.logged_errors[receipt_id] != error:
+        #         self.log_error(error)
 
     # Append lines to error log if required
-    def log_error(self,error):
-        with open('Results/Errors.txt','a+') as error_log:
-            error_log.write(error + '\n')
+    # def log_error(self,error):
+    #     with open('Results/Errors.txt','a+') as error_log:
+    #         error_log.write(error + '\n')

@@ -79,9 +79,13 @@ def parse_rows(rows,logged_errors):
         receipt_id = row[1].value
         if receipt_id in sales.sales:
             staff_id = row[5].value
+            customer_id = row[2].value
             if sales.sales[receipt_id].receipt.staff.id != staff_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id))
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch")
+            elif sales.sales[receipt_id].receipt.customer.id != customer_id:
+                print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch")
             else:
                 print("Found existing receipt {}, adding items instead".format(receipt_id))
                 sales.add_items_to_sale(row,receipt_id)
@@ -174,6 +178,18 @@ def generate_items_report(items):
             item.sales_total / item.item_count)
     write_report_results('Item_Results',header,items_output)
 
+# Function to generate error report and output to disk
+def generate_error_report(logged_errors):
+    header = "Error Report:"
+    error_output = ""
+    for error_log_id,error_log in logged_errors.logged_errors.items():
+        error_output += "ErrorId = {}\nErrorType = {}\nReceiptId = {}\nError = {}\n\n""".format(
+            error_log_id,
+            error_log.error_type,
+            error_log.receipt_id,
+            error_log.trace)
+    write_report_results('Errors',header,error_output)
+
 # Generalised function to write a report to disk
 def write_report_results(report_name,header,report_body):
     with open('Results/{}.txt'.format(report_name),'w+') as report:
@@ -198,6 +214,11 @@ if __name__ == '__main__':
     
     # If results folder and required text files don't exist, create them
     generate_results_structures()
+
+    # Output error report to disk.
+    generate_error_report(logged_errors)
+
+    # check_receipt_item_counts(sales)
 
     # Iterate over sales and employees to generate reports
     populate_receipt_totals(sales,employees,customers,items)

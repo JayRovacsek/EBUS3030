@@ -1,6 +1,7 @@
 \documentclass{article}
     \usepackage{url}
-    \usepackage{cite}    
+    \usepackage{cite}
+    \usepackage{float}   
     \usepackage{xcolor}
     \usepackage{lscape}
     \usepackage{amssymb}
@@ -208,30 +209,30 @@
     SELECT Reciept_Id,Customer_ID,Staff_ID FROM CTE WHERE (RowNumber % 2 = 0)
             \end{verbatim}
 
+            \newpage
             % This table is not displaying correctly at all...
             Results of the above command yeilded:
-            \begin{center}
-                \begin{table}[]
-                    \begin{tabular}{|l|l|l|}
-                    \hline
-                    Reciept\_Id & Customer\_Id & Staff\_Id \\ \hline
-                    52137       & C59          & S2        \\ \hline
-                    52138       & C30          & S19       \\ \hline
-                    52139       & C31          & S20       \\ \hline
-                    52140       & C52          & S10       \\ \hline
-                    52141       & C42          & S7        \\ \hline
-                    52142       & C47          & S6        \\ \hline
-                    52143       & C8           & S13       \\ \hline
-                    52144       & C50          & S4        \\ \hline
-                    52145       & C40          & S15       \\ \hline
-                    52146       & C38          & S5        \\ \hline
-                    52147       & C9           & S19       \\ \hline
-                    52148       & C43          & S16       \\ \hline
-                    52149       & C45          & S11       \\ \hline
-                    52150       & C57          & S7        \\ \hline
-                    \end{tabular}
-                \end{table}
-            \end{center}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|}
+                \hline
+                Reciept\_Id & Customer\_Id & Staff\_Id \\ \hline
+                52137       & C59          & S2        \\ \hline
+                52138       & C30          & S19       \\ \hline
+                52139       & C31          & S20       \\ \hline
+                52140       & C52          & S10       \\ \hline
+                52141       & C42          & S7        \\ \hline
+                52142       & C47          & S6        \\ \hline
+                52143       & C8           & S13       \\ \hline
+                52144       & C50          & S4        \\ \hline
+                52145       & C40          & S15       \\ \hline
+                52146       & C38          & S5        \\ \hline
+                52147       & C9           & S19       \\ \hline
+                52148       & C43          & S16       \\ \hline
+                52149       & C45          & S11       \\ \hline
+                52150       & C57          & S7        \\ \hline
+                \end{tabular}
+            \end{table}
             
             Whereas the original result without a modulo comparison on the row would have yeilded
             a much different result, the raw table supplied in the \hyperref[sec:Appendix]{\color{blue}Appendix}
@@ -308,6 +309,7 @@
     \label{sec:Appendix}
 
     \begin{table}[]
+        \centering
         \begin{tabular}{|l|l|l|}
         \hline
         Reciept\_Id & Customer\_Id & Staff\_Id \\ \hline
