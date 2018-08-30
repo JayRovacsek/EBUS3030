@@ -46,7 +46,7 @@ AND Item_ID='14';
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
+-- Resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -56,7 +56,7 @@ AND Customer_Id = 'C13' AND Staff_Id = 'S4'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 7d3e70ee6ef8209d1db122d4fceb373e47aa1f8d
+-- Resolved error identified by UUID: 7d3e70ee6ef8209d1db122d4fceb373e47aa1f8d
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -66,7 +66,7 @@ AND Customer_Id = 'C27' AND Staff_Id = 'S4'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 70e3e1589ab2bc49dc3f9304989f0287dce4d6f4
+-- Resolved error identified by UUID: 70e3e1589ab2bc49dc3f9304989f0287dce4d6f4
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -76,7 +76,7 @@ AND Customer_Id = 'C29' AND Staff_Id = 'S13'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 82ad9513d5ecca56781792616c984ec9c8be5ea6
+-- Resolved error identified by UUID: 82ad9513d5ecca56781792616c984ec9c8be5ea6
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -86,7 +86,7 @@ AND Customer_Id = 'C31' AND Staff_Id = 'S20'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: ed4f4ad220daefe924c57a5a1d2db32c8f85632d
+-- Resolved error identified by UUID: ed4f4ad220daefe924c57a5a1d2db32c8f85632d
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -96,7 +96,7 @@ AND Customer_Id = 'C38' AND Staff_Id = 'S4'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 6adb3e46388368db3dd98d5f2557ed6a7947b39a
+-- Resolved error identified by UUID: 6adb3e46388368db3dd98d5f2557ed6a7947b39a
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -106,7 +106,7 @@ AND Customer_Id = 'C42' AND Staff_Id = 'S7'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 42c42e141d1c95ccaaf09b48e51706584f0c494b
+-- Resolved error identified by UUID: 42c42e141d1c95ccaaf09b48e51706584f0c494b
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -116,7 +116,7 @@ AND Customer_Id = 'C46' AND Staff_Id = 'S8'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 4b9b1f1978a7bf4e6b2b0b2867b94c499c74b18b
+-- Resolved error identified by UUID: 4b9b1f1978a7bf4e6b2b0b2867b94c499c74b18b
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -126,7 +126,7 @@ AND Customer_Id = 'C8' AND Staff_Id = 'S13'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 69ce62117281095107a047d92a64b60142f131e8
+-- Resolved error identified by UUID: 69ce62117281095107a047d92a64b60142f131e8
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -136,7 +136,7 @@ AND Customer_Id = 'C11' AND Staff_Id = 'S10'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 1bf57bb861bae16e944a60cd2639377ab03c057a
+-- Resolved error identified by UUID: 1bf57bb861bae16e944a60cd2639377ab03c057a
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -146,7 +146,7 @@ AND Customer_Id = 'C21' AND Staff_Id = 'S8'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: ff56d8aa2e22e4811b22bd702cc7f65b627f778d
+-- Resolved error identified by UUID: ff56d8aa2e22e4811b22bd702cc7f65b627f778d
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -156,7 +156,7 @@ AND Customer_Id = 'C38' AND Staff_Id = 'S5'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 8fa388245a23b7634caad69666133819a485eda3
+-- Resolved error identified by UUID: 8fa388245a23b7634caad69666133819a485eda3
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -166,7 +166,7 @@ AND Customer_Id = 'C40' AND Staff_Id = 'S18'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: ac84576ce7fc2d4a07b0824bad51491c3ab9756b
+-- Resolved error identified by UUID: ac84576ce7fc2d4a07b0824bad51491c3ab9756b
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -176,7 +176,7 @@ AND Customer_Id = 'C43' AND Staff_Id = 'S16'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: b0465a950d1d6b84198a16f393203fd25056328a
+-- Resolved error identified by UUID: b0465a950d1d6b84198a16f393203fd25056328a
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 
@@ -186,7 +186,7 @@ AND Customer_Id = 'C45' AND Staff_Id = 'S11'
 GO
 
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
--- Should resolved error identified by UUID: 0cb8d75116359eef2823ef5ffd47d8b2919a0d80
+-- Resolved error identified by UUID: 0cb8d75116359eef2823ef5ffd47d8b2919a0d80
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 

@@ -32,3 +32,14 @@ FROM Assignment1Data;
 -- Determine current max varchar used in Item_Description
 SELECT MAX(DATALENGTH(Item_Description)) 
 FROM Assignment1Data;
+
+-- Verify that no receipt has duplicate ItemIds and all are unique per order
+SELECT *
+FROM
+(
+	SELECT [ReceiptItem].[ReceiptId], 
+	COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
+	COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
+	FROM [ReceiptItem]
+	GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
+WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]

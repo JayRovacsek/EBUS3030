@@ -200,7 +200,7 @@ def generate_sql_script(logged_errors):
         if error_log.receipt_id not in parsed_receipt_ids:
             sql_output += """
 -- Auto-generated query to fix error of type: {}
--- Should resolved error identified by UUID: {}
+-- Resolved error identified by UUID: {}
 UPDATE Assignment1Data 
 SET Reciept_Id=(
 SELECT MAX(Reciept_Id)+1 

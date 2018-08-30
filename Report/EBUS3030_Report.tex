@@ -236,6 +236,43 @@
             
             Whereas the original result without a modulo comparison on the row would have yeilded
             a much different result, the raw table supplied in the \hyperref[sec:Appendix]{\color{blue}Appendix}
+            \par
+            With this known, and additional section was added to the Python script to generate update statements
+            that would be easy to add to the current migrations.sql script we were prototyping.
+            \\
+            The generated update statements appeared as:
+            \begin{verbatim}
+    -- Auto-generated query to fix error of type: Staff.Id Mismatch
+    -- Resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
+    UPDATE Assignment1Data 
+    SET Reciept_Id=(
+    SELECT MAX(Reciept_Id)+1 
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52136
+    AND Customer_Id = 'C13' AND Staff_Id = 'S4'
+    GO
+            \end{verbatim}
+            Determining now potential entries that broke further rules was our next objective.
+            We pursued the idea that entries of receipts could potentially have duplicate items
+            recorded against the ReceiptItem table. A simple script was generated to check our 
+            assumptions of this:
+            \begin{verbatim}
+    -- Verify that no receipt has duplicate ItemIds and all are unique per order
+    SELECT *
+    FROM
+    (
+        SELECT [ReceiptItem].[ReceiptId], 
+        COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
+        COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
+        FROM [ReceiptItem]
+        GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
+    WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
+    ORDER BY [SubQuery].[ReceiptId]
+            \end{verbatim}
+            This query returned a result of 912 rows out of the total 2514, which we believed 
+            was a large amount given the issues identified earlier numbered in only the teens, 
+            however on manual inspection of a number of the reported issue records, it was 
+            apparent this figure was actually correct. 
 
         \newpage
         \subsection{Assumptions and Reasoning}
