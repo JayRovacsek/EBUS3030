@@ -199,20 +199,20 @@ def generate_sql_script(logged_errors):
     for error_log_id,error_log in logged_errors.logged_errors.items():
         if error_log.receipt_id not in parsed_receipt_ids:
             sql_output += """
-    -- Auto-generated query to fix error of type: {}
-    -- Should resolved error identified by UUID: {}
-    UPDATE Assignment1Data 
-    SET Reciept_Id=(
-    SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data)
-    WHERE Reciept_Id={}
-    AND """.format(error_log.error_type,error_log_id,error_log.receipt_id)
+-- Auto-generated query to fix error of type: {}
+-- Should resolved error identified by UUID: {}
+UPDATE Assignment1Data 
+SET Reciept_Id=(
+SELECT MAX(Reciept_Id)+1 
+FROM Assignment1Data)
+WHERE Reciept_Id={}
+AND """.format(error_log.error_type,error_log_id,error_log.receipt_id)
             if error_log.customer_id is not None and error_log.staff_id is not None:
-                sql_output += "Customer_Id = '{}' AND Staff_Id = '{}'\nGO\n\n".format(error_log.customer_id,error_log.staff_id)
+                sql_output += "Customer_Id = '{}' AND Staff_Id = '{}'\nGO\n".format(error_log.customer_id,error_log.staff_id)
             elif error_log.customer_id is not None:
-                sql_output += "Customer_Id = '{}'\nGO\n\n".format(error_log.customer_id)
+                sql_output += "Customer_Id = '{}'\nGO\n".format(error_log.customer_id)
             elif error_log.staff_id is not None:
-                sql_output += "Staff_Id = '{}'\nGO\n\n".format(error_log.staff_id)
+                sql_output += "Staff_Id = '{}'\nGO\n".format(error_log.staff_id)
             else:
                 sql_output = None
             parsed_receipt_ids.append(error_log.receipt_id)
