@@ -1,12 +1,12 @@
 USE EBUS3030;
 
 /*
-drop table customer
-drop table item
-drop table office
-drop table receipt
-drop table receiptitem
-drop table staff
+DROP TABLE customer
+DROP TABLE item
+DROP TABLE office
+DROP TABLE receipt
+DROP TABLE receiptitem
+DROP TABLE staff
 */
 -- Create Item table from supplied data.
 INSERT INTO Item (ItemId,ItemDescription,ItemPrice)
@@ -31,12 +31,6 @@ INSERT INTO Customer ([CustomerId], [CustomerFirstName],[CustomerSurname])
 SELECT DISTINCT([Customer_ID]),[Customer_First_Name],[Customer_Surname]
 FROM [Assignment1Data]
 ORDER BY [Customer_ID]
-
--- Create Receipt table from supplied data
-INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId])
-SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
-FROM [Assignment1Data]
-ORDER BY [Reciept_Id]
 
 -- Nicer method to clean record 51585
 UPDATE Assignment1Data 
@@ -201,8 +195,8 @@ WHERE Reciept_Id=52150
 AND Customer_Id = 'C57' AND Staff_Id = 'S7'
 GO
 
-INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId]) 
-SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID] 
-FROM [Assignment1Data] 
+-- Create Receipt table from supplied data
+INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId])
+SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
+FROM [Assignment1Data]
 ORDER BY [Reciept_Id]
-GO
