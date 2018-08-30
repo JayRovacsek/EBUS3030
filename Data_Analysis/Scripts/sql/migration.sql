@@ -200,3 +200,9 @@ INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId])
 SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
 FROM [Assignment1Data]
 ORDER BY [Reciept_Id]
+
+-- Insert into ReceiptItem from supplied data
+INSERT INTO ReceiptItem([ReceiptId], [ItemId],[ReceiptItemQuantity])
+SELECT DISTINCT([Reciept_Id]),[Item_ID],[Item_Quantity]
+FROM [Assignment1Data]
+ORDER BY [Reciept_Id]
