@@ -6,9 +6,9 @@ USE EBUS3030;
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52136)
-    AND Customer_Id IS 'C13' AND Staff_Id IS 'S4'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52136
+    AND Customer_Id = 'C13' AND Staff_Id = 'S4'
 GO
 
 
@@ -17,9 +17,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52137)
-    AND Customer_Id IS 'C27' AND Staff_Id IS 'S4'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52137
+    AND Customer_Id = 'C27' AND Staff_Id = 'S4'
 GO
 
 
@@ -28,9 +28,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52138)
-    AND Customer_Id IS 'C29' AND Staff_Id IS 'S13'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52138
+    AND Customer_Id = 'C29' AND Staff_Id = 'S13'
 GO
 
 
@@ -39,9 +39,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52139)
-    AND Customer_Id IS 'C31' AND Staff_Id IS 'S20'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52139
+    AND Customer_Id = 'C31' AND Staff_Id = 'S20'
 GO
 
 
@@ -50,9 +50,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52140)
-    AND Customer_Id IS 'C38' AND Staff_Id IS 'S4'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52140
+    AND Customer_Id = 'C38' AND Staff_Id = 'S4'
 GO
 
 
@@ -61,9 +61,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52141)
-    AND Customer_Id IS 'C42' AND Staff_Id IS 'S7'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52141
+    AND Customer_Id = 'C42' AND Staff_Id = 'S7'
 GO
 
 
@@ -72,9 +72,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52142)
-    AND Customer_Id IS 'C46' AND Staff_Id IS 'S8'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52142
+    AND Customer_Id = 'C46' AND Staff_Id = 'S8'
 GO
 
 
@@ -83,9 +83,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52143)
-    AND Customer_Id IS 'C8' AND Staff_Id IS 'S13'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52143
+    AND Customer_Id = 'C8' AND Staff_Id = 'S13'
 GO
 
 
@@ -94,9 +94,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52144)
-    AND Customer_Id IS 'C11' AND Staff_Id IS 'S10'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52144
+    AND Customer_Id = 'C11' AND Staff_Id = 'S10'
 GO
 
 
@@ -105,9 +105,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52145)
-    AND Customer_Id IS 'C21' AND Staff_Id IS 'S8'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52145
+    AND Customer_Id = 'C21' AND Staff_Id = 'S8'
 GO
 
 
@@ -116,9 +116,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52146)
-    AND Customer_Id IS 'C38' AND Staff_Id IS 'S5'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52146
+    AND Customer_Id = 'C38' AND Staff_Id = 'S5'
 GO
 
 
@@ -127,9 +127,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52147)
-    AND Customer_Id IS 'C40' AND Staff_Id IS 'S18'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52147
+    AND Customer_Id = 'C40' AND Staff_Id = 'S18'
 GO
 
 
@@ -138,9 +138,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52148)
-    AND Customer_Id IS 'C43' AND Staff_Id IS 'S16'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52148
+    AND Customer_Id = 'C43' AND Staff_Id = 'S16'
 GO
 
 
@@ -149,9 +149,9 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52149)
-    AND Customer_Id IS 'C45' AND Staff_Id IS 'S11'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52149
+    AND Customer_Id = 'C45' AND Staff_Id = 'S11'
 GO
 
 
@@ -160,8 +160,8 @@ GO
     UPDATE Assignment1Data 
     SET Reciept_Id=(
     SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data
-    WHERE Reciept_Id=52150)
-    AND Customer_Id IS 'C57' AND Staff_Id IS 'S7'
+    FROM Assignment1Data)
+    WHERE Reciept_Id=52150
+    AND Customer_Id = 'C57' AND Staff_Id = 'S7'
 GO
 
