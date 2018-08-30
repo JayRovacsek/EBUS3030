@@ -5,50 +5,100 @@ ErrorType = Staff.Id Mismatch
 ReceiptId = 52136
 Error = Error in data row id: 52136; S15 is not the same as S4
 
+ErrorId = bfe9261b70b283ed977bb365fcbfb54948cb8871
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52136
+Error = Error in data row id: 52136; C32 is not the same as C13
+
 ErrorId = 7d3e70ee6ef8209d1db122d4fceb373e47aa1f8d
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52137
 Error = Error in data row id: 52137; S2 is not the same as S4
+
+ErrorId = a2ebabd89f7ff6556542330a38b640ae320e9d97
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52137
+Error = Error in data row id: 52137; C59 is not the same as C27
 
 ErrorId = 70e3e1589ab2bc49dc3f9304989f0287dce4d6f4
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52138
 Error = Error in data row id: 52138; S19 is not the same as S13
 
+ErrorId = 5d4cf4160eff2d7c458fb87dab1b13c7e91bd132
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52138
+Error = Error in data row id: 52138; C30 is not the same as C29
+
 ErrorId = 82ad9513d5ecca56781792616c984ec9c8be5ea6
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52139
 Error = Error in data row id: 52139; S5 is not the same as S20
+
+ErrorId = a7388ee35cb6fd61237964022fba32f745e4f4f6
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52139
+Error = Error in data row id: 52139; C3 is not the same as C31
 
 ErrorId = ed4f4ad220daefe924c57a5a1d2db32c8f85632d
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52140
 Error = Error in data row id: 52140; S10 is not the same as S4
 
+ErrorId = f680bcffc712ebb0aad75910de4c4a38e39827bb
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52140
+Error = Error in data row id: 52140; C52 is not the same as C38
+
 ErrorId = 6adb3e46388368db3dd98d5f2557ed6a7947b39a
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52141
 Error = Error in data row id: 52141; S19 is not the same as S7
+
+ErrorId = c0ccb5b02f7eb6ca729eba492faed98711a9c23e
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52141
+Error = Error in data row id: 52141; C24 is not the same as C42
 
 ErrorId = 42c42e141d1c95ccaaf09b48e51706584f0c494b
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52142
 Error = Error in data row id: 52142; S6 is not the same as S8
 
+ErrorId = 92d84c1366cd6cfa6969aeb95e41638ba8ea51dd
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52142
+Error = Error in data row id: 52142; C47 is not the same as C46
+
 ErrorId = 4b9b1f1978a7bf4e6b2b0b2867b94c499c74b18b
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52143
 Error = Error in data row id: 52143; S17 is not the same as S13
+
+ErrorId = 566efcef13abc79e6b276c08e70f4b0af5eeba96
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52143
+Error = Error in data row id: 52143; C51 is not the same as C8
 
 ErrorId = 69ce62117281095107a047d92a64b60142f131e8
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52144
 Error = Error in data row id: 52144; S4 is not the same as S10
 
+ErrorId = 6d060bb05eeacadc1e191f67b2e8c5b7419cbe22
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52144
+Error = Error in data row id: 52144; C50 is not the same as C11
+
 ErrorId = 1bf57bb861bae16e944a60cd2639377ab03c057a
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52145
 Error = Error in data row id: 52145; S15 is not the same as S8
+
+ErrorId = 43b3bdb2d36d4ce4aff74c7ce6f422a985829f6f
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52145
+Error = Error in data row id: 52145; C40 is not the same as C21
 
 ErrorId = ff56d8aa2e22e4811b22bd702cc7f65b627f778d
 ErrorType = Staff.Id Mismatch
@@ -60,17 +110,38 @@ ErrorType = Staff.Id Mismatch
 ReceiptId = 52147
 Error = Error in data row id: 52147; S19 is not the same as S18
 
+ErrorId = 207ca0b3969dd61eacd7b9beadab2859b55dac07
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52147
+Error = Error in data row id: 52147; C9 is not the same as C40
+
 ErrorId = ac84576ce7fc2d4a07b0824bad51491c3ab9756b
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52148
 Error = Error in data row id: 52148; S8 is not the same as S16
+
+ErrorId = 5f44fa49b352bcea0f7df41c8e753aca5ee538db
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52148
+Error = Error in data row id: 52148; C26 is not the same as C43
 
 ErrorId = b0465a950d1d6b84198a16f393203fd25056328a
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52149
 Error = Error in data row id: 52149; S19 is not the same as S11
 
+ErrorId = dce474bdb8a4bb47a15830051a53d3d0ba3b909e
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52149
+Error = Error in data row id: 52149; C10 is not the same as C45
+
 ErrorId = 0cb8d75116359eef2823ef5ffd47d8b2919a0d80
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52150
 Error = Error in data row id: 52150; S10 is not the same as S7
+
+ErrorId = 1fdeb0c3f35eb792c36811ab48750a0df042e632
+ErrorType = Customer.Id Mismatch
+ReceiptId = 52150
+Error = Error in data row id: 52150; C15 is not the same as C57
+

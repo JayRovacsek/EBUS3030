@@ -134,12 +134,20 @@ class Items:
         self.items[item_id] = item
 
 class Error_Log:
-    def __init__(self,trace,error_type,receipt_id):
+    def __init__(self,trace,error_type,receipt_id,customer_id = None,staff_id = None):
         self.trace = trace
         self.receipt_id = receipt_id
         self.error_type = error_type
-        hashcontent = trace + error_type + str(receipt_id)
-        self.hash = str(hashlib.sha1(hashcontent.encode(encoding='UTF-8',errors='strict')).hexdigest())
+        self.customer_id = None
+        self.staff_id = None
+        if customer_id is not None:
+            self.customer_id = customer_id
+        if staff_id is not None:
+            self.staff_id = staff_id
+        self.hash = self.generate_hash(trace + error_type + str(receipt_id))
+
+    def generate_hash(self,hashcontent):
+        return str(hashlib.sha1(hashcontent.encode(encoding='UTF-8',errors='strict')).hexdigest())
 
 # Logged errors class to avoid logging the same error multiple times
 class LoggedErrors:
@@ -148,8 +156,8 @@ class LoggedErrors:
         self.error_count = 0
     
     # Determine if error related to receipt is already logged
-    def add_error(self,receipt_id,trace,error_type):
-        error_log = Error_Log(trace,error_type,receipt_id)
+    def add_error(self,receipt_id,trace,error_type,customer_id = None,staff_id = None):
+        error_log = Error_Log(trace,error_type,receipt_id,customer_id,staff_id)
         if error_log.hash not in self.logged_errors:
             self.logged_errors[error_log.hash] = error_log
             # self.log_error(error)

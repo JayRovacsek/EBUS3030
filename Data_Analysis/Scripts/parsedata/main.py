@@ -2,6 +2,7 @@
 import classes as Classes
 import os
 import sys
+import csv
 import openpyxl
 import traceback
 
@@ -82,13 +83,14 @@ def parse_rows(rows,logged_errors):
             customer_id = row[2].value
             if sales.sales[receipt_id].receipt.staff.id != staff_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch")
-            elif sales.sales[receipt_id].receipt.customer.id != customer_id:
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch",customer_id,staff_id)
+            
+            if sales.sales[receipt_id].receipt.customer.id != customer_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch")
-            else:
-                print("Found existing receipt {}, adding items instead".format(receipt_id))
-                sales.add_items_to_sale(row,receipt_id)
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id)
+
+            print("Found existing receipt {}, adding items instead".format(receipt_id))
+            sales.add_items_to_sale(row,receipt_id)
         else:
             sales.parse_row(row,employees,customers,items)
 
@@ -190,6 +192,33 @@ def generate_error_report(logged_errors):
             error_log.trace)
     write_report_results('Errors',header,error_output)
 
+def generate_sql_script(logged_errors):
+    header = "USE EBUS3030;"
+    sql_output = ""
+    parsed_receipt_ids = []
+    for error_log_id,error_log in logged_errors.logged_errors.items():
+        if error_log.receipt_id not in parsed_receipt_ids:
+            sql_output += """
+    -- Auto-generated query to fix error of type: {}
+    -- Should resolved error identified by UUID: {}
+    UPDATE Assignment1Data 
+    SET Reciept_Id=(
+    SELECT MAX(Reciept_Id)+1 
+    FROM Assignment1Data
+    WHERE Reciept_Id={})
+    AND """.format(error_log.error_type,error_log_id,error_log.receipt_id)
+            if error_log.customer_id is not None and error_log.staff_id is not None:
+                sql_output += "Customer_Id IS '{}' AND Staff_Id IS '{}'\nGO\n\n".format(error_log.customer_id,error_log.staff_id)
+            elif error_log.customer_id is not None:
+                sql_output += "Customer_Id IS '{}'\nGO\n\n".format(error_log.customer_id)
+            elif error_log.staff_id is not None:
+                sql_output += "Staff_Id IS '{}'\nGO\n\n".format(error_log.staff_id)
+            else:
+                sql_output = None
+            parsed_receipt_ids.append(error_log.receipt_id)
+
+    write_report_results('SQL',header,sql_output)
+
 # Generalised function to write a report to disk
 def write_report_results(report_name,header,report_body):
     with open('Results/{}.txt'.format(report_name),'w+') as report:
@@ -218,7 +247,8 @@ if __name__ == '__main__':
     # Output error report to disk.
     generate_error_report(logged_errors)
 
-    # check_receipt_item_counts(sales)
+    # Output sql to disk to fix errors found
+    generate_sql_script(logged_errors)
 
     # Iterate over sales and employees to generate reports
     populate_receipt_totals(sales,employees,customers,items)

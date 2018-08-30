@@ -43,14 +43,14 @@ Customer: C40, Kelly Bell
 
         Metrics: ###########################
         Sales Count = 42
-        Total Discounted Sales: 25
-        Discounted Sales Ratio: 0.5952380952380952
-        Total Items Sold: 1344
+        Total Discounted Sales: 26
+        Discounted Sales Ratio: 0.6190476190476191
+        Total Items Sold: 1353
 
         Financials: ########################
-        Sales Total = $24458.687500000007
-        Average Sale Value: $582.3497023809525
-        Average Item Sold Value: $18.198428199404766
+        Sales Total = $24588.225000000006
+        Average Sale Value: $585.4339285714287
+        Average Item Sold Value: $18.173115299334818
         
 Customer: C56, Chloe Price 
 
@@ -71,25 +71,25 @@ Customer: C50, Noah Williams
         Sales Count = 38
         Total Discounted Sales: 22
         Discounted Sales Ratio: 0.5789473684210527
-        Total Items Sold: 1178
+        Total Items Sold: 1220
 
         Financials: ########################
-        Sales Total = $18042.2575
-        Average Sale Value: $474.79625
-        Average Item Sold Value: $15.31600806451613
+        Sales Total = $18376.307499999995
+        Average Sale Value: $483.5870394736841
+        Average Item Sold Value: $15.062547131147538
         
 Customer: C3, Audrey Gutierrez 
 
         Metrics: ###########################
         Sales Count = 44
-        Total Discounted Sales: 29
-        Discounted Sales Ratio: 0.6590909090909091
-        Total Items Sold: 1399
+        Total Discounted Sales: 30
+        Discounted Sales Ratio: 0.6818181818181818
+        Total Items Sold: 1437
 
         Financials: ########################
-        Sales Total = $24782.855000000003
-        Average Sale Value: $563.2467045454546
-        Average Item Sold Value: $17.714692637598286
+        Sales Total = $25254.242500000008
+        Average Sale Value: $573.960056818182
+        Average Item Sold Value: $17.574281489213647
         
 Customer: C22, Paul Brooks 
 
@@ -108,14 +108,14 @@ Customer: C47, Olivia King
 
         Metrics: ###########################
         Sales Count = 43
-        Total Discounted Sales: 26
-        Discounted Sales Ratio: 0.6046511627906976
-        Total Items Sold: 1141
+        Total Discounted Sales: 27
+        Discounted Sales Ratio: 0.627906976744186
+        Total Items Sold: 1170
 
         Financials: ########################
-        Sales Total = $23265.372500000005
-        Average Sale Value: $541.0551744186048
-        Average Item Sold Value: $20.390335232252415
+        Sales Total = $23453.292500000007
+        Average Sale Value: $545.4254069767444
+        Average Item Sold Value: $20.04554914529915
         
 Customer: C12, Dylan Ross 
 
@@ -212,14 +212,14 @@ Customer: C10, Mary Gray
 
         Metrics: ###########################
         Sales Count = 59
-        Total Discounted Sales: 40
-        Discounted Sales Ratio: 0.6779661016949152
-        Total Items Sold: 1829
+        Total Discounted Sales: 41
+        Discounted Sales Ratio: 0.6949152542372882
+        Total Items Sold: 1867
 
         Financials: ########################
-        Sales Total = $35390.485
-        Average Sale Value: $599.8387288135593
-        Average Item Sold Value: $19.349636413340622
+        Sales Total = $35603.06
+        Average Sale Value: $603.4416949152542
+        Average Item Sold Value: $19.069662560257097
         
 Customer: C52, Luke Young 
 
@@ -227,12 +227,12 @@ Customer: C52, Luke Young
         Sales Count = 43
         Total Discounted Sales: 25
         Discounted Sales Ratio: 0.5813953488372093
-        Total Items Sold: 1226
+        Total Items Sold: 1251
 
         Financials: ########################
-        Sales Total = $24797.807500000003
-        Average Sale Value: $576.6931976744187
-        Average Item Sold Value: $20.226596655791194
+        Sales Total = $25004.57
+        Average Sale Value: $581.5016279069768
+        Average Item Sold Value: $19.987665867306156
         
 Customer: C26, Zach Barnes 
 
@@ -240,12 +240,12 @@ Customer: C26, Zach Barnes
         Sales Count = 35
         Total Discounted Sales: 22
         Discounted Sales Ratio: 0.6285714285714286
-        Total Items Sold: 1048
+        Total Items Sold: 1077
 
         Financials: ########################
-        Sales Total = $16499.697500000002
-        Average Sale Value: $471.4199285714286
-        Average Item Sold Value: $15.74398616412214
+        Sales Total = $16941.4425
+        Average Sale Value: $484.0412142857143
+        Average Item Sold Value: $15.730215877437328
         
 Customer: C29, Kayla Ward 
 
@@ -318,12 +318,12 @@ Customer: C59, Devin Cooper
         Sales Count = 40
         Total Discounted Sales: 22
         Discounted Sales Ratio: 0.55
-        Total Items Sold: 1171
+        Total Items Sold: 1214
 
         Financials: ########################
-        Sales Total = $20008.3975
-        Average Sale Value: $500.20993749999997
-        Average Item Sold Value: $17.08659052092229
+        Sales Total = $20849.26
+        Average Sale Value: $521.2315
+        Average Item Sold Value: $17.174019769357496
         
 Customer: C54, Tiffany Taylor 
 
@@ -344,12 +344,12 @@ Customer: C51, Daniel Garcia
         Sales Count = 52
         Total Discounted Sales: 32
         Discounted Sales Ratio: 0.6153846153846154
-        Total Items Sold: 1474
+        Total Items Sold: 1494
 
         Financials: ########################
-        Sales Total = $21654.504999999997
-        Average Sale Value: $416.4327884615384
-        Average Item Sold Value: $14.690980325644503
+        Sales Total = $21839.004999999997
+        Average Sale Value: $419.98086538461536
+        Average Item Sold Value: $14.617807898259704
         
 Customer: C31, Danielle Cruz 
 
@@ -461,12 +461,12 @@ Customer: C15, Jason Davis
         Sales Count = 48
         Total Discounted Sales: 27
         Discounted Sales Ratio: 0.5625
-        Total Items Sold: 1377
+        Total Items Sold: 1428
 
         Financials: ########################
-        Sales Total = $21432.44
-        Average Sale Value: $446.50916666666666
-        Average Item Sold Value: $15.564589687726942
+        Sales Total = $21843.585
+        Average Sale Value: $455.0746875
+        Average Item Sold Value: $15.296628151260503
         
 Customer: C19, Christian Nelson 
 
@@ -565,25 +565,25 @@ Customer: C38, Vincent Jenkins
         Sales Count = 42
         Total Discounted Sales: 25
         Discounted Sales Ratio: 0.5952380952380952
-        Total Items Sold: 1341
+        Total Items Sold: 1356
 
         Financials: ########################
-        Sales Total = $25114.702499999996
-        Average Sale Value: $597.9691071428571
-        Average Item Sold Value: $18.728338926174494
+        Sales Total = $25199.234999999997
+        Average Sale Value: $599.9817857142856
+        Average Item Sold Value: $18.58350663716814
         
 Customer: C32, Abigail Walker 
 
         Metrics: ###########################
         Sales Count = 41
-        Total Discounted Sales: 27
-        Discounted Sales Ratio: 0.6585365853658537
-        Total Items Sold: 1369
+        Total Discounted Sales: 28
+        Discounted Sales Ratio: 0.6829268292682927
+        Total Items Sold: 1427
 
         Financials: ########################
-        Sales Total = $22373.074999999997
-        Average Sale Value: $545.6847560975609
-        Average Item Sold Value: $16.342640613586557
+        Sales Total = $22769.217499999995
+        Average Sale Value: $555.3467682926828
+        Average Item Sold Value: $15.95600385423966
         
 Customer: C44, Sara Allen 
 
@@ -682,12 +682,12 @@ Customer: C24, Claire Baker
         Sales Count = 50
         Total Discounted Sales: 35
         Discounted Sales Ratio: 0.7
-        Total Items Sold: 1705
+        Total Items Sold: 1740
 
         Financials: ########################
-        Sales Total = $32506.679999999997
-        Average Sale Value: $650.1335999999999
-        Average Item Sold Value: $19.06550146627566
+        Sales Total = $32890.625
+        Average Sale Value: $657.8125
+        Average Item Sold Value: $18.902658045977013
         
 Customer: C2, Zach Murphy 
 
@@ -747,12 +747,12 @@ Customer: C9, Amber Edwards
         Sales Count = 36
         Total Discounted Sales: 21
         Discounted Sales Ratio: 0.5833333333333334
-        Total Items Sold: 1068
+        Total Items Sold: 1109
 
         Financials: ########################
-        Sales Total = $21718.89
-        Average Sale Value: $603.3025
-        Average Item Sold Value: $20.336039325842695
+        Sales Total = $22650.32
+        Average Sale Value: $629.1755555555555
+        Average Item Sold Value: $20.424093778178538
         
 Customer: C17, Mark Kelly 
 
@@ -773,10 +773,10 @@ Customer: C30, Dylan Cruz
         Sales Count = 30
         Total Discounted Sales: 15
         Discounted Sales Ratio: 0.5
-        Total Items Sold: 899
+        Total Items Sold: 941
 
         Financials: ########################
-        Sales Total = $14341.285000000003
-        Average Sale Value: $478.0428333333335
-        Average Item Sold Value: $15.95248609566185
+        Sales Total = $14716.6025
+        Average Sale Value: $490.5534166666667
+        Average Item Sold Value: $15.63932252922423
         

@@ -3,15 +3,15 @@ Results for Item analysis:
 Item: 11
 
         Metrics: ###########################
-        Sales Count = 106
-        Total Discounted Sales: 59
-        Discounted Sales Ratio: 0.5566037735849056
-        Total Items Sold: 2762
+        Sales Count = 108
+        Total Discounted Sales: 61
+        Discounted Sales Ratio: 0.5648148148148148
+        Total Items Sold: 2780
 
         Financials: ########################
-        Sales Total = $73196.59249999997
-        Average Sale Value: $690.5338915094337
-        Average Item Sold Value: $26.501300687907303
+        Sales Total = $77247.30999999997
+        Average Sale Value: $715.25287037037
+        Average Item Sold Value: $27.78680215827337
         
 Item: 19
 
@@ -19,25 +19,25 @@ Item: 19
         Sales Count = 66
         Total Discounted Sales: 34
         Discounted Sales Ratio: 0.5151515151515151
-        Total Items Sold: 2498
+        Total Items Sold: 2522
 
         Financials: ########################
         Sales Total = $26457.552499999994
         Average Sale Value: $400.8720075757575
-        Average Item Sold Value: $10.591494195356283
+        Average Item Sold Value: $10.490702815226008
         
 Item: 20
 
         Metrics: ###########################
         Sales Count = 76
-        Total Discounted Sales: 43
-        Discounted Sales Ratio: 0.5657894736842105
-        Total Items Sold: 2522
+        Total Discounted Sales: 44
+        Discounted Sales Ratio: 0.5789473684210527
+        Total Items Sold: 2531
 
         Financials: ########################
-        Sales Total = $29802.7825
-        Average Sale Value: $392.141875
-        Average Item Sold Value: $11.817122323552736
+        Sales Total = $30268.475000000002
+        Average Sale Value: $398.26940789473684
+        Average Item Sold Value: $11.959097194784672
         
 Item: 6
 
@@ -45,51 +45,51 @@ Item: 6
         Sales Count = 73
         Total Discounted Sales: 51
         Discounted Sales Ratio: 0.6986301369863014
-        Total Items Sold: 2305
+        Total Items Sold: 2310
 
         Financials: ########################
         Sales Total = $44660.784999999996
         Average Sale Value: $611.7915753424656
-        Average Item Sold Value: $19.375611713665943
+        Average Item Sold Value: $19.33367316017316
         
 Item: 14
 
         Metrics: ###########################
-        Sales Count = 81
+        Sales Count = 80
         Total Discounted Sales: 44
-        Discounted Sales Ratio: 0.5432098765432098
-        Total Items Sold: 2797
+        Discounted Sales Ratio: 0.55
+        Total Items Sold: 2828
 
         Financials: ########################
-        Sales Total = $45630.0175
-        Average Sale Value: $563.3335493827161
-        Average Item Sold Value: $16.31391401501609
+        Sales Total = $45375.0175
+        Average Sale Value: $567.18771875
+        Average Item Sold Value: $16.044914250353607
         
 Item: 8
 
         Metrics: ###########################
-        Sales Count = 95
-        Total Discounted Sales: 59
-        Discounted Sales Ratio: 0.6210526315789474
-        Total Items Sold: 2559
+        Sales Count = 96
+        Total Discounted Sales: 60
+        Discounted Sales Ratio: 0.625
+        Total Items Sold: 2582
 
         Financials: ########################
-        Sales Total = $45634.48749999999
-        Average Sale Value: $480.36302631578934
-        Average Item Sold Value: $17.832937670965215
+        Sales Total = $46291.325
+        Average Sale Value: $482.2013020833333
+        Average Item Sold Value: $17.928475987606504
         
 Item: 5
 
         Metrics: ###########################
-        Sales Count = 77
-        Total Discounted Sales: 51
-        Discounted Sales Ratio: 0.6623376623376623
-        Total Items Sold: 2348
+        Sales Count = 75
+        Total Discounted Sales: 50
+        Discounted Sales Ratio: 0.6666666666666666
+        Total Items Sold: 2390
 
         Financials: ########################
-        Sales Total = $36118.98500000001
-        Average Sale Value: $469.0777272727274
-        Average Item Sold Value: $15.382872657580924
+        Sales Total = $33916.0375
+        Average Sale Value: $452.2138333333333
+        Average Item Sold Value: $14.190810669456067
         
 Item: 3
 
@@ -97,25 +97,25 @@ Item: 3
         Sales Count = 71
         Total Discounted Sales: 47
         Discounted Sales Ratio: 0.6619718309859155
-        Total Items Sold: 2552
+        Total Items Sold: 2561
 
         Financials: ########################
         Sales Total = $34416.905
         Average Sale Value: $484.7451408450704
-        Average Item Sold Value: $13.48624804075235
+        Average Item Sold Value: $13.438853963295587
         
 Item: 10
 
         Metrics: ###########################
-        Sales Count = 86
-        Total Discounted Sales: 53
-        Discounted Sales Ratio: 0.6162790697674418
-        Total Items Sold: 2667
+        Sales Count = 85
+        Total Discounted Sales: 52
+        Discounted Sales Ratio: 0.611764705882353
+        Total Items Sold: 2668
 
         Financials: ########################
-        Sales Total = $95909.79249999997
-        Average Sale Value: $1115.230145348837
-        Average Item Sold Value: $35.96167697787775
+        Sales Total = $95008.23999999996
+        Average Sale Value: $1117.7439999999995
+        Average Item Sold Value: $35.6102848575712
         
 Item: 23
 
@@ -123,12 +123,12 @@ Item: 23
         Sales Count = 79
         Total Discounted Sales: 54
         Discounted Sales Ratio: 0.6835443037974683
-        Total Items Sold: 2617
+        Total Items Sold: 2625
 
         Financials: ########################
         Sales Total = $41366.7775
         Average Sale Value: $523.6300949367088
-        Average Item Sold Value: $15.806945930454718
+        Average Item Sold Value: $15.75877238095238
         
 Item: 17
 
@@ -136,12 +136,12 @@ Item: 17
         Sales Count = 86
         Total Discounted Sales: 49
         Discounted Sales Ratio: 0.5697674418604651
-        Total Items Sold: 2559
+        Total Items Sold: 2570
 
         Financials: ########################
         Sales Total = $45720.9725
         Average Sale Value: $531.6392151162792
-        Average Item Sold Value: $17.866734075810864
+        Average Item Sold Value: $17.790261673151754
         
 Item: 12
 
@@ -149,51 +149,51 @@ Item: 12
         Sales Count = 81
         Total Discounted Sales: 49
         Discounted Sales Ratio: 0.6049382716049383
-        Total Items Sold: 2841
+        Total Items Sold: 2863
 
         Financials: ########################
         Sales Total = $36609.68500000001
         Average Sale Value: $451.9714197530866
-        Average Item Sold Value: $12.88619676170363
+        Average Item Sold Value: $12.787176039119808
         
 Item: 25
 
         Metrics: ###########################
-        Sales Count = 82
-        Total Discounted Sales: 57
-        Discounted Sales Ratio: 0.6951219512195121
-        Total Items Sold: 2451
+        Sales Count = 81
+        Total Discounted Sales: 56
+        Discounted Sales Ratio: 0.691358024691358
+        Total Items Sold: 2477
 
         Financials: ########################
-        Sales Total = $41780.450000000004
-        Average Sale Value: $509.5176829268293
-        Average Item Sold Value: $17.046287229702163
+        Sales Total = $41283.412500000006
+        Average Sale Value: $509.6717592592593
+        Average Item Sold Value: $16.666698627371822
         
 Item: 9
 
         Metrics: ###########################
-        Sales Count = 103
-        Total Discounted Sales: 68
-        Discounted Sales Ratio: 0.6601941747572816
-        Total Items Sold: 2535
+        Sales Count = 102
+        Total Discounted Sales: 67
+        Discounted Sales Ratio: 0.6568627450980392
+        Total Items Sold: 2537
 
         Financials: ########################
-        Sales Total = $56937.264999999985
-        Average Sale Value: $552.7889805825241
-        Average Item Sold Value: $22.460459566074945
+        Sales Total = $55533.702499999985
+        Average Sale Value: $544.4480637254901
+        Average Item Sold Value: $21.88951616081986
         
 Item: 28
 
         Metrics: ###########################
-        Sales Count = 89
+        Sales Count = 88
         Total Discounted Sales: 50
-        Discounted Sales Ratio: 0.5617977528089888
-        Total Items Sold: 2454
+        Discounted Sales Ratio: 0.5681818181818182
+        Total Items Sold: 2464
 
         Financials: ########################
-        Sales Total = $43164.344999999994
-        Average Sale Value: $484.9926404494381
-        Average Item Sold Value: $17.589382640586795
+        Sales Total = $43120.895
+        Average Sale Value: $490.0101704545454
+        Average Item Sold Value: $17.50036323051948
         
 Item: 22
 
@@ -201,12 +201,12 @@ Item: 22
         Sales Count = 84
         Total Discounted Sales: 54
         Discounted Sales Ratio: 0.6428571428571429
-        Total Items Sold: 2639
+        Total Items Sold: 2674
 
         Financials: ########################
         Sales Total = $42580.389999999985
         Average Sale Value: $506.90940476190457
-        Average Item Sold Value: $16.135047366426672
+        Average Item Sold Value: $15.923855646970825
         
 Item: 26
 
@@ -214,25 +214,25 @@ Item: 26
         Sales Count = 79
         Total Discounted Sales: 42
         Discounted Sales Ratio: 0.5316455696202531
-        Total Items Sold: 2485
+        Total Items Sold: 2527
 
         Financials: ########################
         Sales Total = $27040.674999999992
         Average Sale Value: $342.2870253164556
-        Average Item Sold Value: $10.881559356136817
+        Average Item Sold Value: $10.700702413929557
         
 Item: 4
 
         Metrics: ###########################
-        Sales Count = 74
+        Sales Count = 73
         Total Discounted Sales: 43
-        Discounted Sales Ratio: 0.581081081081081
-        Total Items Sold: 2578
+        Discounted Sales Ratio: 0.589041095890411
+        Total Items Sold: 2596
 
         Financials: ########################
-        Sales Total = $37162.425
-        Average Sale Value: $502.1949324324325
-        Average Item Sold Value: $14.415215283165246
+        Sales Total = $38302.86
+        Average Sale Value: $524.6967123287671
+        Average Item Sold Value: $14.754568567026194
         
 Item: 24
 
@@ -240,51 +240,51 @@ Item: 24
         Sales Count = 92
         Total Discounted Sales: 58
         Discounted Sales Ratio: 0.6304347826086957
-        Total Items Sold: 2529
+        Total Items Sold: 2538
 
         Financials: ########################
         Sales Total = $49186.125000000015
         Average Sale Value: $534.631793478261
-        Average Item Sold Value: $19.448843416370114
+        Average Item Sold Value: $19.37987588652483
         
 Item: 27
 
         Metrics: ###########################
-        Sales Count = 87
-        Total Discounted Sales: 52
-        Discounted Sales Ratio: 0.5977011494252874
-        Total Items Sold: 2439
+        Sales Count = 86
+        Total Discounted Sales: 51
+        Discounted Sales Ratio: 0.5930232558139535
+        Total Items Sold: 2448
 
         Financials: ########################
-        Sales Total = $45915.29749999998
-        Average Sale Value: $527.7620402298849
-        Average Item Sold Value: $18.82546022960229
+        Sales Total = $45604.02749999998
+        Average Sale Value: $530.2793895348835
+        Average Item Sold Value: $18.629096200980385
         
 Item: 1
 
         Metrics: ###########################
-        Sales Count = 76
-        Total Discounted Sales: 44
-        Discounted Sales Ratio: 0.5789473684210527
-        Total Items Sold: 2250
+        Sales Count = 77
+        Total Discounted Sales: 45
+        Discounted Sales Ratio: 0.5844155844155844
+        Total Items Sold: 2261
 
         Financials: ########################
-        Sales Total = $43282.29749999999
-        Average Sale Value: $569.5039144736842
-        Average Item Sold Value: $19.236576666666664
+        Sales Total = $43513.667499999996
+        Average Sale Value: $565.1125649350649
+        Average Item Sold Value: $19.245319548872178
         
 Item: 29
 
         Metrics: ###########################
-        Sales Count = 91
+        Sales Count = 90
         Total Discounted Sales: 59
-        Discounted Sales Ratio: 0.6483516483516484
-        Total Items Sold: 2595
+        Discounted Sales Ratio: 0.6555555555555556
+        Total Items Sold: 2628
 
         Financials: ########################
-        Sales Total = $42439.37249999999
-        Average Sale Value: $466.3667307692307
-        Average Item Sold Value: $16.354286127167626
+        Sales Total = $40084.36500000002
+        Average Sale Value: $445.38183333333353
+        Average Item Sold Value: $15.252802511415533
         
 Item: 7
 
@@ -292,12 +292,12 @@ Item: 7
         Sales Count = 76
         Total Discounted Sales: 52
         Discounted Sales Ratio: 0.6842105263157895
-        Total Items Sold: 2340
+        Total Items Sold: 2360
 
         Financials: ########################
-        Sales Total = $36936.16250000001
-        Average Sale Value: $486.00213815789493
-        Average Item Sold Value: $15.784684829059834
+        Sales Total = $37135.57250000002
+        Average Sale Value: $488.62595394736866
+        Average Item Sold Value: $15.735412076271194
         
 Item: 16
 
@@ -305,77 +305,77 @@ Item: 16
         Sales Count = 84
         Total Discounted Sales: 48
         Discounted Sales Ratio: 0.5714285714285714
-        Total Items Sold: 2512
+        Total Items Sold: 2515
 
         Financials: ########################
         Sales Total = $68897.8875
         Average Sale Value: $820.2129464285714
-        Average Item Sold Value: $27.427502985668788
+        Average Item Sold Value: $27.39478628230616
         
 Item: 15
 
         Metrics: ###########################
-        Sales Count = 75
+        Sales Count = 76
         Total Discounted Sales: 46
-        Discounted Sales Ratio: 0.6133333333333333
-        Total Items Sold: 2457
+        Discounted Sales Ratio: 0.6052631578947368
+        Total Items Sold: 2485
 
         Financials: ########################
-        Sales Total = $34967.105
-        Average Sale Value: $466.22806666666673
-        Average Item Sold Value: $14.231625966625968
+        Sales Total = $37979.977500000015
+        Average Sale Value: $499.7365460526318
+        Average Item Sold Value: $15.283693158953728
         
 Item: 13
 
         Metrics: ###########################
-        Sales Count = 83
-        Total Discounted Sales: 47
-        Discounted Sales Ratio: 0.5662650602409639
-        Total Items Sold: 2300
+        Sales Count = 85
+        Total Discounted Sales: 49
+        Discounted Sales Ratio: 0.5764705882352941
+        Total Items Sold: 2311
 
         Financials: ########################
-        Sales Total = $46009.967499999984
-        Average Sale Value: $554.3369578313251
-        Average Item Sold Value: $20.004333695652168
+        Sales Total = $48006.87249999998
+        Average Sale Value: $564.7867352941174
+        Average Item Sold Value: $20.773203158805703
         
 Item: 2
 
         Metrics: ###########################
-        Sales Count = 82
-        Total Discounted Sales: 56
-        Discounted Sales Ratio: 0.6829268292682927
-        Total Items Sold: 2531
+        Sales Count = 83
+        Total Discounted Sales: 57
+        Discounted Sales Ratio: 0.6867469879518072
+        Total Items Sold: 2546
 
         Financials: ########################
-        Sales Total = $56541.1
-        Average Sale Value: $689.5256097560975
-        Average Item Sold Value: $22.339431054919004
+        Sales Total = $56764.4375
+        Average Sale Value: $683.9088855421687
+        Average Item Sold Value: $22.295537117046347
         
 Item: 30
 
         Metrics: ###########################
-        Sales Count = 85
-        Total Discounted Sales: 52
-        Discounted Sales Ratio: 0.611764705882353
-        Total Items Sold: 2553
+        Sales Count = 86
+        Total Discounted Sales: 53
+        Discounted Sales Ratio: 0.6162790697674418
+        Total Items Sold: 2569
 
         Financials: ########################
-        Sales Total = $37563.64750000001
-        Average Sale Value: $441.92526470588246
-        Average Item Sold Value: $14.7135321190756
+        Sales Total = $38502.43000000001
+        Average Sale Value: $447.7026744186047
+        Average Item Sold Value: $14.987321915142081
         
 Item: 18
 
         Metrics: ###########################
-        Sales Count = 84
-        Total Discounted Sales: 36
-        Discounted Sales Ratio: 0.42857142857142855
-        Total Items Sold: 2528
+        Sales Count = 85
+        Total Discounted Sales: 37
+        Discounted Sales Ratio: 0.43529411764705883
+        Total Items Sold: 2544
 
         Financials: ########################
-        Sales Total = $41519.935000000005
-        Average Sale Value: $494.2849404761905
-        Average Item Sold Value: $16.42402492088608
+        Sales Total = $42165.255
+        Average Sale Value: $496.06182352941175
+        Average Item Sold Value: $16.574392688679243
         
 Item: 21
 
@@ -383,10 +383,10 @@ Item: 21
         Sales Count = 97
         Total Discounted Sales: 57
         Discounted Sales Ratio: 0.5876288659793815
-        Total Items Sold: 2790
+        Total Items Sold: 2798
 
         Financials: ########################
         Sales Total = $41292.5825
         Average Sale Value: $425.69672680412367
-        Average Item Sold Value: $14.800208781362006
+        Average Item Sold Value: $14.757892244460328
         
