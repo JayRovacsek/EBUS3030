@@ -81,13 +81,20 @@ def parse_rows(rows,logged_errors):
         if receipt_id in sales.sales:
             staff_id = row[5].value
             customer_id = row[2].value
+            item_id = row[11].value
+            item_quantity = row[13].value
+            for item in sales.sales[receipt_id].receipt.items.items():
+                if item_id == item[0]:
+                    print("Error in data row; {} is the same as {}".format(item_id,item_id))
+                    logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is the same as {}".format(receipt_id,item_id,item_id),"Item.Id Duplicate",customer_id,staff_id,item_id,item_quantity,sales.sales[receipt_id].receipt.items[item_id].quantity)
+
             if sales.sales[receipt_id].receipt.staff.id != staff_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch",customer_id,staff_id)
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
             
             if sales.sales[receipt_id].receipt.customer.id != customer_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id)
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
 
             print("Found existing receipt {}, adding items instead".format(receipt_id))
             sales.add_items_to_sale(row,receipt_id)
@@ -97,6 +104,7 @@ def parse_rows(rows,logged_errors):
 # Clear the current errors.txt file 
 def clear_error_log():
     open('Results/Errors.txt','w+').close()
+    open('Results/SQL.txt','w+').close()
 
 # Function to generate employee report and output to disk
 def generate_employee_report(employees):
@@ -192,12 +200,12 @@ def generate_error_report(logged_errors):
             error_log.trace)
     write_report_results('Errors',header,error_output)
 
-def generate_sql_script(logged_errors):
+def generate_sql_move_items(logged_errors):
     header = "USE EBUS3030;"
     sql_output = ""
     parsed_receipt_ids = []
     for error_log_id,error_log in logged_errors.logged_errors.items():
-        if error_log.receipt_id not in parsed_receipt_ids:
+        if error_log.receipt_id not in parsed_receipt_ids and error_log.error_type != "Item.Id Duplicate":
             sql_output += """
 -- Auto-generated query to fix error of type: {}
 -- Resolved error identified by UUID: {}
@@ -219,9 +227,49 @@ AND """.format(error_log.error_type,error_log_id,error_log.receipt_id)
 
     write_report_results('SQL',header,sql_output)
 
+def generate_sql_fix_duplicate_items(logged_errors):
+    header = "USE EBUS3030;"
+    sql_output = ""
+    for error_log_id,error_log in logged_errors.logged_errors.items():
+        print(error_log.error_type)
+        if error_log.error_type == "Item.Id Duplicate":
+            sql_output += """
+-- Auto-generated query to fix error of type: {}
+-- Resolved error identified by UUID: {}
+UPDATE Assignment1Data 
+SET [Item_Quantity]=(
+SELECT SUM([Item_Quantity])
+FROM Assignment1Data
+WHERE Reciept_Id={}
+AND Item_ID = {})
+WHERE Reciept_Id={}
+AND Item_ID = {}
+AND Item_Quantity = {}\nGO\n""".format(error_log.error_type,
+                                error_log_id,
+                                error_log.receipt_id,
+                                error_log.item_id,
+                                error_log.receipt_id,
+                                error_log.item_id,
+                                error_log.item_quantity)
+
+            sql_output += """
+-- Auto-generated query to fix error of type: {}
+-- Resolved error identified by UUID: {}
+DELETE FROM Assignment1Data 
+WHERE Reciept_Id={}
+AND Item_ID = {}
+AND Item_Quantity < {}\nGO\n""".format(error_log.error_type,
+                                error_log_id,
+                                error_log.receipt_id,
+                                error_log.item_id,
+                                error_log.item_quantity)
+
+    write_report_results('SQL',header,sql_output)
+
+
 # Generalised function to write a report to disk
 def write_report_results(report_name,header,report_body):
-    with open('Results/{}.txt'.format(report_name),'w+') as report:
+    with open('Results/{}.txt'.format(report_name),'a+') as report:
         report.write(header + 2*'\n')
         report.write(report_body)
 
@@ -248,7 +296,8 @@ if __name__ == '__main__':
     generate_error_report(logged_errors)
 
     # Output sql to disk to fix errors found
-    generate_sql_script(logged_errors)
+    generate_sql_move_items(logged_errors)
+    generate_sql_fix_duplicate_items(logged_errors)
 
     # Iterate over sales and employees to generate reports
-    populate_receipt_totals(sales,employees,customers,items)
+    # populate_receipt_totals(sales,employees,customers,items)

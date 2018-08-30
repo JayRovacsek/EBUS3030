@@ -54,7 +54,7 @@ class Receipt:
 
     # Function to add items to receipt
     def add_item(self,item):
-        self.items[self.item_count] = item
+        self.items[item.id] = item
         self.item_count += 1
 
 # Sale class to hold one receipt (Kinda redundant)
@@ -134,7 +134,8 @@ class Items:
         self.items[item_id] = item
 
 class Error_Log:
-    def __init__(self,trace,error_type,receipt_id,customer_id = None,staff_id = None):
+    def __init__(self,trace,error_type,receipt_id,customer_id = None,
+                staff_id = None,item_id = None,item_quantity = None,duplicate_item_quantity = None):
         self.trace = trace
         self.receipt_id = receipt_id
         self.error_type = error_type
@@ -144,6 +145,12 @@ class Error_Log:
             self.customer_id = customer_id
         if staff_id is not None:
             self.staff_id = staff_id
+        if item_id is not None:
+            self.item_id = item_id
+        if item_quantity is not None:
+            self.item_quantity = item_quantity
+        if duplicate_item_quantity is not None:
+            self.duplicate_item_quantity = duplicate_item_quantity
         self.hash = self.generate_hash(trace + error_type + str(receipt_id))
 
     def generate_hash(self,hashcontent):
@@ -156,16 +163,7 @@ class LoggedErrors:
         self.error_count = 0
     
     # Determine if error related to receipt is already logged
-    def add_error(self,receipt_id,trace,error_type,customer_id = None,staff_id = None):
-        error_log = Error_Log(trace,error_type,receipt_id,customer_id,staff_id)
+    def add_error(self,receipt_id,trace,error_type,customer_id = None,staff_id = None,item_id = None,item_quantity = None,duplicate_item_quantity = None):
+        error_log = Error_Log(trace,error_type,receipt_id,customer_id,staff_id,item_id,item_quantity,duplicate_item_quantity)
         if error_log.hash not in self.logged_errors:
             self.logged_errors[error_log.hash] = error_log
-            # self.log_error(error)
-        # else:
-        #     if self.logged_errors[receipt_id] != error:
-        #         self.log_error(error)
-
-    # Append lines to error log if required
-    # def log_error(self,error):
-    #     with open('Results/Errors.txt','a+') as error_log:
-    #         error_log.write(error + '\n')
