@@ -1,6 +1,5 @@
 USE EBUS3030;
 
-
 -- Auto-generated query to fix error of type: Staff.Id Mismatch
 -- Resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
 UPDATE Assignment1Data 
@@ -150,8 +149,6 @@ FROM Assignment1Data)
 WHERE Reciept_Id=52150
 AND Customer_Id = 'C57' AND Staff_Id = 'S7'
 GO
-USE EBUS3030;
-
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f

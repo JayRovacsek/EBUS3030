@@ -273,7 +273,36 @@
             was a large amount given the issues identified earlier numbered in only the teens, 
             however on manual inspection of a number of the reported issue records, it was 
             apparent this figure was actually correct. 
+            \par
+            Given the large task associated with the entries, an additional module was
+            written for generation of SQL in python which resulted in two queries for each
+            dulicate item entry per receipt, the first query updating the total of one of the 
+            records to reflect the real item quantity, the later dropping the non-altered 
+            entry after the first had been completed.
+            \par
+            The script was as follows:
+            \begin{verbatim}
+    -- Auto-generated query to fix error of type: Item.Id Duplicate
+    -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
+    UPDATE Assignment1Data 
+    SET [Item_Quantity]=(
+    SELECT SUM([Item_Quantity])
+    FROM Assignment1Data
+    WHERE Reciept_Id=51500
+    AND Item_ID = 20)
+    WHERE Reciept_Id=51500
+    AND Item_ID = 20
+    AND Item_Quantity = 1
+    GO
 
+    -- Auto-generated query to fix error of type: Item.Id Duplicate
+    -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
+    DELETE FROM Assignment1Data 
+    WHERE Reciept_Id=51500
+    AND Item_ID = 20
+    AND Item_Quantity < 1
+    GO
+            \end{verbatim}
         \newpage
         \subsection{Assumptions and Reasoning}
             \subsubsection{Item Table}
