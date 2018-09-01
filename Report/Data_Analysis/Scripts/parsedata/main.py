@@ -15,14 +15,11 @@ def populate_receipt_totals(sales,employees,customers,items):
             employees.employees[sale.receipt.staff.id].item_count += item.quantity
 
         if(len(sale.receipt.items.items()) > 4):
-            print("Total was adjusted from {} to {} "
-            + "due to business rules related to number\nof items in a sale."
-            .format(total,total * 0.85))
+            print("Total was adjusted from {} to {} due to business rules related to number\nof items in a sale.".format(total,total * 0.85))
             total *= 0.85
             employees.employees[sale.receipt.staff.id].discounted_sales += 1
 
-        print("Total calculated for receipt {} is: {}, Items count was: {}"
-        .format(receipt_id,total,len(sale.receipt.items.items())))
+        print("Total calculated for receipt {} is: {}, Items count was: {}".format(receipt_id,total,len(sale.receipt.items.items())))
         employees.employees[sale.receipt.staff.id].sales_count += 1
         employees.employees[sale.receipt.staff.id].sales_total += total
 
@@ -53,13 +50,11 @@ def populate_customer_totals(sales,customers):
         total = 0
         for item_id,item in sale.receipt.items.items():
             total = total + (item.quantity * item.price)
-            customers.customers[sale.receipt.customer.id]
-            .item_count += item.quantity
+            customers.customers[sale.receipt.customer.id].item_count += item.quantity
 
         if(len(sale.receipt.items.items()) > 4):
             total *= 0.85
-            customers.customers[sale.receipt.customer.id]
-            .discounted_sales += 1
+            customers.customers[sale.receipt.customer.id].discounted_sales += 1
 
         customers.customers[sale.receipt.customer.id].sales_count += 1
         customers.customers[sale.receipt.customer.id].sales_total += total
@@ -90,34 +85,18 @@ def parse_rows(rows,logged_errors):
             item_quantity = row[13].value
             for item in sales.sales[receipt_id].receipt.items.items():
                 if item_id == item[0]:
-                    print("Error in data row; {} is the same as {}"
-                    .format(item_id,item_id))
-                    logged_errors.add_error(receipt_id,
-                    "Error in data row id: {}; {} is the same as {}"
-                    .format(receipt_id,item_id,item_id),"Item.Id Duplicate",
-                    customer_id,staff_id,item_id,item_quantity,
-                    sales.sales[receipt_id].receipt.items[item_id].quantity)
+                    print("Error in data row; {} is the same as {}".format(item_id,item_id))
+                    logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is the same as {}".format(receipt_id,item_id,item_id),"Item.Id Duplicate",customer_id,staff_id,item_id,item_quantity,sales.sales[receipt_id].receipt.items[item_id].quantity)
 
             if sales.sales[receipt_id].receipt.staff.id != staff_id:
-                print("Error in data row; {} is not the same as {}"
-                .format(sales.sales[receipt_id].receipt.staff.id, staff_id))
-                logged_errors.add_error(receipt_id,
-                "Error in data row id: {}; {} is not the same as {}"
-                .format(receipt_id, sales.sales[receipt_id].receipt.staff.id,
-                staff_id),"Staff.Id Mismatch",customer_id,staff_id,item_id,
-                item_quantity,None)
+                print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
             
             if sales.sales[receipt_id].receipt.customer.id != customer_id:
-                print("Error in data row; {} is not the same as {}"
-                .format(sales.sales[receipt_id].receipt.customer.id, customer_id))
-                logged_errors.add_error(receipt_id,
-                "Error in data row id: {}; {} is not the same as {}"
-                .format(receipt_id, sales.sales[receipt_id].receipt.customer.id,
-                customer_id),"Customer.Id Mismatch",customer_id,staff_id,item_id,
-                item_quantity,None)
+                print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
+                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
 
-            print("Found existing receipt {}, adding items instead"
-            .format(receipt_id))
+            print("Found existing receipt {}, adding items instead".format(receipt_id))
             sales.add_items_to_sale(row,receipt_id)
         else:
             sales.parse_row(row,employees,customers,items)
@@ -214,8 +193,7 @@ def generate_error_report(logged_errors):
     header = "Error Report:"
     error_output = ""
     for error_log_id,error_log in logged_errors.logged_errors.items():
-        error_output += 
-        "ErrorId = {}\nErrorType = {}\nReceiptId = {}\nError = {}\n\n""".format(
+        error_output += "ErrorId = {}\nErrorType = {}\nReceiptId = {}\nError = {}\n\n""".format(
             error_log_id,
             error_log.error_type,
             error_log.receipt_id,
@@ -227,8 +205,7 @@ def generate_sql_move_items(logged_errors):
     sql_output = ""
     parsed_receipt_ids = []
     for error_log_id,error_log in logged_errors.logged_errors.items():
-        if error_log.receipt_id not in parsed_receipt_ids 
-        and error_log.error_type != "Item.Id Duplicate":
+        if error_log.receipt_id not in parsed_receipt_ids and error_log.error_type != "Item.Id Duplicate":
             sql_output += """
 -- Auto-generated query to fix error of type: {}
 -- Resolved error identified by UUID: {}
@@ -238,16 +215,12 @@ SELECT MAX(Reciept_Id)+1
 FROM Assignment1Data)
 WHERE Reciept_Id={}
 AND """.format(error_log.error_type,error_log_id,error_log.receipt_id)
-            if error_log.customer_id is not None 
-            and error_log.staff_id is not None:
-                sql_output += "Customer_Id = '{}' AND Staff_Id = '{}'\nGO\n"
-                .format(error_log.customer_id,error_log.staff_id)
+            if error_log.customer_id is not None and error_log.staff_id is not None:
+                sql_output += "Customer_Id = '{}' AND Staff_Id = '{}'\nGO\n".format(error_log.customer_id,error_log.staff_id)
             elif error_log.customer_id is not None:
-                sql_output += "Customer_Id = '{}'\nGO\n"
-                .format(error_log.customer_id)
+                sql_output += "Customer_Id = '{}'\nGO\n".format(error_log.customer_id)
             elif error_log.staff_id is not None:
-                sql_output += "Staff_Id = '{}'\nGO\n"
-                .format(error_log.staff_id)
+                sql_output += "Staff_Id = '{}'\nGO\n".format(error_log.staff_id)
             else:
                 sql_output = None
             parsed_receipt_ids.append(error_log.receipt_id)

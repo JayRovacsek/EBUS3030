@@ -68,8 +68,7 @@ class Sales:
     def __init__(self):
         self.sales = {}
     
-    # Parse row function, intended to determine if row is a header row or 
-    # contains formula
+    # Parse row function, intended to determine if row is a header row or contains formula
     def parse_row(self,row,employees,customers,items):
         if row[0].value != 'Sale Date' and isinstance(row[1].value,int):
             item = Item(row[11].value,row[12].value,row[14].value,row[13].value)
@@ -99,20 +98,13 @@ class Sales:
                 items.add_item(item.id,item)
 
         else:
-            print(
-            "Skipped row, either it was a row header: {} or it was a formula: {}"
-            .format(row[0].value,row[1].value))
+            print("Skipped row, either it was a row header: {} or it was a formula: {}".format(row[0].value,row[1].value))
 
     # Add items to sale if the receipt already exists
     def add_items_to_sale(self,row,existing_sale_identifier):
         item = Item(row[11].value,row[12].value,row[14].value,row[13].value)
         self.sales[existing_sale_identifier].receipt.add_item(item)
-        print(
-        "Added items to receipt {} : ID: {}, Desc: {}, Price: {}, Quantity: {}"
-        .format(
-            existing_sale_identifier,
-            item.id,item.description,
-            item.price,item.quantity))
+        print("Added items to receipt {} : ID: {}, Desc: {}, Price: {}, Quantity: {}".format(existing_sale_identifier,item.id,item.description,item.price,item.quantity))
 
 # Employees class to hold all staff
 class Employees:
@@ -143,8 +135,7 @@ class Items:
 
 class Error_Log:
     def __init__(self,trace,error_type,receipt_id,customer_id = None,
-                staff_id = None,item_id = None,item_quantity = None,
-                duplicate_item_quantity = None):
+                staff_id = None,item_id = None,item_quantity = None,duplicate_item_quantity = None):
         self.trace = trace
         self.receipt_id = receipt_id
         self.error_type = error_type
@@ -163,8 +154,7 @@ class Error_Log:
         self.hash = self.generate_hash(trace + error_type + str(receipt_id))
 
     def generate_hash(self,hashcontent):
-        return str(hashlib.sha1(hashcontent.encode(encoding='UTF-8',
-        errors='strict')).hexdigest())
+        return str(hashlib.sha1(hashcontent.encode(encoding='UTF-8',errors='strict')).hexdigest())
 
 # Logged errors class to avoid logging the same error multiple times
 class LoggedErrors:
@@ -173,11 +163,7 @@ class LoggedErrors:
         self.error_count = 0
     
     # Determine if error related to receipt is already logged
-    def add_error(self,receipt_id,trace,error_type,customer_id = None,
-    staff_id = None,item_id = None,
-    item_quantity = None,duplicate_item_quantity = None):
-        error_log = Error_Log(
-            trace,error_type,receipt_id,customer_id,staff_id,
-        item_id,item_quantity,duplicate_item_quantity)
+    def add_error(self,receipt_id,trace,error_type,customer_id = None,staff_id = None,item_id = None,item_quantity = None,duplicate_item_quantity = None):
+        error_log = Error_Log(trace,error_type,receipt_id,customer_id,staff_id,item_id,item_quantity,duplicate_item_quantity)
         if error_log.hash not in self.logged_errors:
             self.logged_errors[error_log.hash] = error_log
