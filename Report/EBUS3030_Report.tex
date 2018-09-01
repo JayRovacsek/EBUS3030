@@ -29,6 +29,53 @@
         \vfill
     }}}
 
+        % \renewcommand{\includecode}[2][c]{\lstinputlisting[
+    %     language=Python,
+    %     basicstyle=\small,
+    %     caption={Classes.py},
+    %     frame=single,
+    %     breaklines=true,
+    %     label=Main Python Script
+    %     commentstyle=\color{blue}
+    %     ]{#2}}
+
+    % Stole code from: https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
+
+    % Default fixed font does not support bold face
+    \DeclareFixedFont{\ttb}{T1}{txtt}{bx}{n}{12} % for bold
+    \DeclareFixedFont{\ttm}{T1}{txtt}{m}{n}{12}  % for normal
+
+    \definecolor{deepblue}{rgb}{0,0,0.5}
+    \definecolor{deepred}{rgb}{0.6,0,0}
+    \definecolor{deepgreen}{rgb}{0,0.5,0}
+
+    % Python style for highlighting
+    \newcommand\pythonstyle{\lstset{
+    language=Python,
+    basicstyle=\ttm,
+    otherkeywords={self},             % Add keywords here
+    keywordstyle=\ttb\color{deepblue},
+    emph={MyClass,__init__},          % Custom highlighting
+    emphstyle=\ttb\color{deepred},    % Custom highlighting style
+    stringstyle=\color{deepgreen},
+    breaklines=true,
+    frame=tb,                         % Any extra options here
+    showstringspaces=false            % 
+    }}
+
+    % Python environment
+    \lstnewenvironment{python}[1][]
+    {
+    \pythonstyle
+    \lstset{#1}
+    }
+    {}
+
+    % Python for external files
+    \newcommand\pythonexternal[2][]{{
+        \pythonstyle
+        \lstinputlisting[#1]{#2}}}
+
     \newcounter{num}
 
     \graphicspath{ {Images/} }
@@ -64,6 +111,9 @@
     \begin{titlingpage}
         \maketitle
     \end{titlingpage}
+
+    \tableofcontents
+
 
     \includepdf[height=\paperheight,keepaspectratio,pages={1,2}]{Resources/Assignment1Overview.pdf}
 
@@ -322,6 +372,9 @@
     AND Item_Quantity < 1
     GO
             \end{verbatim}
+
+            Having now cleaned what we believed to be all discrepancies, we could finally start to look at
+            evaluating data, our analysis outlined in \hyperref[sec:BA]{\color{blue}base analysis}
         \newpage
         \subsection{Assumptions and Reasoning}
         \label{sec:AR}
@@ -354,23 +407,163 @@
                 \end{verbatim}
                 We do recognise the requirements for optimisation may not require such measures, and 
                 acknowledge that a varchar(max)/text datatype would also be reasonable.
-                \vspace{5mm}
-                \par\noindent
-                ItemPrice while imported as float type was considered too precise for the usecase of 
-                a monetary value. While MONEY and derivatives exist in the TSQL ecosphere, there are 
-                real concerns of accuracy of the datatype\cite{MoneyIssues}, and therefore we decided for 
-                a decimal(19,5) typing\cite{Numeric}.
-                \vspace{5mm}
-                \par\noindent
-                The final Item table structure is reflected as:
-                \begin{center}
-                    \includegraphics{Images/Item_Table.png}
-                \end{center}
-    \newpage
+            \subsubsection{Price Table}
+                The price table was designed to hold historical data as required by the business rules,
+                an effective range can be used here to determine item pricing for timeframes,
+                current items having no end date or an end date as some point in time into the future.
+                \par
+                Accuracy on the pricing was important, we decided to use a decimal(19,5) structure to
+                ensure no problems should arise at any point with calculation of totals.
+            \subsubsection{ReceiptItem}
+                The receipt item table acts as a line-item style associative entity, the quantity and 
+                historical priceId used at time of transaction can allow an item's price to be
+                updated and still maintain historical pricing associated with the receipt.
+            \subsubsection{Receipt}
+                The receipt table acts as a meta-table in this instance, other tables associate with 
+                this table with the receiptId feild. Due to this it made it extremely easy to use a number
+                of joins/inner joins to determine some of the metrics outlined in the \hyperref[sec:BA]{base analysis}.
+            \subsubsection{Staff}
+                Staff was left in a non-normalised state to ensure efficiency of queries into the future, 
+                normalising the table further would yeild little value to the business based on the requirements.
+                The office table is referenced by the staff table. This is merely to satisfy the assumption
+                that, while the only office to exist was Newcastle in this setting, the requirement of more 
+                offices into the future is a possibility and the required join would be little impact on speed
+                of queries in a datamart.
+            \subsubsection{Customer}
+                Customer, just like staff could be normalised further requiring more joins and potentially 
+                causing a performance issue into the future, for simplicity we kept only the supplied
+                data in mind, and assumed no more data would be required by the datamart into the future.
+
     \section{Base Analysis}
     \label{sec:BA}
         \subsection{Raw Results}
+            A number of metrics were considered to satisfy the request related to the best salesperson,
+            as we are not certain if this is determined by a specific metric or a set of metrics we 
+            included a number of analysed points for the project:
+            \begin{itemize}
+                \item Total receipts attributed to a staff member
+                \item Total items sold by a staff member
+                \item Ratio of discounted sales to normal sales for each staff member
+                \item Total sale value per staff member
+                \item Average sale value per staff member
+                \item Average item value per staff member
+            \end{itemize}
 
+            \subsubsection{Total Number of Sales}
+                The total number of sales per staff member were considered with the following 
+                sql query:
+                \begin{verbatim}
+    -- Sales count per staff member (Receipt Count)
+    SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+    FROM Receipt r
+    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+    INNER JOIN Item i ON i.ItemId = ri.ItemId
+    INNER JOIN Price p ON p.PriceId = ri.PriceId
+    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+    ORDER BY 'Sales Count' DESC;
+                \end{verbatim}
+                Leading to a range of 736 to 500, the top five staff were:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|}
+                    \hline
+                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    736         & S17     & Daniel         & Baker        \\ \hline
+                    709         & S19     & Kaitlyn        & Ortiz        \\ \hline
+                    702         & S8      & Michelle       & Miller       \\ \hline
+                    701         & S1      & Lauren         & Martin       \\ \hline
+                    700         & S5      & Stephanie      & Watson       \\ \hline
+                    \end{tabular}
+                \end{table}
+            \newpage
+            \subsubsection{Total Items Sold}
+                The total items attributed to each staff member were considered also,
+                determined by the query:
+                \begin{verbatim}
+    -- Item count per staff member
+    SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+    FROM Receipt r
+    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+    ORDER BY 'Item Count' DESC;
+                \end{verbatim}
+                Yeilding a range of 4481 to 2960, with the top five staff members in this
+                analysis:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|}
+                    \hline
+                    Item Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    4481       & S17     & Daniel         & Baker        \\ \hline
+                    4414       & S19     & Kaitlyn        & Ortiz        \\ \hline
+                    4373       & S1      & Lauren         & Martin       \\ \hline
+                    4333       & S8      & Michelle       & Miller       \\ \hline
+                    4308       & S5      & Stephanie      & Watson       \\ \hline
+                    \end{tabular}
+                \end{table}
+            \subsubsection{Discounted Sales Ratio}
+            Consideration of the number of sales made by each staff member was also made,
+            the following query yeilding the results we required:
+            \begin{verbatim}
+    -- Sales metrics for discounted and standard sales per staff member
+    SELECT s.StaffId,s.StaffFirstName,s.StaffSurname,
+    SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales',
+    SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
+    FROM (
+        SELECT CAST(
+            CASE
+            WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                THEN 1
+            ELSE 0
+            END AS int) AS 'Discounted Sales',
+        CAST(
+            CASE
+            WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                THEN 0
+            ELSE 1
+        END AS int) AS 'Standard Sales',
+        r.ReceiptId
+        FROM Receipt r
+        INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+        INNER JOIN Item i ON i.ItemId = ri.ItemId
+        INNER JOIN Price p ON p.PriceId = ri.PriceId
+        GROUP BY r.ReceiptId
+    ) AS SubQuery
+    INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
+    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            \end{verbatim}
+            \newpage
+            Results from the query yeilded:
+            \begin{table}[H]
+                \begin{tabular}{|l|l|l|l|l|l|}
+                \hline
+                StaffId & StaffFirstName & StaffSurname & Discounted Sales & Standard Sales & Discounted Sales Rate \\ \hline
+                S4      & Robert         & Wood         & 559              & 102            & 84.57\%               \\ \hline
+                S20     & Dylan          & Hall         & 563              & 112            & 83.41\%               \\ \hline
+                S1      & Lauren         & Martin       & 584              & 117            & 83.31\%               \\ \hline
+                S16     & Jordan         & Turner       & 561              & 117            & 82.74\%               \\ \hline
+                S14     & Noah           & Brooks       & 565              & 118            & 82.72\%               \\ \hline
+                S17     & Daniel         & Baker        & 603              & 133            & 81.93\%               \\ \hline
+                S13     & Molly          & Carter       & 556              & 128            & 81.29\%               \\ \hline
+                S5      & Stephanie      & Watson       & 567              & 133            & 81.00\%               \\ \hline
+                S15     & Bailey         & Green        & 529              & 126            & 80.76\%               \\ \hline
+                S6      & Evan           & Hill         & 562              & 137            & 80.40\%               \\ \hline
+                S10     & Jonathan       & Jenkins      & 478              & 119            & 80.07\%               \\ \hline
+                S18     & Megan          & James        & 540              & 137            & 79.76\%               \\ \hline
+                S19     & Kaitlyn        & Ortiz        & 561              & 148            & 79.13\%               \\ \hline
+                S7      & Molly          & Jackson      & 499              & 138            & 78.34\%               \\ \hline
+                S9      & Mélissa        & Garcia       & 510              & 148            & 77.51\%               \\ \hline
+                S8      & Michelle       & Miller       & 541              & 161            & 77.07\%               \\ \hline
+                S2      & Joseph         & Reed         & 494              & 153            & 76.35\%               \\ \hline
+                S11     & Gavin          & Thompson     & 424              & 135            & 75.85\%               \\ \hline
+                S12     & Leah           & Harris       & 376              & 124            & 75.20\%               \\ \hline
+                S3      & Amber          & Hill         & 435              & 157            & 73.48\%               \\ \hline
+                \end{tabular}
+                \end{table}
     \newpage
     \section{Executive Summary}
 
@@ -436,34 +629,14 @@
     \subsection{Python Script}
     \label{sec:Python}
 
-    \newcommand{\includecode}[2][c]{\lstinputlisting[
-        language=Python,
-        basicstyle=\small,
-        caption={Main.py},
-        frame=single,
-        breaklines=true,
-        label=Main Python Script
-        commentstyle=\color{blue}
-        ]{#2}}
-
     \begin{center}
-        \includecode[width=\textwidth]{Data_Analysis/Scripts/parsedata/main.py}
+        \pythonexternal{Data_Analysis/Scripts/parsedata/main.py}
     \end{center}
 
     \newpage
-    \renewcommand{\includecode}[2][c]{\lstinputlisting[
-        language=Python,
-        basicstyle=\small,
-        caption={Classes.py},
-        frame=single,
-        breaklines=true,
-        label=Main Python Script
-        commentstyle=\color{blue}
-        ]{#2}}
 
     \begin{center}
-        \includecode[width=\textwidth]{Data_Analysis/Scripts/parsedata/classes.py}
+        \pythonexternal{Data_Analysis/Scripts/parsedata/classes.py}
     \end{center}
-
     
     \end{document}
