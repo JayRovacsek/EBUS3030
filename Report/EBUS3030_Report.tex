@@ -97,10 +97,21 @@
 
     \newpage
     \section{Data Model}
-    The below data model is only a suggestion and is still subject to change into the future.
+    The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
         \begin{center}
-            \includegraphics{Images/Suggested_Schema.PNG}
+            \includegraphics[width=\textwidth]{Images/Suggested_Schema.PNG}
         \end{center}
+    It must be noted that the structure of this data model is 
+    less than efficient, and it would be expected in a datamart
+    situtation that only at lower levels of data would this schema
+    remain responsive in the manner it is now, as the outline
+    suggests the datamart is not necessarily the most suitable
+    design for future use, however suits very well currently.
+    \par
+    It would be expected that only at extremely large datasets
+    would this model prove a bad design. In such cases a model 
+    more representative of the snowflake or star schemas would be
+    heavily advised.
 
     \newpage
     \section{Data Load Process (ETL/ELT)}
@@ -110,15 +121,23 @@
         \\
         The Imported table structure was as follows:
         \begin{center}
-            \includegraphics{Images/Initial_Import.png}
+            \includegraphics{Images/Initial_Import.PNG}
         \end{center}
+
+        A decision to leave this initial import table as default
+        was made to allow easy reference to the initally supplied
+        excel data file.
+        \par
+        In the following sections of \hyperref[sec:QAP]{\color{blue}Quality Assurance Processes}, \hyperref[sec:AR]{\color{blue}Assumptions and Reasoning} and \hyperref[sec:BA]{\color{blue}Base Analysis} we intend to clarify the reasoning behind leaving the imported data in
+        the default table suggested by SSMS.
 
         \newpage
 
         \subsection{Quality Assurance Processes}
+        \label{sec:QAP}
             A number of queries were written to look for data which did not adhere to the spec
             outlined in business requirements and to ensure data was "clean" before entry.
-            The first instance of potential issues were encountered with a basic python script
+            The first instance of potential issues were encountered with a basic \hyperref[sec:Python]{\color{blue}python} script
             which checked validity of column data, it was found that cells starting at B13777
             to the end of file in the originally supplied excel file were formula values and 
             not static values, this would not have caused an issue with importing into SSMS 
@@ -235,9 +254,9 @@
             \end{table}
             
             Whereas the original result without a modulo comparison on the row would have yeilded
-            a much different result, the raw table supplied in the \hyperref[sec:Appendix]{\color{blue}Appendix}
+            a much different result, the raw table supplied in the \hyperref[sec:CTEResults]{\color{blue}appendix}
             \par
-            With this known, and additional section was added to the Python script to generate update statements
+            With this known, and additional section was added to the \hyperref[sec:Python]{\color{blue}python} script to generate update statements
             that would be easy to add to the current migrations.sql script we were prototyping.
             \\
             The generated update statements appeared as:
@@ -275,7 +294,7 @@
             apparent this figure was actually correct. 
             \par
             Given the large task associated with the entries, an additional module was
-            written for generation of SQL in python which resulted in two queries for each
+            written for generation of SQL in \hyperref[sec:Python]{\color{blue}python} which resulted in two queries for each
             dulicate item entry per receipt, the first query updating the total of one of the 
             records to reflect the real item quantity, the later dropping the non-altered 
             entry after the first had been completed.
@@ -305,6 +324,7 @@
             \end{verbatim}
         \newpage
         \subsection{Assumptions and Reasoning}
+        \label{sec:AR}
             \subsubsection{Item Table}
                 An assumption of the ItemId never needing to be larger than a smallint
                 was followed, as a basic query into the maximum range within the test data
@@ -348,6 +368,7 @@
                 \end{center}
     \newpage
     \section{Base Analysis}
+    \label{sec:BA}
         \subsection{Raw Results}
 
     \newpage
@@ -374,7 +395,266 @@
     \section{Appendix}
     \label{sec:Appendix}
 
-    \begin{table}[]
+    \begin{verbatim}
+USE [master]
+GO
+/****** Object:  Database [EBUS3030]    Script Date: 1/09/2018 5:26:03 PM ******/
+CREATE DATABASE [EBUS3030]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'EBUS3030', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.
+SQLEXPRESS\MSSQL\DATA\EBUS3030.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'EBUS3030_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.
+SQLEXPRESS\MSSQL\DATA\EBUS3030_log.ldf' , SIZE = 73728KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+ALTER DATABASE [EBUS3030] SET COMPATIBILITY_LEVEL = 140
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [EBUS3030].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [EBUS3030] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [EBUS3030] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [EBUS3030] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [EBUS3030] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [EBUS3030] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [EBUS3030] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [EBUS3030] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [EBUS3030] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [EBUS3030] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [EBUS3030] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [EBUS3030] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [EBUS3030] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [EBUS3030] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [EBUS3030] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [EBUS3030] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [EBUS3030] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [EBUS3030] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [EBUS3030] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [EBUS3030] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [EBUS3030] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [EBUS3030] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [EBUS3030] SET HONOR_BROKER_PRIORITY OFF 
+GO
+ALTER DATABASE [EBUS3030] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [EBUS3030] SET  MULTI_USER 
+GO
+ALTER DATABASE [EBUS3030] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [EBUS3030] SET DB_CHAINING OFF 
+GO
+ALTER DATABASE [EBUS3030] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+ALTER DATABASE [EBUS3030] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+ALTER DATABASE [EBUS3030] SET DELAYED_DURABILITY = DISABLED 
+GO
+ALTER DATABASE [EBUS3030] SET QUERY_STORE = OFF
+GO
+USE [EBUS3030]
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET IDENTITY_CACHE = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET LEGACY_CARDINALITY_ESTIMATION = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET LEGACY_CARDINALITY_ESTIMATION = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET MAXDOP = 0;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET MAXDOP = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET PARAMETER_SNIFFING = ON;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET PARAMETER_SNIFFING = PRIMARY;
+GO
+ALTER DATABASE SCOPED CONFIGURATION SET QUERY_OPTIMIZER_HOTFIXES = OFF;
+GO
+ALTER DATABASE SCOPED CONFIGURATION FOR SECONDARY SET QUERY_OPTIMIZER_HOTFIXES = PRIMARY;
+GO
+USE [EBUS3030]
+GO
+/****** Object:  Table [dbo].[Customer]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Customer](
+	[CustomerId] [varchar](4) NOT NULL,
+	[CustomerFirstName] [varchar](255) NOT NULL,
+	[CustomerSurname] [varchar](255) NOT NULL,
+ CONSTRAINT [PK_Customer] PRIMARY KEY CLUSTERED 
+(
+	[CustomerId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, 
+ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Item]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Item](
+	[ItemId] [int] NOT NULL,
+	[PriceId] [int] NULL,
+	[ItemDescription] [varchar](255) NOT NULL,
+ CONSTRAINT [PK_Item] PRIMARY KEY CLUSTERED 
+(
+	[ItemId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, 
+ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Office]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Office](
+	[OfficeId] [tinyint] NOT NULL,
+	[OfficeLocation] [varchar](255) NOT NULL,
+ CONSTRAINT [PK_Office] PRIMARY KEY CLUSTERED 
+(
+	[OfficeId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, 
+ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Price]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Price](
+	[PriceId] [int] NOT NULL,
+	[Price] [decimal](19, 5) NOT NULL,
+	[StartDate] [datetime] NOT NULL,
+	[EndDate] [datetime] NULL,
+ CONSTRAINT [PK_Price] PRIMARY KEY CLUSTERED 
+(
+	[PriceId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, 
+ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Receipt]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Receipt](
+	[ReceiptId] [int] NOT NULL,
+	[ReceiptCustomerId] [varchar](4) NOT NULL,
+	[ReceiptStaffId] [varchar](4) NOT NULL,
+ CONSTRAINT [PK_Receipt] PRIMARY KEY CLUSTERED 
+(
+	[ReceiptId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, 
+ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[ReceiptItem]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[ReceiptItem](
+	[ReceiptId] [int] NOT NULL,
+	[ItemId] [int] NOT NULL,
+	[ReceiptItemQuantity] [smallint] NOT NULL,
+	[PriceId] [int] NOT NULL
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Staff]    Script Date: 1/09/2018 5:26:03 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Staff](
+	[StaffId] [varchar](4) NOT NULL,
+	[StaffFirstName] [varchar](255) NOT NULL,
+	[StaffSurname] [varchar](255) NOT NULL,
+	[StaffOfficeId] [tinyint] NOT NULL,
+ CONSTRAINT [PK_Staff] PRIMARY KEY CLUSTERED 
+(
+	[StaffId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, 
+ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Index [IX_ReceiptItem]    Script Date: 1/09/2018 5:26:03 PM ******/
+CREATE NONCLUSTERED INDEX [IX_ReceiptItem] ON [dbo].[ReceiptItem]
+(
+	[ReceiptId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, SORT_IN_TEMPDB = OFF, 
+DROP_EXISTING = OFF, ONLINE = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+GO
+ALTER TABLE [dbo].[Price] ADD  CONSTRAINT [DF_Price_StartDate]  DEFAULT (getdate()) FOR [StartDate]
+GO
+ALTER TABLE [dbo].[Item]  WITH CHECK ADD  CONSTRAINT [FK_Item_Price] FOREIGN KEY([PriceId])
+REFERENCES [dbo].[Price] ([PriceId])
+GO
+ALTER TABLE [dbo].[Item] CHECK CONSTRAINT [FK_Item_Price]
+GO
+ALTER TABLE [dbo].[Receipt]  WITH CHECK ADD  CONSTRAINT [FK_Receipt_Staff] FOREIGN KEY([ReceiptStaffId])
+REFERENCES [dbo].[Staff] ([StaffId])
+GO
+ALTER TABLE [dbo].[Receipt] CHECK CONSTRAINT [FK_Receipt_Staff]
+GO
+ALTER TABLE [dbo].[Receipt]  WITH CHECK ADD  CONSTRAINT [FK_ReceiptCustomer] FOREIGN KEY([ReceiptCustomerId])
+REFERENCES [dbo].[Customer] ([CustomerId])
+GO
+ALTER TABLE [dbo].[Receipt] CHECK CONSTRAINT [FK_ReceiptCustomer]
+GO
+ALTER TABLE [dbo].[ReceiptItem]  WITH CHECK ADD  CONSTRAINT [FK_ReceiptItem_Item] FOREIGN KEY([ItemId])
+REFERENCES [dbo].[Item] ([ItemId])
+GO
+ALTER TABLE [dbo].[ReceiptItem] CHECK CONSTRAINT [FK_ReceiptItem_Item]
+GO
+ALTER TABLE [dbo].[ReceiptItem]  WITH CHECK ADD  CONSTRAINT [FK_ReceiptItemReceipt] FOREIGN KEY([ReceiptId])
+REFERENCES [dbo].[Receipt] ([ReceiptId])
+GO
+ALTER TABLE [dbo].[ReceiptItem] CHECK CONSTRAINT [FK_ReceiptItemReceipt]
+GO
+ALTER TABLE [dbo].[Staff]  WITH CHECK ADD  CONSTRAINT [FK_StaffOffice] FOREIGN KEY([StaffOfficeId])
+REFERENCES [dbo].[Office] ([OfficeId])
+GO
+ALTER TABLE [dbo].[Staff] CHECK CONSTRAINT [FK_StaffOffice]
+GO
+USE [master]
+GO
+ALTER DATABASE [EBUS3030] SET  READ_WRITE 
+GO
+
+    \end{verbatim}
+    \newpage
+    \subsection{CTE Raw Results}
+    \label{sec:CTEResults}
+    \begin{table}[H]
         \centering
         \begin{tabular}{|l|l|l|}
         \hline
@@ -410,4 +690,22 @@
         \end{tabular}
     \end{table}
 
+    \newpage
+    \subsection{Python Scripts}
+    \label{sec:Python}
+
+    \newcommand{\includecode}[2][c]{\lstinputlisting[language=Python,caption={Main.py},frame=single,label=Main Python Script]{#2}}
+
+    \begin{center}
+        \includecode[width=\textwidth]{Data_Analysis/Scripts/parsedata/main.py}
+    \end{center}
+
+    \newpage
+    \renewcommand{\includecode}[2][c]{\lstinputlisting[language=Python,caption={Classes.py},frame=single,label=Main Python Script]{#2}}
+
+    \begin{center}
+        \includecode[width=\textwidth]{Data_Analysis/Scripts/parsedata/classes.py}
+    \end{center}
+
+    
     \end{document}
