@@ -11,10 +11,11 @@
     \usepackage{graphicx}
     \usepackage{hyperref}
     \usepackage{fancybox}
+    \usepackage{fancyvrb}
     \usepackage{enumerate}
     \usepackage{pdflscape}
     \usepackage{afterpage}
-    \usepackage{listingsutf8}
+    \usepackage{listings,lstautogobble}    
     \usepackage[margin=0.8in]{geometry}
     \usepackage[nottoc,notlot,notlof]{tocbibind}
     \renewcommand\maketitlehookd{\vfill\null}
@@ -29,16 +30,6 @@
         \vfill
     }}}
 
-        % \renewcommand{\includecode}[2][c]{\lstinputlisting[
-    %     language=Python,
-    %     basicstyle=\small,
-    %     caption={Classes.py},
-    %     frame=single,
-    %     breaklines=true,
-    %     label=Main Python Script
-    %     commentstyle=\color{blue}
-    %     ]{#2}}
-
     % Stole code from: https://tex.stackexchange.com/questions/83882/how-to-highlight-python-syntax-in-latex-listings-lstinputlistings-command
 
     % Default fixed font does not support bold face
@@ -49,34 +40,21 @@
     \definecolor{deepred}{rgb}{0.6,0,0}
     \definecolor{deepgreen}{rgb}{0,0.5,0}
 
-    % Python style for highlighting
-    \newcommand\pythonstyle{\lstset{
-    language=Python,
-    basicstyle=\ttm,
-    otherkeywords={self},             % Add keywords here
-    keywordstyle=\ttb\color{deepblue},
-    emph={MyClass,__init__},          % Custom highlighting
-    emphstyle=\ttb\color{deepred},    % Custom highlighting style
-    stringstyle=\color{deepgreen},
-    breaklines=true,
-    frame=tb,                         % Any extra options here
-    showstringspaces=false            % 
-    }}
-
-    % Python environment
-    \lstnewenvironment{python}[1][]
-    {
-    \pythonstyle
-    \lstset{#1}
-    }
-    {}
-
-    % Python for external files
-    \newcommand\pythonexternal[2][]{{
-        \pythonstyle
-        \lstinputlisting[#1]{#2}}}
-
-    \newcounter{num}
+    % SQL style for highlighting
+    \lstset{
+        language=SQL,
+        basicstyle=\small,
+        commentstyle=\color{gray},
+        otherkeywords={self},
+        keywordstyle=\ttb\color{deepblue},
+        stringstyle=\color{deepgreen},
+        numbers=left,
+        numberstyle=\small,
+        breaklines=true,
+        frame=tb,
+        showstringspaces=false,
+        autogobble=true
+        }
 
     \graphicspath{ {Images/} }
 
@@ -114,10 +92,12 @@
 
     \tableofcontents
 
+    \newpage
 
-    \includepdf[height=\paperheight,keepaspectratio,pages={1,2}]{Resources/Assignment1Overview.pdf}
+    \includepdf[pagecommand=\section{Assignment Overview \& Requirements},width=\textwidth,keepaspectratio,pages={1}]{Resources/Assignment1Overview.pdf}
+    \includepdf[width=\textwidth,keepaspectratio,pages={2}]{Resources/Assignment1Overview.pdf}
 
-    \section{Datamart Business Notes}
+    \subsection{Datamart Business Rules}
     The following business rules were provided to be used in the context of this assignment:
     \begin{itemize}
         \renewcommand\labelitemi{*}
@@ -144,6 +124,9 @@
         keep a record of all item prices historically.
         \item Only 1 BIA sales assistant can be attributed to any receipt.
     \end{itemize}
+
+    With these considerations in mind, the following report was created to outline
+    the discovery, creation and polish to satisfy the assignment requirements.
 
     \newpage
     \section{Data Model}
@@ -192,71 +175,101 @@
             to the end of file in the originally supplied excel file were formula values and 
             not static values, this would not have caused an issue with importing into SSMS 
             however certainly broke the script temporarily.
+            \par
+            After clarifying the issues with the aforementioned cells with Peter, a datafile without
+            the offending formula was supplied and used for the remainer of the assignment.
             \vspace{5mm}
             \par\noindent
             The next potential issue encountered was not until a suggested schema structure 
             was complete and data was being scripted to be added to the new schema for analysis.
             The issue encountered was that receipt number 52136 seemed to be an incorrect 
             entry, this was discovered when running the import query for the new schema:
-            \begin{verbatim}
-    INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId])
-    SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
-    FROM [Assignment1Data]
-    ORDER BY [Reciept_Id]
-            \end{verbatim}
+
+            \begin{lstlisting}
+                INSERT INTO Receipt(ReceiptId, ReceiptCustomerId,ReceiptStaffId)
+                SELECT DISTINCT(Reciept_Id),Customer_ID,Staff_ID
+                FROM Assignment1Data
+                ORDER BY Reciept_Id
+            \end{lstlisting}
+
             Which resulted in the error:
             \color{red}
-            \begin{verbatim}
+            \begin{Verbatim}[fontsize=\small]
     Violation of PRIMARY KEY constraint 'PK_Receipt'. Cannot insert duplicate key in object 
     'dbo.Receipt'. The duplicate key value is (52136).
-            \end{verbatim}
+            \end{Verbatim}
             \color{black}
+
             Leading us to recognise that either one of the entries could be incorrect, therefore
             best to investigate both records of the customer Id against the rest of the database:
-            \begin{verbatim}
-    SELECT * FROM Assignment1Data WHERE Customer_ID='C32' AND Staff_ID='S15' AND 
-    Sale_Date='2017-11-12 00:00:00.0000000';
 
-    SELECT * FROM Assignment1Data WHERE Customer_ID='C13' AND Staff_ID='S4' AND 
-    Sale_Date='2017-12-30 00:00:00.0000000';
-            \end{verbatim}
+            \begin{lstlisting}
+                SELECT * FROM Assignment1Data 
+                WHERE Customer_ID='C32' 
+                AND Staff_ID='S15' 
+                AND Sale_Date='2017-11-12 00:00:00.0000000';
+            
+                SELECT * FROM Assignment1Data 
+                WHERE Customer_ID='C13' 
+                AND Staff_ID='S4' 
+                AND Sale_Date='2017-12-30 00:00:00.0000000';
+            \end{lstlisting}
+
             When both queries were performed it was apparent that the data associated with C32 was 
             the likely broken record and modification of the data occured:
-            \begin{verbatim}
-    UPDATE Assignment1Data 
-    SET Reciept_Id=51585, 
-    Reciept_Transaction_Row_ID=(
-        SELECT MAX(Reciept_Transaction_Row_ID)+1 
-        FROM Assignment1Data
-        WHERE Reciept_Id=51585)
-    WHERE Customer_ID='C32' 
-    AND Staff_ID='S15' 
-    AND Sale_Date='2017-11-12 00:00:00.0000000' 
-    AND Item_ID='14';
-            \end{verbatim}
+
+            \begin{lstlisting}
+                UPDATE Assignment1Data 
+                SET Reciept_Id=51585, 
+                Reciept_Transaction_Row_ID=(
+                    SELECT MAX(Reciept_Transaction_Row_ID)+1 
+                    FROM Assignment1Data
+                    WHERE Reciept_Id=51585)
+                WHERE Customer_ID='C32' 
+                AND Staff_ID='S15' 
+                AND Sale_Date='2017-11-12 00:00:00.0000000' 
+                AND Item_ID='14';
+            \end{lstlisting}
+
             The next issue arose when again, attempting to run the aforementioned query to import
             into the new Receipt table, this time not one stray record was found, but a complete
             collision on the ReceiptId of 52137, this time as neither record seemed to have 
             records that were correct, it was decided to move one to the maximum ReceiptId + 1:
-            \begin{verbatim}
-    UPDATE Assignment1Data SET Reciept_Id=(SELECT MAX(Reciept_Id)+1 FROM Assignment1Data) 
-    WHERE Customer_ID='C27' AND Staff_ID='S4' AND Sale_Date='2017-12-30 00:00:00.0000000';
-            \end{verbatim}
+
+            \begin{lstlisting}
+                UPDATE Assignment1Data 
+                SET Reciept_Id=(
+                    SELECT MAX(Reciept_Id)+1 
+                    FROM Assignment1Data) 
+                WHERE Customer_ID='C27' 
+                AND Staff_ID='S4' 
+                AND Sale_Date='2017-12-30 00:00:00.0000000';
+            \end{lstlisting}
+
             The same issue was replicated on ReceiptId 52138, resolved via:
-            \begin{verbatim}
-    UPDATE Assignment1Data SET Reciept_Id=(SELECT MAX(Reciept_Id)+1 FROM Assignment1Data) 
-    WHERE Customer_ID='C30' AND Staff_ID='S19' AND Sale_Date='2017-05-16 00:00:00.0000000';
-            \end{verbatim}
+
+            \begin{lstlisting}
+                UPDATE Assignment1Data 
+                SET Reciept_Id=(
+                    SELECT MAX(Reciept_Id)+1 
+                    FROM Assignment1Data) 
+                WHERE Customer_ID='C30' 
+                AND Staff_ID='S19' 
+                AND Sale_Date='2017-05-16 00:00:00.0000000';
+            \end{lstlisting}
+
             At this point we recognised the broken data likely continued for a while, and 
             evaluated our hypothesis by looking at the original excel file. It turned
             out that data with ReceiptId from 52137-52145 was all broken in the same manner.
             The following query shows this well:
-            \begin{verbatim}
-    SELECT Reciept_Id, Customer_ID,Staff_ID FROM Assignment1Data 
-    WHERE Reciept_Id BETWEEN 52137 AND 52150
-    GROUP BY Reciept_Id, Customer_ID,Staff_ID 
-    ORDER BY Reciept_Id;
-            \end{verbatim}
+
+            \begin{lstlisting}
+                SELECT Reciept_Id, Customer_ID,Staff_ID 
+                FROM Assignment1Data 
+                WHERE Reciept_Id BETWEEN 52137 AND 52150
+                GROUP BY Reciept_Id, Customer_ID,Staff_ID 
+                ORDER BY Reciept_Id;
+            \end{lstlisting}
 
             In order to clean this data we looked at a number of potential methods, with an 
             emphasis on avoiding effort in the task if possible but not breaking the data further,
@@ -264,22 +277,21 @@
             \\
             We knew a structure such as a CTE\cite{CTE} would allow us to easily split
             distinct records which shared a receiptId and filter by a value such as row number.
-            \begin{verbatim}
-    WITH CTE AS
-    (
-        SELECT ROW_NUMBER() OVER (ORDER BY Reciept_Id) AS RowNumber,
-                Reciept_Id,
-                Customer_ID,
-                Staff_ID
-        FROM  Assignment1Data
-        WHERE Reciept_Id BETWEEN 52137 AND 52150
-        GROUP BY Reciept_Id, Customer_ID,Staff_ID 
-    )
-    SELECT Reciept_Id,Customer_ID,Staff_ID FROM CTE WHERE (RowNumber % 2 = 0)
-            \end{verbatim}
 
-            \newpage
-            % This table is not displaying correctly at all...
+            \begin{lstlisting}
+            WITH CTE AS
+            (
+                SELECT ROW_NUMBER() OVER (ORDER BY Reciept_Id) AS RowNumber,
+                        Reciept_Id,
+                        Customer_ID,
+                        Staff_ID
+                FROM  Assignment1Data
+                WHERE Reciept_Id BETWEEN 52137 AND 52150
+                GROUP BY Reciept_Id, Customer_ID,Staff_ID 
+            )
+            SELECT Reciept_Id,Customer_ID,Staff_ID FROM CTE WHERE (RowNumber % 2 = 0)
+            \end{lstlisting}
+
             Results of the above query yeilded:
             \begin{table}[H]
                 \centering
@@ -302,6 +314,8 @@
                 52150       & C57          & S7        \\ \hline
                 \end{tabular}
             \end{table}
+
+            \newpage
             
             Whereas the original result without a modulo comparison on the row would have yeilded
             a much different result, the raw table supplied in the \hyperref[sec:CTEResults]{\color{blue}appendix}
@@ -310,34 +324,39 @@
             that would be easy to add to the current migrations.sql script we were prototyping.
             \\
             The generated update statements appeared as:
-            \begin{verbatim}
-    -- Auto-generated query to fix error of type: Staff.Id Mismatch
-    -- Resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
-    UPDATE Assignment1Data 
-    SET Reciept_Id=(
-    SELECT MAX(Reciept_Id)+1 
-    FROM Assignment1Data)
-    WHERE Reciept_Id=52136
-    AND Customer_Id = 'C13' AND Staff_Id = 'S4'
-    GO
-            \end{verbatim}
+
+            \begin{lstlisting}
+                -- Auto-generated query to fix error of type: Staff.Id Mismatch
+                -- Resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
+                UPDATE Assignment1Data 
+                SET Reciept_Id=(
+                SELECT MAX(Reciept_Id)+1 
+                FROM Assignment1Data)
+                WHERE Reciept_Id=52136
+                AND Customer_Id = 'C13' AND Staff_Id = 'S4'
+                GO
+            \end{lstlisting}
+
             Determining now potential entries that broke further rules was our next objective.
             We pursued the idea that entries of receipts could potentially have duplicate items
             recorded against the ReceiptItem table. A simple script was generated to check our 
             assumptions of this:
-            \begin{verbatim}
-    -- Verify that no receipt has duplicate ItemIds and all are unique per order
-    SELECT *
-    FROM
-    (
-        SELECT [ReceiptItem].[ReceiptId], 
-        COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
-        COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
-        FROM [ReceiptItem]
-        GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
-    WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
-    ORDER BY [SubQuery].[ReceiptId]
-            \end{verbatim}
+
+            \begin{lstlisting}
+                -- Verify that no receipt has duplicate ItemIds and all are unique per order
+                SELECT *
+                FROM
+                (
+                    SELECT [ReceiptItem].[ReceiptId], 
+                    COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
+                    COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
+                    FROM [ReceiptItem]
+                    GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
+                WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
+                ORDER BY [SubQuery].[ReceiptId]
+                GO
+            \end{lstlisting}
+
             This query returned a result of 912 rows out of the total 2514, which we believed 
             was a large amount given the issues identified earlier numbered in only the teens, 
             however on manual inspection of a number of the reported issue records, it was 
@@ -348,30 +367,32 @@
             dulicate item entry per receipt, the first query updating the total of one of the 
             records to reflect the real item quantity, the later dropping the non-altered 
             entry after the first had been completed.
-            \par
-            The script was as follows:
-            \begin{verbatim}
-    -- Auto-generated query to fix error of type: Item.Id Duplicate
-    -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
-    UPDATE Assignment1Data 
-    SET [Item_Quantity]=(
-    SELECT SUM([Item_Quantity])
-    FROM Assignment1Data
-    WHERE Reciept_Id=51500
-    AND Item_ID = 20)
-    WHERE Reciept_Id=51500
-    AND Item_ID = 20
-    AND Item_Quantity = 1
-    GO
 
-    -- Auto-generated query to fix error of type: Item.Id Duplicate
-    -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
-    DELETE FROM Assignment1Data 
-    WHERE Reciept_Id=51500
-    AND Item_ID = 20
-    AND Item_Quantity < 1
-    GO
-            \end{verbatim}
+            \newpage
+
+            The script was as follows:
+            \begin{lstlisting}
+                -- Auto-generated query to fix error of type: Item.Id Duplicate
+                -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
+                UPDATE Assignment1Data 
+                SET [Item_Quantity]=(
+                SELECT SUM([Item_Quantity])
+                FROM Assignment1Data
+                WHERE Reciept_Id=51500
+                AND Item_ID = 20)
+                WHERE Reciept_Id=51500
+                AND Item_ID = 20
+                AND Item_Quantity = 1
+                GO
+
+                -- Auto-generated query to fix error of type: Item.Id Duplicate
+                -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
+                DELETE FROM Assignment1Data 
+                WHERE Reciept_Id=51500
+                AND Item_ID = 20
+                AND Item_Quantity < 1
+                GO
+            \end{lstlisting}
 
             Having now cleaned what we believed to be all discrepancies, we could finally start to look at
             evaluating data, our analysis outlined in \hyperref[sec:BA]{\color{blue}base analysis}
@@ -382,29 +403,32 @@
                 An assumption of the ItemId never needing to be larger than a smallint
                 was followed, as a basic query into the maximum range within the test data
                 suggested that the maximum Id that currently existed was 30:
-                \begin{verbatim}
-    -- Some basic queries for us to determine potential outlier data:
-    -- What is the max of each column where datatype is int?
-    SELECT MAX(Item_ID) AS 'Max Item_ID'
-    FROM Assignment1Data;
-                \end{verbatim}
+                \begin{lstlisting}
+                    -- Some basic queries for us to determine potential outlier data:
+                    -- What is the max of each column where datatype is int?
+                    SELECT MAX(Item_ID) AS 'Max Item_ID'
+                    FROM Assignment1Data;
+                \end{lstlisting}
 
                 With the results:
-                \begin{verbatim}
+
+                \begin{Verbatim}[fontsize=\small]
     Max Item_ID
     30
-                \end{verbatim}
+                \end{Verbatim}
                 ItemDescription underwent some size optimisation, as the max datalength 
                 that currently existed within the supplied data was 52, and we are to assume
                 that into the future more items may be added, a value of 255 should allow
                 for a varied range of descriptions.
                 \\
                 SQL queried to determine to above assumption:
-                \begin{verbatim}
-    -- Determine current max varchar used in Item_Description
-    SELECT MAX(DATALENGTH(Item_Description)) 
-    FROM Assignment1Data;
-                \end{verbatim}
+
+                \begin{lstlisting}
+                    -- Determine current max varchar used in Item_Description
+                    SELECT MAX(DATALENGTH(Item_Description)) 
+                    FROM Assignment1Data;
+                \end{lstlisting}
+
                 We do recognise the requirements for optimisation may not require such measures, and 
                 acknowledge that a varchar(max)/text datatype would also be reasonable.
             \subsubsection{Price Table}
@@ -452,18 +476,20 @@
             \subsubsection{Total Number of Sales}
                 The total number of sales per staff member were considered with the following 
                 sql query:
-                \begin{verbatim}
-    -- Sales count per staff member (Receipt Count)
-    SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
-    FROM Receipt r
-    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-    INNER JOIN Item i ON i.ItemId = ri.ItemId
-    INNER JOIN Price p ON p.PriceId = ri.PriceId
-    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-    ORDER BY 'Sales Count' DESC;
-                \end{verbatim}
+                \begin{lstlisting}
+                    -- Sales count per staff member (Receipt Count)
+                    SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+                    FROM Receipt r
+                    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+                    INNER JOIN Item i ON i.ItemId = ri.ItemId
+                    INNER JOIN Price p ON p.PriceId = ri.PriceId
+                    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+                    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+                    ORDER BY 'Sales Count' DESC;
+                \end{lstlisting}
+
                 Leading to a range of 736 to 500, the top five staff were:
+
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|}
@@ -480,15 +506,17 @@
             \subsubsection{Total Items Sold}
                 The total items attributed to each staff member were considered also,
                 determined by the query:
-                \begin{verbatim}
-    -- Item count per staff member
-    SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', s.StaffId,s.StaffFirstName,s.StaffSurname
-    FROM Receipt r
-    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-    ORDER BY 'Item Count' DESC;
-                \end{verbatim}
+                
+                \begin{lstlisting}
+                    -- Item count per staff member
+                    SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+                    FROM Receipt r
+                    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+                    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+                    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+                    ORDER BY 'Item Count' DESC;
+                \end{lstlisting}
+
                 Yeilding a range of 4481 to 2960, with the top five staff members in this
                 analysis:
                 \begin{table}[H]
@@ -506,36 +534,38 @@
             \subsubsection{Discounted Sales Ratio}
             Consideration of the number of sales made by each staff member was also made,
             the following query yeilding the results we required:
-            \begin{verbatim}
-    -- Sales metrics for discounted and standard sales per staff member
-    SELECT s.StaffId,s.StaffFirstName,s.StaffSurname,
-    SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales',
-    SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
-    FROM (
-        SELECT CAST(
-            CASE
-            WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-                THEN 1
-            ELSE 0
-            END AS int) AS 'Discounted Sales',
-        CAST(
-            CASE
-            WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-                THEN 0
-            ELSE 1
-        END AS int) AS 'Standard Sales',
-        r.ReceiptId
-        FROM Receipt r
-        INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-        INNER JOIN Item i ON i.ItemId = ri.ItemId
-        INNER JOIN Price p ON p.PriceId = ri.PriceId
-        GROUP BY r.ReceiptId
-    ) AS SubQuery
-    INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
-    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            \end{verbatim}
+
+            \begin{lstlisting}
+                -- Sales metrics for discounted and standard sales per staff member
+                SELECT s.StaffId,s.StaffFirstName,s.StaffSurname,
+                SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales',
+                SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
+                FROM (
+                    SELECT CAST(
+                        CASE
+                        WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                            THEN 1
+                        ELSE 0
+                        END AS int) AS 'Discounted Sales',
+                    CAST(
+                        CASE
+                        WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                            THEN 0
+                        ELSE 1
+                    END AS int) AS 'Standard Sales',
+                    r.ReceiptId
+                    FROM Receipt r
+                    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+                    INNER JOIN Item i ON i.ItemId = ri.ItemId
+                    INNER JOIN Price p ON p.PriceId = ri.PriceId
+                    GROUP BY r.ReceiptId
+                ) AS SubQuery
+                INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
+                INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+                INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+                GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            \end{lstlisting}
+
             \newpage
             Results from the query yeilded:
             \begin{table}[H]
@@ -563,12 +593,9 @@
                 S12     & Leah           & Harris       & 376              & 124            & 75.20\%               \\ \hline
                 S3      & Amber          & Hill         & 435              & 157            & 73.48\%               \\ \hline
                 \end{tabular}
-                \end{table}
+            \end{table}
     \newpage
     \section{Executive Summary}
-
-    \newpage
-    \section{Assumptions}
 
     \newpage
     \begin{thebibliography}{9}
@@ -628,6 +655,47 @@
     \newpage
     \subsection{Python Script}
     \label{sec:Python}
+
+    % Python style for highlighting
+    \newcommand\pythonstyle{\lstset{
+        language=Python,
+        basicstyle=\ttm,
+        otherkeywords={self},
+        keywordstyle=\ttb\color{deepblue},
+        emph={
+            Item,
+            Office,
+            Staff,
+            Customer,
+            Receipt,
+            Sale,
+            Sales,
+            Employees,
+            Items,
+            Error_Log,
+            Customers,
+            LoggedErrors,
+            __init__,
+            },
+        emphstyle=\ttb\color{deepred},
+        stringstyle=\color{deepgreen},
+        breaklines=true,
+        frame=tb,
+        showstringspaces=false
+        }}
+    
+        % Python environment
+        \lstnewenvironment{python}[1][]
+        {
+        \pythonstyle
+        \lstset{#1}
+        }
+        {}
+    
+        % Python for external files
+        \newcommand\pythonexternal[2][]{{
+            \pythonstyle
+            \lstinputlisting[#1]{#2}}}
 
     \begin{center}
         \pythonexternal{Data_Analysis/Scripts/parsedata/main.py}
