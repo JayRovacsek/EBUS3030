@@ -136,20 +136,20 @@
         \end{center}
     It must be noted that the structure of this data model is 
     less than efficient, and it would be expected in a datamart
-    situtation that only at lower levels of data would this schema
+    situation that only at lower levels of data would this schema
     remain responsive in the manner it is now, as the outline
     suggests the datamart is not necessarily the most suitable
     design for future use, however suits very well currently.
     \par
-    It would be expected that only at extremely large datasets
+    It would be expected that only at extremely large data sets
     would this model prove a bad design. In such cases a model 
-    more representative of the snowflake or star schemas would be
+    more representative of the snowflake or star schema would be
     heavily advised.
 
     \newpage
     \section{Data Load Process (ETL/ELT)}
         Initial import of the data supplied in the xlsx file generated a very basic table
-        that allowed us to analyse the data for potential outliers, confirm the business
+        that allowed us to analyze the data for potential outliers, confirm the business
         requirements of the data and then create tables from which the data model was derived.
         \\
         The Imported table structure was as follows:
@@ -158,7 +158,7 @@
         \end{center}
 
         A decision to leave this initial import table as default
-        was made to allow easy reference to the initally supplied
+        was made to allow easy reference to the initially supplied
         excel data file.
         \par
         In the following sections of \hyperref[sec:QAP]{\color{blue}Quality Assurance Processes}, \hyperref[sec:AR]{\color{blue}Assumptions and Reasoning} and \hyperref[sec:BA]{\color{blue}Base Analysis} we intend to clarify the reasoning behind leaving the imported data in
@@ -176,8 +176,8 @@
             not static values, this would not have caused an issue with importing into SSMS 
             however certainly broke the script temporarily.
             \par
-            After clarifying the issues with the aforementioned cells with Peter, a datafile without
-            the offending formula was supplied and used for the remainer of the assignment.
+            After clarifying the issues with the aforementioned cells with Peter, a data file without
+            the offending formula was supplied and used for the remainder of the assignment.
             \vspace{5mm}
             \par\noindent
             The next potential issue encountered was not until a suggested schema structure 
@@ -216,7 +216,7 @@
             \end{lstlisting}
 
             When both queries were performed it was apparent that the data associated with C32 was 
-            the likely broken record and modification of the data occured:
+            the likely broken record and modification of the data occurred:
 
             \begin{lstlisting}
                 UPDATE Assignment1Data 
@@ -292,7 +292,7 @@
             SELECT Reciept_Id,Customer_ID,Staff_ID FROM CTE WHERE (RowNumber % 2 = 0)
             \end{lstlisting}
 
-            Results of the above query yeilded:
+            Results of the above query yielded:
             \begin{table}[H]
                 \centering
                 \begin{tabular}{|l|l|l|}
@@ -317,7 +317,7 @@
 
             \newpage
             
-            Whereas the original result without a modulo comparison on the row would have yeilded
+            Whereas the original result without a modulo comparison on the row would have yielded
             a much different result, the raw table supplied in the \hyperref[sec:CTEResults]{\color{blue}appendix}
             \par
             With this known, and additional section was added to the \hyperref[sec:Python]{\color{blue}python} script to generate update statements
@@ -364,7 +364,7 @@
             \par
             Given the large task associated with the entries, an additional module was
             written for generation of SQL in \hyperref[sec:Python]{\color{blue}python} which resulted in two queries for each
-            dulicate item entry per receipt, the first query updating the total of one of the 
+            duplicate item entry per receipt, the first query updating the total of one of the 
             records to reflect the real item quantity, the later dropping the non-altered 
             entry after the first had been completed.
 
@@ -416,7 +416,7 @@
     Max Item_ID
     30
                 \end{Verbatim}
-                ItemDescription underwent some size optimisation, as the max datalength 
+                ItemDescription underwent some size optimisation, as the max data length 
                 that currently existed within the supplied data was 52, and we are to assume
                 that into the future more items may be added, a value of 255 should allow
                 for a varied range of descriptions.
@@ -433,22 +433,22 @@
                 acknowledge that a varchar(max)/text datatype would also be reasonable.
             \subsubsection{Price Table}
                 The price table was designed to hold historical data as required by the business rules,
-                an effective range can be used here to determine item pricing for timeframes,
+                an effective range can be used here to determine item pricing for time frames,
                 current items having no end date or an end date as some point in time into the future.
                 \par
                 Accuracy on the pricing was important, we decided to use a decimal(19,5) structure to
-                ensure no problems should arise at any point with calculation of totals.
+                ensure no problems should arise at any point with calculation of totals.\cite{MoneyIssues}
             \subsubsection{ReceiptItem}
                 The receipt item table acts as a line-item style associative entity, the quantity and 
                 historical priceId used at time of transaction can allow an item's price to be
                 updated and still maintain historical pricing associated with the receipt.
             \subsubsection{Receipt}
                 The receipt table acts as a meta-table in this instance, other tables associate with 
-                this table with the receiptId feild. Due to this it made it extremely easy to use a number
+                this table with the receiptId field. Due to this it made it extremely easy to use a number
                 of joins/inner joins to determine some of the metrics outlined in the \hyperref[sec:BA]{base analysis}.
             \subsubsection{Staff}
                 Staff was left in a non-normalised state to ensure efficiency of queries into the future, 
-                normalising the table further would yeild little value to the business based on the requirements.
+                normalising the table further would yield little value to the business based on the requirements.
                 The office table is referenced by the staff table. This is merely to satisfy the assumption
                 that, while the only office to exist was Newcastle in this setting, the requirement of more 
                 offices into the future is a possibility and the required join would be little impact on speed
@@ -463,7 +463,7 @@
         \subsection{Raw Results}
             A number of metrics were considered to satisfy the request related to the best salesperson,
             as we are not certain if this is determined by a specific metric or a set of metrics we 
-            included a number of analysed points for the project:
+            included a number of analyzed points for the project:
             \begin{itemize}
                 \item Total receipts attributed to a staff member
                 \item Total items sold by a staff member
@@ -567,7 +567,7 @@
             \end{lstlisting}
 
             \newpage
-            Results from the query yeilded:
+            Results from the query yielded:
             \begin{table}[H]
                 \begin{tabular}{|l|l|l|l|l|l|}
                 \hline
