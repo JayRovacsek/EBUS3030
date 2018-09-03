@@ -83,10 +83,6 @@ def parse_rows(rows,logged_errors):
             customer_id = row[2].value
             item_id = row[11].value
             item_quantity = row[13].value
-            for item in sales.sales[receipt_id].receipt.items.items():
-                if item_id == item[0]:
-                    print("Error in data row; {} is the same as {}".format(item_id,item_id))
-                    logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is the same as {}".format(receipt_id,item_id,item_id),"Item.Id Duplicate",customer_id,staff_id,item_id,item_quantity,sales.sales[receipt_id].receipt.items[item_id].quantity)
 
             if sales.sales[receipt_id].receipt.staff.id != staff_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
@@ -95,6 +91,12 @@ def parse_rows(rows,logged_errors):
             if sales.sales[receipt_id].receipt.customer.id != customer_id:
                 print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
                 logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
+
+            for item in sales.sales[receipt_id].receipt.items.items():
+                if item_id == item[0]:
+                    if staff_id == sales.sales[receipt_id].receipt.staff.id:
+                        print("Error in data row; {} is the same as {}".format(item_id,item_id))
+                        logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is the same as {}".format(receipt_id,item_id,item_id),"Item.Id Duplicate",customer_id,staff_id,item_id,item_quantity,sales.sales[receipt_id].receipt.items[item_id].quantity)
 
             print("Found existing receipt {}, adding items instead".format(receipt_id))
             sales.add_items_to_sale(row,receipt_id)
@@ -233,7 +235,39 @@ def generate_sql_fix_duplicate_items(logged_errors):
     for error_log_id,error_log in logged_errors.logged_errors.items():
         print(error_log.error_type)
         if error_log.error_type == "Item.Id Duplicate":
-            sql_output += """
+            if error_log.item_quantity == error_log.duplicate_item_quantity:
+                new_quantity = error_log.item_quantity * 2
+                print(error_log.receipt_id)
+                # error_log.item_quantity += error_log.duplicate_item_quantity
+                sql_output += """
+-- Auto-generated query to fix error of type: {}
+-- Resolved error identified by UUID: {}
+UPDATE Assignment1Data 
+SET [Item_Quantity]={}
+WHERE Reciept_Id={}
+AND Item_ID = {}
+AND Item_Quantity = {}\nGO\n""".format(error_log.error_type,
+                                error_log_id,
+                                new_quantity,
+                                error_log.receipt_id,
+                                error_log.item_id,
+                                error_log.receipt_id,
+                                error_log.item_id,
+                                error_log.item_quantity)
+
+                sql_output += """
+-- Auto-generated query to fix error of type: {}
+-- Resolved error identified by UUID: {}
+DELETE FROM Assignment1Data 
+WHERE Reciept_Id={}
+AND Item_ID = {}
+AND Item_Quantity <= {}\nGO\n""".format(error_log.error_type,
+                                error_log_id,
+                                error_log.receipt_id,
+                                error_log.item_id,
+                                error_log.item_quantity)
+            else:
+                sql_output += """
 -- Auto-generated query to fix error of type: {}
 -- Resolved error identified by UUID: {}
 UPDATE Assignment1Data 
@@ -252,17 +286,17 @@ AND Item_Quantity = {}\nGO\n""".format(error_log.error_type,
                                 error_log.item_id,
                                 error_log.item_quantity)
 
-            sql_output += """
+                sql_output += """
 -- Auto-generated query to fix error of type: {}
 -- Resolved error identified by UUID: {}
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id={}
 AND Item_ID = {}
-AND Item_Quantity < {}\nGO\n""".format(error_log.error_type,
+AND Item_Quantity <= {}\nGO\n""".format(error_log.error_type,
                                 error_log_id,
                                 error_log.receipt_id,
                                 error_log.item_id,
-                                error_log.item_quantity)
+                                max(error_log.item_quantity,error_log.duplicate_item_quantity))
 
     write_report_results('SQL',header,sql_output)
 

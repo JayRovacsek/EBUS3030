@@ -215,6 +215,8 @@ FROM Assignment1Data)
 WHERE Reciept_Id=52150
 AND Customer_Id = 'C57' AND Staff_Id = 'S7'
 GO
+USE EBUS3030;
+
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
@@ -234,7 +236,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51500
 AND Item_ID = 20
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -255,7 +257,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52316
 AND Item_ID = 8
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -276,7 +278,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52316
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -297,20 +299,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52316
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: cbf82960f2234e024b5924439a77cbf0111b6a3c
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51092
-AND Item_ID = 3)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51092
 AND Item_ID = 3
-AND Item_Quantity = 10
+AND Item_Quantity = 51092
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -318,7 +316,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51092
 AND Item_ID = 3
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -339,7 +337,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51092
 AND Item_ID = 7
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -360,7 +358,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52414
 AND Item_ID = 25
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -381,7 +379,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52415
 AND Item_ID = 17
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -402,7 +400,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50332
 AND Item_ID = 30
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -423,7 +421,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51206
 AND Item_ID = 2
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -444,7 +442,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51280
 AND Item_ID = 27
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -465,7 +463,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52012
 AND Item_ID = 25
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -486,7 +484,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50236
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -507,7 +505,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50236
 AND Item_ID = 15
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -528,7 +526,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51849
 AND Item_ID = 20
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -549,7 +547,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52097
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -570,7 +568,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52097
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -591,7 +589,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52323
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -612,7 +610,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50051
 AND Item_ID = 30
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -633,7 +631,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50576
 AND Item_ID = 23
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -654,7 +652,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50642
 AND Item_ID = 27
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -675,7 +673,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50657
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -696,7 +694,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50949
 AND Item_ID = 15
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -717,20 +715,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50949
 AND Item_ID = 9
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e6f1957a8e40f62cfb2fda56628748c87754c5b4
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51452
-AND Item_ID = 25)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=51452
 AND Item_ID = 25
-AND Item_Quantity = 7
+AND Item_Quantity = 51452
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -738,7 +732,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51452
 AND Item_ID = 25
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -759,7 +753,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51577
 AND Item_ID = 12
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -780,7 +774,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51577
 AND Item_ID = 29
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -801,7 +795,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51674
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -822,7 +816,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52153
 AND Item_ID = 29
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -843,7 +837,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50431
 AND Item_ID = 16
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -864,7 +858,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50431
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -885,20 +879,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51569
 AND Item_ID = 10
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 15c41732d0a49708fc000d5c21b6bee93978d190
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50370
-AND Item_ID = 12)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=50370
 AND Item_ID = 12
-AND Item_Quantity = 7
+AND Item_Quantity = 50370
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -906,7 +896,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50370
 AND Item_ID = 12
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -927,7 +917,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50570
 AND Item_ID = 26
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -948,7 +938,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51347
 AND Item_ID = 10
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -969,7 +959,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50331
 AND Item_ID = 27
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -990,7 +980,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52204
 AND Item_ID = 14
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1011,7 +1001,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50680
 AND Item_ID = 7
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1032,7 +1022,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50680
 AND Item_ID = 28
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1053,7 +1043,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50498
 AND Item_ID = 25
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1074,20 +1064,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50498
 AND Item_ID = 4
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: a0ecb421a7570e62c2dcc476c8e455f6f30bf762
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50498
-AND Item_ID = 20)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=50498
 AND Item_ID = 20
-AND Item_Quantity = 7
+AND Item_Quantity = 50498
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1095,7 +1081,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50498
 AND Item_ID = 20
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1116,7 +1102,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50806
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1137,7 +1123,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50334
 AND Item_ID = 13
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1158,7 +1144,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50334
 AND Item_ID = 25
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1179,7 +1165,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50599
 AND Item_ID = 19
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1200,20 +1186,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51917
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 66de8173ab8015ef96de6a2a52603d1ecf6cfee4
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51939
-AND Item_ID = 24)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=51939
 AND Item_ID = 24
-AND Item_Quantity = 7
+AND Item_Quantity = 51939
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1221,20 +1203,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51939
 AND Item_ID = 24
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: bca5f4d0d5975cc23f4186af98a089294f8feda4
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51815
-AND Item_ID = 12)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=51815
 AND Item_ID = 12
-AND Item_Quantity = 6
+AND Item_Quantity = 51815
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1242,7 +1220,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51815
 AND Item_ID = 12
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1263,7 +1241,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50199
 AND Item_ID = 19
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1284,7 +1262,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50293
 AND Item_ID = 10
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1305,7 +1283,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51437
 AND Item_ID = 26
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1326,7 +1304,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51453
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1347,7 +1325,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51315
 AND Item_ID = 22
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1368,7 +1346,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51862
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1389,7 +1367,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52159
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1410,7 +1388,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52159
 AND Item_ID = 20
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1431,7 +1409,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52172
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1452,7 +1430,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52356
 AND Item_ID = 29
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1473,7 +1451,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50180
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1494,7 +1472,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50742
 AND Item_ID = 3
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1515,7 +1493,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50742
 AND Item_ID = 29
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1536,20 +1514,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51472
 AND Item_ID = 24
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 818cfc70736a1bee5561a439b3c67d9e10a136d8
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52122
-AND Item_ID = 24)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=52122
 AND Item_ID = 24
-AND Item_Quantity = 6
+AND Item_Quantity = 52122
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1557,7 +1531,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52122
 AND Item_ID = 24
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1578,7 +1552,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52157
 AND Item_ID = 21
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1599,7 +1573,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50781
 AND Item_ID = 3
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1620,7 +1594,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50022
 AND Item_ID = 1
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1641,7 +1615,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51616
 AND Item_ID = 4
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1662,7 +1636,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51631
 AND Item_ID = 26
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1683,7 +1657,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52056
 AND Item_ID = 29
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1704,7 +1678,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50057
 AND Item_ID = 16
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1725,7 +1699,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50303
 AND Item_ID = 10
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1746,7 +1720,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50947
 AND Item_ID = 6
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1767,7 +1741,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51796
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1788,7 +1762,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50298
 AND Item_ID = 2
-AND Item_Quantity < 9
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1809,7 +1783,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51605
 AND Item_ID = 25
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1830,7 +1804,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51964
 AND Item_ID = 14
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1851,7 +1825,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50773
 AND Item_ID = 24
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1872,7 +1846,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50494
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1893,7 +1867,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50494
 AND Item_ID = 30
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1914,7 +1888,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52276
 AND Item_ID = 21
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1935,7 +1909,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52276
 AND Item_ID = 10
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1956,7 +1930,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52296
 AND Item_ID = 11
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1977,7 +1951,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52296
 AND Item_ID = 3
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -1998,7 +1972,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50619
 AND Item_ID = 16
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2019,7 +1993,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50619
 AND Item_ID = 22
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2040,7 +2014,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50937
 AND Item_ID = 25
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2061,7 +2035,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51596
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2082,7 +2056,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51596
 AND Item_ID = 24
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2103,7 +2077,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52117
 AND Item_ID = 24
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2124,7 +2098,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50290
 AND Item_ID = 16
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2145,7 +2119,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50906
 AND Item_ID = 30
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2166,7 +2140,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50906
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2187,7 +2161,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51095
 AND Item_ID = 25
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2208,7 +2182,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51216
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2229,7 +2203,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51216
 AND Item_ID = 4
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2250,7 +2224,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51216
 AND Item_ID = 16
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2271,7 +2245,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51544
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2292,20 +2266,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51544
 AND Item_ID = 24
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 9cd249f742dc53787df8e4e8b77ec0e78c850a09
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52463
-AND Item_ID = 23)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=52463
 AND Item_ID = 23
-AND Item_Quantity = 7
+AND Item_Quantity = 52463
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2313,7 +2283,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52463
 AND Item_ID = 23
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2334,7 +2304,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50426
 AND Item_ID = 23
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2355,7 +2325,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50426
 AND Item_ID = 14
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2376,7 +2346,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51778
 AND Item_ID = 15
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2397,7 +2367,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50034
 AND Item_ID = 19
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2418,7 +2388,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50078
 AND Item_ID = 1
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2439,7 +2409,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51427
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2460,7 +2430,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51645
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2481,7 +2451,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51911
 AND Item_ID = 14
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2502,7 +2472,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50007
 AND Item_ID = 22
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2523,7 +2493,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50198
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2544,7 +2514,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50359
 AND Item_ID = 19
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2565,7 +2535,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50878
 AND Item_ID = 26
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2586,7 +2556,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50878
 AND Item_ID = 4
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2607,7 +2577,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51649
 AND Item_ID = 17
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2628,7 +2598,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52345
 AND Item_ID = 27
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2649,7 +2619,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50142
 AND Item_ID = 8
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2670,7 +2640,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50229
 AND Item_ID = 18
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2691,7 +2661,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50229
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2712,7 +2682,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50787
 AND Item_ID = 6
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2733,7 +2703,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51179
 AND Item_ID = 10
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2754,7 +2724,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51179
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2775,7 +2745,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51356
 AND Item_ID = 16
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2796,7 +2766,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50849
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2817,7 +2787,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50849
 AND Item_ID = 7
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2838,7 +2808,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51431
 AND Item_ID = 7
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2859,7 +2829,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51837
 AND Item_ID = 7
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2880,7 +2850,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52021
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2901,7 +2871,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52095
 AND Item_ID = 5
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2922,7 +2892,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52137
 AND Item_ID = 22
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2943,7 +2913,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52137
 AND Item_ID = 10
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2964,7 +2934,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52137
 AND Item_ID = 5
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -2985,7 +2955,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51173
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3006,7 +2976,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50158
 AND Item_ID = 10
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3027,7 +2997,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51417
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3048,7 +3018,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52014
 AND Item_ID = 5
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3069,7 +3039,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50922
 AND Item_ID = 9
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3090,20 +3060,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50922
 AND Item_ID = 22
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: f2e1d359b47c95dbb53baef4ee63199f1836fa3b
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52132
-AND Item_ID = 25)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=52132
 AND Item_ID = 25
-AND Item_Quantity = 2
+AND Item_Quantity = 52132
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3111,7 +3077,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52132
 AND Item_ID = 25
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3132,7 +3098,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51863
 AND Item_ID = 14
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3153,7 +3119,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52340
 AND Item_ID = 11
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3174,7 +3140,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52340
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3195,7 +3161,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51228
 AND Item_ID = 22
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3216,7 +3182,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51228
 AND Item_ID = 14
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3237,7 +3203,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51228
 AND Item_ID = 29
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3258,7 +3224,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50114
 AND Item_ID = 5
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3279,7 +3245,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50160
 AND Item_ID = 6
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3300,7 +3266,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50160
 AND Item_ID = 18
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3321,7 +3287,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50406
 AND Item_ID = 8
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3342,7 +3308,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51628
 AND Item_ID = 14
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3363,7 +3329,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51628
 AND Item_ID = 21
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3384,20 +3350,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52070
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: ab9ac4503afb843f141700d83e2ca396bc7375ef
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51154
-AND Item_ID = 18)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=51154
 AND Item_ID = 18
-AND Item_Quantity = 4
+AND Item_Quantity = 51154
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3405,7 +3367,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51154
 AND Item_ID = 18
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3426,7 +3388,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51523
 AND Item_ID = 26
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3447,7 +3409,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52000
 AND Item_ID = 8
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3468,20 +3430,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51056
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: bd0da99a72f5d8b3199ab666a1347b4837d371a6
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51618
-AND Item_ID = 19)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=51618
 AND Item_ID = 19
-AND Item_Quantity = 4
+AND Item_Quantity = 51618
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3489,20 +3447,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51618
 AND Item_ID = 19
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 0d459538a397fb3f25bae17673ec4476c9989369
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51254
-AND Item_ID = 18)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=51254
 AND Item_ID = 18
-AND Item_Quantity = 9
+AND Item_Quantity = 51254
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3510,7 +3464,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51254
 AND Item_ID = 18
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3531,7 +3485,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51390
 AND Item_ID = 6
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3552,7 +3506,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51776
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3573,7 +3527,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51776
 AND Item_ID = 3
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3594,7 +3548,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50121
 AND Item_ID = 8
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3615,7 +3569,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50265
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3636,7 +3590,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50807
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3657,7 +3611,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51581
 AND Item_ID = 8
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3678,7 +3632,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50077
 AND Item_ID = 7
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3699,7 +3653,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51712
 AND Item_ID = 3
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3720,7 +3674,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51712
 AND Item_ID = 10
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3741,7 +3695,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52400
 AND Item_ID = 30
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3762,7 +3716,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50810
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3783,7 +3737,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50810
 AND Item_ID = 30
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3804,7 +3758,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50883
 AND Item_ID = 22
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3825,7 +3779,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50883
 AND Item_ID = 15
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3846,7 +3800,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50883
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3867,7 +3821,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51410
 AND Item_ID = 26
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3888,7 +3842,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51410
 AND Item_ID = 17
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3909,7 +3863,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51800
 AND Item_ID = 4
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3930,7 +3884,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50399
 AND Item_ID = 9
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3951,7 +3905,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51141
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3972,7 +3926,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51142
 AND Item_ID = 4
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -3993,7 +3947,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50045
 AND Item_ID = 19
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4014,7 +3968,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50339
 AND Item_ID = 6
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4035,7 +3989,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50453
 AND Item_ID = 3
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4056,7 +4010,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52355
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4077,7 +4031,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50001
 AND Item_ID = 17
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4098,7 +4052,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50689
 AND Item_ID = 16
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4119,7 +4073,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50893
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4140,7 +4094,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50346
 AND Item_ID = 20
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4161,7 +4115,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50343
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4182,7 +4136,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50473
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4203,7 +4157,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50824
 AND Item_ID = 16
-AND Item_Quantity < 3
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4224,7 +4178,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50824
 AND Item_ID = 21
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4245,7 +4199,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51374
 AND Item_ID = 20
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4266,7 +4220,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52002
 AND Item_ID = 15
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4287,7 +4241,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52438
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4308,7 +4262,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50187
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4329,7 +4283,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51575
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4350,7 +4304,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52210
 AND Item_ID = 23
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4371,7 +4325,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52210
 AND Item_ID = 18
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4392,7 +4346,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52479
 AND Item_ID = 30
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4413,7 +4367,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50920
 AND Item_ID = 10
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4434,7 +4388,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50505
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4455,20 +4409,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50848
 AND Item_ID = 13
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: b16c5d7773f3ab23df021f4e4eae3da8a51ce628
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50848
-AND Item_ID = 4)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=50848
 AND Item_ID = 4
-AND Item_Quantity = 7
+AND Item_Quantity = 50848
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4476,7 +4426,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50848
 AND Item_ID = 4
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4497,7 +4447,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51771
 AND Item_ID = 20
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4518,7 +4468,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51941
 AND Item_ID = 20
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4539,20 +4489,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52439
 AND Item_ID = 19
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 179dbf699a84f8defb87a60f55706b429ebf0d0e
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50668
-AND Item_ID = 23)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=50668
 AND Item_ID = 23
-AND Item_Quantity = 8
+AND Item_Quantity = 50668
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4560,7 +4506,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50668
 AND Item_ID = 23
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4581,7 +4527,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50668
 AND Item_ID = 29
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4602,7 +4548,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50709
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4623,7 +4569,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51919
 AND Item_ID = 22
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4644,7 +4590,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52068
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4665,7 +4611,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50101
 AND Item_ID = 12
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4686,7 +4632,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50101
 AND Item_ID = 11
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4707,7 +4653,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51177
 AND Item_ID = 15
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4728,7 +4674,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51267
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4749,7 +4695,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51595
 AND Item_ID = 5
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4770,7 +4716,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51595
 AND Item_ID = 8
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4791,7 +4737,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51885
 AND Item_ID = 21
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4812,7 +4758,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51180
 AND Item_ID = 22
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4833,7 +4779,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51304
 AND Item_ID = 9
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4854,7 +4800,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51304
 AND Item_ID = 25
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4875,7 +4821,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52046
 AND Item_ID = 22
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4896,20 +4842,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50514
 AND Item_ID = 4
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: d71b897c912af626b254436e9b4050231204278e
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50514
-AND Item_ID = 26)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=50514
 AND Item_ID = 26
-AND Item_Quantity = 3
+AND Item_Quantity = 50514
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4917,7 +4859,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50514
 AND Item_ID = 26
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4938,7 +4880,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50514
 AND Item_ID = 10
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4959,7 +4901,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50757
 AND Item_ID = 28
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -4980,7 +4922,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50855
 AND Item_ID = 9
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5001,7 +4943,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51341
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5022,7 +4964,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51341
 AND Item_ID = 4
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5043,7 +4985,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51341
 AND Item_ID = 21
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5064,7 +5006,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52314
 AND Item_ID = 6
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5085,7 +5027,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51155
 AND Item_ID = 9
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5106,7 +5048,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51014
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5127,7 +5069,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51250
 AND Item_ID = 12
-AND Item_Quantity < 3
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5148,20 +5090,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51250
 AND Item_ID = 29
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 8e651fe61787e67c58b453f75b449c1d52bb718a
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51053
-AND Item_ID = 3)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51053
 AND Item_ID = 3
-AND Item_Quantity = 8
+AND Item_Quantity = 51053
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5169,7 +5107,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51053
 AND Item_ID = 3
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5190,7 +5128,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51053
 AND Item_ID = 23
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5211,7 +5149,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52373
 AND Item_ID = 26
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5232,7 +5170,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50464
 AND Item_ID = 19
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5253,7 +5191,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51446
 AND Item_ID = 10
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5274,7 +5212,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50774
 AND Item_ID = 22
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5295,7 +5233,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50774
 AND Item_ID = 17
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5316,7 +5254,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51244
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5337,7 +5275,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52010
 AND Item_ID = 25
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5358,7 +5296,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50046
 AND Item_ID = 15
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5379,7 +5317,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50256
 AND Item_ID = 7
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5400,7 +5338,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50504
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5421,7 +5359,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50300
 AND Item_ID = 20
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5442,7 +5380,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50488
 AND Item_ID = 8
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5463,7 +5401,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50488
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5484,7 +5422,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50618
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5505,7 +5443,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50630
 AND Item_ID = 26
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5526,20 +5464,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51852
 AND Item_ID = 20
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e7fd50cbbfad845072235f234369c24cadec7d25
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51852
-AND Item_ID = 19)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=51852
 AND Item_ID = 19
-AND Item_Quantity = 2
+AND Item_Quantity = 51852
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5547,7 +5481,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51852
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5568,7 +5502,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52023
 AND Item_ID = 25
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5589,7 +5523,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50813
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5610,7 +5544,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50813
 AND Item_ID = 26
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5631,7 +5565,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51702
 AND Item_ID = 11
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5652,20 +5586,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50188
 AND Item_ID = 26
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: a71e00ca721fac29414e76e7bbc9ae25ef91e70c
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52164
-AND Item_ID = 19)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=52164
 AND Item_ID = 19
-AND Item_Quantity = 2
+AND Item_Quantity = 52164
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5673,7 +5603,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52164
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5694,7 +5624,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50118
 AND Item_ID = 19
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5715,7 +5645,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50454
 AND Item_ID = 15
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5736,7 +5666,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51042
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5757,7 +5687,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51109
 AND Item_ID = 9
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5778,7 +5708,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51361
 AND Item_ID = 9
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5799,7 +5729,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51361
 AND Item_ID = 7
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5820,20 +5750,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52489
 AND Item_ID = 7
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: f3252c65d40ed61ba6b5d1bbf7dc430e05f78c69
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52489
-AND Item_ID = 25)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=52489
 AND Item_ID = 25
-AND Item_Quantity = 6
+AND Item_Quantity = 52489
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5841,7 +5767,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52489
 AND Item_ID = 25
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5862,7 +5788,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52178
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5883,7 +5809,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51443
 AND Item_ID = 2
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5904,7 +5830,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51443
 AND Item_ID = 30
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5925,7 +5851,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52086
 AND Item_ID = 18
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5946,7 +5872,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50013
 AND Item_ID = 29
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5967,7 +5893,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51040
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -5988,7 +5914,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51246
 AND Item_ID = 28
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6009,7 +5935,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51260
 AND Item_ID = 26
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6030,7 +5956,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51287
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6051,7 +5977,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50094
 AND Item_ID = 16
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6072,7 +5998,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50635
 AND Item_ID = 11
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6093,7 +6019,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52065
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6114,7 +6040,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51436
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6135,7 +6061,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50119
 AND Item_ID = 29
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6156,7 +6082,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51978
 AND Item_ID = 25
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6177,7 +6103,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51978
 AND Item_ID = 20
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6198,7 +6124,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50204
 AND Item_ID = 15
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6219,7 +6145,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51136
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6240,7 +6166,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51844
 AND Item_ID = 30
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6261,7 +6187,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51844
 AND Item_ID = 8
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6282,7 +6208,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51869
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6303,7 +6229,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50010
 AND Item_ID = 24
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6324,7 +6250,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50010
 AND Item_ID = 9
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6345,7 +6271,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50374
 AND Item_ID = 7
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6366,7 +6292,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50670
 AND Item_ID = 23
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6387,7 +6313,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52038
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6408,7 +6334,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52206
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6429,7 +6355,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51320
 AND Item_ID = 13
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6450,7 +6376,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50032
 AND Item_ID = 24
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6471,7 +6397,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51004
 AND Item_ID = 20
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6492,7 +6418,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50286
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6513,7 +6439,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51429
 AND Item_ID = 22
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6534,20 +6460,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51948
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: b495dec88199dfae5b582120305d8cdcb188af7e
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51948
-AND Item_ID = 12)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=51948
 AND Item_ID = 12
-AND Item_Quantity = 2
+AND Item_Quantity = 51948
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6555,7 +6477,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51948
 AND Item_ID = 12
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6576,7 +6498,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52396
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6597,7 +6519,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52396
 AND Item_ID = 13
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6618,7 +6540,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50703
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6639,7 +6561,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50259
 AND Item_ID = 23
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6660,7 +6582,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50347
 AND Item_ID = 18
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6681,7 +6603,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50913
 AND Item_ID = 15
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6702,7 +6624,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51165
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6723,7 +6645,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51174
 AND Item_ID = 16
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6744,7 +6666,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51573
 AND Item_ID = 22
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6765,7 +6687,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51573
 AND Item_ID = 18
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6786,7 +6708,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51797
 AND Item_ID = 23
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6807,7 +6729,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52083
 AND Item_ID = 30
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6828,7 +6750,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50462
 AND Item_ID = 25
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6849,7 +6771,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52386
 AND Item_ID = 20
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6870,7 +6792,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51423
 AND Item_ID = 28
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6891,7 +6813,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52016
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6912,7 +6834,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52016
 AND Item_ID = 26
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6933,7 +6855,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51223
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6954,7 +6876,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52273
 AND Item_ID = 29
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6975,7 +6897,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51793
 AND Item_ID = 16
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -6996,7 +6918,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51880
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7017,7 +6939,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51880
 AND Item_ID = 11
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7038,7 +6960,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51293
 AND Item_ID = 18
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7059,7 +6981,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51309
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7080,7 +7002,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52429
 AND Item_ID = 24
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7101,7 +7023,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52429
 AND Item_ID = 26
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7122,7 +7044,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51936
 AND Item_ID = 4
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7143,7 +7065,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51936
 AND Item_ID = 3
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7164,7 +7086,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51936
 AND Item_ID = 25
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7185,20 +7107,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50098
 AND Item_ID = 12
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: c3c7bc3a1bbf12429a34883e19413c1cfb27ae30
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51255
-AND Item_ID = 21)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=51255
 AND Item_ID = 21
-AND Item_Quantity = 4
+AND Item_Quantity = 51255
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7206,7 +7124,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51255
 AND Item_ID = 21
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7227,7 +7145,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50294
 AND Item_ID = 2
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7248,20 +7166,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50294
 AND Item_ID = 30
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 08413f4ffb485455cef2ed39c55a743ac18b9cd8
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50591
-AND Item_ID = 10)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=50591
 AND Item_ID = 10
-AND Item_Quantity = 4
+AND Item_Quantity = 50591
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7269,7 +7183,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50591
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7290,7 +7204,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50732
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7311,7 +7225,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50996
 AND Item_ID = 4
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7332,7 +7246,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51719
 AND Item_ID = 15
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7353,7 +7267,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51719
 AND Item_ID = 1
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7374,7 +7288,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52109
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7395,7 +7309,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52118
 AND Item_ID = 9
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7416,7 +7330,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52459
 AND Item_ID = 24
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7437,7 +7351,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50170
 AND Item_ID = 12
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7458,7 +7372,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50170
 AND Item_ID = 28
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7479,7 +7393,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50393
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7500,7 +7414,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50393
 AND Item_ID = 16
-AND Item_Quantity < 2
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7521,7 +7435,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51669
 AND Item_ID = 13
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7542,7 +7456,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52103
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7563,7 +7477,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52103
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7584,7 +7498,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50104
 AND Item_ID = 5
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7605,7 +7519,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50631
 AND Item_ID = 7
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7626,7 +7540,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50631
 AND Item_ID = 17
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7647,7 +7561,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51073
 AND Item_ID = 16
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7668,7 +7582,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51687
 AND Item_ID = 22
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7689,7 +7603,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51249
 AND Item_ID = 11
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7710,7 +7624,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50333
 AND Item_ID = 15
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7731,20 +7645,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50830
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: f59fc3d57a92d8d0e26e8ff2346d1fb72a839159
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50830
-AND Item_ID = 29)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=50830
 AND Item_ID = 29
-AND Item_Quantity = 8
+AND Item_Quantity = 50830
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7752,7 +7662,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50830
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7773,20 +7683,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51593
 AND Item_ID = 30
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 370bb5443b86df9c2238dc7dba5219a3794f60aa
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51860
-AND Item_ID = 20)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=51860
 AND Item_ID = 20
-AND Item_Quantity = 5
+AND Item_Quantity = 51860
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7794,7 +7700,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51860
 AND Item_ID = 20
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7815,7 +7721,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50310
 AND Item_ID = 23
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7836,7 +7742,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50468
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7857,20 +7763,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50943
 AND Item_ID = 12
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 2c8cf3507fa5d56abab09a6de587b734a2b5c5e4
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51297
-AND Item_ID = 11)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=51297
 AND Item_ID = 11
-AND Item_Quantity = 7
+AND Item_Quantity = 51297
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7878,7 +7780,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51297
 AND Item_ID = 11
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7899,7 +7801,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51397
 AND Item_ID = 1
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7920,7 +7822,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51608
 AND Item_ID = 2
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7941,7 +7843,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52022
 AND Item_ID = 13
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7962,7 +7864,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52426
 AND Item_ID = 2
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -7983,7 +7885,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50456
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8004,7 +7906,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51609
 AND Item_ID = 16
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8025,7 +7927,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51859
 AND Item_ID = 28
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8046,7 +7948,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51627
 AND Item_ID = 18
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8067,7 +7969,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51627
 AND Item_ID = 12
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8088,7 +7990,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52300
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8109,7 +8011,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52410
 AND Item_ID = 26
-AND Item_Quantity < 9
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8130,7 +8032,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51233
 AND Item_ID = 9
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8151,7 +8053,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50138
 AND Item_ID = 21
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8172,7 +8074,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50698
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8193,7 +8095,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51035
 AND Item_ID = 29
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8214,7 +8116,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52059
 AND Item_ID = 11
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8235,7 +8137,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50317
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8256,7 +8158,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50317
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8277,7 +8179,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50835
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8298,7 +8200,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52245
 AND Item_ID = 23
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8319,7 +8221,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52245
 AND Item_ID = 6
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8340,20 +8242,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50513
 AND Item_ID = 11
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 9734c2f495ade748ec1162f72caae4bd4f6bfed0
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50941
-AND Item_ID = 1)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=50941
 AND Item_ID = 1
-AND Item_Quantity = 7
+AND Item_Quantity = 50941
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8361,7 +8259,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50941
 AND Item_ID = 1
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8382,7 +8280,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50941
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8403,7 +8301,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51758
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8424,7 +8322,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50181
 AND Item_ID = 30
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8445,7 +8343,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50172
 AND Item_ID = 8
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8466,7 +8364,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51647
 AND Item_ID = 14
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8487,7 +8385,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51957
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8508,7 +8406,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51957
 AND Item_ID = 22
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8529,7 +8427,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50079
 AND Item_ID = 4
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8550,7 +8448,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51597
 AND Item_ID = 11
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8571,7 +8469,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51660
 AND Item_ID = 17
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8592,7 +8490,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52308
 AND Item_ID = 6
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8613,7 +8511,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52448
 AND Item_ID = 13
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8634,20 +8532,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50754
 AND Item_ID = 8
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 40b405c63eee7fc20cfdbdfff37a6cad8ebfcb7a
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50754
-AND Item_ID = 14)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=50754
 AND Item_ID = 14
-AND Item_Quantity = 1
+AND Item_Quantity = 50754
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8655,7 +8549,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50754
 AND Item_ID = 14
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8676,7 +8570,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51414
 AND Item_ID = 28
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8697,7 +8591,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51414
 AND Item_ID = 21
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8718,7 +8612,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52234
 AND Item_ID = 21
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8739,7 +8633,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52388
 AND Item_ID = 2
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8760,7 +8654,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50974
 AND Item_ID = 13
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8781,7 +8675,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52352
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8802,7 +8696,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52352
 AND Item_ID = 24
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8823,7 +8717,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50225
 AND Item_ID = 1
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8844,7 +8738,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50766
 AND Item_ID = 19
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8865,7 +8759,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51281
 AND Item_ID = 3
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8886,7 +8780,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51281
 AND Item_ID = 29
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8907,7 +8801,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51970
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8928,7 +8822,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51065
 AND Item_ID = 6
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8949,7 +8843,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52169
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8970,7 +8864,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52389
 AND Item_ID = 25
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -8991,7 +8885,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50270
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9012,7 +8906,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52371
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9033,7 +8927,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50638
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9054,7 +8948,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51068
 AND Item_ID = 19
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9075,7 +8969,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52350
 AND Item_ID = 9
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9096,7 +8990,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52350
 AND Item_ID = 11
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9117,20 +9011,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51135
 AND Item_ID = 16
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: cef38673a542c21585e8ff32ce4c700ba6d7cdc4
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51442
-AND Item_ID = 17)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51442
 AND Item_ID = 17
-AND Item_Quantity = 10
+AND Item_Quantity = 51442
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9138,7 +9028,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51442
 AND Item_ID = 17
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9159,7 +9049,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51442
 AND Item_ID = 14
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9180,7 +9070,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51399
 AND Item_ID = 28
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9201,7 +9091,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51823
 AND Item_ID = 7
-AND Item_Quantity < 3
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9222,20 +9112,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50064
 AND Item_ID = 11
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 5aaabc33facfdef4072bd262c5205b87881b801d
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50064
-AND Item_ID = 25)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=50064
 AND Item_ID = 25
-AND Item_Quantity = 2
+AND Item_Quantity = 50064
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9243,7 +9129,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50064
 AND Item_ID = 25
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9264,7 +9150,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50322
 AND Item_ID = 12
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9285,7 +9171,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50566
 AND Item_ID = 18
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9306,7 +9192,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51612
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9327,7 +9213,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51574
 AND Item_ID = 20
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9348,7 +9234,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52309
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9369,20 +9255,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51300
 AND Item_ID = 9
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 95430ca8a21b8c2582c3bed9b9c0061a807996a5
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51300
-AND Item_ID = 20)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=51300
 AND Item_ID = 20
-AND Item_Quantity = 5
+AND Item_Quantity = 51300
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9390,7 +9272,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51300
 AND Item_ID = 20
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9411,20 +9293,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51485
 AND Item_ID = 21
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 6e632491a49a65ab687303fdca5d296c608dbc7d
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51546
-AND Item_ID = 13)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=51546
 AND Item_ID = 13
-AND Item_Quantity = 2
+AND Item_Quantity = 51546
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9432,7 +9310,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51546
 AND Item_ID = 13
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9453,7 +9331,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51546
 AND Item_ID = 30
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9474,7 +9352,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50167
 AND Item_ID = 10
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9495,7 +9373,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50167
 AND Item_ID = 13
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9516,7 +9394,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50191
 AND Item_ID = 10
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9537,20 +9415,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50725
 AND Item_ID = 26
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 51d601ce556b9f294105aa2b4c9a0f7f5da67ae9
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50725
-AND Item_ID = 12)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=50725
 AND Item_ID = 12
-AND Item_Quantity = 1
+AND Item_Quantity = 50725
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9558,7 +9432,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50725
 AND Item_ID = 12
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9579,20 +9453,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52151
 AND Item_ID = 27
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 6063f891213ec9d1a2046dc92be44bb49f122bb4
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50047
-AND Item_ID = 17)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=50047
 AND Item_ID = 17
-AND Item_Quantity = 6
+AND Item_Quantity = 50047
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9600,7 +9470,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50047
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9621,20 +9491,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50047
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 6f4364be4eb30e376f193dc3b2052940de732a7b
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50388
-AND Item_ID = 19)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=50388
 AND Item_ID = 19
-AND Item_Quantity = 6
+AND Item_Quantity = 50388
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9642,7 +9508,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50388
 AND Item_ID = 19
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9663,7 +9529,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50388
 AND Item_ID = 12
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9684,7 +9550,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50973
 AND Item_ID = 2
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9705,20 +9571,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51085
 AND Item_ID = 20
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 329ee2deca48455f82b4fe2d4cc29b86ef0f30e0
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51276
-AND Item_ID = 23)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=51276
 AND Item_ID = 23
-AND Item_Quantity = 4
+AND Item_Quantity = 51276
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9726,7 +9588,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51276
 AND Item_ID = 23
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9747,7 +9609,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51323
 AND Item_ID = 12
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9768,7 +9630,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51323
 AND Item_ID = 22
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9789,7 +9651,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50586
 AND Item_ID = 10
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9810,7 +9672,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50780
 AND Item_ID = 29
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9831,7 +9693,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52377
 AND Item_ID = 6
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9852,7 +9714,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50857
 AND Item_ID = 25
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9873,7 +9735,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51220
 AND Item_ID = 19
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9894,7 +9756,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51220
 AND Item_ID = 6
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9915,7 +9777,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52138
 AND Item_ID = 10
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9936,7 +9798,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52138
 AND Item_ID = 14
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9957,7 +9819,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52207
 AND Item_ID = 10
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9978,7 +9840,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51119
 AND Item_ID = 4
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -9999,7 +9861,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51185
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10020,7 +9882,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52144
 AND Item_ID = 27
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10041,7 +9903,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52144
 AND Item_ID = 23
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10062,7 +9924,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50123
 AND Item_ID = 12
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10083,20 +9945,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50202
 AND Item_ID = 14
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: f84e27ece39acc72267d82215bd2f561f1f0737c
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50500
-AND Item_ID = 11)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=50500
 AND Item_ID = 11
-AND Item_Quantity = 5
+AND Item_Quantity = 50500
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10104,7 +9962,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50500
 AND Item_ID = 11
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10125,7 +9983,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50843
 AND Item_ID = 5
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10146,7 +10004,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50843
 AND Item_ID = 1
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10167,7 +10025,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50899
 AND Item_ID = 17
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10188,7 +10046,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51303
 AND Item_ID = 3
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10209,7 +10067,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51662
 AND Item_ID = 9
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10230,7 +10088,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52260
 AND Item_ID = 17
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10251,7 +10109,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52379
 AND Item_ID = 24
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10272,7 +10130,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52379
 AND Item_ID = 5
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10293,7 +10151,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52457
 AND Item_ID = 19
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10314,7 +10172,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51461
 AND Item_ID = 24
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10335,7 +10193,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51461
 AND Item_ID = 4
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10356,7 +10214,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50053
 AND Item_ID = 23
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10377,7 +10235,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50600
 AND Item_ID = 16
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10398,7 +10256,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50640
 AND Item_ID = 26
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10419,7 +10277,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50640
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10440,7 +10298,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51686
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10461,20 +10319,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51686
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 572beade728930013b8d94f8589934eea3894814
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51773
-AND Item_ID = 2)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51773
 AND Item_ID = 2
-AND Item_Quantity = 8
+AND Item_Quantity = 51773
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10482,7 +10336,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51773
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10503,7 +10357,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52440
 AND Item_ID = 10
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10524,7 +10378,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50369
 AND Item_ID = 17
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10545,7 +10399,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50555
 AND Item_ID = 8
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10566,7 +10420,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50555
 AND Item_ID = 18
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10587,7 +10441,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51380
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10608,7 +10462,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52246
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10629,7 +10483,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50844
 AND Item_ID = 6
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10650,7 +10504,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50844
 AND Item_ID = 22
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10671,7 +10525,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50982
 AND Item_ID = 7
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10692,7 +10546,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50982
 AND Item_ID = 10
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10713,7 +10567,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51958
 AND Item_ID = 5
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10734,7 +10588,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52093
 AND Item_ID = 24
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10755,7 +10609,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52093
 AND Item_ID = 14
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10776,7 +10630,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50277
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10797,7 +10651,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50277
 AND Item_ID = 12
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10818,7 +10672,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50750
 AND Item_ID = 23
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10839,7 +10693,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50750
 AND Item_ID = 8
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10860,7 +10714,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50908
 AND Item_ID = 13
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10881,20 +10735,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50925
 AND Item_ID = 24
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: ced84f1b409adf4fdb8b5ace216a60451e972417
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50925
-AND Item_ID = 3)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=50925
 AND Item_ID = 3
-AND Item_Quantity = 10
+AND Item_Quantity = 50925
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10902,7 +10752,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50925
 AND Item_ID = 3
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10923,7 +10773,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51253
 AND Item_ID = 24
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10944,7 +10794,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50711
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10965,7 +10815,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50711
 AND Item_ID = 20
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -10986,7 +10836,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50991
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11007,7 +10857,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51128
 AND Item_ID = 1
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11028,7 +10878,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51879
 AND Item_ID = 27
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11049,7 +10899,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51897
 AND Item_ID = 24
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11070,7 +10920,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50102
 AND Item_ID = 27
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11091,7 +10941,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50758
 AND Item_ID = 18
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11112,7 +10962,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50758
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11133,7 +10983,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51049
 AND Item_ID = 10
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11154,7 +11004,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51049
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11175,7 +11025,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51138
 AND Item_ID = 27
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11196,7 +11046,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51717
 AND Item_ID = 25
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11217,7 +11067,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51459
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11238,7 +11088,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50455
 AND Item_ID = 27
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11259,7 +11109,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51359
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11280,20 +11130,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52009
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 37785023a6395d42138daa178b8d7ed2500596ac
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51036
-AND Item_ID = 30)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51036
 AND Item_ID = 30
-AND Item_Quantity = 10
+AND Item_Quantity = 51036
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11301,7 +11147,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51036
 AND Item_ID = 30
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11322,20 +11168,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51275
 AND Item_ID = 6
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e4c081de8372c68145110e0b6e8ac071aaf94ece
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51602
-AND Item_ID = 10)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=51602
 AND Item_ID = 10
-AND Item_Quantity = 9
+AND Item_Quantity = 51602
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11343,7 +11185,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51602
 AND Item_ID = 10
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11364,7 +11206,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51683
 AND Item_ID = 2
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11385,7 +11227,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52121
 AND Item_ID = 6
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11406,7 +11248,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50597
 AND Item_ID = 3
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11427,7 +11269,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52218
 AND Item_ID = 16
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11448,20 +11290,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52218
 AND Item_ID = 2
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: b7ef2fd1dac2533efc88f21a71cc2bff1c93b9f0
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52337
-AND Item_ID = 20)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=52337
 AND Item_ID = 20
-AND Item_Quantity = 10
+AND Item_Quantity = 52337
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11469,7 +11307,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52337
 AND Item_ID = 20
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11490,7 +11328,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52337
 AND Item_ID = 7
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11511,7 +11349,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50201
 AND Item_ID = 30
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11532,7 +11370,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50201
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11553,7 +11391,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50257
 AND Item_ID = 11
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11574,7 +11412,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50299
 AND Item_ID = 4
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11595,7 +11433,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50299
 AND Item_ID = 11
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11616,7 +11454,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50616
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11637,7 +11475,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50616
 AND Item_ID = 23
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11658,7 +11496,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51006
 AND Item_ID = 10
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11679,7 +11517,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52152
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11700,7 +11538,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50068
 AND Item_ID = 11
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11721,7 +11559,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50156
 AND Item_ID = 6
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11742,7 +11580,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50156
 AND Item_ID = 30
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11763,7 +11601,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50746
 AND Item_ID = 30
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11784,7 +11622,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50979
 AND Item_ID = 7
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11805,7 +11643,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51147
 AND Item_ID = 5
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11826,7 +11664,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51696
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11847,7 +11685,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51708
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11868,7 +11706,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50526
 AND Item_ID = 9
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11889,7 +11727,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50526
 AND Item_ID = 5
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11910,7 +11748,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51751
 AND Item_ID = 22
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11931,20 +11769,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51751
 AND Item_ID = 28
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 7408f33e4ef6a66c3354aa7a1223ff624ab68bad
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52061
-AND Item_ID = 24)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=52061
 AND Item_ID = 24
-AND Item_Quantity = 1
+AND Item_Quantity = 52061
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11952,7 +11786,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52061
 AND Item_ID = 24
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11973,7 +11807,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52089
 AND Item_ID = 14
-AND Item_Quantity < 9
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -11994,7 +11828,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50324
 AND Item_ID = 9
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12015,7 +11849,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50324
 AND Item_ID = 1
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12036,7 +11870,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50672
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12057,7 +11891,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50723
 AND Item_ID = 10
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12078,7 +11912,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51700
 AND Item_ID = 13
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12099,7 +11933,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51907
 AND Item_ID = 1
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12120,7 +11954,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52375
 AND Item_ID = 10
-AND Item_Quantity < 2
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12141,7 +11975,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50027
 AND Item_ID = 22
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12162,7 +11996,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50828
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12183,7 +12017,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50828
 AND Item_ID = 29
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12204,7 +12038,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51648
 AND Item_ID = 11
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12225,7 +12059,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51802
 AND Item_ID = 6
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12246,7 +12080,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51404
 AND Item_ID = 14
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12267,7 +12101,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50036
 AND Item_ID = 23
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12288,7 +12122,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50036
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12309,7 +12143,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51599
 AND Item_ID = 8
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12330,7 +12164,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52033
 AND Item_ID = 3
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12351,7 +12185,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50207
 AND Item_ID = 18
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12372,7 +12206,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50207
 AND Item_ID = 17
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12393,7 +12227,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50706
 AND Item_ID = 3
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12414,7 +12248,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50762
 AND Item_ID = 21
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12435,20 +12269,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51448
 AND Item_ID = 23
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: aed3b9bfdadd766005d220afeabc9f68d03eeeb2
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51448
-AND Item_ID = 20)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=51448
 AND Item_ID = 20
-AND Item_Quantity = 1
+AND Item_Quantity = 51448
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12456,7 +12286,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51448
 AND Item_ID = 20
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12477,7 +12307,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52029
 AND Item_ID = 5
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12498,7 +12328,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52187
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12519,20 +12349,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50137
 AND Item_ID = 28
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 89834f31c0e151ab4cf6abc5042720e89b4796d6
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50162
-AND Item_ID = 8)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=50162
 AND Item_ID = 8
-AND Item_Quantity = 8
+AND Item_Quantity = 50162
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12540,7 +12366,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50162
 AND Item_ID = 8
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12561,7 +12387,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50162
 AND Item_ID = 14
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12582,7 +12408,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50786
 AND Item_ID = 2
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12603,7 +12429,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50884
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12624,7 +12450,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50953
 AND Item_ID = 30
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12645,7 +12471,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50953
 AND Item_ID = 29
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12666,7 +12492,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51487
 AND Item_ID = 22
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12687,7 +12513,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52363
 AND Item_ID = 2
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12708,7 +12534,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50186
 AND Item_ID = 6
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12729,7 +12555,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51012
 AND Item_ID = 14
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12750,7 +12576,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51012
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12771,7 +12597,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51012
 AND Item_ID = 7
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12792,7 +12618,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51757
 AND Item_ID = 20
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12813,20 +12639,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52182
 AND Item_ID = 28
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: ac5cb34e5fbf589ec1160010744c1b9eee90eaad
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52338
-AND Item_ID = 2)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=52338
 AND Item_ID = 2
-AND Item_Quantity = 7
+AND Item_Quantity = 52338
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12834,7 +12656,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52338
 AND Item_ID = 2
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12855,7 +12677,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52338
 AND Item_ID = 8
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12876,7 +12698,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50262
 AND Item_ID = 8
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12897,7 +12719,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50262
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12918,20 +12740,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51338
 AND Item_ID = 15
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e685076dabc8f5e4eeb1c81b68fa08bf272388bd
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51762
-AND Item_ID = 30)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51762
 AND Item_ID = 30
-AND Item_Quantity = 10
+AND Item_Quantity = 51762
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12939,7 +12757,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51762
 AND Item_ID = 30
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12960,7 +12778,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51762
 AND Item_ID = 5
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -12981,7 +12799,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51284
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13002,20 +12820,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51578
 AND Item_ID = 16
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 49537114cd768fdc9ca8339e5e4229b4e9b5142d
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51692
-AND Item_ID = 11)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=51692
 AND Item_ID = 11
-AND Item_Quantity = 4
+AND Item_Quantity = 51692
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13023,7 +12837,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51692
 AND Item_ID = 11
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13044,7 +12858,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50316
 AND Item_ID = 29
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13065,7 +12879,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51344
 AND Item_ID = 30
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13086,7 +12900,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52336
 AND Item_ID = 20
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13107,7 +12921,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52192
 AND Item_ID = 11
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13128,7 +12942,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52192
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13149,7 +12963,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50193
 AND Item_ID = 14
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13170,7 +12984,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51069
 AND Item_ID = 15
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13191,20 +13005,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51763
 AND Item_ID = 18
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 80791dfc9126fc099c8b017920d0c6a1e8128b85
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51330
-AND Item_ID = 17)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51330
 AND Item_ID = 17
-AND Item_Quantity = 8
+AND Item_Quantity = 51330
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13212,7 +13022,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51330
 AND Item_ID = 17
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13233,7 +13043,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51330
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13254,7 +13064,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51733
 AND Item_ID = 14
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13275,7 +13085,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52395
 AND Item_ID = 25
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13296,7 +13106,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52466
 AND Item_ID = 7
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13317,7 +13127,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50677
 AND Item_ID = 25
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13338,7 +13148,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50677
 AND Item_ID = 21
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13359,7 +13169,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51024
 AND Item_ID = 2
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13380,7 +13190,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51024
 AND Item_ID = 5
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13401,7 +13211,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51312
 AND Item_ID = 7
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13422,7 +13232,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50760
 AND Item_ID = 7
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13443,7 +13253,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50969
 AND Item_ID = 7
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13464,7 +13274,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51411
 AND Item_ID = 26
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13485,7 +13295,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51411
 AND Item_ID = 4
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13506,20 +13316,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51495
 AND Item_ID = 7
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 9e49d94ab56c8d1a47338b7bfdc90a3fd16b054a
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51552
-AND Item_ID = 3)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51552
 AND Item_ID = 3
-AND Item_Quantity = 10
+AND Item_Quantity = 51552
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13527,7 +13333,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51552
 AND Item_ID = 3
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13548,7 +13354,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52120
 AND Item_ID = 24
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13569,7 +13375,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50353
 AND Item_ID = 11
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13590,7 +13396,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51406
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13611,7 +13417,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51407
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13632,20 +13438,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51698
 AND Item_ID = 26
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: c6728e586aa74b89388fe030e7f5f84772366f72
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50646
-AND Item_ID = 14)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=50646
 AND Item_ID = 14
-AND Item_Quantity = 10
+AND Item_Quantity = 50646
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13653,20 +13455,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50646
 AND Item_ID = 14
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 606d3cfe454c47009233e14f55ca0e208e92e130
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52202
-AND Item_ID = 2)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=52202
 AND Item_ID = 2
-AND Item_Quantity = 1
+AND Item_Quantity = 52202
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13674,7 +13472,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52202
 AND Item_ID = 2
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13695,7 +13493,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52202
 AND Item_ID = 28
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13716,7 +13514,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52251
 AND Item_ID = 6
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13737,20 +13535,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50491
 AND Item_ID = 20
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: aa6cef30ae0a9a43775d5eca272c8c05fd712b15
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50491
-AND Item_ID = 21)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=50491
 AND Item_ID = 21
-AND Item_Quantity = 1
+AND Item_Quantity = 50491
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13758,7 +13552,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50491
 AND Item_ID = 21
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13779,7 +13573,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51777
 AND Item_ID = 13
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13800,7 +13594,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51898
 AND Item_ID = 29
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13821,7 +13615,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50070
 AND Item_ID = 22
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13842,20 +13636,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51756
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 64ac02330d7153d12f79ddac4392f9cdd86046b0
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51955
-AND Item_ID = 23)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51955
 AND Item_ID = 23
-AND Item_Quantity = 10
+AND Item_Quantity = 51955
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13863,7 +13653,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51955
 AND Item_ID = 23
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13884,7 +13674,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52114
 AND Item_ID = 7
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13905,7 +13695,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50301
 AND Item_ID = 22
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13926,7 +13716,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50475
 AND Item_ID = 5
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13947,7 +13737,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51930
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13968,7 +13758,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51930
 AND Item_ID = 13
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -13989,7 +13779,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50523
 AND Item_ID = 10
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14010,7 +13800,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50710
 AND Item_ID = 14
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14031,7 +13821,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50169
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14052,7 +13842,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50169
 AND Item_ID = 3
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14073,7 +13863,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51744
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14094,7 +13884,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52052
 AND Item_ID = 27
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14115,7 +13905,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52052
 AND Item_ID = 18
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14136,20 +13926,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52073
 AND Item_ID = 12
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 8a99e28b0db06b95f0ddd996ccf6509a18b30d45
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52073
-AND Item_ID = 25)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=52073
 AND Item_ID = 25
-AND Item_Quantity = 5
+AND Item_Quantity = 52073
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14157,7 +13943,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52073
 AND Item_ID = 25
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14178,7 +13964,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50492
 AND Item_ID = 16
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14199,20 +13985,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50492
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 13bf8ca9a1720ed5678b74f044509f57a43f1113
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50589
-AND Item_ID = 4)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=50589
 AND Item_ID = 4
-AND Item_Quantity = 3
+AND Item_Quantity = 50589
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14220,7 +14002,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50589
 AND Item_ID = 4
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14241,7 +14023,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51112
 AND Item_ID = 18
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14262,7 +14044,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51620
 AND Item_ID = 7
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14283,20 +14065,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51305
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: ead486e2cca0baba852d97ee37fa86398bab81c2
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50028
-AND Item_ID = 19)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=50028
 AND Item_ID = 19
-AND Item_Quantity = 1
+AND Item_Quantity = 50028
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14304,7 +14082,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50028
 AND Item_ID = 19
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14325,20 +14103,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50525
 AND Item_ID = 30
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 1a41e2eb7c7e4b47ba91ef42fcf52af41afe326e
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51353
-AND Item_ID = 17)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=51353
 AND Item_ID = 17
-AND Item_Quantity = 4
+AND Item_Quantity = 51353
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14346,7 +14120,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51353
 AND Item_ID = 17
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14367,20 +14141,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50662
 AND Item_ID = 17
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e19a5ee6919f009230b60495c2dd08507650239e
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50662
-AND Item_ID = 28)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=50662
 AND Item_ID = 28
-AND Item_Quantity = 2
+AND Item_Quantity = 50662
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14388,7 +14158,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50662
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14409,7 +14179,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50817
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14430,7 +14200,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50581
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14451,7 +14221,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50993
 AND Item_ID = 24
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14472,7 +14242,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50993
 AND Item_ID = 18
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14493,7 +14263,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52110
 AND Item_ID = 23
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14514,20 +14284,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52110
 AND Item_ID = 16
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 38da42c45942e2d1380a4c5cd44471b6f55e0249
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50558
-AND Item_ID = 17)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=50558
 AND Item_ID = 17
-AND Item_Quantity = 5
+AND Item_Quantity = 50558
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14535,7 +14301,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50558
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14556,7 +14322,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52235
 AND Item_ID = 13
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14577,7 +14343,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52235
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14598,7 +14364,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50285
 AND Item_ID = 23
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14619,7 +14385,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51638
 AND Item_ID = 26
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14640,7 +14406,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50649
 AND Item_ID = 5
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14661,7 +14427,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51021
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14682,7 +14448,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52216
 AND Item_ID = 12
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14703,7 +14469,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52216
 AND Item_ID = 30
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14724,7 +14490,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50443
 AND Item_ID = 15
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14745,7 +14511,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50553
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14766,7 +14532,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51850
 AND Item_ID = 21
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14787,7 +14553,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50759
 AND Item_ID = 29
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14808,7 +14574,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51150
 AND Item_ID = 12
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14829,20 +14595,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51150
 AND Item_ID = 15
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 191bbe71f090cd1aaa3fc60937eaeae427a20785
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51592
-AND Item_ID = 7)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=51592
 AND Item_ID = 7
-AND Item_Quantity = 9
+AND Item_Quantity = 51592
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14850,7 +14612,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51592
 AND Item_ID = 7
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14871,7 +14633,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51592
 AND Item_ID = 2
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14892,20 +14654,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50232
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 1c7278a751fa577585d19a41e7776e71864da2c3
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50427
-AND Item_ID = 22)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=50427
 AND Item_ID = 22
-AND Item_Quantity = 4
+AND Item_Quantity = 50427
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14913,7 +14671,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50427
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14934,7 +14692,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50427
 AND Item_ID = 7
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14955,7 +14713,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50980
 AND Item_ID = 10
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14976,7 +14734,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50340
 AND Item_ID = 23
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -14997,7 +14755,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51029
 AND Item_ID = 9
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15018,7 +14776,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51034
 AND Item_ID = 7
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15039,20 +14797,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51034
 AND Item_ID = 24
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: bcb0628cb491f9a746d2e2b55fe5866be4ff9bf0
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51405
-AND Item_ID = 20)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=51405
 AND Item_ID = 20
-AND Item_Quantity = 3
+AND Item_Quantity = 51405
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15060,7 +14814,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51405
 AND Item_ID = 20
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15081,7 +14835,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51550
 AND Item_ID = 3
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15102,7 +14856,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51737
 AND Item_ID = 9
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15123,7 +14877,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50717
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15144,20 +14898,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50327
 AND Item_ID = 10
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: ef5ab6a817bcee7d328550535e4e83195cd58bc7
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50875
-AND Item_ID = 30)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=50875
 AND Item_ID = 30
-AND Item_Quantity = 2
+AND Item_Quantity = 50875
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15165,7 +14915,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50875
 AND Item_ID = 30
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15186,7 +14936,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50984
 AND Item_ID = 28
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15207,7 +14957,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50984
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15228,7 +14978,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50319
 AND Item_ID = 11
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15249,7 +14999,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50840
 AND Item_ID = 11
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15270,7 +15020,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50840
 AND Item_ID = 18
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15291,7 +15041,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51603
 AND Item_ID = 27
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15312,7 +15062,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51825
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15333,7 +15083,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50216
 AND Item_ID = 18
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15354,7 +15104,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51088
 AND Item_ID = 9
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15375,20 +15125,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51088
 AND Item_ID = 29
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e77cbab0cac2c80c2dbe10ed38199cabf35e95ca
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51088
-AND Item_ID = 2)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=51088
 AND Item_ID = 2
-AND Item_Quantity = 2
+AND Item_Quantity = 51088
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15396,7 +15142,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51088
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15417,7 +15163,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51555
 AND Item_ID = 14
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15438,7 +15184,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51876
 AND Item_ID = 9
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15459,7 +15205,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51906
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15480,7 +15226,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51906
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15501,7 +15247,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52359
 AND Item_ID = 1
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15522,7 +15268,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52403
 AND Item_ID = 18
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15543,7 +15289,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52455
 AND Item_ID = 22
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15564,7 +15310,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52455
 AND Item_ID = 23
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15585,7 +15331,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50944
 AND Item_ID = 20
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15606,7 +15352,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50951
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15627,20 +15373,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52197
 AND Item_ID = 2
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: f42cf13c1153dc0b7e0b7a848ded6dccfa1e3040
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52197
-AND Item_ID = 30)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=52197
 AND Item_ID = 30
-AND Item_Quantity = 7
+AND Item_Quantity = 52197
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15648,7 +15390,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52197
 AND Item_ID = 30
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15669,7 +15411,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51954
 AND Item_ID = 1
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15690,7 +15432,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52322
 AND Item_ID = 20
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15711,7 +15453,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52322
 AND Item_ID = 12
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15732,7 +15474,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52481
 AND Item_ID = 24
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15753,7 +15495,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50149
 AND Item_ID = 18
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15774,7 +15516,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50237
 AND Item_ID = 10
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15795,7 +15537,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50325
 AND Item_ID = 17
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15816,7 +15558,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50325
 AND Item_ID = 13
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15837,7 +15579,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51983
 AND Item_ID = 22
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15858,7 +15600,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52212
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15879,7 +15621,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50871
 AND Item_ID = 9
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15900,7 +15642,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51157
 AND Item_ID = 17
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15921,7 +15663,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51157
 AND Item_ID = 27
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15942,7 +15684,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51157
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15963,7 +15705,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50005
 AND Item_ID = 1
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -15984,7 +15726,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50692
 AND Item_ID = 2
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16005,7 +15747,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52365
 AND Item_ID = 21
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16026,7 +15768,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51467
 AND Item_ID = 24
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16047,7 +15789,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52343
 AND Item_ID = 30
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16068,20 +15810,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50155
 AND Item_ID = 9
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: dfea09d90cc690a26bda9811f358d599ff114094
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50831
-AND Item_ID = 8)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=50831
 AND Item_ID = 8
-AND Item_Quantity = 9
+AND Item_Quantity = 50831
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16089,7 +15827,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50831
 AND Item_ID = 8
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16110,7 +15848,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50831
 AND Item_ID = 26
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16131,7 +15869,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51892
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16152,20 +15890,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50065
 AND Item_ID = 28
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 32e2ed89e5a28bad0ef01d6b27c6643c25dcfee6
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52452
-AND Item_ID = 4)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=52452
 AND Item_ID = 4
-AND Item_Quantity = 5
+AND Item_Quantity = 52452
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16173,7 +15907,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52452
 AND Item_ID = 4
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16194,7 +15928,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50424
 AND Item_ID = 8
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16215,7 +15949,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50192
 AND Item_ID = 2
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16236,7 +15970,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50423
 AND Item_ID = 8
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16257,7 +15991,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50003
 AND Item_ID = 1
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16278,7 +16012,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50050
 AND Item_ID = 9
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16299,7 +16033,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50050
 AND Item_ID = 15
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16320,7 +16054,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50221
 AND Item_ID = 23
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16341,7 +16075,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50221
 AND Item_ID = 13
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16362,7 +16096,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50930
 AND Item_ID = 26
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16383,7 +16117,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50930
 AND Item_ID = 17
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16404,7 +16138,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52301
 AND Item_ID = 29
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16425,7 +16159,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52301
 AND Item_ID = 27
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16446,7 +16180,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50952
 AND Item_ID = 26
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16467,7 +16201,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50952
 AND Item_ID = 24
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16488,7 +16222,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51875
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16509,7 +16243,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51875
 AND Item_ID = 10
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16530,7 +16264,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50309
 AND Item_ID = 20
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16551,20 +16285,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51482
 AND Item_ID = 8
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 3b1a13c83262fa9b7bf8623191bf5e25d6036962
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51482
-AND Item_ID = 5)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=51482
 AND Item_ID = 5
-AND Item_Quantity = 10
+AND Item_Quantity = 51482
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16572,7 +16302,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51482
 AND Item_ID = 5
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16593,7 +16323,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51531
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16614,7 +16344,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51547
 AND Item_ID = 20
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16635,7 +16365,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51783
 AND Item_ID = 11
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16656,7 +16386,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50336
 AND Item_ID = 29
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16677,7 +16407,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50336
 AND Item_ID = 25
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16698,7 +16428,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52253
 AND Item_ID = 28
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16719,7 +16449,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50422
 AND Item_ID = 14
-AND Item_Quantity < 2
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16740,7 +16470,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50998
 AND Item_ID = 19
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16761,7 +16491,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50998
 AND Item_ID = 7
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16782,7 +16512,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52470
 AND Item_ID = 18
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16803,20 +16533,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50601
 AND Item_ID = 5
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e94526810cc18e13e9f1d493e651fd3e8a844a02
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51017
-AND Item_ID = 21)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=51017
 AND Item_ID = 21
-AND Item_Quantity = 5
+AND Item_Quantity = 51017
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16824,7 +16550,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51017
 AND Item_ID = 21
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16845,7 +16571,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51263
 AND Item_ID = 6
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16866,7 +16592,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50269
 AND Item_ID = 25
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16887,7 +16613,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50360
 AND Item_ID = 11
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16908,7 +16634,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52048
 AND Item_ID = 12
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16929,7 +16655,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50821
 AND Item_ID = 27
-AND Item_Quantity < 9
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16950,20 +16676,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51375
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 9e5619ea52184c0fdd4aa8d577e894ad4940edbf
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52156
-AND Item_ID = 17)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=52156
 AND Item_ID = 17
-AND Item_Quantity = 3
+AND Item_Quantity = 52156
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16971,7 +16693,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52156
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -16992,20 +16714,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52280
 AND Item_ID = 15
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 7b2e2820378f7cfb5712e34dd5d069b0a99d7cbe
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52280
-AND Item_ID = 8)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=52280
 AND Item_ID = 8
-AND Item_Quantity = 1
+AND Item_Quantity = 52280
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17013,7 +16731,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52280
 AND Item_ID = 8
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17034,7 +16752,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51425
 AND Item_ID = 25
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17055,7 +16773,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51630
 AND Item_ID = 8
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17076,7 +16794,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51903
 AND Item_ID = 12
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17097,7 +16815,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51903
 AND Item_ID = 5
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17118,7 +16836,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50495
 AND Item_ID = 19
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17139,7 +16857,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51953
 AND Item_ID = 9
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17160,7 +16878,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51999
 AND Item_ID = 27
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17181,7 +16899,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51999
 AND Item_ID = 19
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17202,7 +16920,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50687
 AND Item_ID = 14
-AND Item_Quantity < 3
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17223,7 +16941,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50687
 AND Item_ID = 3
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17244,7 +16962,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50768
 AND Item_ID = 18
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17265,7 +16983,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51340
 AND Item_ID = 11
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17286,7 +17004,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51766
 AND Item_ID = 30
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17307,7 +17025,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52211
 AND Item_ID = 26
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17328,7 +17046,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52433
 AND Item_ID = 6
-AND Item_Quantity < 2
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17349,7 +17067,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52482
 AND Item_ID = 2
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17370,7 +17088,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52482
 AND Item_ID = 20
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17391,7 +17109,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50023
 AND Item_ID = 14
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17412,7 +17130,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50122
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17433,7 +17151,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51673
 AND Item_ID = 3
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17454,7 +17172,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51673
 AND Item_ID = 23
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17475,7 +17193,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52239
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17496,7 +17214,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50967
 AND Item_ID = 15
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17517,7 +17235,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52464
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17538,20 +17256,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50722
 AND Item_ID = 28
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: f824946d4d80f4d5c14decf2ed1457b43461a06c
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51043
-AND Item_ID = 11)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=51043
 AND Item_ID = 11
-AND Item_Quantity = 6
+AND Item_Quantity = 51043
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17559,7 +17273,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51043
 AND Item_ID = 11
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17580,7 +17294,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51043
 AND Item_ID = 14
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17601,7 +17315,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51134
 AND Item_ID = 23
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17622,7 +17336,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51134
 AND Item_ID = 1
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17643,20 +17357,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51134
 AND Item_ID = 7
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: c76fb484f8d9dd07972352569977ffa513aad43c
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51516
-AND Item_ID = 15)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=51516
 AND Item_ID = 15
-AND Item_Quantity = 2
+AND Item_Quantity = 51516
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17664,7 +17374,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51516
 AND Item_ID = 15
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17685,7 +17395,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51516
 AND Item_ID = 1
-AND Item_Quantity < 3
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17706,7 +17416,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51856
 AND Item_ID = 4
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17727,7 +17437,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51856
 AND Item_ID = 15
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17748,7 +17458,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51264
 AND Item_ID = 17
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17769,7 +17479,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51465
 AND Item_ID = 25
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17790,20 +17500,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52185
 AND Item_ID = 24
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 87ee8cf721c76d5ec286dfc3c09380ad261c8176
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52185
-AND Item_ID = 19)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=52185
 AND Item_ID = 19
-AND Item_Quantity = 10
+AND Item_Quantity = 52185
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17811,7 +17517,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52185
 AND Item_ID = 19
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17832,7 +17538,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50355
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17853,20 +17559,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50579
 AND Item_ID = 20
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 60b83bba32b9522ef71ff0152e9d26b22fcd75f6
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51946
-AND Item_ID = 12)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51946
 AND Item_ID = 12
-AND Item_Quantity = 8
+AND Item_Quantity = 51946
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17874,7 +17576,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51946
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17895,7 +17597,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51946
 AND Item_ID = 8
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17916,7 +17618,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52416
 AND Item_ID = 7
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17937,7 +17639,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52416
 AND Item_ID = 1
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17958,7 +17660,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50433
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -17979,7 +17681,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50613
 AND Item_ID = 9
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18000,7 +17702,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51474
 AND Item_ID = 10
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18021,7 +17723,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52441
 AND Item_ID = 6
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18042,20 +17744,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52441
 AND Item_ID = 1
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 17af8329f7baff73bda30bd5bcbacb26c9636442
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51027
-AND Item_ID = 24)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51027
 AND Item_ID = 24
-AND Item_Quantity = 8
+AND Item_Quantity = 51027
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18063,7 +17761,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51027
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18084,7 +17782,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50536
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18105,7 +17803,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50536
 AND Item_ID = 10
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18126,7 +17824,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50536
 AND Item_ID = 6
-AND Item_Quantity < 5
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18147,7 +17845,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50870
 AND Item_ID = 23
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18168,7 +17866,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50215
 AND Item_ID = 30
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18189,7 +17887,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50720
 AND Item_ID = 12
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18210,7 +17908,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50577
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18231,7 +17929,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50577
 AND Item_ID = 22
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18252,7 +17950,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51200
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18273,7 +17971,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51977
 AND Item_ID = 13
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18294,7 +17992,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50080
 AND Item_ID = 5
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18315,7 +18013,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51066
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18336,7 +18034,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51269
 AND Item_ID = 19
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18357,7 +18055,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51269
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18378,7 +18076,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50434
 AND Item_ID = 26
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18399,7 +18097,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50434
 AND Item_ID = 22
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18420,7 +18118,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50434
 AND Item_ID = 15
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18441,7 +18139,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51902
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18462,7 +18160,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50362
 AND Item_ID = 3
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18483,20 +18181,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50484
 AND Item_ID = 1
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 28e7f6f104802cdef9153035a7921eaee6b00ea7
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51376
-AND Item_ID = 4)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=51376
 AND Item_ID = 4
-AND Item_Quantity = 3
+AND Item_Quantity = 51376
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18504,7 +18198,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51376
 AND Item_ID = 4
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18525,7 +18219,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52500
 AND Item_ID = 21
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18546,7 +18240,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52500
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18567,7 +18261,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50226
 AND Item_ID = 21
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18588,7 +18282,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50278
 AND Item_ID = 8
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18609,7 +18303,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52175
 AND Item_ID = 10
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18630,7 +18324,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51747
 AND Item_ID = 30
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18651,7 +18345,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52327
 AND Item_ID = 25
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18672,7 +18366,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51502
 AND Item_ID = 12
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18693,7 +18387,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51646
 AND Item_ID = 27
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18714,7 +18408,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52060
 AND Item_ID = 18
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18735,7 +18429,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52105
 AND Item_ID = 10
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18756,7 +18450,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52200
 AND Item_ID = 25
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18777,7 +18471,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52298
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18798,7 +18492,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52380
 AND Item_ID = 1
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18819,7 +18513,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50090
 AND Item_ID = 25
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18840,7 +18534,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50763
 AND Item_ID = 29
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18861,7 +18555,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50763
 AND Item_ID = 11
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18882,7 +18576,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50763
 AND Item_ID = 9
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18903,7 +18597,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51914
 AND Item_ID = 1
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18924,7 +18618,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50429
 AND Item_ID = 24
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18945,7 +18639,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50429
 AND Item_ID = 14
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18966,7 +18660,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51672
 AND Item_ID = 10
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -18987,7 +18681,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50141
 AND Item_ID = 1
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19008,7 +18702,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50144
 AND Item_ID = 3
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19029,7 +18723,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50144
 AND Item_ID = 25
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19050,7 +18744,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50403
 AND Item_ID = 5
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19071,7 +18765,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50800
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19092,7 +18786,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51782
 AND Item_ID = 1
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19113,7 +18807,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51782
 AND Item_ID = 28
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19134,7 +18828,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51890
 AND Item_ID = 29
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19155,7 +18849,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51890
 AND Item_ID = 5
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19176,7 +18870,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50633
 AND Item_ID = 26
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19197,7 +18891,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51197
 AND Item_ID = 1
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19218,7 +18912,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51197
 AND Item_ID = 20
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19239,7 +18933,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52099
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19260,7 +18954,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52232
 AND Item_ID = 15
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19281,7 +18975,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50927
 AND Item_ID = 22
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19302,7 +18996,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51525
 AND Item_ID = 25
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19323,7 +19017,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50502
 AND Item_ID = 18
-AND Item_Quantity < 3
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19344,7 +19038,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50926
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19365,7 +19059,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52313
 AND Item_ID = 15
-AND Item_Quantity < 7
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19386,7 +19080,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51146
 AND Item_ID = 15
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19407,7 +19101,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50811
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19428,7 +19122,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50819
 AND Item_ID = 23
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19449,7 +19143,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51634
 AND Item_ID = 24
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19470,7 +19164,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51634
 AND Item_ID = 17
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19491,7 +19185,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51637
 AND Item_ID = 26
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19512,7 +19206,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50185
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19533,7 +19227,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50185
 AND Item_ID = 30
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19554,7 +19248,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50437
 AND Item_ID = 30
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19575,7 +19269,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50441
 AND Item_ID = 20
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19596,7 +19290,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51097
 AND Item_ID = 8
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19617,7 +19311,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51364
 AND Item_ID = 20
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19638,7 +19332,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51364
 AND Item_ID = 18
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19659,7 +19353,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51440
 AND Item_ID = 16
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19680,7 +19374,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50851
 AND Item_ID = 21
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19701,7 +19395,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51613
 AND Item_ID = 8
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19722,7 +19416,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51822
 AND Item_ID = 16
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19743,7 +19437,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50296
 AND Item_ID = 7
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19764,7 +19458,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51224
 AND Item_ID = 9
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19785,7 +19479,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52128
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19806,7 +19500,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50891
 AND Item_ID = 13
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19827,7 +19521,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50891
 AND Item_ID = 21
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19848,7 +19542,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51106
 AND Item_ID = 25
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19869,7 +19563,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51685
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19890,20 +19584,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51685
 AND Item_ID = 5
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 66e02e84e1a7ed2dddcbfc63f6b42822ac340ea0
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52390
-AND Item_ID = 1)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=52390
 AND Item_ID = 1
-AND Item_Quantity = 5
+AND Item_Quantity = 52390
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19911,7 +19601,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52390
 AND Item_ID = 1
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19932,7 +19622,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52390
 AND Item_ID = 29
-AND Item_Quantity < 9
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19953,7 +19643,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50924
 AND Item_ID = 17
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19974,7 +19664,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51426
 AND Item_ID = 6
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -19995,7 +19685,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51441
 AND Item_ID = 12
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20016,7 +19706,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52005
 AND Item_ID = 22
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20037,7 +19727,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50450
 AND Item_ID = 15
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20058,7 +19748,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52225
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20079,7 +19769,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50557
 AND Item_ID = 20
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20100,7 +19790,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50557
 AND Item_ID = 13
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20121,7 +19811,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51079
 AND Item_ID = 9
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20142,7 +19832,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50305
 AND Item_ID = 1
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20163,7 +19853,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51071
 AND Item_ID = 20
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20184,7 +19874,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51604
 AND Item_ID = 11
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20205,7 +19895,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52183
 AND Item_ID = 4
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20226,7 +19916,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52243
 AND Item_ID = 7
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20247,7 +19937,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50530
 AND Item_ID = 14
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20268,7 +19958,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52134
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20289,7 +19979,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52454
 AND Item_ID = 30
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20310,20 +20000,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52454
 AND Item_ID = 29
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 5ac49d7b594c3e3f772e2f71f5c36fc8ddc86e30
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50976
-AND Item_ID = 26)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=50976
 AND Item_ID = 26
-AND Item_Quantity = 1
+AND Item_Quantity = 50976
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20331,7 +20017,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50976
 AND Item_ID = 26
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20352,7 +20038,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50976
 AND Item_ID = 6
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20373,7 +20059,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51207
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20394,7 +20080,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51670
 AND Item_ID = 11
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20415,7 +20101,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51670
 AND Item_ID = 30
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20436,7 +20122,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52077
 AND Item_ID = 19
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20457,7 +20143,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50756
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20478,20 +20164,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51464
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 40eadc0ebcdebdc168db2227998ef9827eab452d
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50643
-AND Item_ID = 12)
+SET [Item_Quantity]=12
 WHERE Reciept_Id=50643
 AND Item_ID = 12
-AND Item_Quantity = 6
+AND Item_Quantity = 50643
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20499,7 +20181,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50643
 AND Item_ID = 12
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20520,7 +20202,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50643
 AND Item_ID = 5
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20541,7 +20223,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50624
 AND Item_ID = 14
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20562,7 +20244,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50743
 AND Item_ID = 7
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20583,7 +20265,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50743
 AND Item_ID = 16
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20604,7 +20286,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50743
 AND Item_ID = 23
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20625,7 +20307,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52019
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20646,7 +20328,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52294
 AND Item_ID = 17
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20667,7 +20349,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52294
 AND Item_ID = 1
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20688,7 +20370,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50266
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20709,7 +20391,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50667
 AND Item_ID = 4
-AND Item_Quantity < 1
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20730,7 +20412,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50088
 AND Item_ID = 4
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20751,7 +20433,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50230
 AND Item_ID = 26
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20772,20 +20454,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50700
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: c328f0d489ade23a8f5e5ac7a7554bc533d0fae8
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52469
-AND Item_ID = 9)
+SET [Item_Quantity]=4
 WHERE Reciept_Id=52469
 AND Item_ID = 9
-AND Item_Quantity = 2
+AND Item_Quantity = 52469
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20793,7 +20471,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52469
 AND Item_ID = 9
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20814,7 +20492,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52469
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20835,7 +20513,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52299
 AND Item_ID = 30
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20856,7 +20534,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52299
 AND Item_ID = 17
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20877,7 +20555,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50716
 AND Item_ID = 30
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20898,7 +20576,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50716
 AND Item_ID = 4
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20919,7 +20597,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51382
 AND Item_ID = 14
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20940,7 +20618,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51774
 AND Item_ID = 10
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20961,7 +20639,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50060
 AND Item_ID = 15
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -20982,7 +20660,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50112
 AND Item_ID = 29
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21003,7 +20681,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51479
 AND Item_ID = 2
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21024,7 +20702,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51587
 AND Item_ID = 3
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21045,7 +20723,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51587
 AND Item_ID = 15
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21066,7 +20744,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51938
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21087,7 +20765,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52374
 AND Item_ID = 7
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21108,7 +20786,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52409
 AND Item_ID = 9
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21129,7 +20807,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50432
 AND Item_ID = 8
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21150,7 +20828,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51169
 AND Item_ID = 20
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21171,7 +20849,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51927
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21192,7 +20870,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51804
 AND Item_ID = 1
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21213,7 +20891,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51891
 AND Item_ID = 13
-AND Item_Quantity < 6
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21234,7 +20912,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50593
 AND Item_ID = 1
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21255,7 +20933,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50863
 AND Item_ID = 6
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21276,7 +20954,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50580
 AND Item_ID = 26
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21297,7 +20975,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51398
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21318,7 +20996,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51961
 AND Item_ID = 12
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21339,7 +21017,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51961
 AND Item_ID = 9
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21360,7 +21038,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50252
 AND Item_ID = 21
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21381,7 +21059,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50554
 AND Item_ID = 9
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21402,7 +21080,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51667
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21423,7 +21101,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51490
 AND Item_ID = 1
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21444,7 +21122,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50029
 AND Item_ID = 4
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21465,20 +21143,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50037
 AND Item_ID = 15
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 31e998143f5ce7b98316902b06235651f04af649
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50073
-AND Item_ID = 23)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=50073
 AND Item_ID = 23
-AND Item_Quantity = 9
+AND Item_Quantity = 50073
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21486,7 +21160,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50073
 AND Item_ID = 23
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21507,7 +21181,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50076
 AND Item_ID = 9
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21528,7 +21202,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50444
 AND Item_ID = 16
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21549,7 +21223,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50681
 AND Item_ID = 12
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21570,7 +21244,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51682
 AND Item_ID = 4
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21591,7 +21265,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50574
 AND Item_ID = 28
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21612,7 +21286,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50574
 AND Item_ID = 14
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21633,20 +21307,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50822
 AND Item_ID = 9
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: ad4ddb4047de56e7926ed01d05c84d01b602460f
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51067
-AND Item_ID = 17)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=51067
 AND Item_ID = 17
-AND Item_Quantity = 3
+AND Item_Quantity = 51067
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21654,7 +21324,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51067
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21675,7 +21345,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51067
 AND Item_ID = 27
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21696,7 +21366,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51214
 AND Item_ID = 22
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21717,7 +21387,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51615
 AND Item_ID = 20
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21738,7 +21408,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51192
 AND Item_ID = 6
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21759,7 +21429,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51286
 AND Item_ID = 24
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21780,20 +21450,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50041
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 775871f1b8ab91f99cb64351f401a91c61742f5d
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51125
-AND Item_ID = 26)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=51125
 AND Item_ID = 26
-AND Item_Quantity = 5
+AND Item_Quantity = 51125
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21801,7 +21467,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51125
 AND Item_ID = 26
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21822,7 +21488,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51383
 AND Item_ID = 9
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21843,7 +21509,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51543
 AND Item_ID = 15
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21864,7 +21530,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51543
 AND Item_ID = 21
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21885,7 +21551,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51543
 AND Item_ID = 17
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21906,7 +21572,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51979
 AND Item_ID = 19
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21927,7 +21593,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50218
 AND Item_ID = 6
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21948,20 +21614,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50975
 AND Item_ID = 12
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 30c133dc2a5721db07032aabad52e802405b86f9
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51000
-AND Item_ID = 3)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=51000
 AND Item_ID = 3
-AND Item_Quantity = 7
+AND Item_Quantity = 51000
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21969,7 +21631,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51000
 AND Item_ID = 3
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -21990,7 +21652,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51000
 AND Item_ID = 30
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22011,7 +21673,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51395
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22032,7 +21694,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51395
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22053,7 +21715,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51707
 AND Item_ID = 9
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22074,7 +21736,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50486
 AND Item_ID = 30
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22095,7 +21757,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50486
 AND Item_ID = 11
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22116,7 +21778,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50820
 AND Item_ID = 26
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22137,7 +21799,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51982
 AND Item_ID = 5
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22158,7 +21820,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52283
 AND Item_ID = 21
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22179,7 +21841,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52490
 AND Item_ID = 23
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22200,20 +21862,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50058
 AND Item_ID = 4
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e03a2b9dd818687ba41f10d06e37314a2f843c78
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50063
-AND Item_ID = 14)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=50063
 AND Item_ID = 14
-AND Item_Quantity = 8
+AND Item_Quantity = 50063
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22221,7 +21879,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50063
 AND Item_ID = 14
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22242,7 +21900,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50063
 AND Item_ID = 28
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22263,7 +21921,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51504
 AND Item_ID = 28
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22284,7 +21942,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51900
 AND Item_ID = 24
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22305,7 +21963,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50482
 AND Item_ID = 2
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22326,7 +21984,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50482
 AND Item_ID = 25
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22347,7 +22005,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51247
 AND Item_ID = 23
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22368,7 +22026,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51022
 AND Item_ID = 1
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22389,7 +22047,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51258
 AND Item_ID = 5
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22410,7 +22068,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51298
 AND Item_ID = 21
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22431,20 +22089,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51824
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: c2c66ff9c412908a1e2eb6d49cba48dc4abf2da1
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50606
-AND Item_ID = 4)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=50606
 AND Item_ID = 4
-AND Item_Quantity = 7
+AND Item_Quantity = 50606
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22452,7 +22106,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50606
 AND Item_ID = 4
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22473,20 +22127,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50847
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 63c85559ec38c573b2a1d7eff0c4f3302aea774d
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50847
-AND Item_ID = 7)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=50847
 AND Item_ID = 7
-AND Item_Quantity = 4
+AND Item_Quantity = 50847
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22494,7 +22144,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50847
 AND Item_ID = 7
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22515,7 +22165,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50401
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22536,7 +22186,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50520
 AND Item_ID = 2
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22557,7 +22207,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50520
 AND Item_ID = 28
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22578,7 +22228,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50728
 AND Item_ID = 21
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22599,7 +22249,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50728
 AND Item_ID = 16
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22620,7 +22270,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50728
 AND Item_ID = 23
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22641,7 +22291,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50894
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22662,7 +22312,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52462
 AND Item_ID = 12
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22683,7 +22333,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50072
 AND Item_ID = 16
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22704,20 +22354,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51432
 AND Item_ID = 20
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 28a85664d8717536469864d791e2c7778cfee4eb
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51432
-AND Item_ID = 18)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=51432
 AND Item_ID = 18
-AND Item_Quantity = 5
+AND Item_Quantity = 51432
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22725,7 +22371,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51432
 AND Item_ID = 18
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22746,7 +22392,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51818
 AND Item_ID = 13
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22767,7 +22413,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52240
 AND Item_ID = 15
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22788,7 +22434,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50115
 AND Item_ID = 1
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22809,7 +22455,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50234
 AND Item_ID = 16
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22830,7 +22476,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50501
 AND Item_ID = 24
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22851,7 +22497,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51765
 AND Item_ID = 19
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22872,7 +22518,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51765
 AND Item_ID = 25
-AND Item_Quantity < 3
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22893,7 +22539,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52124
 AND Item_ID = 22
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22914,7 +22560,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50885
 AND Item_ID = 8
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22935,7 +22581,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50921
 AND Item_ID = 6
-AND Item_Quantity < 2
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22956,7 +22602,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50361
 AND Item_ID = 29
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22977,7 +22623,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50569
 AND Item_ID = 16
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -22998,7 +22644,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50569
 AND Item_ID = 19
-AND Item_Quantity < 3
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23019,7 +22665,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51348
 AND Item_ID = 22
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23040,7 +22686,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51601
 AND Item_ID = 29
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23061,20 +22707,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52465
 AND Item_ID = 7
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: c28b0ceb2f779fd2f1d464c8d4f8028e38988c66
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50366
-AND Item_ID = 4)
+SET [Item_Quantity]=6
 WHERE Reciept_Id=50366
 AND Item_ID = 4
-AND Item_Quantity = 3
+AND Item_Quantity = 50366
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23082,7 +22724,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50366
 AND Item_ID = 4
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23103,7 +22745,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51611
 AND Item_ID = 2
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23124,7 +22766,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51629
 AND Item_ID = 16
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23145,7 +22787,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51888
 AND Item_ID = 28
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23166,7 +22808,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52165
 AND Item_ID = 13
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23187,7 +22829,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51301
 AND Item_ID = 2
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23208,7 +22850,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51139
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23229,7 +22871,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51213
 AND Item_ID = 10
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23250,7 +22892,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51213
 AND Item_ID = 14
-AND Item_Quantity < 2
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23271,7 +22913,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50814
 AND Item_ID = 4
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23292,7 +22934,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51387
 AND Item_ID = 2
-AND Item_Quantity < 1
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23313,20 +22955,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51512
 AND Item_ID = 12
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: be6645e1f3436f9eb342e505f460f192ac917434
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51889
-AND Item_ID = 21)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=51889
 AND Item_ID = 21
-AND Item_Quantity = 7
+AND Item_Quantity = 51889
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23334,7 +22972,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51889
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23355,7 +22993,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51104
 AND Item_ID = 5
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23376,7 +23014,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51104
 AND Item_ID = 23
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23397,7 +23035,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52295
 AND Item_ID = 27
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23418,7 +23056,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50795
 AND Item_ID = 8
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23439,7 +23077,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50795
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23460,7 +23098,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51145
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23481,7 +23119,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52461
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23502,20 +23140,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52461
 AND Item_ID = 4
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: b9419d5900793f27afd6900b92e9e61749804264
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50126
-AND Item_ID = 26)
+SET [Item_Quantity]=10
 WHERE Reciept_Id=50126
 AND Item_ID = 26
-AND Item_Quantity = 5
+AND Item_Quantity = 50126
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23523,7 +23157,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50126
 AND Item_ID = 26
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23544,7 +23178,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50174
 AND Item_ID = 16
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23565,7 +23199,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51308
 AND Item_ID = 10
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23586,7 +23220,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51308
 AND Item_ID = 7
-AND Item_Quantity < 2
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23607,7 +23241,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50531
 AND Item_ID = 18
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23628,7 +23262,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50531
 AND Item_ID = 30
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23649,7 +23283,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50531
 AND Item_ID = 1
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23670,7 +23304,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51159
 AND Item_ID = 16
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23691,7 +23325,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51159
 AND Item_ID = 23
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23712,7 +23346,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50163
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23733,7 +23367,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51619
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23754,7 +23388,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51714
 AND Item_ID = 24
-AND Item_Quantity < 6
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23775,7 +23409,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50745
 AND Item_ID = 18
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23796,7 +23430,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50745
 AND Item_ID = 10
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23817,7 +23451,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51371
 AND Item_ID = 22
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23838,20 +23472,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52074
 AND Item_ID = 10
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 179144e78852ccb8d3e535d63f9da0c90d73cc47
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52074
-AND Item_ID = 9)
+SET [Item_Quantity]=20
 WHERE Reciept_Id=52074
 AND Item_ID = 9
-AND Item_Quantity = 10
+AND Item_Quantity = 52074
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23859,7 +23489,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52074
 AND Item_ID = 9
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23880,7 +23510,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51548
 AND Item_ID = 30
-AND Item_Quantity < 5
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23901,7 +23531,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52494
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23922,7 +23552,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52494
 AND Item_ID = 18
-AND Item_Quantity < 3
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23943,7 +23573,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50545
 AND Item_ID = 25
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23964,7 +23594,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52443
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -23985,20 +23615,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50127
 AND Item_ID = 13
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 746831ceac8eeda4ebf04449b655a2da13da5c5f
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50436
-AND Item_ID = 12)
+SET [Item_Quantity]=8
 WHERE Reciept_Id=50436
 AND Item_ID = 12
-AND Item_Quantity = 4
+AND Item_Quantity = 50436
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24006,7 +23632,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50436
 AND Item_ID = 12
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24027,20 +23653,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51808
 AND Item_ID = 7
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 7994310f680b7359b1d5bd58af4b79f82d73f091
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51867
-AND Item_ID = 26)
+SET [Item_Quantity]=2
 WHERE Reciept_Id=51867
 AND Item_ID = 26
-AND Item_Quantity = 1
+AND Item_Quantity = 51867
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24048,7 +23670,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51867
 AND Item_ID = 26
-AND Item_Quantity < 1
+AND Item_Quantity <= 1
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24069,7 +23691,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50534
 AND Item_ID = 6
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24090,7 +23712,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50534
 AND Item_ID = 30
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24111,7 +23733,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50480
 AND Item_ID = 8
-AND Item_Quantity < 6
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24132,7 +23754,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51279
 AND Item_ID = 21
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24153,7 +23775,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52001
 AND Item_ID = 9
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24174,7 +23796,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50981
 AND Item_ID = 13
-AND Item_Quantity < 2
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24195,7 +23817,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50981
 AND Item_ID = 6
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24216,7 +23838,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51614
 AND Item_ID = 3
-AND Item_Quantity < 5
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24237,7 +23859,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51311
 AND Item_ID = 22
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24258,7 +23880,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51311
 AND Item_ID = 13
-AND Item_Quantity < 2
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24279,7 +23901,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50439
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24300,7 +23922,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51586
 AND Item_ID = 25
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24321,7 +23943,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51632
 AND Item_ID = 13
-AND Item_Quantity < 1
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24342,20 +23964,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51786
 AND Item_ID = 30
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 8e920184ef98b0b287a22eb211480523ad89f37a
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51640
-AND Item_ID = 19)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=51640
 AND Item_ID = 19
-AND Item_Quantity = 9
+AND Item_Quantity = 51640
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24363,7 +23981,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51640
 AND Item_ID = 19
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24384,7 +24002,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51834
 AND Item_ID = 24
-AND Item_Quantity < 1
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24405,7 +24023,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50537
 AND Item_ID = 24
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24426,7 +24044,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51792
 AND Item_ID = 10
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24447,7 +24065,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52008
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24468,7 +24086,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52101
 AND Item_ID = 19
-AND Item_Quantity < 2
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24489,7 +24107,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52101
 AND Item_ID = 16
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24510,7 +24128,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52129
 AND Item_ID = 22
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24531,7 +24149,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51033
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24552,7 +24170,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51349
 AND Item_ID = 1
-AND Item_Quantity < 4
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24573,7 +24191,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51877
 AND Item_ID = 7
-AND Item_Quantity < 1
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24594,20 +24212,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52423
 AND Item_ID = 20
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: e8012b96729f11d8350df5862b4f2e8d64a4bbf5
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50651
-AND Item_ID = 22)
+SET [Item_Quantity]=18
 WHERE Reciept_Id=50651
 AND Item_ID = 22
-AND Item_Quantity = 9
+AND Item_Quantity = 50651
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24615,7 +24229,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50651
 AND Item_ID = 22
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24636,7 +24250,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50682
 AND Item_ID = 11
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24657,7 +24271,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50948
 AND Item_ID = 15
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24678,7 +24292,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51252
 AND Item_ID = 28
-AND Item_Quantity < 4
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24699,7 +24313,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51557
 AND Item_ID = 28
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24720,7 +24334,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51665
 AND Item_ID = 26
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24741,7 +24355,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51665
 AND Item_ID = 3
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24762,7 +24376,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51062
 AND Item_ID = 11
-AND Item_Quantity < 7
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24783,7 +24397,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51654
 AND Item_ID = 19
-AND Item_Quantity < 1
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24804,7 +24418,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51654
 AND Item_ID = 3
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24825,7 +24439,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51772
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24846,7 +24460,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51866
 AND Item_ID = 27
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24867,7 +24481,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50052
 AND Item_ID = 21
-AND Item_Quantity < 2
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24888,7 +24502,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52085
 AND Item_ID = 2
-AND Item_Quantity < 8
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24909,7 +24523,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50564
 AND Item_ID = 15
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24930,7 +24544,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50271
 AND Item_ID = 16
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24951,7 +24565,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50271
 AND Item_ID = 10
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24972,7 +24586,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50376
 AND Item_ID = 10
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -24993,7 +24607,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50446
 AND Item_ID = 20
-AND Item_Quantity < 8
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25014,7 +24628,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50748
 AND Item_ID = 25
-AND Item_Quantity < 1
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25035,7 +24649,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51473
 AND Item_ID = 17
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25056,7 +24670,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52333
 AND Item_ID = 9
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25077,7 +24691,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50304
 AND Item_ID = 15
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25098,7 +24712,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50935
 AND Item_ID = 7
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25119,7 +24733,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52146
 AND Item_ID = 29
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25140,7 +24754,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52146
 AND Item_ID = 9
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25161,7 +24775,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50165
 AND Item_ID = 15
-AND Item_Quantity < 2
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25182,7 +24796,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50533
 AND Item_ID = 15
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25203,7 +24817,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51318
 AND Item_ID = 11
-AND Item_Quantity < 5
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25224,7 +24838,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51475
 AND Item_ID = 5
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25245,7 +24859,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50507
 AND Item_ID = 2
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25266,7 +24880,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50838
 AND Item_ID = 9
-AND Item_Quantity < 3
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25287,7 +24901,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51089
 AND Item_ID = 13
-AND Item_Quantity < 6
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25308,7 +24922,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51089
 AND Item_ID = 1
-AND Item_Quantity < 2
+AND Item_Quantity <= 2
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25329,7 +24943,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51496
 AND Item_ID = 22
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25350,7 +24964,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52378
 AND Item_ID = 3
-AND Item_Quantity < 10
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25371,7 +24985,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52378
 AND Item_ID = 20
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25392,7 +25006,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52378
 AND Item_ID = 26
-AND Item_Quantity < 7
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25413,7 +25027,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50868
 AND Item_ID = 7
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25434,7 +25048,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50868
 AND Item_ID = 26
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25455,7 +25069,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50222
 AND Item_ID = 3
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25476,7 +25090,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51194
 AND Item_ID = 19
-AND Item_Quantity < 4
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25497,7 +25111,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52315
 AND Item_ID = 27
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25518,20 +25132,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52394
 AND Item_ID = 14
-AND Item_Quantity < 5
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: d093f0e622f566ccd1b372209eb7fb099077dcf6
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51052
-AND Item_ID = 26)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51052
 AND Item_ID = 26
-AND Item_Quantity = 8
+AND Item_Quantity = 51052
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25539,7 +25149,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51052
 AND Item_ID = 26
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25560,20 +25170,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51754
 AND Item_ID = 29
-AND Item_Quantity < 1
+AND Item_Quantity <= 4
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 09103e3238aaa43afbe1a3e00e409b68c403bcec
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51045
-AND Item_ID = 19)
+SET [Item_Quantity]=16
 WHERE Reciept_Id=51045
 AND Item_ID = 19
-AND Item_Quantity = 8
+AND Item_Quantity = 51045
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25581,7 +25187,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51045
 AND Item_ID = 19
-AND Item_Quantity < 8
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25602,7 +25208,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52198
 AND Item_ID = 24
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25623,20 +25229,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51126
 AND Item_ID = 12
-AND Item_Quantity < 1
+AND Item_Quantity <= 8
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: 75a0cf9ea671974fcc9632aeec424eb64c6084fc
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=50625
-AND Item_ID = 8)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=50625
 AND Item_ID = 8
-AND Item_Quantity = 7
+AND Item_Quantity = 50625
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25644,7 +25246,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50625
 AND Item_ID = 8
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25665,7 +25267,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50625
 AND Item_ID = 26
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25686,7 +25288,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50730
 AND Item_ID = 19
-AND Item_Quantity < 6
+AND Item_Quantity <= 10
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25707,7 +25309,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51240
 AND Item_ID = 17
-AND Item_Quantity < 4
+AND Item_Quantity <= 6
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25728,7 +25330,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51677
 AND Item_ID = 22
-AND Item_Quantity < 4
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25749,7 +25351,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50329
 AND Item_ID = 13
-AND Item_Quantity < 5
+AND Item_Quantity <= 5
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25770,7 +25372,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50329
 AND Item_ID = 8
-AND Item_Quantity < 3
+AND Item_Quantity <= 3
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25791,7 +25393,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=50519
 AND Item_ID = 12
-AND Item_Quantity < 3
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25812,7 +25414,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51237
 AND Item_ID = 17
-AND Item_Quantity < 9
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25833,20 +25435,16 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51237
 AND Item_ID = 29
-AND Item_Quantity < 4
+AND Item_Quantity <= 9
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
 -- Resolved error identified by UUID: fe35e385d227afd63a09fec0b962623922be6535
 UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=51018
-AND Item_ID = 6)
+SET [Item_Quantity]=14
 WHERE Reciept_Id=51018
 AND Item_ID = 6
-AND Item_Quantity = 7
+AND Item_Quantity = 51018
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25854,7 +25452,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=51018
 AND Item_ID = 6
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Auto-generated query to fix error of type: Item.Id Duplicate
@@ -25875,427 +25473,7 @@ GO
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id=52135
 AND Item_ID = 29
-AND Item_Quantity < 4
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: fb86ba41b3246f59c4c125b13b6341b6b0a707b6
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52136
-AND Item_ID = 14)
-WHERE Reciept_Id=52136
-AND Item_ID = 14
-AND Item_Quantity = 8
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: fb86ba41b3246f59c4c125b13b6341b6b0a707b6
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52136
-AND Item_ID = 14
-AND Item_Quantity < 8
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 8634cd30166c4cfb2788d2f4c9c37967587cb905
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52136
-AND Item_ID = 25)
-WHERE Reciept_Id=52136
-AND Item_ID = 25
-AND Item_Quantity = 4
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 8634cd30166c4cfb2788d2f4c9c37967587cb905
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52136
-AND Item_ID = 25
-AND Item_Quantity < 4
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 3721a0cae7d82745ae43c4bb61332c73799bc9b6
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52137
-AND Item_ID = 15)
-WHERE Reciept_Id=52137
-AND Item_ID = 15
-AND Item_Quantity = 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 3721a0cae7d82745ae43c4bb61332c73799bc9b6
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52137
-AND Item_ID = 15
-AND Item_Quantity < 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a73243f9bde1d0e277b67e965f6f48ae45f8d67a
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52138
-AND Item_ID = 15)
-WHERE Reciept_Id=52138
-AND Item_ID = 15
-AND Item_Quantity = 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a73243f9bde1d0e277b67e965f6f48ae45f8d67a
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52138
-AND Item_ID = 15
-AND Item_Quantity < 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: ca360dc7f61fb58c9f6221c5f8f1a8129aadac32
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52140
-AND Item_ID = 23)
-WHERE Reciept_Id=52140
-AND Item_ID = 23
-AND Item_Quantity = 8
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: ca360dc7f61fb58c9f6221c5f8f1a8129aadac32
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52140
-AND Item_ID = 23
-AND Item_Quantity < 8
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 8a1544a0cea57150a02749c734a6d64bcab96765
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52141
-AND Item_ID = 6)
-WHERE Reciept_Id=52141
-AND Item_ID = 6
-AND Item_Quantity = 2
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 8a1544a0cea57150a02749c734a6d64bcab96765
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52141
-AND Item_ID = 6
-AND Item_Quantity < 2
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: d09b155ed1ba8ed201609cbcadc0b66390bef169
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52141
-AND Item_ID = 14)
-WHERE Reciept_Id=52141
-AND Item_ID = 14
-AND Item_Quantity = 2
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: d09b155ed1ba8ed201609cbcadc0b66390bef169
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52141
-AND Item_ID = 14
-AND Item_Quantity < 2
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: d903a5e5ebd2a428e1d12bb4908fff5572b92019
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52142
-AND Item_ID = 26)
-WHERE Reciept_Id=52142
-AND Item_ID = 26
-AND Item_Quantity = 8
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: d903a5e5ebd2a428e1d12bb4908fff5572b92019
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52142
-AND Item_ID = 26
-AND Item_Quantity < 8
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 2efa888dc36e072c842b0d06c68550ac5c6e13e2
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52144
-AND Item_ID = 29)
-WHERE Reciept_Id=52144
-AND Item_ID = 29
-AND Item_Quantity = 4
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 2efa888dc36e072c842b0d06c68550ac5c6e13e2
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52144
-AND Item_ID = 29
-AND Item_Quantity < 4
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: bdac40591a02d832e86510b5cc1aa6e85ebd863f
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52147
-AND Item_ID = 25)
-WHERE Reciept_Id=52147
-AND Item_ID = 25
-AND Item_Quantity = 6
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: bdac40591a02d832e86510b5cc1aa6e85ebd863f
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52147
-AND Item_ID = 25
-AND Item_Quantity < 6
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: ababc5b2d4d262efd34bb50390bacac7a59364b4
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52147
-AND Item_ID = 12)
-WHERE Reciept_Id=52147
-AND Item_ID = 12
-AND Item_Quantity = 5
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: ababc5b2d4d262efd34bb50390bacac7a59364b4
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52147
-AND Item_ID = 12
-AND Item_Quantity < 5
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a4a47fd44b8a1858ed35a97e0e02f0b392c689e7
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52147
-AND Item_ID = 22)
-WHERE Reciept_Id=52147
-AND Item_ID = 22
-AND Item_Quantity = 10
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a4a47fd44b8a1858ed35a97e0e02f0b392c689e7
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52147
-AND Item_ID = 22
-AND Item_Quantity < 10
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 871369a7a6c4e63257f5411b073d260f925188c9
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52148
-AND Item_ID = 4)
-WHERE Reciept_Id=52148
-AND Item_ID = 4
-AND Item_Quantity = 1
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 871369a7a6c4e63257f5411b073d260f925188c9
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52148
-AND Item_ID = 4
-AND Item_Quantity < 1
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 9ea6d94ee378e53f1716b0462e97467d59275368
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52148
-AND Item_ID = 25)
-WHERE Reciept_Id=52148
-AND Item_ID = 25
-AND Item_Quantity = 6
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 9ea6d94ee378e53f1716b0462e97467d59275368
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52148
-AND Item_ID = 25
-AND Item_Quantity < 6
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: de8fd4a78f64be725c62b82160e5b67a3be00d73
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52150
-AND Item_ID = 26)
-WHERE Reciept_Id=52150
-AND Item_ID = 26
-AND Item_Quantity = 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: de8fd4a78f64be725c62b82160e5b67a3be00d73
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52150
-AND Item_ID = 26
-AND Item_Quantity < 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a4be8998e2bfcd2a2d86afb30709c4676fbd0321
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52150
-AND Item_ID = 5)
-WHERE Reciept_Id=52150
-AND Item_ID = 5
-AND Item_Quantity = 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a4be8998e2bfcd2a2d86afb30709c4676fbd0321
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52150
-AND Item_ID = 5
-AND Item_Quantity < 9
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 04b18802191f04873221bc033684a90888fa4b2f
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52150
-AND Item_ID = 22)
-WHERE Reciept_Id=52150
-AND Item_ID = 22
-AND Item_Quantity = 6
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 04b18802191f04873221bc033684a90888fa4b2f
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52150
-AND Item_ID = 22
-AND Item_Quantity < 6
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: f1f3afc460b30febbe8b288de9315581dfdd0b2e
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52150
-AND Item_ID = 10)
-WHERE Reciept_Id=52150
-AND Item_ID = 10
-AND Item_Quantity = 1
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: f1f3afc460b30febbe8b288de9315581dfdd0b2e
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52150
-AND Item_ID = 10
-AND Item_Quantity < 1
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 40e3b5f474a43ab5b1e105e6fee639aae4f84d99
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52150
-AND Item_ID = 19)
-WHERE Reciept_Id=52150
-AND Item_ID = 19
-AND Item_Quantity = 7
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: 40e3b5f474a43ab5b1e105e6fee639aae4f84d99
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52150
-AND Item_ID = 19
-AND Item_Quantity < 7
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a72f8f3c2f8a7bc01f6e57b9e8abfcf12f6434ee
-UPDATE Assignment1Data 
-SET [Item_Quantity]=(
-SELECT SUM([Item_Quantity])
-FROM Assignment1Data
-WHERE Reciept_Id=52150
-AND Item_ID = 7)
-WHERE Reciept_Id=52150
-AND Item_ID = 7
-AND Item_Quantity = 7
-GO
-
--- Auto-generated query to fix error of type: Item.Id Duplicate
--- Resolved error identified by UUID: a72f8f3c2f8a7bc01f6e57b9e8abfcf12f6434ee
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id=52150
-AND Item_ID = 7
-AND Item_Quantity < 7
+AND Item_Quantity <= 7
 GO
 
 -- Create Receipt table from supplied data

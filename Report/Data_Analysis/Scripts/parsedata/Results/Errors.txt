@@ -6120,21 +6120,6 @@ ErrorType = Customer.Id Mismatch
 ReceiptId = 52136
 Error = Error in data row id: 52136; C32 is not the same as C13
 
-ErrorId = fb86ba41b3246f59c4c125b13b6341b6b0a707b6
-ErrorType = Item.Id Duplicate
-ReceiptId = 52136
-Error = Error in data row id: 52136; 14 is the same as 14
-
-ErrorId = 8634cd30166c4cfb2788d2f4c9c37967587cb905
-ErrorType = Item.Id Duplicate
-ReceiptId = 52136
-Error = Error in data row id: 52136; 25 is the same as 25
-
-ErrorId = 3721a0cae7d82745ae43c4bb61332c73799bc9b6
-ErrorType = Item.Id Duplicate
-ReceiptId = 52137
-Error = Error in data row id: 52137; 15 is the same as 15
-
 ErrorId = 7d3e70ee6ef8209d1db122d4fceb373e47aa1f8d
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52137
@@ -6154,11 +6139,6 @@ ErrorId = 5d4cf4160eff2d7c458fb87dab1b13c7e91bd132
 ErrorType = Customer.Id Mismatch
 ReceiptId = 52138
 Error = Error in data row id: 52138; C30 is not the same as C29
-
-ErrorId = a73243f9bde1d0e277b67e965f6f48ae45f8d67a
-ErrorType = Item.Id Duplicate
-ReceiptId = 52138
-Error = Error in data row id: 52138; 15 is the same as 15
 
 ErrorId = 82ad9513d5ecca56781792616c984ec9c8be5ea6
 ErrorType = Staff.Id Mismatch
@@ -6180,16 +6160,6 @@ ErrorType = Customer.Id Mismatch
 ReceiptId = 52140
 Error = Error in data row id: 52140; C52 is not the same as C38
 
-ErrorId = ca360dc7f61fb58c9f6221c5f8f1a8129aadac32
-ErrorType = Item.Id Duplicate
-ReceiptId = 52140
-Error = Error in data row id: 52140; 23 is the same as 23
-
-ErrorId = 8a1544a0cea57150a02749c734a6d64bcab96765
-ErrorType = Item.Id Duplicate
-ReceiptId = 52141
-Error = Error in data row id: 52141; 6 is the same as 6
-
 ErrorId = 6adb3e46388368db3dd98d5f2557ed6a7947b39a
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52141
@@ -6199,16 +6169,6 @@ ErrorId = c0ccb5b02f7eb6ca729eba492faed98711a9c23e
 ErrorType = Customer.Id Mismatch
 ReceiptId = 52141
 Error = Error in data row id: 52141; C24 is not the same as C42
-
-ErrorId = d09b155ed1ba8ed201609cbcadc0b66390bef169
-ErrorType = Item.Id Duplicate
-ReceiptId = 52141
-Error = Error in data row id: 52141; 14 is the same as 14
-
-ErrorId = d903a5e5ebd2a428e1d12bb4908fff5572b92019
-ErrorType = Item.Id Duplicate
-ReceiptId = 52142
-Error = Error in data row id: 52142; 26 is the same as 26
 
 ErrorId = 42c42e141d1c95ccaaf09b48e51706584f0c494b
 ErrorType = Staff.Id Mismatch
@@ -6240,11 +6200,6 @@ ErrorType = Customer.Id Mismatch
 ReceiptId = 52144
 Error = Error in data row id: 52144; C50 is not the same as C11
 
-ErrorId = 2efa888dc36e072c842b0d06c68550ac5c6e13e2
-ErrorType = Item.Id Duplicate
-ReceiptId = 52144
-Error = Error in data row id: 52144; 29 is the same as 29
-
 ErrorId = 1bf57bb861bae16e944a60cd2639377ab03c057a
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52145
@@ -6260,11 +6215,6 @@ ErrorType = Staff.Id Mismatch
 ReceiptId = 52146
 Error = Error in data row id: 52146; S16 is not the same as S5
 
-ErrorId = bdac40591a02d832e86510b5cc1aa6e85ebd863f
-ErrorType = Item.Id Duplicate
-ReceiptId = 52147
-Error = Error in data row id: 52147; 25 is the same as 25
-
 ErrorId = 8fa388245a23b7634caad69666133819a485eda3
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52147
@@ -6274,16 +6224,6 @@ ErrorId = 207ca0b3969dd61eacd7b9beadab2859b55dac07
 ErrorType = Customer.Id Mismatch
 ReceiptId = 52147
 Error = Error in data row id: 52147; C9 is not the same as C40
-
-ErrorId = ababc5b2d4d262efd34bb50390bacac7a59364b4
-ErrorType = Item.Id Duplicate
-ReceiptId = 52147
-Error = Error in data row id: 52147; 12 is the same as 12
-
-ErrorId = a4a47fd44b8a1858ed35a97e0e02f0b392c689e7
-ErrorType = Item.Id Duplicate
-ReceiptId = 52147
-Error = Error in data row id: 52147; 22 is the same as 22
 
 ErrorId = ac84576ce7fc2d4a07b0824bad51491c3ab9756b
 ErrorType = Staff.Id Mismatch
@@ -6295,16 +6235,6 @@ ErrorType = Customer.Id Mismatch
 ReceiptId = 52148
 Error = Error in data row id: 52148; C26 is not the same as C43
 
-ErrorId = 871369a7a6c4e63257f5411b073d260f925188c9
-ErrorType = Item.Id Duplicate
-ReceiptId = 52148
-Error = Error in data row id: 52148; 4 is the same as 4
-
-ErrorId = 9ea6d94ee378e53f1716b0462e97467d59275368
-ErrorType = Item.Id Duplicate
-ReceiptId = 52148
-Error = Error in data row id: 52148; 25 is the same as 25
-
 ErrorId = b0465a950d1d6b84198a16f393203fd25056328a
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52149
@@ -6315,11 +6245,6 @@ ErrorType = Customer.Id Mismatch
 ReceiptId = 52149
 Error = Error in data row id: 52149; C10 is not the same as C45
 
-ErrorId = de8fd4a78f64be725c62b82160e5b67a3be00d73
-ErrorType = Item.Id Duplicate
-ReceiptId = 52150
-Error = Error in data row id: 52150; 26 is the same as 26
-
 ErrorId = 0cb8d75116359eef2823ef5ffd47d8b2919a0d80
 ErrorType = Staff.Id Mismatch
 ReceiptId = 52150
@@ -6329,29 +6254,4 @@ ErrorId = 1fdeb0c3f35eb792c36811ab48750a0df042e632
 ErrorType = Customer.Id Mismatch
 ReceiptId = 52150
 Error = Error in data row id: 52150; C15 is not the same as C57
-
-ErrorId = a4be8998e2bfcd2a2d86afb30709c4676fbd0321
-ErrorType = Item.Id Duplicate
-ReceiptId = 52150
-Error = Error in data row id: 52150; 5 is the same as 5
-
-ErrorId = 04b18802191f04873221bc033684a90888fa4b2f
-ErrorType = Item.Id Duplicate
-ReceiptId = 52150
-Error = Error in data row id: 52150; 22 is the same as 22
-
-ErrorId = f1f3afc460b30febbe8b288de9315581dfdd0b2e
-ErrorType = Item.Id Duplicate
-ReceiptId = 52150
-Error = Error in data row id: 52150; 10 is the same as 10
-
-ErrorId = 40e3b5f474a43ab5b1e105e6fee639aae4f84d99
-ErrorType = Item.Id Duplicate
-ReceiptId = 52150
-Error = Error in data row id: 52150; 19 is the same as 19
-
-ErrorId = a72f8f3c2f8a7bc01f6e57b9e8abfcf12f6434ee
-ErrorType = Item.Id Duplicate
-ReceiptId = 52150
-Error = Error in data row id: 52150; 7 is the same as 7
 
