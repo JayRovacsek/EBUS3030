@@ -3,8 +3,14 @@ import classes as Classes
 import os
 import sys
 import csv
+import re
 import openpyxl
 import traceback
+
+# This is courtesy of: https://stackoverflow.com/questions/1323364/in-python-how-to-check-if-a-string-only-contains-certain-characters
+# Required to determine pesky dates Peter was nice enough to put in Receipt_Id column.
+def special_match(strg, search=re.compile(r'[^a-zA-Z]').search):
+    return bool(search(strg))
 
 # Function to parse all receipts once populated and add to employee totals
 def populate_receipt_totals(sales,employees,customers,items):
@@ -78,30 +84,33 @@ def generate_results_structures():
 def parse_rows(rows,logged_errors):
     for row in rows:
         receipt_id = row[1].value
-        if receipt_id in sales.sales:
-            staff_id = row[5].value
-            customer_id = row[2].value
-            item_id = row[11].value
-            item_quantity = row[13].value
+        if (isinstance(receipt_id,int) or special_match(receipt_id)):
+            if receipt_id in sales.sales:
+                staff_id = row[5].value
+                customer_id = row[2].value
+                item_id = row[11].value
+                item_quantity = row[13].value
 
-            if sales.sales[receipt_id].receipt.staff.id != staff_id:
-                print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
-            
-            if sales.sales[receipt_id].receipt.customer.id != customer_id:
-                print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
-                logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
+                for item in sales.sales[receipt_id].receipt.items.items():
+                    if item_id == item[0]:
+                        if staff_id == sales.sales[receipt_id].receipt.staff.id:
+                            print("Error in data row; {} is the same as {}".format(item_id,item_id))
+                            logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is the same as {}".format(receipt_id,item_id,item_id),"Item.Id Duplicate",customer_id,staff_id,item_id,item_quantity,sales.sales[receipt_id].receipt.items[item_id].quantity)
 
-            for item in sales.sales[receipt_id].receipt.items.items():
-                if item_id == item[0]:
-                    if staff_id == sales.sales[receipt_id].receipt.staff.id:
-                        print("Error in data row; {} is the same as {}".format(item_id,item_id))
-                        logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is the same as {}".format(receipt_id,item_id,item_id),"Item.Id Duplicate",customer_id,staff_id,item_id,item_quantity,sales.sales[receipt_id].receipt.items[item_id].quantity)
+                if sales.sales[receipt_id].receipt.staff.id != staff_id:
+                    print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.staff.id, staff_id))
+                    logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.staff.id, staff_id),"Staff.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
+                
+                if sales.sales[receipt_id].receipt.customer.id != customer_id:
+                    print("Error in data row; {} is not the same as {}".format(sales.sales[receipt_id].receipt.customer.id, customer_id))
+                    logged_errors.add_error(receipt_id,"Error in data row id: {}; {} is not the same as {}".format(receipt_id, sales.sales[receipt_id].receipt.customer.id, customer_id),"Customer.Id Mismatch",customer_id,staff_id,item_id,item_quantity,None)
 
-            print("Found existing receipt {}, adding items instead".format(receipt_id))
-            sales.add_items_to_sale(row,receipt_id)
+                print("Found existing receipt {}, adding items instead".format(receipt_id))
+                sales.add_items_to_sale(row,receipt_id)
+            else:
+                sales.parse_row(row,employees,customers,items)
         else:
-            sales.parse_row(row,employees,customers,items)
+            raise ValueError('Non int receipt id.')
 
 # Clear the current errors.txt file 
 def clear_error_log():
@@ -251,21 +260,8 @@ AND Item_Quantity = {}\nGO\n""".format(error_log.error_type,
                                 new_quantity,
                                 error_log.receipt_id,
                                 error_log.item_id,
-                                error_log.receipt_id,
-                                error_log.item_id,
                                 error_log.item_quantity)
 
-                sql_output += """
--- Auto-generated query to fix error of type: {}
--- Resolved error identified by UUID: {}
-DELETE FROM Assignment1Data 
-WHERE Reciept_Id={}
-AND Item_ID = {}
-AND Item_Quantity <= {}\nGO\n""".format(error_log.error_type,
-                                error_log_id,
-                                error_log.receipt_id,
-                                error_log.item_id,
-                                error_log.item_quantity)
             else:
                 sql_output += """
 -- Auto-generated query to fix error of type: {}
@@ -285,18 +281,22 @@ AND Item_Quantity = {}\nGO\n""".format(error_log.error_type,
                                 error_log.receipt_id,
                                 error_log.item_id,
                                 error_log.item_quantity)
-
-                sql_output += """
+            sql_output += """
 -- Auto-generated query to fix error of type: {}
 -- Resolved error identified by UUID: {}
 DELETE FROM Assignment1Data 
 WHERE Reciept_Id={}
 AND Item_ID = {}
-AND Item_Quantity <= {}\nGO\n""".format(error_log.error_type,
-                                error_log_id,
+AND Item_Quantity < (
+    SELECT MAX([Item_Quantity])
+    FROM Assignment1Data
+    WHERE Reciept_Id={}
+    AND Item_ID = {}
+)\nGO\n""".format(error_log.error_type,error_log_id,
                                 error_log.receipt_id,
                                 error_log.item_id,
-                                max(error_log.item_quantity,error_log.duplicate_item_quantity))
+                                error_log.receipt_id,
+                                error_log.item_id)
 
     write_report_results('SQL',header,sql_output)
 
@@ -330,8 +330,8 @@ if __name__ == '__main__':
     generate_error_report(logged_errors)
 
     # Output sql to disk to fix errors found
-    generate_sql_move_items(logged_errors)
     generate_sql_fix_duplicate_items(logged_errors)
+    generate_sql_move_items(logged_errors)
 
     # Iterate over sales and employees to generate reports
     # populate_receipt_totals(sales,employees,customers,items)
