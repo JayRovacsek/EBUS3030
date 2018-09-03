@@ -373,24 +373,29 @@
             The script was as follows:
             \begin{lstlisting}
                 -- Auto-generated query to fix error of type: Item.Id Duplicate
-                -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
+                -- Resolved error identified by UUID: 8b34383524a00eb2097c1c22f870ef2ad104b6b8
                 UPDATE Assignment1Data 
                 SET [Item_Quantity]=(
                 SELECT SUM([Item_Quantity])
                 FROM Assignment1Data
-                WHERE Reciept_Id=51500
-                AND Item_ID = 20)
-                WHERE Reciept_Id=51500
-                AND Item_ID = 20
-                AND Item_Quantity = 1
+                WHERE Reciept_Id=52316
+                AND Item_ID = 8)
+                WHERE Reciept_Id=52316
+                AND Item_ID = 8
+                AND Item_Quantity = 10
                 GO
-
+                
                 -- Auto-generated query to fix error of type: Item.Id Duplicate
-                -- Resolved error identified by UUID: 0ee74976129cce87fb1558eb5586b1511f5c8d8f
+                -- Resolved error identified by UUID: 8b34383524a00eb2097c1c22f870ef2ad104b6b8
                 DELETE FROM Assignment1Data 
-                WHERE Reciept_Id=51500
-                AND Item_ID = 20
-                AND Item_Quantity < 1
+                WHERE Reciept_Id=52316
+                AND Item_ID = 8
+                AND Item_Quantity < (
+                    SELECT MAX([Item_Quantity])
+                    FROM Assignment1Data
+                    WHERE Reciept_Id=52316
+                    AND Item_ID = 8
+                )
                 GO
             \end{lstlisting}
 
@@ -488,20 +493,20 @@
                     ORDER BY 'Sales Count' DESC;
                 \end{lstlisting}
 
-                Leading to a range of 736 to 500, the top five staff were:
+                Leading to a range of 700 to 478, the top five staff were:
 
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|}
                     \hline
                     Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
-                    736         & S17     & Daniel         & Baker        \\ \hline
-                    709         & S19     & Kaitlyn        & Ortiz        \\ \hline
-                    702         & S8      & Michelle       & Miller       \\ \hline
-                    701         & S1      & Lauren         & Martin       \\ \hline
-                    700         & S5      & Stephanie      & Watson       \\ \hline
+                    700         & S17     & Daniel         & Baker        \\ \hline
+                    682         & S19     & Kaitlyn        & Ortiz        \\ \hline
+                    676         & S8      & Michelle       & Miller       \\ \hline
+                    664         & S5      & Stephanie      & Watson       \\ \hline
+                    664         & S6      & Evan           & Hill         \\ \hline
                     \end{tabular}
-                \end{table}
+                    \end{table}
             \newpage
             \subsubsection{Total Items Sold}
                 The total items attributed to each staff member were considered also,
@@ -517,23 +522,23 @@
                     ORDER BY 'Item Count' DESC;
                 \end{lstlisting}
 
-                Yeilding a range of 4481 to 2960, with the top five staff members in this
+                Yielding a range of 4217 to 2813, with the top five staff members in this
                 analysis:
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|}
                     \hline
                     Item Count & StaffId & StaffFirstName & StaffSurname \\ \hline
-                    4481       & S17     & Daniel         & Baker        \\ \hline
-                    4414       & S19     & Kaitlyn        & Ortiz        \\ \hline
-                    4373       & S1      & Lauren         & Martin       \\ \hline
-                    4333       & S8      & Michelle       & Miller       \\ \hline
-                    4308       & S5      & Stephanie      & Watson       \\ \hline
+                    4217       & S19     & Kaitlyn        & Ortiz        \\ \hline
+                    4212       & S17     & Daniel         & Baker        \\ \hline
+                    4144       & S8      & Michelle       & Miller       \\ \hline
+                    4052       & S1      & Lauren         & Martin       \\ \hline
+                    4036       & S5      & Stephanie      & Watson       \\ \hline
                     \end{tabular}
                 \end{table}
             \subsubsection{Discounted Sales Ratio}
             Consideration of the number of sales made by each staff member was also made,
-            the following query yeilding the results we required:
+            the following query yielding the results we required:
 
             \begin{lstlisting}
                 -- Sales metrics for discounted and standard sales per staff member
@@ -568,30 +573,76 @@
 
             \newpage
             Results from the query yielded:
+
             \begin{table}[H]
+                \centering
                 \begin{tabular}{|l|l|l|l|l|l|}
                 \hline
-                StaffId & StaffFirstName & StaffSurname & Discounted Sales & Standard Sales & Discounted Sales Rate \\ \hline
-                S4      & Robert         & Wood         & 559              & 102            & 84.57\%               \\ \hline
-                S20     & Dylan          & Hall         & 563              & 112            & 83.41\%               \\ \hline
-                S1      & Lauren         & Martin       & 584              & 117            & 83.31\%               \\ \hline
-                S16     & Jordan         & Turner       & 561              & 117            & 82.74\%               \\ \hline
-                S14     & Noah           & Brooks       & 565              & 118            & 82.72\%               \\ \hline
-                S17     & Daniel         & Baker        & 603              & 133            & 81.93\%               \\ \hline
-                S13     & Molly          & Carter       & 556              & 128            & 81.29\%               \\ \hline
-                S5      & Stephanie      & Watson       & 567              & 133            & 81.00\%               \\ \hline
-                S15     & Bailey         & Green        & 529              & 126            & 80.76\%               \\ \hline
-                S6      & Evan           & Hill         & 562              & 137            & 80.40\%               \\ \hline
-                S10     & Jonathan       & Jenkins      & 478              & 119            & 80.07\%               \\ \hline
-                S18     & Megan          & James        & 540              & 137            & 79.76\%               \\ \hline
-                S19     & Kaitlyn        & Ortiz        & 561              & 148            & 79.13\%               \\ \hline
-                S7      & Molly          & Jackson      & 499              & 138            & 78.34\%               \\ \hline
-                S9      & Mélissa        & Garcia       & 510              & 148            & 77.51\%               \\ \hline
-                S8      & Michelle       & Miller       & 541              & 161            & 77.07\%               \\ \hline
-                S2      & Joseph         & Reed         & 494              & 153            & 76.35\%               \\ \hline
-                S11     & Gavin          & Thompson     & 424              & 135            & 75.85\%               \\ \hline
-                S12     & Leah           & Harris       & 376              & 124            & 75.20\%               \\ \hline
-                S3      & Amber          & Hill         & 435              & 157            & 73.48\%               \\ \hline
+                StaffId & StaffFirstName & StaffSurname & Discounted Sales & Standard Sales & Discount Rate (\%) \\ \hline
+                S4      & Robert         & Wood         & 518              & 115            & 81.83\%            \\ \hline
+                S14     & Noah           & Brooks       & 533              & 119            & 81.75\%            \\ \hline
+                S1      & Lauren         & Martin       & 533              & 126            & 80.88\%            \\ \hline
+                S16     & Jordan         & Turner       & 520              & 123            & 80.87\%            \\ \hline
+                S15     & Bailey         & Green        & 500              & 124            & 80.13\%            \\ \hline
+                S13     & Molly          & Carter       & 527              & 131            & 80.09\%            \\ \hline
+                S17     & Daniel         & Baker        & 556              & 144            & 79.43\%            \\ \hline
+                S20     & Dylan          & Hall         & 505              & 132            & 79.28\%            \\ \hline
+                S6      & Evan           & Hill         & 524              & 140            & 78.92\%            \\ \hline
+                S10     & Jonathan       & Jenkins      & 454              & 123            & 78.68\%            \\ \hline
+                S5      & Stephanie      & Watson       & 520              & 144            & 78.31\%            \\ \hline
+                S18     & Megan          & James        & 508              & 142            & 78.15\%            \\ \hline
+                S19     & Kaitlyn        & Ortiz        & 531              & 151            & 77.86\%            \\ \hline
+                S7      & Molly          & Jackson      & 474              & 141            & 77.07\%            \\ \hline
+                S9      & Mélissa        & Garcia       & 489              & 147            & 76.89\%            \\ \hline
+                S8      & Michelle       & Miller       & 509              & 167            & 75.30\%            \\ \hline
+                S12     & Leah           & Harris       & 356              & 122            & 74.48\%            \\ \hline
+                S11     & Gavin          & Thompson     & 395              & 137            & 74.25\%            \\ \hline
+                S2      & Joseph         & Reed         & 447              & 160            & 73.64\%            \\ \hline
+                S3      & Amber          & Hill         & 396              & 168            & 70.21\%            \\ \hline
+                \end{tabular}
+                \end{table}
+
+            \subsubsection{Total Sales Value per Staff Member}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|}
+                \hline
+                Sales Totals & StaffId & StaffFirstName & StaffSurname \\ \hline
+                78572.21500  & S8      & Michelle       & Miller       \\ \hline
+                73847.10750  & S19     & Kaitlyn        & Ortiz        \\ \hline
+                72764.88750  & S17     & Daniel         & Baker        \\ \hline
+                71699.66750  & S14     & Noah           & Brooks       \\ \hline
+                70514.68250  & S3      & Amber          & Hill         \\ \hline
+                69182.56250  & S2      & Joseph         & Reed         \\ \hline
+                69051.19500  & S13     & Molly          & Carter       \\ \hline
+                68831.81000  & S5      & Stephanie      & Watson       \\ \hline
+                68133.83250  & S4      & Robert         & Wood         \\ \hline
+                66267.19000  & S6      & Evan           & Hill         \\ \hline
+                65018.37000  & S10     & Jonathan       & Jenkins      \\ \hline
+                64002.06750  & S1      & Lauren         & Martin       \\ \hline
+                63760.66750  & S16     & Jordan         & Turner       \\ \hline
+                62304.70250  & S18     & Megan          & James        \\ \hline
+                61862.44750  & S9      & Mélissa        & Garcia       \\ \hline
+                61832.27250  & S15     & Bailey         & Green        \\ \hline
+                61536.85500  & S20     & Dylan          & Hall         \\ \hline
+                58996.16250  & S7      & Molly          & Jackson      \\ \hline
+                52102.66250  & S11     & Gavin          & Thompson     \\ \hline
+                50259.35250  & S12     & Leah           & Harris       \\ \hline
+                \end{tabular}
+            \end{table}
+
+            \subsubsection{Average Value Per Sale}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|}
+                \hline
+                Sales Average        & StaffId & StaffFirstName & StaffSurname \\ \hline
+                125.0260328014184397 & S3      & Amber          & Hill         \\ \hline
+                116.2310872781065088 & S8      & Michelle       & Miller       \\ \hline
+                113.9745675453047775 & S2      & Joseph         & Reed         \\ \hline
+                112.6834835355285961 & S10     & Jonathan       & Jenkins      \\ \hline
+                109.9688151840490797 & S14     & Noah           & Brooks       \\ \hline
                 \end{tabular}
             \end{table}
     \newpage
