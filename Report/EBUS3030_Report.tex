@@ -60,7 +60,7 @@
 
     \title{EBUS3030 Assignment 1}
     \author{
-        Steven Karmaniolos 
+        Stavros Karmaniolos 
         \texttt{c3160280@uon.edu.au}\\
         Jay Rovacsek
         \texttt{c3146220@uon.edu.au}\\
@@ -598,31 +598,57 @@
     \section{Executive Summary}
     This report was created for the head sales executive of BIA Inc, 
     in regard to which sales staff member was considered the best performer 
-    based on the given data. As no specific metric was given for the task 
+    based on the data provided. As no specific metric was given for the task 
     of determining the best performer an analysis was performed, in order 
-    perform this task the data was cleaned, reviewed and queried.
-    \par\noindent
-    The best sales officer in regards to the analysis of total number 
-    of sales was Daniel Baker. 
-    \\
-    Mr Baker had made the largest number of 
-    sales in the 12 months of data that was supplied with a total of 
-    736 total sales counts. From this data it can also be seen that 
-    after Mr Baker is Kaitlyn Ortiz with 709 total number of sales 
-    (difference of 27).
+    perform this task the data was cleaned, reviewed and queried using
+    SQL scripts and a supplementary Python script which assisted in
+    preparing the data provided by the firm for analysis in SQL Server Management Studio
+    (SSMS).
     \vspace{5mm}
     \par\noindent
-    The best sales officer in regards to the analysis of Total items 
-    sold was also Daniel Baker. In the 12 months of data that was 
+    
+    \noindent The findings of our analysis resulted in ranking high achieving staff
+    members by a number of key metrics selected by the group. Firstly, we ranked the
+    top five best sales officers by total number of sales and, from this group, identified 
+    the top staff member of sales, Mr Daniel Baker. Mr Baker had made the
+    largest number of sales in the 12 months of data that was supplied with a total of 736
+    in the sales count. From this data, we see placed immediately after Mr Baker, with 27
+    fewer sales is Ms Kaitlyn Ortiz (709), then Ms Michelle Miller (702), followed closely
+    by Ms Lauren Martin (701) and Ms Stephanie Watson (700).
+    \vspace{5mm}
+    \par\noindent
+    
+    \noindent The next metric was total items sold. In this relation, the best sales officer was,
+    once again, Mr Daniel Baker. In the 12 months of data that was 
     supplied it can be seen that in Mr Baker’s 736 total sales, he 
-    sold 4481 items. This is only a 67 item difference between Mr 
-    Baker and second place Kaitlyn Ortiz who had a total of 4414. 
+    sold 4481 items with a approximately six (6.09) items per sale. This is only a 67 item
+    difference between Mr Baker and the second placed sales officer, Ms Kaitlyn Ortiz who
+    scored a total of 4414 items sold with approximately six (6.22) items per sale. 
     \vspace{5mm}
     \par\noindent
-    After considering theses analytics and reviewing the results 
-    it can be seen that Mr Daniel Baker may be considered the best 
-    sales officer in terms of Total sales and items sold and should 
-    be eligible for the reward that is being discussed. 
+
+    \noindent The final metric considered was discounted sales ratio. It was stated in the
+    business rules document provided by the firm that any sale with five or more row items
+    would be elligible for a 15\% discount to the total sale. We identified this as an
+    important factor as understanding how many items were discounted can offer
+    insight into sales methods and techniques applied by the sales officer. From these
+    results, we aggregated the data by total number of sales which were discounted.
+    Mr Robert Wood (84.57\%) discounted the greatest share of his sales of all staff
+    members, then Mr Dylan Hall (83.41\%), then Ms Lauren Martin
+    (83.31\%), followed by Mr Jordan Turner (82.74\%), Mr Noah Brooks (82.72\%) and Mr
+    Daniel Baker with (81.93\%).
+    \vspace{5mm}
+    \par
+
+    \noindent After considering these key metrics and reviewing the results, we can assert that 
+    Mr Daniel Baker should be considered the most valuable sales officer at BIA Inc. Our findings showed
+    that Mr Baker achieved the greatest total sales and total items sold.  In addition to this,
+    Mr Baker sold items at a discounted rate 81.93\% of the time which, when considered with the
+    other metrics provided above, indicates that he likely `upsells' customers [4]. 
+    Mr Baker should be considered for the reward (and possible
+    cash prize) suggested in the original document outlining the firm's requirements.
+    If for any reason Mr Baker should not be applicable for the discount, we would recommend 
+    Ms Michelle Miller who achieved high numbers in all of the metrics discussed in this report. 
 
     \newpage
     \begin{thebibliography}{9}
@@ -636,6 +662,9 @@
         \bibitem{CTE}
         Microsoft documentation: WITH common\_table\_expression (Transact-SQL)
             \url{https://docs.microsoft.com/en-us/sql/t-sql/queries/with-common-table-expression-transact-sql?view=sql-server-2017}
+        \bibitem{BusDictionairyUpselling}
+        		Upselling - Business Dictionary
+        		\url{http://www.businessdictionary.com/definition/upselling.html}
     \end{thebibliography}
 
     \newpage
