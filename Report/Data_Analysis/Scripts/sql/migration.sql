@@ -31711,8 +31711,8 @@ AND Item_Quantity < (
 GO
 
 -- Create Receipt table from supplied data
-INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId])
-SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID]
+INSERT INTO Receipt([ReceiptId], [ReceiptCustomerId],[ReceiptStaffId], [ReceiptDate])
+SELECT DISTINCT([Reciept_Id]),[Customer_ID],[Staff_ID], [Sale_Date]
 FROM [Assignment1Data]
 ORDER BY [Reciept_Id]
 GO
