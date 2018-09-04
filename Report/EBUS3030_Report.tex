@@ -180,6 +180,11 @@
             the offending formula was supplied and used for the remainder of the assignment.
             \vspace{5mm}
             \par\noindent
+            Discrepancies with some cell formating were noted in Reciept\_Id column in the raw
+            data presented to us in the excel file. After testing both an unmodified and a modified
+            version of the excel file it was recognised that these cells did not impact the import
+            of data into SSMS. The offending cells in question were: B13776 - B13865.
+            \\
             The next potential issue encountered was not until a suggested schema structure 
             was complete and data was being scripted to be added to the new schema for analysis.
             The issue encountered was that receipt number 52136 seemed to be an incorrect 
@@ -417,10 +422,6 @@
 
                 With the results:
 
-                \begin{Verbatim}[fontsize=\small]
-    Max Item_ID
-    30
-                \end{Verbatim}
                 ItemDescription underwent some size optimisation, as the max data length 
                 that currently existed within the supplied data was 52, and we are to assume
                 that into the future more items may be added, a value of 255 should allow
@@ -443,10 +444,17 @@
                 \par
                 Accuracy on the pricing was important, we decided to use a decimal(19,5) structure to
                 ensure no problems should arise at any point with calculation of totals.\cite{MoneyIssues}
+                \\
+                Another notable feature of the price table is the relationships with both
+                item and receiptItem, which allows the receiptItem table to point at a price value 
+                that can either be current or historical in nature.
             \subsubsection{ReceiptItem}
                 The receipt item table acts as a line-item style associative entity, the quantity and 
                 historical priceId used at time of transaction can allow an item's price to be
                 updated and still maintain historical pricing associated with the receipt.
+                \par
+                As noted above, to facilitate historical value lookup, this table also holds relationships
+                with the price table.
             \subsubsection{Receipt}
                 The receipt table acts as a meta-table in this instance, other tables associate with 
                 this table with the receiptId field. Due to this it made it extremely easy to use a number
@@ -507,7 +515,7 @@
                     664         & S6      & Evan           & Hill         \\ \hline
                     \end{tabular}
                     \end{table}
-            \newpage
+
             \subsubsection{Total Items Sold}
                 The total items attributed to each staff member were considered also,
                 determined by the query:
@@ -602,7 +610,36 @@
                 \end{tabular}
                 \end{table}
 
+            \newpage
             \subsubsection{Total Sales Value per Staff Member}
+
+            Consideration of the total sales per staff member was considered a highly important 
+            metric to consider also, we did consider comparing the results of this to the 
+            results of a query that did not include discount to see whom would be considered
+            the best performer if discounts were not relevant, however we also recognise this to be too
+            speclutive in nature. The required query was as follows:
+
+            \begin{lstlisting}
+            -- Sales total per staff with discounts applied ($)
+            SELECT CAST(
+                    CASE
+                    WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                        THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
+                    ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+                    END AS decimal(19,5)) AS 'Sales Totals',
+                    s.StaffId,s.StaffFirstName,s.StaffSurname
+            FROM Receipt r
+            INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+            INNER JOIN Item i ON i.ItemId = ri.ItemId
+            INNER JOIN Price p ON p.PriceId = ri.PriceId
+            INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+            INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
+            GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            ORDER BY 'Sales Totals' DESC;
+            \end{lstlisting}
+
+            Resulting in the following results:
+
             \begin{table}[H]
                 \centering
                 \begin{tabular}{|l|l|l|l|}
@@ -631,7 +668,34 @@
                 \end{tabular}
             \end{table}
 
+            \newpage
+
             \subsubsection{Average Value Per Sale}
+
+            The average receipt value per staff member was another metric we considered would add
+            value to the descision to be suggested in the 
+            \hyperref[sec:Executive Summary]{\color{blue}executive summary}.
+            The required query to determine this metric was as follows:
+
+            \begin{lstlisting}
+            -- Sales average per staff with discounts applied
+            SELECT (CAST(
+                    CASE
+                    WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                        THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
+                    ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+                    END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average',
+                    s.StaffId,s.StaffFirstName,s.StaffSurname
+            FROM Receipt r
+            INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+            INNER JOIN Item i ON i.ItemId = ri.ItemId
+            INNER JOIN Price p ON p.PriceId = ri.PriceId
+            INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+            GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            ORDER BY 'Sales Average' DESC;
+            \end{lstlisting}
+
+            With results as follows:
 
             \begin{table}[H]
                 \centering
@@ -643,10 +707,46 @@
                 113.9745675453047775 & S2      & Joseph         & Reed         \\ \hline
                 112.6834835355285961 & S10     & Jonathan       & Jenkins      \\ \hline
                 109.9688151840490797 & S14     & Noah           & Brooks       \\ \hline
+                108.2802162756598240 & S19     & Kaitlyn        & Ortiz        \\ \hline
+                107.6363862559241706 & S4      & Robert         & Wood         \\ \hline
+                105.1450889121338912 & S12     & Leah           & Harris       \\ \hline
+                104.9410258358662613 & S13     & Molly          & Carter       \\ \hline
+                103.9498392857142857 & S17     & Daniel         & Baker        \\ \hline
+                103.6623644578313253 & S5      & Stephanie      & Watson       \\ \hline
+                99.7999849397590361  & S6      & Evan           & Hill         \\ \hline
+                99.1612247278382581  & S16     & Jordan         & Turner       \\ \hline
+                99.0901802884615384  & S15     & Bailey         & Green        \\ \hline
+                97.9373355263157894  & S11     & Gavin          & Thompson     \\ \hline
+                97.2679992138364779  & S9      & Mélissa        & Garcia       \\ \hline
+                97.1199810318664643  & S1      & Lauren         & Martin       \\ \hline
+                96.6041679748822605  & S20     & Dylan          & Hall         \\ \hline
+                95.9287195121951219  & S7      & Molly          & Jackson      \\ \hline
+                95.8533884615384615  & S18     & Megan          & James        \\ \hline
                 \end{tabular}
             \end{table}
+
+            We consider this to be a harder metric to weigh heavily in our analysis,
+            as multiple factors would impact this result, the number of items on the sale
+            (resulting in a lower total if discount was applied). Another consideration 
+            for this metric would be that it weighs heavily towards anyone who could
+            sell a larger quantity of the same item, as this lends itself towards a higher
+            receipt total also.
+
+        \subsection{Notes on Analysis}
+            A specific emphasis to avoid bad data was performed in order for the analysis 
+            outlined in this report, some of the major items to be persued included 
+            the deduplication of items on receipt, as we found a number of receipts would include
+            either duplicates of the same item, or in some rare cases tripple the number
+            of item expected, artificially increasing the could of items on a receipt 
+            which may have been rather easy to miss without a query on the cleaned data 
+            before we proceeded.
+            \par
+            We expect this was the required pattern of data required in order to successfully 
+            clean the data.
+
     \newpage
     \section{Executive Summary}
+    \label{sec:Executive Summary}
     This report was created for the head sales executive of BIA Inc, 
     in regard to which sales staff member was considered the best performer 
     based on the data provided. As no specific metric was given for the task 
