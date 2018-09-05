@@ -147,6 +147,12 @@
     heavily advised.
 
     \newpage
+    An EER diagram of the suggested data model:
+    \begin{center}
+        \includegraphics[width=\textwidth-40pt,keepaspectratio]{Images/EER_diagram.png}
+    \end{center}
+
+    \newpage
     \section{Data Load Process (ETL/ELT)}
         Initial import of the data supplied in the xlsx file generated a very basic table
         that allowed us to analyze the data for potential outliers, confirm the business
@@ -157,6 +163,7 @@
             \includegraphics{Images/Initial_Import.PNG}
         \end{center}
 
+        \noindent
         A decision to leave this initial import table as default
         was made to allow easy reference to the initially supplied
         excel data file.
@@ -477,7 +484,17 @@
 
     \section{Base Analysis}
     \label{sec:BA}
-        \subsection{Raw Results}
+
+        \subsection{Notes on Analysis}
+            As a group, we emphasised identifying and avoiding bad data as our top priority for
+            the analysis outlined in this report. One of the major steps taken in this process 
+            included
+            the removal of duplicate items on receipts and consolidating them into single line
+            items. The reasoning behind this is that we discovered a number of receipts that
+            included redundant entries which showed double or, in rare cases, triple the number
+            of items expected which would falsely inflate the cost of items on a receipt.
+
+            \subsection{Raw Results}
             A number of metrics were considered to satisfy the request related to the best salesperson,
             as we are not certain if this is determined by a specific metric or a set of metrics we 
             included a number of analyzed points for the project:
@@ -489,6 +506,8 @@
                 \item Average sale value per staff member
                 \item Average item value per staff member
             \end{itemize}
+
+                \newpage
 
             \subsubsection{Total Number of Sales}
                 The total number of sales per staff member were considered with the following 
@@ -548,9 +567,11 @@
                     4036       & S5      & Stephanie      & Watson       \\ \hline
                     \end{tabular}
                 \end{table}
+
+            \newpage
             \subsubsection{Discounted Sales Ratio}
-            Consideration of the number of sales made by each staff member was also made,
-            the following query yielding the results we required:
+                Consideration of the number of sales made by each staff member was also made,
+                the following query yielding the results we required:
 
             \begin{lstlisting}
                 -- Sales metrics for discounted and standard sales per staff member
@@ -747,15 +768,6 @@
 			After this revelation, we can rule Ms Hill out of our assessment for the best sales person.
 			The data suggests that Ms Hill sells higher cost items which makes up for the lack of
 			transactions she completes when compared to other staff members. 
-			
-        \subsection{Notes on Analysis}
-			As a group, we emphasised identifying and avoiding bad data as our top priority for
-			the analysis outlined in this report. One of the major steps taken in this process 
-			included
-			the removal of duplicate items on receipts and consolidating them into single line
-			items. The reasoning behind this is that we discovered a number of receipts that
-			included redundant entries which showed double or, in rare cases, triple the number
-			of items expected which would falsely inflate the cost of items on a receipt.
 
     \newpage
     
