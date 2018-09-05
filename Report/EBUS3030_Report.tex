@@ -132,7 +132,7 @@
     \section{Data Model}
     The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
         \begin{center}
-            \includegraphics[width=\textwidth]{Images/Suggested_Schema.PNG}
+            \includegraphics[height=\textheight-140pt,keepaspectratio]{Images/Suggested_Schema.PNG}
         \end{center}
     It must be noted that the structure of this data model is 
     less than efficient, and it would be expected in a datamart
@@ -236,6 +236,8 @@
                 AND Item_ID='14';
             \end{lstlisting}
 
+            \newpage
+
             The next issue arose when again, attempting to run the aforementioned query to import
             into the new Receipt table, this time not one stray record was found, but a complete
             collision on the ReceiptId of 52137, this time as neither record seemed to have 
@@ -275,6 +277,8 @@
                 GROUP BY Reciept_Id, Customer_ID,Staff_ID 
                 ORDER BY Reciept_Id;
             \end{lstlisting}
+
+            \newpage
 
             In order to clean this data we looked at a number of potential methods, with an 
             emphasis on avoiding effort in the task if possible but not breaking the data further,
