@@ -353,6 +353,8 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+/.idea
+
 
 # user created
 Data Analysis/Scripts/py-parse-data/Results/Customer_Results.txt
