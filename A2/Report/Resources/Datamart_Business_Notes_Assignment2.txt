@@ -1,0 +1,11 @@
+* At BIA all customers interacts are in an online environment.We only support electronic orders.
+* Returning Customers can provide POI information via the web interface and look up their record and that will flow with the sale
+* The sales associate can complete the order form/sale for the client.
+* Each sale will have a receipt number/id.
+* A receipt can have many line items 
+* Each line item can only be for a single item, but the customer can purchase multiples of the same item.
+* After consultation with your team, we have made the following change to discount applied to sales: Where a customer has multiple line items, any sale with 5 or more row items (containing at least 5 different items) is provided a 5% discount.
+* The system automatically handles the total for the sale by looking up the item, then multiplying the costs per item by number purchased, and then should store this final field total as a record in the system (but should also be able to see clearly sales that were provided a discount. 
+* Store Item prices can change at any point, however the price the customer pays is the amount listed for the store item that is sold on the sale date. We need to keep a record of all store item prices historically so that we can determine what the store item price was at any particular past date.
+* Only 1 BIA sales assistant can be attributed to any receipt
+* Customers may visit multiple stores for purchases (ie they are not locked to a particular store). As a result, all customer records are replicated across all stores, so they do not need to be re-recorded at a store by store level.
