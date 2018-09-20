@@ -6,6 +6,10 @@ namespace ParseDataCSharp.Classes
 {
     public class Item
     {
+        public Item()
+        {
+        }
+
         public Item(int id, string description, decimal price, int quantity)
         {
             Id = id;
