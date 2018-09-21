@@ -26,7 +26,7 @@
         \parbox[b][\paperheight]{\paperwidth}{
         \vfill
         \centering
-        \includegraphics[height=\paperheight]{Images/background.jpg}
+        %\includegraphics[height=\paperheight]{Images/background.jpg}
         \vfill
     }}}
 
@@ -58,7 +58,7 @@
 
     \graphicspath{ {Images/} }
 
-    \title{EBUS3030 Assignment 1}
+    \title{EBUS3030 Assignment 2}
     \author{
         Stavros Karmaniolos 
         \texttt{c3160280@uon.edu.au}\\
@@ -93,46 +93,137 @@
     \tableofcontents
 
     \newpage
+    
+% ------------------------------------------------------------------------------------------------ %
+% ASSIGNMENT OUTLINE
+% ------------------------------------------------------------------------------------------------ %
 
-    \includepdf[pagecommand=\section{Assignment Overview \& Requirements},width=\textwidth,keepaspectratio,pages={1}]{Resources/Assignment1Overview.pdf}
-    \includepdf[width=\textwidth,keepaspectratio,pages={2}]{Resources/Assignment1Overview.pdf}
+    \includepdf[pagecommand=\section{Assignment Overview \& Requirements},width=\textwidth,keepaspectratio,pages={1}]{Resources/Assignment_2_Overview.pdf}
+    \includepdf[width=\textwidth,keepaspectratio,pages={2}]{Resources/Assignment_2_Overview.pdf}
+
+% ------------------------------------------------------------------------------------------------ %
+% EXECUTIVE SUMMARY
+% ------------------------------------------------------------------------------------------------ %
+
+    \section{Executive Summary}
+    \label{sec:Executive Summary}
+	This report was created for the head sales executives of BIA Inc for the purpose of
+	determining which sales staff member would be considered the best performer based on
+	the data set provede by the firm. As no specific metrics or measurement requirements
+	were provided, an analysis was performed by our team. This analysis included extracting,
+	cleaning and loading the data using SQL scripts and a supplementary Python script which
+	assisted in preparing the data provided by the firm for analysis and query in SQL Server
+	Management Studio (SSMS). 
+    \vspace{5mm}
+    \par\noindent
+    
+    \noindent The findings of our analysis resulted in ranking high achieving staff members
+    determined by a number of key metrics selected by the team. Firstly, we ranked the sales
+    officers by total number of sales and, from this group, identified the top staff member
+    of sales, Mr Daniel Baker. Mr Baker had made the largest number of sales in the 12 months
+    of data supplied with a total of 700 sales. Placed immediately after Mr Baker, with 18 fewer
+    sales is Ms Kaitlyn Ortiz (682), then Ms Michelle Miller (676), followed by Ms Stephanie
+    Watson (664) and Mr Evan Hill (664).
+    \vspace{5mm}
+    \par\noindent
+    
+    \noindent The next metric was total items sold. In this relation, the best sales officer
+    is Ms Kaitlyn Ortiz, the second place sales officer in the first metric. In the 12 months
+    of data supplied, it can be observed that of the 682 total sales, Ms Ortiz sold 4217 items
+    with approximately six (6.18) items per sale. The second place sales officer, Mr Daniel
+    Baker, sold 4212 items, only five items less than Ms Ortiz, and also sold approximately
+    six (6.02) items per sale. The third placed employee in this relation is Ms Michelle Miller
+    who resulted in 4414 total sales and approximately six (6.13) items per sale.
+    \vspace{5mm}
+    \par\noindent
+
+    \noindent The third key metric is discounted sales ratio. As stated in the business rules
+    document provided by the firm, any sale with five or more row items would be eligible for
+    a 15\% discount to the total sale. We identified this as an important factor because
+    understanding how many items were discounted may offer insight into sales methods and
+    techniques applied by sales officers which can then be used to enhance future performance.
+    From the results, we aggregated the data by total percentage of sales which were discounted.
+    Mr Robert Wood (84.57\%) discounted the greatest share of his sales of all sales staff
+    members. After Mr Wood comes Mr Dylan Hall (83.41\%), then Ms Lauren Martin (83.31\%), Mr 
+    Jordan Turner (82.74\%), Mr Noah Brooks (82.72\%) and Mr Daniel Baker (81.39\%).
+    \vspace{5mm}
+    \par
+    
+	\noindent The final metric considered was total sales value per staff member. The purpose
+	of this report is to find the ``best'' salesperson, therefore, we can assume that, along
+	with other metrics, the firm would be interested to know which sales officer generates
+	the most revenue. After examining the data, we can state that Ms Michelle Miller is the sales
+	officer that generates the most value with a total of \$78,572.22 over 12 months. This
+	equates to \$4,725.10 more than her nearest competitor, Mr Daniel Baker who generated
+	\$72,764.89 who was followed by Mr Noah Brooks with \$71,699.67 and Ms Amber Hill with 
+	\$70,514.68.
+	\vspace{5mm}    
+	\par
+    
+
+    \noindent After carefully considering the aforementioned key metrics and reviewing the
+    results, we can conclude that Ms Michelle Miller should be considered the most valuable
+    sales office at BIA Inc. Our findings showed clearly that Ms Michelle Miller achieved
+    the highest sales value when compared with other sales officer by a significant margin 
+    (\$4,725.10). While Ms Miller was not ranked first in total number of sales or total items
+    sold, she did rank highly in both relations. Ms Miller did however score poorly in her
+    discounted sales ratio. This could indicate that Ms Miller is not as effective at
+    `upselling' as her fellow sales officers and this could be an area for improvement.
+    We can assert that Ms Miller should be considered for the reward (and possible cash
+    prize) suggested in the original document outlining the firm requirements. If for any
+    reason Ms Miller should not be applicable or eligible for the discount, we would recommend
+    Ms Kaitlyn Ortiz as the alternative choice due to her high ranking in all metrics discussed
+    in this summary.
+    \newpage
+
+
+% ------------------------------------------------------------------------------------------------ %
+% BUSINESS RULES
+% ------------------------------------------------------------------------------------------------ %
 
     \subsection{Datamart Business Rules}
     The following business rules were provided to be used in the context of this assignment:
     \begin{itemize}
-        \renewcommand\labelitemi{*}
-        \item At BIA all customers interacts are in an online environment, 
-        there are no orders outside of electronic.
-        \item Returning customers can provide POI information via the web
-        interface and look up their record and that will flow with the sale.
-        \item The sales associate can complete the order form/sale for the
-        client.
+        
+        \item At BIA all customers interacts are in an online environment, all orders are electronic.
+        \item Returning customers can provide POI information via the web interface and look up their
+        record and that will flow with the sale.
+        \item The sales associate can complete the order form/sale for the client.
         \item Each sale will have a receipt number/id.
         \item A receipt can have many line items.
-        \item Each line item can only be for a single item, but the customer can
-        purchase multiples of the same item.
-        \item Where a customer has multiple line items, any sale with more than
-        5 row items (containing at least 5 different items) is provided a
-        15\% discount.
-        \item The system automatically handles the total for the sale by looking
-        up the item, then multiplying the costs per item by number
-        purchased, and then should store this final field total as a record
-        in the system (but should also be able to see clearly sales that
-        were provided a discount.
+        \item Each line item can only be for a single item, but the customer can purchase multiples 
+        of the same item.
+        \item Where a customer has multiple line items, any sale with 5 or more row items 
+        (containing at least five (5) different items) is provided a 5\% discount.
+        \item The system automatically handles the total for the sale by looking up the item, then 
+        multiplying the costs per item by number purchased, and then should store this final field 
+        total as a record in the system (but should also be able to see clearly sales that were 
+        provided a discount. 
         \item Item prices can change at any point, and the price the customer
         pays is the amount listed for the item on the sale date. We need to
-        keep a record of all item prices historically.
-        \item Only 1 BIA sales assistant can be attributed to any receipt.
+        keep a record of all item prices historically so that we can determine what the store item 
+        price was at any particular past date.
+        \item Only one (1) BIA sales assistant can be attributed to any receipt.
+        \item Customers may visit multiple stores for purchases (ie they are not locked to a particular 
+        store). As a result, all customer records are replicated across all stores, so they do not need 
+        to be re-recorded at a store by store level.
     \end{itemize}
-
+   
     With these considerations in mind, the following report was created to outline
     the discovery, creation and polish to satisfy the assignment requirements.
+
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% DATA MODEL
+% ------------------------------------------------------------------------------------------------ %
 
     \newpage
     \section{Data Model}
     The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
         \begin{center}
-            \includegraphics[height=\textheight-140pt,keepaspectratio]{Images/Suggested_Schema.PNG}
+            %\includegraphics[height=\textheight-140pt,keepaspectratio]{Images/Suggested_Schema.PNG}
         \end{center}
     It must be noted that the structure of this data model is 
     less than efficient, and it would be expected in a datamart
@@ -149,8 +240,14 @@
     \newpage
     An EER diagram of the suggested data model:
     \begin{center}
-        \includegraphics[width=\textwidth-40pt,keepaspectratio]{Images/EER_diagram.png}
+        %\includegraphics[width=\textwidth-40pt,keepaspectratio]{Images/EER_diagram.png}
     \end{center}
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% DATA LOAD PROCESS
+% ------------------------------------------------------------------------------------------------ %
 
     \newpage
     \section{Data Load Process (ETL/ELT)}
@@ -160,7 +257,7 @@
         \\
         The Imported table structure was as follows:
         \begin{center}
-            \includegraphics{Images/Initial_Import.PNG}
+            %\includegraphics{Images/Initial_Import.PNG}
         \end{center}
 
         \noindent
@@ -172,6 +269,12 @@
         the default table suggested by SSMS.
 
         \newpage
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% QA PROCESS
+% ------------------------------------------------------------------------------------------------ %
 
         \subsection{Quality Assurance Processes}
         \label{sec:QAP}
@@ -417,6 +520,15 @@
 
             Having now cleaned what we believed to be all discrepancies, we could finally start to look at
             evaluating data, our analysis outlined in \hyperref[sec:BA]{\color{blue}base analysis}
+
+
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% ASSUMPTIONS/REASONING
+% ------------------------------------------------------------------------------------------------ %
+
         \newpage
         \subsection{Assumptions and Reasoning}
         \label{sec:AR}
@@ -482,6 +594,12 @@
                 causing a performance issue into the future, for simplicity we kept only the supplied
                 data in mind, and assumed no more data would be required by the datamart into the future.
 
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% BASE ANALYSIS
+% ------------------------------------------------------------------------------------------------ %
     \section{Base Analysis}
     \label{sec:BA}
 
@@ -783,7 +901,15 @@
 			The data suggests that Ms Hill sells higher cost items which makes up for the lack of
 			transactions she completes when compared to other staff members. 
 
-    \subsection{Analysis Conclusion}
+
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% CONCLUSION & RECOMMENDATIONS
+% ------------------------------------------------------------------------------------------------ %
+	\newpage
+    \section{Conclusion and Recommendations}
             This report is designed to identify the best performing Sales Officer at BIA Inc by 
             directive of the Head Sales Executive of BIA Inc.
             After considering multiple data points from the newly created Sales Database, 
@@ -800,80 +926,16 @@
             Officer at BIA Inc. In the event that  Mrs Michelle Miller is not applicable
             we would reccomend Mrs Kaitlyn Ortiz whom has 
 			achieved a high evaluation from all the data points that we analyzed.
-    
-    \newpage
-    
-    \section{Executive Summary}
-    \label{sec:Executive Summary}
-	This report was created for the head sales executives of BIA Inc for the purpose of
-	determining which sales staff member would be considered the best performer based on
-	the data set provede by the firm. As no specific metrics or measurement requirements
-	were provided, an analysis was performed by our team. This analysis included extracting,
-	cleaning and loading the data using SQL scripts and a supplementary Python script which
-	assisted in preparing the data provided by the firm for analysis and query in SQL Server
-	Management Studio (SSMS). 
-    \vspace{5mm}
-    \par\noindent
-    
-    \noindent The findings of our analysis resulted in ranking high achieving staff members
-    determined by a number of key metrics selected by the team. Firstly, we ranked the sales
-    officers by total number of sales and, from this group, identified the top staff member
-    of sales, Mr Daniel Baker. Mr Baker had made the largest number of sales in the 12 months
-    of data supplied with a total of 700 sales. Placed immediately after Mr Baker, with 18 fewer
-    sales is Ms Kaitlyn Ortiz (682), then Ms Michelle Miller (676), followed by Ms Stephanie
-    Watson (664) and Mr Evan Hill (664).
-    \vspace{5mm}
-    \par\noindent
-    
-    \noindent The next metric was total items sold. In this relation, the best sales officer
-    is Ms Kaitlyn Ortiz, the second place sales officer in the first metric. In the 12 months
-    of data supplied, it can be observed that of the 682 total sales, Ms Ortiz sold 4217 items
-    with approximately six (6.18) items per sale. The second place sales officer, Mr Daniel
-    Baker, sold 4212 items, only five items less than Ms Ortiz, and also sold approximately
-    six (6.02) items per sale. The third placed employee in this relation is Ms Michelle Miller
-    who resulted in 4414 total sales and approximately six (6.13) items per sale.
-    \vspace{5mm}
-    \par\noindent
 
-    \noindent The third key metric is discounted sales ratio. As stated in the business rules
-    document provided by the firm, any sale with five or more row items would be eligible for
-    a 15\% discount to the total sale. We identified this as an important factor because
-    understanding how many items were discounted may offer insight into sales methods and
-    techniques applied by sales officers which can then be used to enhance future performance.
-    From the results, we aggregated the data by total percentage of sales which were discounted.
-    Mr Robert Wood (84.57\%) discounted the greatest share of his sales of all sales staff
-    members. After Mr Wood comes Mr Dylan Hall (83.41\%), then Ms Lauren Martin (83.31\%), Mr 
-    Jordan Turner (82.74\%), Mr Noah Brooks (82.72\%) and Mr Daniel Baker (81.39\%).
-    \vspace{5mm}
-    \par
-    
-	\noindent The final metric considered was total sales value per staff member. The purpose
-	of this report is to find the ``best'' salesperson, therefore, we can assume that, along
-	with other metrics, the firm would be interested to know which sales officer generates
-	the most revenue. After examining the data, we can state that Ms Michelle Miller is the sales
-	officer that generates the most value with a total of \$78,572.22 over 12 months. This
-	equates to \$4,725.10 more than her nearest competitor, Mr Daniel Baker who generated
-	\$72,764.89 who was followed by Mr Noah Brooks with \$71,699.67 and Ms Amber Hill with 
-	\$70,514.68.
-	\vspace{5mm}    
-	\par
-    
 
-    \noindent After carefully considering the aforementioned key metrics and reviewing the
-    results, we can conclude that Ms Michelle Miller should be considered the most valuable
-    sales office at BIA Inc. Our findings showed clearly that Ms Michelle Miller achieved
-    the highest sales value when compared with other sales officer by a significant margin 
-    (\$4,725.10). While Ms Miller was not ranked first in total number of sales or total items
-    sold, she did rank highly in both relations. Ms Miller did however score poorly in her
-    discounted sales ratio. This could indicate that Ms Miller is not as effective at
-    `upselling' as her fellow sales officers and this could be an area for improvement.
-    We can assert that Ms Miller should be considered for the reward (and possible cash
-    prize) suggested in the original document outlining the firm requirements. If for any
-    reason Ms Miller should not be applicable or eligible for the discount, we would recommend
-    Ms Kaitlyn Ortiz as the alternative choice due to her high ranking in all metrics discussed
-    in this summary.
-     
 
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% REFERENCES
+% ------------------------------------------------------------------------------------------------ %
+    
     \newpage
     \begin{thebibliography}{9}
         \raggedright
@@ -890,6 +952,13 @@
         		Upselling - Business Dictionary
         		\url{http://www.businessdictionary.com/definition/upselling.html}
     \end{thebibliography}
+
+
+
+
+% ------------------------------------------------------------------------------------------------ %
+% APPENDIX
+% ------------------------------------------------------------------------------------------------ %
 
     \newpage
     \section{Appendix}
@@ -978,13 +1047,13 @@
             \lstinputlisting[#1]{#2}}}
 
     \begin{center}
-        \pythonexternal{Data_Analysis/Scripts/parsedata/main.py}
+        %\pythonexternal{Data_Analysis/Scripts/parsedata/main.py}
     \end{center}
 
     \newpage
 
     \begin{center}
-        \pythonexternal{Data_Analysis/Scripts/parsedata/classes.py}
+        %\pythonexternal{Data_Analysis/Scripts/parsedata/classes.py}
     \end{center}
     
     \end{document}
