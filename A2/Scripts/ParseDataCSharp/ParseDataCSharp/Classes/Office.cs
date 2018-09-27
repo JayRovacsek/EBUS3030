@@ -8,10 +8,9 @@ namespace ParseDataCSharp.Classes
     {
         public int Id { get; set; }
         public Location OfficeLocation { get; set; }
-        public string Surname { get; set; }
-        public int SalesCount { get; set; }
-        public decimal SalesTotal { get; set; }
-        public int DiscountedSalesCount { get; set; }
+        public int SalesCount { get; set; } = 0;
+        public decimal SalesTotal { get; set; } = 0;
+        public int DiscountedSalesCount { get; set; } = 0;
     }
 
     public enum Location
@@ -20,7 +19,7 @@ namespace ParseDataCSharp.Classes
         Maitland,
         Cessnock,
         Sydney,
-        PortMaquarie,
+        PortMacquarie,
         Grafton,
         Dubbo,
         Wollongong,

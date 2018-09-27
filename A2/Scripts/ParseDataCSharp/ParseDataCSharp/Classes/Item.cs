@@ -10,7 +10,7 @@ namespace ParseDataCSharp.Classes
         {
         }
 
-        public Item(int id, string description, decimal price, int quantity)
+        public Item(int id, string description, double price, int quantity)
         {
             Id = id;
             Description = description;
@@ -20,7 +20,7 @@ namespace ParseDataCSharp.Classes
 
         public int Id { get; set; }
         public string Description { get; set; }
-        public decimal Price { get; set; }
+        public double Price { get; set; }
         public int Quantity { get; set; }
     }
 }

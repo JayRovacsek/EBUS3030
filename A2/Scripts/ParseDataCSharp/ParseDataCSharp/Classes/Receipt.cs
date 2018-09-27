@@ -25,5 +25,6 @@ namespace ParseDataCSharp.Classes
         public int OfficeId { get; set; }
         public Customer Customer { get; set; }
         public Staff Staff { get; set; }
+        public DateTime SaleDate { get; set; }
     }
 }
