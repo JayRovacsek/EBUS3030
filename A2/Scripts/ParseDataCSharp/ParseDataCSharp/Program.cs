@@ -19,6 +19,7 @@ namespace ParseDataCSharp
             var counter = 0;
 
             var receipts = new Dictionary<int, Receipt>();
+            var invalidReceipts = new Dictionary<int, Receipt>();
             var offices = new List<Office>();
 
             foreach (DataTable table in data.Tables)
@@ -69,7 +70,7 @@ namespace ParseDataCSharp
                             {
                                 { item.Id, item }
                             },
-                            OfficeId = office.Id
+                            Office = office
                         };
 
                         if (receipts.Count == 0 || !receipts.ContainsKey(receipt.Id))
@@ -79,16 +80,65 @@ namespace ParseDataCSharp
                         }
                         else if (receipts.ContainsKey(receipt.Id))
                         {
+                            var logged = false;
                             var existingReceipt = receipts[receipt.Id];
-                            if (existingReceipt.Items.ContainsKey(item.Id))
+
+                            // Be warned; below is a fucking mess.
+
+                            if ((existingReceipt.Staff.Id != receipt.Staff.Id
+                                || existingReceipt.Staff.FirstName != receipt.Staff.FirstName
+                                || existingReceipt.Staff.Surname != receipt.Staff.Surname)
+                                && !logged)
                             {
-                                Console.WriteLine($"Item exists in current receipt with Id: {existingReceipt.Id}, " +
+                                invalidReceipts.Add(receipt.Id, receipt);
+                                logged = true;
+                                Console.WriteLine($"Staff Id mismatch on receipt: {existingReceipt.Id}, " +
+                                    $"Staff Ids: {existingReceipt.Staff.Id} and {receipt.Staff.Id}, " +
+                                    $"Staff Names: {existingReceipt.Staff.FirstName} and {receipt.Staff.FirstName}, " +
+                                    $"Staff Surnames: {existingReceipt.Staff.Surname} and {receipt.Staff.Surname}, ");
+                            }
+
+                            if ((existingReceipt.Office.Id != receipt.Office.Id
+                                || existingReceipt.Office.OfficeLocation != receipt.Office.OfficeLocation)
+                                && !logged)
+                            {
+                                invalidReceipts.Add(receipt.Id, receipt);
+                                logged = true;
+                                Console.WriteLine($"Office Id mismatch on receipt: {existingReceipt.Id}, " +
+                                    $"Office Ids: {existingReceipt.Office.Id} and {receipt.Office.Id}, " +
+                                    $"Office Locations: {existingReceipt.Office.OfficeLocation} and {receipt.Office.OfficeLocation}");
+                            }
+
+                            if (existingReceipt.SaleDate != receipt.SaleDate && !logged)
+                            {
+                                invalidReceipts.Add(receipt.Id, receipt);
+                                logged = true;
+                                Console.WriteLine($"Sale date mismatch on receipt: {existingReceipt.Id}, " +
+                                    $"Dates: {existingReceipt.SaleDate} and {receipt.SaleDate}");
+                            }
+
+                            if ((existingReceipt.Customer.Id != receipt.Customer.Id 
+                                || existingReceipt.Customer.FirstName != receipt.Customer.FirstName
+                                || existingReceipt.Customer.Surname != receipt.Customer.Surname)
+                                && !logged)
+                            {
+                                invalidReceipts.Add(receipt.Id, receipt);
+                                logged = true;
+                                Console.WriteLine($"Customer mismatch on receipt: {existingReceipt.Id}, " +
+                                    $"Customers Ids: {existingReceipt.Customer.Id} and {receipt.Customer.Id}, " +
+                                    $"Customers Names: {existingReceipt.Customer.FirstName} and {receipt.Customer.FirstName}, " +
+                                    $"Customers Surnames: {existingReceipt.Customer.Surname} and {receipt.Customer.Surname}, ");
+                            }
+
+                            if (existingReceipt.Items.ContainsKey(item.Id) && !logged)
+                            {
+                                Console.WriteLine($"Item exists in current receipt with Id: {item.Id}, " +
                                     $"updated item quantity from: {existingReceipt.Items[item.Id].Quantity} " +
                                     $"to new quantity: {existingReceipt.Items[item.Id].Quantity + item.Quantity}");
 
                                 existingReceipt.Items[item.Id].Quantity += item.Quantity;
                             }
-                            else
+                            else if (!logged)
                             {
                                 existingReceipt.Items.Add(item.Id, item);
                                 Console.WriteLine($@"Added item with Id: {item.Id} to existing receipt: {receipt.Id}");
@@ -100,9 +150,19 @@ namespace ParseDataCSharp
                     // LINQ expressions here to evaluate invalid entries.
                 }
             }
+
+            var errors = DetermineErrors(receipts);
+
             Console.WriteLine($@"Parsed total rows: {counter}");
             Console.WriteLine($@"Parsed unique receipts: {receipts.Count}");
             Console.ReadKey();
+        }
+
+        private static List<Error> DetermineErrors(Dictionary<int, Receipt> receipts)
+        {
+            //var staffMismatchErrors = receipts.Where(
+            //    x => x.Value.).
+            return null;
         }
 
         public static T ParseEnum<T>(string value)

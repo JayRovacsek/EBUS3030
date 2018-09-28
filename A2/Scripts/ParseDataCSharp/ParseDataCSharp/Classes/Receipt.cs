@@ -11,18 +11,18 @@ namespace ParseDataCSharp.Classes
         {
         }
 
-        public Receipt(int id, Dictionary<int,Item> items, int officeId, Customer customer, Staff staff)
+        public Receipt(int id, Dictionary<int,Item> items, Office office, Customer customer, Staff staff)
         {
             Id = id;
             Items = items;
-            OfficeId = officeId;
+            Office = office;
             Customer = customer;
             Staff = staff;
         }
 
         public int Id { get; set; }
         public Dictionary<int,Item> Items { get; set; }
-        public int OfficeId { get; set; }
+        public Office Office { get; set; }
         public Customer Customer { get; set; }
         public Staff Staff { get; set; }
         public DateTime SaleDate { get; set; }
