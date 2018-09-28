@@ -155,6 +155,7 @@ namespace ParseDataCSharp
 
             Console.WriteLine($@"Parsed total rows: {counter}");
             Console.WriteLine($@"Parsed unique receipts: {receipts.Count}");
+            Console.WriteLine($@"Found {invalidReceipts.Count} invalid receipts");
             Console.ReadKey();
         }
 
