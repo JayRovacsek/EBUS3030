@@ -11,7 +11,7 @@ namespace ParseDataCSharp.Classes
         {
         }
 
-        public Receipt(int id, IQueryable<IEnumerable<Item>> items, int officeId, Customer customer, Staff staff)
+        public Receipt(int id, Dictionary<int,Item> items, int officeId, Customer customer, Staff staff)
         {
             Id = id;
             Items = items;
@@ -21,7 +21,7 @@ namespace ParseDataCSharp.Classes
         }
 
         public int Id { get; set; }
-        public IQueryable<IEnumerable<Item>> Items { get; set; }
+        public Dictionary<int,Item> Items { get; set; }
         public int OfficeId { get; set; }
         public Customer Customer { get; set; }
         public Staff Staff { get; set; }

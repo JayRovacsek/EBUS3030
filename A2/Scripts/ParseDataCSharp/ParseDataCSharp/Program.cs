@@ -18,7 +18,7 @@ namespace ParseDataCSharp
             var data = GetExcelData();
             var counter = 0;
 
-            var receipts = new Dictionary<int, List<Receipt>>();
+            var receipts = new Dictionary<int, Receipt>();
             var offices = new List<Office>();
 
             foreach (DataTable table in data.Tables)
@@ -59,21 +59,41 @@ namespace ParseDataCSharp
                             },
                             Staff = new Staff()
                             {
-                                OfficeId = office.Id
+                                OfficeId = office.Id,
+                                Id = row[5].ToString(),
+                                FirstName = row[6].ToString(),
+                                Surname = row[7].ToString()
                             },
-                            SaleDate = (DateTime)row[0]
+                            SaleDate = (DateTime)row[0],
+                            Items = new Dictionary<int, Item>
+                            {
+                                { item.Id, item }
+                            },
+                            OfficeId = office.Id
                         };
 
                         if (receipts.Count == 0 || !receipts.ContainsKey(receipt.Id))
                         {
-                            var listReceipt = new List<Receipt>(new Receipt[] { receipt });
-                            receipts.Add(receipt.Id, listReceipt);
+                            receipts.Add(receipt.Id, receipt);
                             Console.WriteLine($@"Added new receipt: {receipt.Id}");
                         }
                         else if (receipts.ContainsKey(receipt.Id))
                         {
-                            receipts[receipt.Id].Add(receipt);
-                            Console.WriteLine($@"Added to existing receipt: {receipt.Id}");
+                            var existingReceipt = receipts[receipt.Id];
+                            if (existingReceipt.Items.ContainsKey(item.Id))
+                            {
+                                Console.WriteLine($"Item exists in current receipt with Id: {existingReceipt.Id}, " +
+                                    $"updated item quantity from: {existingReceipt.Items[item.Id].Quantity} " +
+                                    $"to new quantity: {existingReceipt.Items[item.Id].Quantity + item.Quantity}");
+
+                                existingReceipt.Items[item.Id].Quantity += item.Quantity;
+                            }
+                            else
+                            {
+                                existingReceipt.Items.Add(item.Id, item);
+                                Console.WriteLine($@"Added item with Id: {item.Id} to existing receipt: {receipt.Id}");
+                            }
+                            receipts[existingReceipt.Id] = existingReceipt;
                         }
                     }
                     counter++;
@@ -81,7 +101,7 @@ namespace ParseDataCSharp
                 }
             }
             Console.WriteLine($@"Parsed total rows: {counter}");
-            Console.WriteLine($@"Parsed receipts: {receipts.Count}");
+            Console.WriteLine($@"Parsed unique receipts: {receipts.Count}");
             Console.ReadKey();
         }
 
