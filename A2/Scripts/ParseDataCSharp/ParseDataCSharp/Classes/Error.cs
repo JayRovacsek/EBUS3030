@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ParseDataCSharp.Classes
+﻿namespace ParseDataCSharp.Classes
 {
     public class Error
     {
@@ -10,7 +6,8 @@ namespace ParseDataCSharp.Classes
         {
         }
 
-        public Error(int id, string trace, int receiptId, ErrorType errorType, string customerId, string staffId, int itemQuantity, int duplicateItemQuantity)
+        public Error(int id, string trace, int receiptId, ErrorType errorType, string customerId, string staffId,
+            int itemQuantity, int duplicateItemQuantity)
         {
             Id = id;
             Trace = trace;
@@ -25,7 +22,7 @@ namespace ParseDataCSharp.Classes
         public int Id { get; set; }
         public string Trace { get; set; }
         public int ReceiptId { get; set; }
-        public ErrorType  ErrorType { get; set; }
+        public ErrorType ErrorType { get; set; }
         public string CustomerId { get; set; }
         public string StaffId { get; set; }
         public int ItemQuantity { get; set; }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace ParseDataCSharp.Classes
+﻿namespace ParseDataCSharp.Classes
 {
     public class Office
     {
@@ -15,7 +11,7 @@ namespace ParseDataCSharp.Classes
 
     public enum Location
     {
-        Newcastle=1,
+        Newcastle = 1,
         Maitland,
         Cessnock,
         Sydney,
