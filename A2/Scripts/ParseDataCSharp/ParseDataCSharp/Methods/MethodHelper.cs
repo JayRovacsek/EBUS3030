@@ -40,6 +40,12 @@ namespace ParseDataCSharp.Methods
             return (T) Enum.Parse(typeof(T), Regex.Replace(value, @"\s+", ""), true);
         }
 
+        /// <summary>
+        ///     Parses a dataset to generate a dictionary of both valid and invalid receipts,
+        ///     also returns a count of total rows parsed to ensure all rows have been iterated over.
+        /// </summary>
+        /// <param name="dataSet"></param>
+        /// <returns></returns>
         public Tuple<Dictionary<int, Receipt>, Dictionary<int, Receipt>, int> GenerateReceipts(DataSet dataSet)
         {
             var receipts = new Dictionary<int, Receipt>();
