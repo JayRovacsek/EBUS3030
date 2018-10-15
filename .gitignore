@@ -700,3 +700,19 @@ Data Analysis/Scripts/py-parse-data/Results/Errors.txt
 Data Analysis/Scripts/py-parse-data/__pycache__/classes.cpython-37.pyc
 Data_Analysis/Scripts/parsedata/Data/.~lock.Assignment1Data.xlsx#
 Report/Data_Analysis/Scripts/parsedata/Data/.~lock.Assignment1Data.xlsx#
+
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+# Test binary, build with `go test -c`
+*.test
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Folders to exclude
+*/binaries/*
