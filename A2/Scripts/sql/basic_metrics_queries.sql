@@ -1,33 +1,4 @@
--- How many unique receipts are there?
-SELECT COUNT(DISTINCT Reciept_Id) FROM Assignment2Data
-
--- Some basic queries for us to determine potential outlier data:
-	-- What is the max of each column where datatype is int?
-	SELECT	MAX(Reciept_Id) AS 'Max RecieptId', 
-			MAX(Staff_office) AS 'Max Staff_Office', 
-			MAX(Reciept_Transaction_Row_ID) AS 'Max Reciept_Transaction_Row_ID', 
-			MAX(Item_ID) AS 'Max Item_ID', 
-			MAX(Item_Quantity) AS 'Max Item_Quantity', 
-			MAX(Item_Price) AS 'Max Item_Price'
-	FROM Assignment2Data;
-
-	-- What is the min of each column where datatype is int?
-	SELECT	MIN(Reciept_Id) AS 'Min RecieptId', 
-			MIN(Staff_office) AS 'Min Staff_Office', 
-			MIN(Reciept_Transaction_Row_ID) AS 'Min Reciept_Transaction_Row_ID', 
-			MIN(Item_ID) AS 'Min Item_ID', 
-			MIN(Item_Quantity) AS 'Min Item_Quantity', 
-			MIN(Item_Price) AS 'Min Item_Price'
-	FROM Assignment2Data;
-
--- Unique Staff Id List
-SELECT DISTINCT Staff_ID 
-FROM Assignment2Data
-ORDER BY Staff_ID;
-
--- Staff Id Count to confirm no broken data
-SELECT COUNT(DISTINCT Staff_ID) as 'Unique Staff Count'
-FROM Assignment2Data;
+USE EBUS3030A2;
 
 -- Determine current max varchar used in Item_Description
 SELECT MAX(DATALENGTH(Item_Description)) 
@@ -142,14 +113,11 @@ INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
 GROUP BY c.CustomerId,c.CustomerFirstName,c.CustomerSurname
 ORDER BY 'Sales Average' DESC;
 
-
--- 3 most popular and 3 least popular items by sales
-SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', o.OfficeId, o.OfficeLoaction
-FROM Receipt r, Office o 
-INNER JOIN ReceiptItem ri ON ReceiptId = ri.ReceiptId
-INNER JOIN Staff s ON StaffId = r.ReceiptStaffId
-INNER JOIN o on s.StaffOfficeId = o.OfficeId
-GROUP BY o.OfficeId
+-- Item Count By Office Location
+SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', o.OfficeId, o.OfficeLocation
+FROM Receipt r
+INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+INNER JOIN Office o on s.StaffOfficeId = o.OfficeId
+GROUP BY o.OfficeId, o.OfficeLocation
 ORDER BY 'Item Count' DESC;
-
-
