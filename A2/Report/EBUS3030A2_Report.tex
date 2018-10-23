@@ -107,73 +107,7 @@
 
     \section{Executive Summary}
     \label{sec:Executive Summary}
-	This report was created for the head sales executives of BIA Inc for the purpose of
-	determining which sales staff member would be considered the best performer based on
-	the data set provede by the firm. As no specific metrics or measurement requirements
-	were provided, an analysis was performed by our team. This analysis included extracting,
-	cleaning and loading the data using SQL scripts and a supplementary Python script which
-	assisted in preparing the data provided by the firm for analysis and query in SQL Server
-	Management Studio (SSMS). 
-    \vspace{5mm}
-    \par\noindent
-    
-    \noindent The findings of our analysis resulted in ranking high achieving staff members
-    determined by a number of key metrics selected by the team. Firstly, we ranked the sales
-    officers by total number of sales and, from this group, identified the top staff member
-    of sales, Mr Daniel Baker. Mr Baker had made the largest number of sales in the 12 months
-    of data supplied with a total of 700 sales. Placed immediately after Mr Baker, with 18 fewer
-    sales is Ms Kaitlyn Ortiz (682), then Ms Michelle Miller (676), followed by Ms Stephanie
-    Watson (664) and Mr Evan Hill (664).
-    \vspace{5mm}
-    \par\noindent
-    
-    \noindent The next metric was total items sold. In this relation, the best sales officer
-    is Ms Kaitlyn Ortiz, the second place sales officer in the first metric. In the 12 months
-    of data supplied, it can be observed that of the 682 total sales, Ms Ortiz sold 4217 items
-    with approximately six (6.18) items per sale. The second place sales officer, Mr Daniel
-    Baker, sold 4212 items, only five items less than Ms Ortiz, and also sold approximately
-    six (6.02) items per sale. The third placed employee in this relation is Ms Michelle Miller
-    who resulted in 4414 total sales and approximately six (6.13) items per sale.
-    \vspace{5mm}
-    \par\noindent
-
-    \noindent The third key metric is discounted sales ratio. As stated in the business rules
-    document provided by the firm, any sale with five or more row items would be eligible for
-    a 15\% discount to the total sale. We identified this as an important factor because
-    understanding how many items were discounted may offer insight into sales methods and
-    techniques applied by sales officers which can then be used to enhance future performance.
-    From the results, we aggregated the data by total percentage of sales which were discounted.
-    Mr Robert Wood (84.57\%) discounted the greatest share of his sales of all sales staff
-    members. After Mr Wood comes Mr Dylan Hall (83.41\%), then Ms Lauren Martin (83.31\%), Mr 
-    Jordan Turner (82.74\%), Mr Noah Brooks (82.72\%) and Mr Daniel Baker (81.39\%).
-    \vspace{5mm}
-    \par
-    
-	\noindent The final metric considered was total sales value per staff member. The purpose
-	of this report is to find the ``best'' salesperson, therefore, we can assume that, along
-	with other metrics, the firm would be interested to know which sales officer generates
-	the most revenue. After examining the data, we can state that Ms Michelle Miller is the sales
-	officer that generates the most value with a total of \$78,572.22 over 12 months. This
-	equates to \$4,725.10 more than her nearest competitor, Mr Daniel Baker who generated
-	\$72,764.89 who was followed by Mr Noah Brooks with \$71,699.67 and Ms Amber Hill with 
-	\$70,514.68.
-	\vspace{5mm}    
-	\par
-    
-
-    \noindent After carefully considering the aforementioned key metrics and reviewing the
-    results, we can conclude that Ms Michelle Miller should be considered the most valuable
-    sales office at BIA Inc. Our findings showed clearly that Ms Michelle Miller achieved
-    the highest sales value when compared with other sales officer by a significant margin 
-    (\$4,725.10). While Ms Miller was not ranked first in total number of sales or total items
-    sold, she did rank highly in both relations. Ms Miller did however score poorly in her
-    discounted sales ratio. This could indicate that Ms Miller is not as effective at
-    `upselling' as her fellow sales officers and this could be an area for improvement.
-    We can assert that Ms Miller should be considered for the reward (and possible cash
-    prize) suggested in the original document outlining the firm requirements. If for any
-    reason Ms Miller should not be applicable or eligible for the discount, we would recommend
-    Ms Kaitlyn Ortiz as the alternative choice due to her high ranking in all metrics discussed
-    in this summary.
+	
     \newpage
 
 
@@ -223,7 +157,7 @@
     \section{Data Model}
     The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
         \begin{center}
-            %\includegraphics[height=\textheight-140pt,keepaspectratio]{Images/Suggested_Schema.PNG}
+            \includegraphics[width=\textwidth,keepaspectratio]{Images/schema.PNG}
         \end{center}
     It must be noted that the structure of this data model is 
     less than efficient, and it would be expected in a datamart
@@ -264,9 +198,9 @@
         A decision to leave this initial import table as default
         was made to allow easy reference to the initially supplied
         excel data file.
-        \par
-        In the following sections of \hyperref[sec:QAP]{\color{blue}Quality Assurance Processes}, \hyperref[sec:AR]{\color{blue}Assumptions and Reasoning} and \hyperref[sec:BA]{\color{blue}Base Analysis} we intend to clarify the reasoning behind leaving the imported data in
-        the default table suggested by SSMS.
+        % \par
+        % In the following sections of \hyperref[sec:QAP]{\color{blue}Quality Assurance Processes}, \hyperref[sec:AR]{\color{blue}Assumptions and Reasoning} and \hyperref[sec:BA]{\color{blue}Base Analysis} we intend to clarify the reasoning behind leaving the imported data in
+        % the default table suggested by SSMS.
 
         \newpage
 
@@ -278,253 +212,7 @@
 
         \subsection{Quality Assurance Processes}
         \label{sec:QAP}
-            A number of queries were written to look for data which did not adhere to the spec
-            outlined in business requirements and to ensure data was "clean" before entry.
-            The first instance of potential issues were encountered with a basic \hyperref[sec:Python]{\color{blue}python} script
-            which checked validity of column data, it was found that cells starting at B13777
-            to the end of file in the originally supplied excel file were formula values and 
-            not static values, this would not have caused an issue with importing into SSMS 
-            however certainly broke the script temporarily.
-            \par
-            After clarifying the issues with the aforementioned cells with Peter, a data file without
-            the offending formula was supplied and used for the remainder of the assignment.
-            \vspace{5mm}
-            \par\noindent
-            Discrepancies with some cell formating were noted in Reciept\_Id column in the raw
-            data presented to us in the excel file. After testing both an unmodified and a modified
-            version of the excel file it was recognised that these cells did not impact the import
-            of data into SSMS. The offending cells in question were: B13776 - B13865.
-            \\
-            The next potential issue encountered was not until a suggested schema structure 
-            was complete and data was being scripted to be added to the new schema for analysis.
-            The issue encountered was that receipt number 52136 seemed to be an incorrect 
-            entry, this was discovered when running the import query for the new schema:
-
-            \begin{lstlisting}
-                INSERT INTO Receipt(ReceiptId, ReceiptCustomerId,ReceiptStaffId)
-                SELECT DISTINCT(Reciept_Id),Customer_ID,Staff_ID
-                FROM Assignment1Data
-                ORDER BY Reciept_Id
-            \end{lstlisting}
-
-            Which resulted in the error:
-            \color{red}
-            \begin{Verbatim}[fontsize=\small]
-    Violation of PRIMARY KEY constraint 'PK_Receipt'. Cannot insert duplicate key in object 
-    'dbo.Receipt'. The duplicate key value is (52136).
-            \end{Verbatim}
-            \color{black}
-
-            Leading us to recognise that either one of the entries could be incorrect, therefore
-            best to investigate both records of the customer Id against the rest of the database:
-
-            \begin{lstlisting}
-                SELECT * FROM Assignment1Data 
-                WHERE Customer_ID='C32' 
-                AND Staff_ID='S15' 
-                AND Sale_Date='2017-11-12 00:00:00.0000000';
-            
-                SELECT * FROM Assignment1Data 
-                WHERE Customer_ID='C13' 
-                AND Staff_ID='S4' 
-                AND Sale_Date='2017-12-30 00:00:00.0000000';
-            \end{lstlisting}
-
-            When both queries were performed it was apparent that the data associated with C32 was 
-            the likely broken record and modification of the data occurred:
-
-            \begin{lstlisting}
-                UPDATE Assignment1Data 
-                SET Reciept_Id=51585, 
-                Reciept_Transaction_Row_ID=(
-                    SELECT MAX(Reciept_Transaction_Row_ID)+1 
-                    FROM Assignment1Data
-                    WHERE Reciept_Id=51585)
-                WHERE Customer_ID='C32' 
-                AND Staff_ID='S15' 
-                AND Sale_Date='2017-11-12 00:00:00.0000000' 
-                AND Item_ID='14';
-            \end{lstlisting}
-
-            \newpage
-
-            The next issue arose when again, attempting to run the aforementioned query to import
-            into the new Receipt table, this time not one stray record was found, but a complete
-            collision on the ReceiptId of 52137, this time as neither record seemed to have 
-            records that were correct, it was decided to move one to the maximum ReceiptId + 1:
-
-            \begin{lstlisting}
-                UPDATE Assignment1Data 
-                SET Reciept_Id=(
-                    SELECT MAX(Reciept_Id)+1 
-                    FROM Assignment1Data) 
-                WHERE Customer_ID='C27' 
-                AND Staff_ID='S4' 
-                AND Sale_Date='2017-12-30 00:00:00.0000000';
-            \end{lstlisting}
-
-            The same issue was replicated on ReceiptId 52138, resolved via:
-
-            \begin{lstlisting}
-                UPDATE Assignment1Data 
-                SET Reciept_Id=(
-                    SELECT MAX(Reciept_Id)+1 
-                    FROM Assignment1Data) 
-                WHERE Customer_ID='C30' 
-                AND Staff_ID='S19' 
-                AND Sale_Date='2017-05-16 00:00:00.0000000';
-            \end{lstlisting}
-
-            At this point we recognised the broken data likely continued for a while, and 
-            evaluated our hypothesis by looking at the original excel file. It turned
-            out that data with ReceiptId from 52137-52145 was all broken in the same manner.
-            The following query shows this well:
-
-            \begin{lstlisting}
-                SELECT Reciept_Id, Customer_ID,Staff_ID 
-                FROM Assignment1Data 
-                WHERE Reciept_Id BETWEEN 52137 AND 52150
-                GROUP BY Reciept_Id, Customer_ID,Staff_ID 
-                ORDER BY Reciept_Id;
-            \end{lstlisting}
-
-            \newpage
-
-            In order to clean this data we looked at a number of potential methods, with an 
-            emphasis on avoiding effort in the task if possible but not breaking the data further,
-            which to this point just appeared to be a collision of a number of receipts.
-            \\
-            We knew a structure such as a CTE\cite{CTE} would allow us to easily split
-            distinct records which shared a receiptId and filter by a value such as row number.
-
-            \begin{lstlisting}
-            WITH CTE AS
-            (
-                SELECT ROW_NUMBER() OVER (ORDER BY Reciept_Id) AS RowNumber,
-                        Reciept_Id,
-                        Customer_ID,
-                        Staff_ID
-                FROM  Assignment1Data
-                WHERE Reciept_Id BETWEEN 52137 AND 52150
-                GROUP BY Reciept_Id, Customer_ID,Staff_ID 
-            )
-            SELECT Reciept_Id,Customer_ID,Staff_ID FROM CTE WHERE (RowNumber % 2 = 0)
-            \end{lstlisting}
-
-            Results of the above query yielded:
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{|l|l|l|}
-                \hline
-                Reciept\_Id & Customer\_Id & Staff\_Id \\ \hline
-                52137       & C59          & S2        \\ \hline
-                52138       & C30          & S19       \\ \hline
-                52139       & C31          & S20       \\ \hline
-                52140       & C52          & S10       \\ \hline
-                52141       & C42          & S7        \\ \hline
-                52142       & C47          & S6        \\ \hline
-                52143       & C8           & S13       \\ \hline
-                52144       & C50          & S4        \\ \hline
-                52145       & C40          & S15       \\ \hline
-                52146       & C38          & S5        \\ \hline
-                52147       & C9           & S19       \\ \hline
-                52148       & C43          & S16       \\ \hline
-                52149       & C45          & S11       \\ \hline
-                52150       & C57          & S7        \\ \hline
-                \end{tabular}
-            \end{table}
-
-            \newpage
-            
-            Whereas the original result without a modulo comparison on the row would have yielded
-            a much different result, the raw table supplied in the \hyperref[sec:CTEResults]{\color{blue}appendix}
-            \par
-            With this known, and additional section was added to the \hyperref[sec:Python]{\color{blue}python} script to generate update statements
-            that would be easy to add to the current migrations.sql script we were prototyping.
-            \\
-            The generated update statements appeared as:
-
-            \begin{lstlisting}
-                -- Auto-generated query to fix error of type: Staff.Id Mismatch
-                -- Resolved error identified by UUID: dcf16fba08c63ecc85556c385204d9524ec359cf
-                UPDATE Assignment1Data 
-                SET Reciept_Id=(
-                SELECT MAX(Reciept_Id)+1 
-                FROM Assignment1Data)
-                WHERE Reciept_Id=52136
-                AND Customer_Id = 'C13' AND Staff_Id = 'S4'
-                GO
-            \end{lstlisting}
-
-            Determining now potential entries that broke further rules was our next objective.
-            We pursued the idea that entries of receipts could potentially have duplicate items
-            recorded against the ReceiptItem table. A simple script was generated to check our 
-            assumptions of this:
-
-            \begin{lstlisting}
-                -- Verify that no receipt has duplicate ItemIds and all are unique per order
-                SELECT *
-                FROM
-                (
-                    SELECT [ReceiptItem].[ReceiptId], 
-                    COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
-                    COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
-                    FROM [ReceiptItem]
-                    GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
-                WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
-                ORDER BY [SubQuery].[ReceiptId]
-                GO
-            \end{lstlisting}
-
-            This query returned a result of 912 rows out of the total 2514, which we believed 
-            was a large amount given the issues identified earlier numbered in only the teens, 
-            however on manual inspection of a number of the reported issue records, it was 
-            apparent this figure was actually correct. 
-            \par
-            Given the large task associated with the entries, an additional module was
-            written for generation of SQL in \hyperref[sec:Python]{\color{blue}python} which resulted in two queries for each
-            duplicate item entry per receipt, the first query updating the total of one of the 
-            records to reflect the real item quantity, the later dropping the non-altered 
-            entry after the first had been completed.
-
-            \newpage
-
-            The script was as follows:
-            \begin{lstlisting}
-                -- Auto-generated query to fix error of type: Item.Id Duplicate
-                -- Resolved error identified by UUID: 8b34383524a00eb2097c1c22f870ef2ad104b6b8
-                UPDATE Assignment1Data 
-                SET [Item_Quantity]=(
-                SELECT SUM([Item_Quantity])
-                FROM Assignment1Data
-                WHERE Reciept_Id=52316
-                AND Item_ID = 8)
-                WHERE Reciept_Id=52316
-                AND Item_ID = 8
-                AND Item_Quantity = 10
-                GO
-                
-                -- Auto-generated query to fix error of type: Item.Id Duplicate
-                -- Resolved error identified by UUID: 8b34383524a00eb2097c1c22f870ef2ad104b6b8
-                DELETE FROM Assignment1Data 
-                WHERE Reciept_Id=52316
-                AND Item_ID = 8
-                AND Item_Quantity < (
-                    SELECT MAX([Item_Quantity])
-                    FROM Assignment1Data
-                    WHERE Reciept_Id=52316
-                    AND Item_ID = 8
-                )
-                GO
-            \end{lstlisting}
-
-            Having now cleaned what we believed to be all discrepancies, we could finally start to look at
-            evaluating data, our analysis outlined in \hyperref[sec:BA]{\color{blue}base analysis}
-
-
-
-
-
+            Maybe include some C\# code references or whatnot.
 % ------------------------------------------------------------------------------------------------ %
 % ASSUMPTIONS/REASONING
 % ------------------------------------------------------------------------------------------------ %
@@ -532,70 +220,17 @@
         \newpage
         \subsection{Assumptions and Reasoning}
         \label{sec:AR}
-            \subsubsection{Item Table}
-                An assumption of the ItemId never needing to be larger than a smallint
-                was followed, as a basic query into the maximum range within the test data
-                suggested that the maximum Id that currently existed was 30:
-                \begin{lstlisting}
-                    -- Some basic queries for us to determine potential outlier data:
-                    -- What is the max of each column where datatype is int?
-                    SELECT MAX(Item_ID) AS 'Max Item_ID'
-                    FROM Assignment1Data;
-                \end{lstlisting}
+            \subsubsection{Item}
 
-                With the results:
-
-                ItemDescription underwent some size optimisation, as the max data length 
-                that currently existed within the supplied data was 52, and we are to assume
-                that into the future more items may be added, a value of 255 should allow
-                for a varied range of descriptions.
-                \\
-                SQL queried to determine to above assumption:
-
-                \begin{lstlisting}
-                    -- Determine current max varchar used in Item_Description
-                    SELECT MAX(DATALENGTH(Item_Description)) 
-                    FROM Assignment1Data;
-                \end{lstlisting}
-
-                We do recognise the requirements for optimisation may not require such measures, and 
-                acknowledge that a varchar(max)/text datatype would also be reasonable.
-            \subsubsection{Price Table}
-                The price table was designed to hold historical data as required by the business rules,
-                an effective range can be used here to determine item pricing for time frames,
-                current items having no end date or an end date as some point in time into the future.
-                \par
-                Accuracy on the pricing was important, we decided to use a decimal(19,5) structure to
-                ensure no problems should arise at any point with calculation of totals.\cite{MoneyIssues}
-                \\
-                Another notable feature of the price table is the relationships with both
-                item and receiptItem, which allows the receiptItem table to point at a price value 
-                that can either be current or historical in nature.
             \subsubsection{ReceiptItem}
-                The receipt item table acts as a line-item style associative entity, the quantity and 
-                historical priceId used at time of transaction can allow an item's price to be
-                updated and still maintain historical pricing associated with the receipt.
-                \par
-                As noted above, to facilitate historical value lookup, this table also holds relationships
-                with the price table.
+
             \subsubsection{Receipt}
-                The receipt table acts as a meta-table in this instance, other tables associate with 
-                this table with the receiptId field. Due to this it made it extremely easy to use a number
-                of joins/inner joins to determine some of the metrics outlined in the \hyperref[sec:BA]{base analysis}.
+
             \subsubsection{Staff}
-                Staff was left in a non-normalised state to ensure efficiency of queries into the future, 
-                normalising the table further would yield little value to the business based on the requirements.
-                The office table is referenced by the staff table. This is merely to satisfy the assumption
-                that, while the only office to exist was Newcastle in this setting, the requirement of more 
-                offices into the future is a possibility and the required join would be little impact on speed
-                of queries in a datamart.
+
             \subsubsection{Customer}
-                Customer, just like staff could be normalised further requiring more joins and potentially 
-                causing a performance issue into the future, for simplicity we kept only the supplied
-                data in mind, and assumed no more data would be required by the datamart into the future.
 
-
-
+            \subsubsection{Office}
 
 % ------------------------------------------------------------------------------------------------ %
 % BASE ANALYSIS
@@ -604,305 +239,180 @@
     \label{sec:BA}
 
         \subsection{Notes on Analysis}
-            As a group, we emphasised identifying and avoiding bad data as our top priority for
-            the analysis outlined in this report. One of the major steps taken in this process 
-            included
-            the removal of duplicate items on receipts and consolidating them into single line
-            items. The reasoning behind this is that we discovered a number of receipts that
-            included redundant entries which showed double or, in rare cases, triple the number
-            of items expected which would falsely inflate the cost of items on a receipt.
 
             \subsection{Raw Results}
-            A number of metrics were considered to satisfy the request related to the best salesperson,
-            as we are not certain if this is determined by a specific metric or a set of metrics we 
-            included a number of analyzed points for the project:
-            \begin{itemize}
-                \item Total receipts attributed to a staff member
-                \item Total items sold by a staff member
-                \item Ratio of discounted sales to normal sales for each staff member
-                \item Total sale value per staff member
-                \item Average sale value per staff member
-                \item Average item value per staff member
-            \end{itemize}
+
+            % A number of metrics were considered to satisfy the request related to the best salesperson,
+            % as we are not certain if this is determined by a specific metric or a set of metrics we 
+            % included a number of analyzed points for the project:
+            % \begin{itemize}
+            %     \item Total receipts attributed to a staff member
+            %     \item Total items sold by a staff member
+            %     \item Ratio of discounted sales to normal sales for each staff member
+            %     \item Total sale value per staff member
+            %     \item Average sale value per staff member
+            %     \item Average item value per staff member
+            % \end{itemize}
 
                 \newpage
 
             \subsubsection{Total Number of Sales}
-                The total number of sales per staff member were considered with the following 
-                sql query:
-                \begin{lstlisting}
-                    -- Sales count per staff member (Receipt Count)
-                    SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
-                    FROM Receipt r
-                    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-                    INNER JOIN Item i ON i.ItemId = ri.ItemId
-                    INNER JOIN Price p ON p.PriceId = ri.PriceId
-                    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-                    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-                    ORDER BY 'Sales Count' DESC;
-                \end{lstlisting}
-
-                Leading to a range of 700 to 478, the top five staff were:
-
-                \begin{table}[H]
-                    \centering
-                    \begin{tabular}{|l|l|l|l|}
-                    \hline
-                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
-                    700         & S17     & Daniel         & Baker        \\ \hline
-                    682         & S19     & Kaitlyn        & Ortiz        \\ \hline
-                    676         & S8      & Michelle       & Miller       \\ \hline
-                    664         & S5      & Stephanie      & Watson       \\ \hline
-                    664         & S6      & Evan           & Hill         \\ \hline
-                    \end{tabular}
-                    \end{table}
+                % The total number of sales per staff member were considered with the following 
+                % sql query:
+                % \begin{lstlisting}
+                %     -- Sales count per staff member (Receipt Count)
+                %     SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+                %     FROM Receipt r
+                %     INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+                %     INNER JOIN Item i ON i.ItemId = ri.ItemId
+                %     INNER JOIN Price p ON p.PriceId = ri.PriceId
+                %     INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+                %     GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+                %     ORDER BY 'Sales Count' DESC;
+                % \end{lstlisting}
 
             \subsubsection{Total Items Sold}
-                The total items attributed to each staff member were considered also,
-                determined by the query:
+                % The total items attributed to each staff member were considered also,
+                % determined by the query:
                 
-                \begin{lstlisting}
-                    -- Item count per staff member
-                    SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', s.StaffId,s.StaffFirstName,s.StaffSurname
-                    FROM Receipt r
-                    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-                    INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-                    GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-                    ORDER BY 'Item Count' DESC;
-                \end{lstlisting}
+                % \begin{lstlisting}
+                %     -- Item count per staff member
+                %     SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+                %     FROM Receipt r
+                %     INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+                %     INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+                %     GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+                %     ORDER BY 'Item Count' DESC;
+                % \end{lstlisting}
 
-                Yielding a range of 4217 to 2813, with the top five staff members in this
-                analysis:
-                \begin{table}[H]
-                    \centering
-                    \begin{tabular}{|l|l|l|l|}
-                    \hline
-                    Item Count & StaffId & StaffFirstName & StaffSurname \\ \hline
-                    4217       & S19     & Kaitlyn        & Ortiz        \\ \hline
-                    4212       & S17     & Daniel         & Baker        \\ \hline
-                    4144       & S8      & Michelle       & Miller       \\ \hline
-                    4052       & S1      & Lauren         & Martin       \\ \hline
-                    4036       & S5      & Stephanie      & Watson       \\ \hline
-                    \end{tabular}
-                \end{table}
+                % Yielding a range of 4217 to 2813, with the top five staff members in this
+                % analysis:
 
             \newpage
             \subsubsection{Discounted Sales Ratio}
-                Consideration of the number of sales made by each staff member was also made,
-                the following query yielding the results we required:
+                % Consideration of the number of sales made by each staff member was also made,
+                % the following query yielding the results we required:
 
-            \begin{lstlisting}
-                -- Sales metrics for discounted and standard sales per staff member
-                SELECT s.StaffId,s.StaffFirstName,s.StaffSurname,
-                SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales',
-                SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
-                FROM (
-                    SELECT CAST(
-                        CASE
-                        WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-                            THEN 1
-                        ELSE 0
-                        END AS int) AS 'Discounted Sales',
-                    CAST(
-                        CASE
-                        WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-                            THEN 0
-                        ELSE 1
-                    END AS int) AS 'Standard Sales',
-                    r.ReceiptId
-                    FROM Receipt r
-                    INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-                    INNER JOIN Item i ON i.ItemId = ri.ItemId
-                    INNER JOIN Price p ON p.PriceId = ri.PriceId
-                    GROUP BY r.ReceiptId
-                ) AS SubQuery
-                INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
-                INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-                INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-                GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            \end{lstlisting}
-
-            \newpage
-            Results from the query yielded:
-
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{|l|l|l|l|l|l|}
-                \hline
-                StaffId & StaffFirstName & StaffSurname & Discounted Sales & Standard Sales & Discount Rate (\%) \\ \hline
-                S4      & Robert         & Wood         & 518              & 115            & 81.83\%            \\ \hline
-                S14     & Noah           & Brooks       & 533              & 119            & 81.75\%            \\ \hline
-                S1      & Lauren         & Martin       & 533              & 126            & 80.88\%            \\ \hline
-                S16     & Jordan         & Turner       & 520              & 123            & 80.87\%            \\ \hline
-                S15     & Bailey         & Green        & 500              & 124            & 80.13\%            \\ \hline
-                S13     & Molly          & Carter       & 527              & 131            & 80.09\%            \\ \hline
-                S17     & Daniel         & Baker        & 556              & 144            & 79.43\%            \\ \hline
-                S20     & Dylan          & Hall         & 505              & 132            & 79.28\%            \\ \hline
-                S6      & Evan           & Hill         & 524              & 140            & 78.92\%            \\ \hline
-                S10     & Jonathan       & Jenkins      & 454              & 123            & 78.68\%            \\ \hline
-                S5      & Stephanie      & Watson       & 520              & 144            & 78.31\%            \\ \hline
-                S18     & Megan          & James        & 508              & 142            & 78.15\%            \\ \hline
-                S19     & Kaitlyn        & Ortiz        & 531              & 151            & 77.86\%            \\ \hline
-                S7      & Molly          & Jackson      & 474              & 141            & 77.07\%            \\ \hline
-                S9      & Mélissa        & Garcia       & 489              & 147            & 76.89\%            \\ \hline
-                S8      & Michelle       & Miller       & 509              & 167            & 75.30\%            \\ \hline
-                S12     & Leah           & Harris       & 356              & 122            & 74.48\%            \\ \hline
-                S11     & Gavin          & Thompson     & 395              & 137            & 74.25\%            \\ \hline
-                S2      & Joseph         & Reed         & 447              & 160            & 73.64\%            \\ \hline
-                S3      & Amber          & Hill         & 396              & 168            & 70.21\%            \\ \hline
-                \end{tabular}
-                \end{table}
+            % \begin{lstlisting}
+            %     -- Sales metrics for discounted and standard sales per staff member
+            %     SELECT s.StaffId,s.StaffFirstName,s.StaffSurname,
+            %     SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales',
+            %     SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
+            %     FROM (
+            %         SELECT CAST(
+            %             CASE
+            %             WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+            %                 THEN 1
+            %             ELSE 0
+            %             END AS int) AS 'Discounted Sales',
+            %         CAST(
+            %             CASE
+            %             WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+            %                 THEN 0
+            %             ELSE 1
+            %         END AS int) AS 'Standard Sales',
+            %         r.ReceiptId
+            %         FROM Receipt r
+            %         INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+            %         INNER JOIN Item i ON i.ItemId = ri.ItemId
+            %         INNER JOIN Price p ON p.PriceId = ri.PriceId
+            %         GROUP BY r.ReceiptId
+            %     ) AS SubQuery
+            %     INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
+            %     INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+            %     INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+            %     GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            % \end{lstlisting}
 
             \newpage
             \subsubsection{Total Sales Value per Staff Member}
 
-            Consideration of the total sales per staff member was considered a highly important 
-            metric to consider also, we did consider comparing the results of this to the 
-            results of a query that did not include discount to see whom would be considered
-            the best performer if discounts were not relevant, however we also recognise this to be too
-            speclutive in nature. The required query was as follows:
+            % Consideration of the total sales per staff member was considered a highly important 
+            % metric to consider also, we did consider comparing the results of this to the 
+            % results of a query that did not include discount to see whom would be considered
+            % the best performer if discounts were not relevant, however we also recognise this to be too
+            % speclutive in nature. The required query was as follows:
 
-            \begin{lstlisting}
-            -- Sales total per staff with discounts applied ($)
-            SELECT CAST(
-                    CASE
-                    WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-                        THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-                    ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
-                    END AS decimal(19,5)) AS 'Sales Totals',
-                    s.StaffId,s.StaffFirstName,s.StaffSurname
-            FROM Receipt r
-            INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-            INNER JOIN Item i ON i.ItemId = ri.ItemId
-            INNER JOIN Price p ON p.PriceId = ri.PriceId
-            INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-            INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
-            GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            ORDER BY 'Sales Totals' DESC;
-            \end{lstlisting}
-
-            Resulting in the following results:
-
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{|l|l|l|l|}
-                \hline
-                Sales Totals & StaffId & StaffFirstName & StaffSurname \\ \hline
-                78572.21500  & S8      & Michelle       & Miller       \\ \hline
-                73847.10750  & S19     & Kaitlyn        & Ortiz        \\ \hline
-                72764.88750  & S17     & Daniel         & Baker        \\ \hline
-                71699.66750  & S14     & Noah           & Brooks       \\ \hline
-                70514.68250  & S3      & Amber          & Hill         \\ \hline
-                69182.56250  & S2      & Joseph         & Reed         \\ \hline
-                69051.19500  & S13     & Molly          & Carter       \\ \hline
-                68831.81000  & S5      & Stephanie      & Watson       \\ \hline
-                68133.83250  & S4      & Robert         & Wood         \\ \hline
-                66267.19000  & S6      & Evan           & Hill         \\ \hline
-                65018.37000  & S10     & Jonathan       & Jenkins      \\ \hline
-                64002.06750  & S1      & Lauren         & Martin       \\ \hline
-                63760.66750  & S16     & Jordan         & Turner       \\ \hline
-                62304.70250  & S18     & Megan          & James        \\ \hline
-                61862.44750  & S9      & Mélissa        & Garcia       \\ \hline
-                61832.27250  & S15     & Bailey         & Green        \\ \hline
-                61536.85500  & S20     & Dylan          & Hall         \\ \hline
-                58996.16250  & S7      & Molly          & Jackson      \\ \hline
-                52102.66250  & S11     & Gavin          & Thompson     \\ \hline
-                50259.35250  & S12     & Leah           & Harris       \\ \hline
-                \end{tabular}
-            \end{table}
+            % \begin{lstlisting}
+            % -- Sales total per staff with discounts applied ($)
+            % SELECT CAST(
+            %         CASE
+            %         WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+            %             THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
+            %         ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+            %         END AS decimal(19,5)) AS 'Sales Totals',
+            %         s.StaffId,s.StaffFirstName,s.StaffSurname
+            % FROM Receipt r
+            % INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+            % INNER JOIN Item i ON i.ItemId = ri.ItemId
+            % INNER JOIN Price p ON p.PriceId = ri.PriceId
+            % INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+            % INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
+            % GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            % ORDER BY 'Sales Totals' DESC;
+            % \end{lstlisting}
 
             \newpage
 
             \subsubsection{Average Value Per Sale}
 
-            The average receipt value per staff member was another metric we considered would add
-            value to the descision to be suggested in the 
-            \hyperref[sec:Executive Summary]{\color{blue}executive summary}.
-            The required query to determine this metric was as follows:
+            % The average receipt value per staff member was another metric we considered would add
+            % value to the descision to be suggested in the 
+            % \hyperref[sec:Executive Summary]{\color{blue}executive summary}.
+            % The required query to determine this metric was as follows:
 
-            \begin{lstlisting}
-            -- Sales average per staff with discounts applied
-            SELECT (CAST(
-                    CASE
-                    WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-                        THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-                    ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
-                    END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average',
-                    s.StaffId,s.StaffFirstName,s.StaffSurname
-            FROM Receipt r
-            INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-            INNER JOIN Item i ON i.ItemId = ri.ItemId
-            INNER JOIN Price p ON p.PriceId = ri.PriceId
-            INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-            GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            ORDER BY 'Sales Average' DESC;
-            \end{lstlisting}
+            % \begin{lstlisting}
+            % -- Sales average per staff with discounts applied
+            % SELECT (CAST(
+            %         CASE
+            %         WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+            %             THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
+            %         ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+            %         END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average',
+            %         s.StaffId,s.StaffFirstName,s.StaffSurname
+            % FROM Receipt r
+            % INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
+            % INNER JOIN Item i ON i.ItemId = ri.ItemId
+            % INNER JOIN Price p ON p.PriceId = ri.PriceId
+            % INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+            % GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+            % ORDER BY 'Sales Average' DESC;
+            % \end{lstlisting}
 
-            \par\noindent
-            Outlier: We recognise that Amber Hill (S3) has the highest Average Sale Total, 
-            this is backed up by his very high 
-            Item sales count, showing she is making more sales per Receipt on average 
-            than any other sales Officer. However She has not made as much revenue as 
-            some other employees, about \$7.5k behind the most sales at \$78,572. We 
-            suspected that maybe she was a new employee but after looking at her
-            sale receipt dates we can confirm this is inacurate and that she was 
-            working within the business throughout the entirety of 2017. After learning that she 
-            is not a new employee we can rule the possibility of her being the best 
-            salesperson out. The data suggests that she has been selling higher cost items to make up 
-            the lack of transactions shes involed in compared to others. This is 
-            negligable however since she is under performing compared to others anyway. 
+            % \par\noindent
+            % Outlier: We recognise that Amber Hill (S3) has the highest Average Sale Total, 
+            % this is backed up by his very high 
+            % Item sales count, showing she is making more sales per Receipt on average 
+            % than any other sales Officer. However She has not made as much revenue as 
+            % some other employees, about \$7.5k behind the most sales at \$78,572. We 
+            % suspected that maybe she was a new employee but after looking at her
+            % sale receipt dates we can confirm this is inacurate and that she was 
+            % working within the business throughout the entirety of 2017. After learning that she 
+            % is not a new employee we can rule the possibility of her being the best 
+            % salesperson out. The data suggests that she has been selling higher cost items to make up 
+            % the lack of transactions shes involed in compared to others. This is 
+            % negligable however since she is under performing compared to others anyway. 
 
-            With results as follows:
+            % With results as follows:
 
-            \begin{table}[H]
-                \centering
-                \begin{tabular}{|l|l|l|l|}
-                \hline
-                Sales Average        & StaffId & StaffFirstName & StaffSurname \\ \hline
-                125.0260328014184397 & S3      & Amber          & Hill         \\ \hline
-                116.2310872781065088 & S8      & Michelle       & Miller       \\ \hline
-                113.9745675453047775 & S2      & Joseph         & Reed         \\ \hline
-                112.6834835355285961 & S10     & Jonathan       & Jenkins      \\ \hline
-                109.9688151840490797 & S14     & Noah           & Brooks       \\ \hline
-                108.2802162756598240 & S19     & Kaitlyn        & Ortiz        \\ \hline
-                107.6363862559241706 & S4      & Robert         & Wood         \\ \hline
-                105.1450889121338912 & S12     & Leah           & Harris       \\ \hline
-                104.9410258358662613 & S13     & Molly          & Carter       \\ \hline
-                103.9498392857142857 & S17     & Daniel         & Baker        \\ \hline
-                103.6623644578313253 & S5      & Stephanie      & Watson       \\ \hline
-                99.7999849397590361  & S6      & Evan           & Hill         \\ \hline
-                99.1612247278382581  & S16     & Jordan         & Turner       \\ \hline
-                99.0901802884615384  & S15     & Bailey         & Green        \\ \hline
-                97.9373355263157894  & S11     & Gavin          & Thompson     \\ \hline
-                97.2679992138364779  & S9      & Mélissa        & Garcia       \\ \hline
-                97.1199810318664643  & S1      & Lauren         & Martin       \\ \hline
-                96.6041679748822605  & S20     & Dylan          & Hall         \\ \hline
-                95.9287195121951219  & S7      & Molly          & Jackson      \\ \hline
-                95.8533884615384615  & S18     & Megan          & James        \\ \hline
-                \end{tabular}
-            \end{table}
-
-            We consider this to be a metric which weighs heavily in our analysis,
-            as multiple factors would impact this result, the number of items on the sale
-            (resulting in a lower total if discount was applied). Another consideration 
-            for this metric would be that it leans towards anyone who could
-            sell a larger quantity of the same item, as this lends itself towards a higher
-            receipt total. 
+            % We consider this to be a metric which weighs heavily in our analysis,
+            % as multiple factors would impact this result, the number of items on the sale
+            % (resulting in a lower total if discount was applied). Another consideration 
+            % for this metric would be that it leans towards anyone who could
+            % sell a larger quantity of the same item, as this lends itself towards a higher
+            % receipt total. 
 			
-			\par
-			We see that Ms Amber Hill (S3) has the highest average sale total and this is backed up by
-			her high item sales count, indicating she is making more sales per receipt on average than
-			any other sales office. 
-			However, Ms Hill has not made as much revenue as some other employees, approximately \$7,500
-			behind the sales leader who achieved \$78,572. Originally, we suspected that perhaps Ms Hill
-			was a new employee but reviewing sale receipt dates we can confirm this was not a valid
-			assumption and that she was working within the business throughout the entirety of 2017.
-			After this revelation, we can rule Ms Hill out of our assessment for the best sales person.
-			The data suggests that Ms Hill sells higher cost items which makes up for the lack of
-			transactions she completes when compared to other staff members. 
-
-
-
+			% \par
+			% We see that Ms Amber Hill (S3) has the highest average sale total and this is backed up by
+			% her high item sales count, indicating she is making more sales per receipt on average than
+			% any other sales office. 
+			% However, Ms Hill has not made as much revenue as some other employees, approximately \$7,500
+			% behind the sales leader who achieved \$78,572. Originally, we suspected that perhaps Ms Hill
+			% was a new employee but reviewing sale receipt dates we can confirm this was not a valid
+			% assumption and that she was working within the business throughout the entirety of 2017.
+			% After this revelation, we can rule Ms Hill out of our assessment for the best sales person.
+			% The data suggests that Ms Hill sells higher cost items which makes up for the lack of
+			% transactions she completes when compared to other staff members. 
 
 
 % ------------------------------------------------------------------------------------------------ %
@@ -910,27 +420,22 @@
 % ------------------------------------------------------------------------------------------------ %
 	\newpage
     \section{Conclusion and Recommendations}
-            This report is designed to identify the best performing Sales Officer at BIA Inc by 
-            directive of the Head Sales Executive of BIA Inc.
-            After considering multiple data points from the newly created Sales Database, 
-            using sales data from 2017 supplied to us by the Head Sales Executive of BIA Inc.
-            We conclude that the Best Sales Officer is Mrs Michelle Miller (S8) becasue she 
-            has a sales total of \$78,572.22 more than \$4k more than the second highest 
-            revenue maker Mrs Kaitlyn Ortiz (S19).
-            She does not have the Highest transaction count however because she has sold 
-            more higher value items this makes up for it. She has sold 4144 compared to 
-            the highest count of 4217. It works out to be a 73 item difference.
-            We beleive that the in excess of \$4k extra that Mrs Michelle Miller brings 
-            to the company out weighs the value of selling 73 extra items. 
-            There for we recommend Mrs Michelle Miller for the reward as the best Sales 
-            Officer at BIA Inc. In the event that  Mrs Michelle Miller is not applicable
-            we would reccomend Mrs Kaitlyn Ortiz whom has 
-			achieved a high evaluation from all the data points that we analyzed.
-
-
-
-
-
+            % This report is designed to identify the best performing Sales Officer at BIA Inc by 
+            % directive of the Head Sales Executive of BIA Inc.
+            % After considering multiple data points from the newly created Sales Database, 
+            % using sales data from 2017 supplied to us by the Head Sales Executive of BIA Inc.
+            % We conclude that the Best Sales Officer is Mrs Michelle Miller (S8) becasue she 
+            % has a sales total of \$78,572.22 more than \$4k more than the second highest 
+            % revenue maker Mrs Kaitlyn Ortiz (S19).
+            % She does not have the Highest transaction count however because she has sold 
+            % more higher value items this makes up for it. She has sold 4144 compared to 
+            % the highest count of 4217. It works out to be a 73 item difference.
+            % We beleive that the in excess of \$4k extra that Mrs Michelle Miller brings 
+            % to the company out weighs the value of selling 73 extra items. 
+            % There for we recommend Mrs Michelle Miller for the reward as the best Sales 
+            % Officer at BIA Inc. In the event that  Mrs Michelle Miller is not applicable
+            % we would reccomend Mrs Kaitlyn Ortiz whom has 
+			% achieved a high evaluation from all the data points that we analyzed.
 
 % ------------------------------------------------------------------------------------------------ %
 % REFERENCES
@@ -953,9 +458,6 @@
         		\url{http://www.businessdictionary.com/definition/upselling.html}
     \end{thebibliography}
 
-
-
-
 % ------------------------------------------------------------------------------------------------ %
 % APPENDIX
 % ------------------------------------------------------------------------------------------------ %
@@ -963,97 +465,5 @@
     \newpage
     \section{Appendix}
     \label{sec:Appendix}
-    \subsection{CTE Raw Results}
-    \label{sec:CTEResults}
-    \begin{table}[H]
-        \centering
-        \begin{tabular}{|l|l|l|}
-        \hline
-        Reciept\_Id & Customer\_Id & Staff\_Id \\ \hline
-        52137       & C27          & S4        \\ \hline
-        52137       & C59          & S2        \\ \hline
-        52138       & C29          & S13       \\ \hline
-        52138       & C30          & S19       \\ \hline
-        52139       & C3           & S5        \\ \hline
-        52139       & C31          & S20       \\ \hline
-        52140       & C38          & S4        \\ \hline
-        52140       & C52          & S10       \\ \hline
-        52141       & C24          & S19       \\ \hline
-        52141       & C42          & S7        \\ \hline
-        52142       & C46          & S8        \\ \hline
-        52142       & C47          & S6        \\ \hline
-        52143       & C51          & S17       \\ \hline
-        52143       & C8           & S13       \\ \hline
-        52144       & C11          & S10       \\ \hline
-        52144       & C50          & S4        \\ \hline
-        52145       & C21          & S8        \\ \hline
-        52145       & C40          & S15       \\ \hline
-        52146       & C38          & S16       \\ \hline
-        52146       & C38          & S5        \\ \hline
-        52147       & C40          & S18       \\ \hline
-        52147       & C9           & S19       \\ \hline
-        52148       & C26          & S8        \\ \hline
-        52148       & C43          & S16       \\ \hline
-        52149       & C10          & S19       \\ \hline
-        52149       & C45          & S11       \\ \hline
-        52150       & C15          & S10       \\ \hline
-        52150       & C57          & S7        \\ \hline
-        \end{tabular}
-    \end{table}
-
-    \newpage
-    \subsection{Python Script}
-    \label{sec:Python}
-
-    % Python style for highlighting
-    \newcommand\pythonstyle{\lstset{
-        language=Python,
-        basicstyle=\ttm,
-        otherkeywords={self},
-        keywordstyle=\ttb\color{deepblue},
-        emph={
-            Item,
-            Office,
-            Staff,
-            Customer,
-            Receipt,
-            Sale,
-            Sales,
-            Employees,
-            Items,
-            Error_Log,
-            Customers,
-            LoggedErrors,
-            __init__,
-            },
-        emphstyle=\ttb\color{deepred},
-        stringstyle=\color{deepgreen},
-        breaklines=true,
-        frame=tb,
-        showstringspaces=false
-        }}
-    
-        % Python environment
-        \lstnewenvironment{python}[1][]
-        {
-        \pythonstyle
-        \lstset{#1}
-        }
-        {}
-    
-        % Python for external files
-        \newcommand\pythonexternal[2][]{{
-            \pythonstyle
-            \lstinputlisting[#1]{#2}}}
-
-    \begin{center}
-        %\pythonexternal{Data_Analysis/Scripts/parsedata/main.py}
-    \end{center}
-
-    \newpage
-
-    \begin{center}
-        %\pythonexternal{Data_Analysis/Scripts/parsedata/classes.py}
-    \end{center}
     
     \end{document}
