@@ -1,116 +1,215 @@
-use EBUS3030A2;
+/*
+** Name: 12month Prediction.sql
+** Date: 22/10/2018
+** Description: Predictive analytics for the next 12 months.
+ */
 
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' , i.ItemId, i.ItemDescription
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-Group by i.ItemId, i.ItemDescription
-order by ItemCount asc
+USE EBUS3030A2;
+GO
+
+
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+    , i.ItemId
+    , i.ItemDescription
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+GROUP BY i.ItemId,
+         i.ItemDescription
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per item per month
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' , i.ItemId, i.ItemDescription, r.ReceiptDate
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-01-01' and '2017-01-31'
-Group by i.ItemId, i.ItemDescription, r.ReceiptDate
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+    , i.ItemId
+    , i.ItemDescription
+    , r.ReceiptDate
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-01-01' AND '2017-01-31'
+GROUP BY i.ItemId
+    , i.ItemDescription
+    , r.ReceiptDate
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 1
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX'
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-01-01' and '2017-01-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-01-01' AND '2017-01-31'
+ORDER BY ItemCount ASC;
 
---sum, avg, min, max per month 2 
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX'
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-02-01' and '2017-02-28'
-order by ItemCount asc
+
+--sum, avg, min, max per month 2
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-02-01' AND '2017-02-28'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 3
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-03-01' and '2017-03-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-03-01' AND '2017-03-31'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 4
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-04-01' and '2017-04-30'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-04-01' AND '2017-04-30'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 5
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-05-01' and '2017-05-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-05-01' AND '2017-05-31'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 6
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-06-01' and '2017-06-30'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-06-01' AND '2017-06-30'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 7
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-07-01' and '2017-07-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-07-01' AND '2017-07-31'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 8
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-08-01' and '2017-08-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-08-01' AND '2017-08-31'
+ORDER BY ItemCount ASC;
 
 --sum, avg, min, max per month 9
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-09-01' and '2017-09-30'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-09-01' AND '2017-09-30'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 10
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-10-01' and '2017-10-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-10-01' AND '2017-10-31'
+ORDER BY ItemCount ASC;
+
+
 
 --sum, avg, min, max per month 11
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-11-01' and '2017-11-30'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-11-01' AND '2017-11-30'
+ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 12
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
-from Receipt r
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-INNER JOIN Item i on i.ItemId = ri.ItemId
-WHERE ReceiptDate between '2017-12-01' and '2017-12-31'
-order by ItemCount asc
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
+    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
+    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-12-01' AND '2017-12-31'
+ORDER BY ItemCount ASC;
 
 
 
