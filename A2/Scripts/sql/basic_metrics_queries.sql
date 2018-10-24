@@ -23,7 +23,7 @@ ORDER BY 'Item Count' DESC;
 SELECT CAST(
 		CASE
 		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.85
+			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
 		ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
 		END AS decimal(19,5)) AS 'Sales Totals',
 		 s.StaffId,s.StaffFirstName,s.StaffSurname, o.OfficeId, o.OfficeLocation

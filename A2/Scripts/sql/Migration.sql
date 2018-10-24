@@ -52,27 +52,18 @@ ORDER BY [Reciept_Id]
 GO
 
 --adds total price to Receipt
-UPDATE Receipt
-Set Receipt.TotalPrice = (
-SELECT SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) AS 'Total'
-From Receipt r 
-INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
-Where 
-);
-GO
-
---Adds discounted price to receipt
-UPDATE Receipt
-Set Receipt.DiscountPrice = (
-SELECT CAST(
-		CASE
-		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
-		END AS decimal(19,5)) AS [SalesTotals]
+UPDATE Receipt 
+Set TotalPrice = r.TotalPrice + (SELECT SUM(SalePrice * ReceiptItemQuantity) FROM ReceiptItem ri WHERE  r.ReceiptID = ri.ReceiptID)
 FROM Receipt r
-INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-);
 GO
 
-select * from Receipt
-select * from ReceiptItem where ReceiptId = 120002
+--Adds Discount price to receipt
+UPDATE Receipt 
+Set DiscountPrice = TotalPrice *.95
+WHERE (SELECT SUM(ReceiptItemQuantity) FROM ReceiptItem ri WHERE Receipt.ReceiptID = ri.ReceiptID) >=5
+GO
+
+
+
+
+
