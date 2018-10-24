@@ -382,6 +382,10 @@
                   \end{tabular}
                 \end{table}
                 
+                \noindent
+                This suggests to us that select stores had more either more sales or 
+                higher performing employees, which we wanted to confirm in analysis later, of which can be found here.
+
                 \newpage
 
             \subsubsection{Total Items Sold}
@@ -598,7 +602,7 @@
                 \$134.53 & S165    & Marcus         & Ross         & 2        & Maitland       \\ \hline
                 \$134.12 & S199    & Maria          & Smith        & 5        & Port Macquarie \\ \hline
                 \end{tabular}
-                \end{table}
+            \end{table}
 
             % \par\noindent
              
@@ -610,51 +614,62 @@
             % sell a larger quantity of the same item, as this lends itself towards a higher
             % receipt total. 
             
-            \subsection{Best location based on Items sold and total revenue}
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
+            \subsection{Total Items and Revenue per Store}
                
                 \begin{lstlisting}
-				-- Item Count, total revenue, average revenue per item sold By Office Location no discount
-				SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
-						, o.OfficeId
-						, o.OfficeLocation
-						, SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) AS Revenue
-						, Cast (SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) as decimal)/SUM(ri.ReceiptItemQuantity) as AverageRevenue
-				FROM Receipt r
-					INNER JOIN ReceiptItem ri
-								ON r.ReceiptId = ri.ReceiptId
-					INNER JOIN Staff s
-								ON s.StaffId = r.ReceiptStaffId
-					INNER JOIN Office o
-								ON s.StaffOfficeId = o.OfficeId
-				GROUP BY o.OfficeId
-						, o.OfficeLocation
-				ORDER BY ItemCount DESC;
+                -- Item Count, total revenue, sold By Office Location with discount
+                SELECT (CAST(
+                        CASE
+                        WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                            THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+                        ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
+                        END AS decimal(19,5))) AS 'Revenue',
+                SUM(ri.ReceiptItemQuantity) AS ItemCount,
+                o.OfficeId, o.OfficeLocation
+                FROM Receipt r
+                    INNER JOIN ReceiptItem ri
+                                ON r.ReceiptId = ri.ReceiptId
+                    INNER JOIN Staff s
+                                ON s.StaffId = r.ReceiptStaffId
+                    INNER JOIN Office o
+                                ON s.StaffOfficeId = o.OfficeId
+                GROUP BY o.OfficeId
+                        , o.OfficeLocation
+                ORDER BY ItemCount DESC;
                 \end{lstlisting}
 
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|}
                     \hline
-                    ItemCount & OfficeId & OfficeLocation & Revenue         \\ \hline
-                    97020     & 9        & Wagga Wagga    & \$1902270.85 \\ \hline
-                    65637     & 2        & Maitland       & \$1309222.55 \\ \hline
-                    65568     & 10       & Broken Hill    & \$1270277.65 \\ \hline
-                    59946     & 1        & Newcastle      & \$1167716.60 \\ \hline
-                    59229     & 4        & Sydney         & \$1171929.90 \\ \hline
-                    56429     & 5        & Port Macquarie & \$1150447.25 \\ \hline
-                    52315     & 3        & Cessnock       & \$1059141.65 \\ \hline
-                    51533     & 6        & Grafton        & \$1054211.90 \\ \hline
-                    49456     & 7        & Dubbo          & \$983439.45  \\ \hline
-                    46433     & 8        & Wollongong     & \$938812.30  \\ \hline
+                    Revenue       & ItemCount & OfficeId & OfficeLocation \\ \hline
+                    \$1807157.30 & 97020     & 9        & Wagga Wagga    \\ \hline
+                    \$1243761.42 & 65637     & 2        & Maitland       \\ \hline
+                    \$1206763.76 & 65568     & 10       & Broken Hill    \\ \hline
+                    \$1109330.77 & 59946     & 1        & Newcastle      \\ \hline
+                    \$1113333.40 & 59229     & 4        & Sydney         \\ \hline
+                    \$1092924.88 & 56429     & 5        & Port Macquarie \\ \hline
+                    \$1006184.56 & 52315     & 3        & Cessnock       \\ \hline
+                    \$1001501.30 & 51533     & 6        & Grafton        \\ \hline
+                    \$934267.47  & 49456     & 7        & Dubbo          \\ \hline
+                    \$891871.68  & 46433     & 8        & Wollongong     \\ \hline
                     \end{tabular}
-                    \end{table}
+                \end{table}
 
-            \subsection{Total Number of Customers}
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
+            \subsection{Unique Customers Per Store}
                 
             Total number of customers per store were determine via the below query:
 
             \begin{lstlisting}
-                -- Customer Count Per Store
+                -- Unique Customer Count Per Store
                 SELECT COUNT(*) AS 'Customer Count', o.[OfficeLocation]
                 FROM Customer c
                 INNER JOIN Receipt r ON r.ReceiptCustomerId = c.CustomerId
@@ -669,18 +684,31 @@
                 \begin{tabular}{|l|l|}
                 \hline
                 Customer Count & OfficeLocation \\ \hline
-                3221           & Wagga Wagga    \\ \hline
-                2228           & Broken Hill    \\ \hline
-                2192           & Maitland       \\ \hline
-                1980           & Newcastle      \\ \hline
-                1936           & Sydney         \\ \hline
-                1846           & Port Macquarie \\ \hline
-                1755           & Cessnock       \\ \hline
-                1669           & Grafton        \\ \hline
-                1625           & Dubbo          \\ \hline
-                1550           & Wollongong     \\ \hline
+                600            & Wagga Wagga    \\ \hline
+                584            & Maitland       \\ \hline
+                581            & Port Macquarie \\ \hline
+                581            & Broken Hill    \\ \hline
+                577            & Sydney         \\ \hline
+                574            & Newcastle      \\ \hline
+                571            & Cessnock       \\ \hline
+                564            & Dubbo          \\ \hline
+                559            & Grafton        \\ \hline
+                556            & Wollongong     \\ \hline
                 \end{tabular}
-                \end{table}
+            \end{table}
+
+            \noindent
+            This suggests that customers generally will shop at a number of stores, not just the single store in their locality, however being an online business 
+            and knowing that the unique pool of customers in this dataset was 600 
+            also suggests that a customer can order from anywhere and have the item
+            delivered or transfered to a local store potentially.
+            \\
+            Given this, we assume that closing a store will not greatly impact 
+            customer retention if an online outlet can be reached.
+
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
 
             \subsection{Item Popularity}
             Top 3 best and worst items overall, correlation to any stores?
@@ -744,6 +772,10 @@
                 10        & 5       & 1939             & 11      & 1962             & 13      & 1980              \\ \hline
                 \end{tabular}
                 \end{table}
+
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
 
             \subsection{Worst Performing Item}
                 Correlation to store?

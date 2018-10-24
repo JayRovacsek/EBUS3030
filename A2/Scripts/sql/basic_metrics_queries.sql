@@ -194,19 +194,22 @@ GROUP BY c.CustomerId
 ORDER BY 'Sales Average' DESC;
 
 
--- Item Count, total revenue, average revenue per item sold By Office Location no discount
-SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
-		, o.OfficeId
-		, o.OfficeLocation
-		, SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) AS Revenue
-		, Cast (SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) as decimal)/SUM(ri.ReceiptItemQuantity) as AverageRevenue
+-- Item Count, total revenue, sold By Office Location with discount
+SELECT (CAST(
+		CASE
+		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+		ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
+		END AS decimal(19,5))) AS 'Revenue',
+SUM(ri.ReceiptItemQuantity) AS ItemCount,
+o.OfficeId, o.OfficeLocation
 FROM Receipt r
 	INNER JOIN ReceiptItem ri
-				 ON r.ReceiptId = ri.ReceiptId
+				ON r.ReceiptId = ri.ReceiptId
 	INNER JOIN Staff s
-				 ON s.StaffId = r.ReceiptStaffId
+				ON s.StaffId = r.ReceiptStaffId
 	INNER JOIN Office o
-				 ON s.StaffOfficeId = o.OfficeId
+				ON s.StaffOfficeId = o.OfficeId
 GROUP BY o.OfficeId
 		, o.OfficeLocation
 ORDER BY ItemCount DESC;
@@ -513,3 +516,14 @@ GROUP BY o.OfficeId
 		, o.OfficeLocation
 		, r.ReceiptDate
 ORDER BY ItemCount ASC;
+
+
+-- Customer Count Per Store
+SELECT COUNT(DISTINCT c.CustomerId) AS 'Customer Count', o.[OfficeLocation]
+FROM Customer c
+INNER JOIN Receipt r ON r.ReceiptCustomerId = c.CustomerId
+INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
+GROUP BY o.[OfficeLocation]
+ORDER BY 'Customer Count' DESC; 
+
