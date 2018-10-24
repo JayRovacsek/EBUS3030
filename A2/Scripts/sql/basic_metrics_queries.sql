@@ -449,6 +449,7 @@ FROM Receipt r
 				 ON ri.ReceiptId = r.ReceiptId
 	INNER JOIN Item i
 				 ON i.ItemId = ri.ItemId
+WHERE r.ReceiptDate between '2017-12-01' and '2017-12-31'
 GROUP BY i.ItemId, i.ItemDescription
 ORDER BY ItemCount ASC;
 
@@ -457,3 +458,58 @@ SELECT COUNT(*) AS 'Staff Count', o.[OfficeLocation]
 FROM Staff s
 INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
 GROUP BY o.[OfficeLocation]
+
+
+--sales total per staff member per office per month
+SELECT CAST(
+		CASE
+		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+		ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
+		END AS decimal(19,5)) AS 'Sales Totals'
+		, s.StaffId
+		, s.StaffFirstName
+		, s.StaffSurname
+		, o.OfficeId
+		, o.OfficeLocation
+		, r.ReceiptDate
+FROM Receipt r
+	INNER JOIN ReceiptItem ri
+				 ON r.ReceiptId = ri.ReceiptId
+	INNER JOIN Item i
+				 ON i.ItemId = ri.ItemId
+	INNER JOIN Staff s
+				 ON s.StaffId = r.ReceiptStaffId
+	INNER JOIN Customer c
+				 ON c.CustomerId = r.ReceiptCustomerId
+	INNER JOIN Office o
+				 ON o.OfficeId = s.StaffOfficeId
+WHERE o.OfficeId = 1 and r.ReceiptDate between '2017-12-01' and '2017-12-31'
+GROUP BY s.StaffId
+		, s.StaffFirstName
+		, s.StaffSurname
+		, o.OfficeId
+		, o.OfficeLocation
+		, r.ReceiptDate
+ORDER BY 'Sales Totals' DESC;
+
+
+--3 top and bottom items for office 10
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+		, o.OfficeId
+		, o.OfficeLocation
+		, r.ReceiptDate
+FROM Receipt r
+	INNER JOIN ReceiptItem ri
+				 ON ri.ReceiptId = r.ReceiptId
+	INNER JOIN Item i
+				 on i.ItemId = ri.ItemId
+	INNER JOIN Staff s
+				 on s.StaffId = r.ReceiptStaffId
+	INNER JOIN Office o
+				 on o.OfficeId = s.StaffOfficeId
+WHERE o.OfficeId = 9 and r.ReceiptDate between '2017-12-01' and '2017-12-31'
+GROUP BY o.OfficeId
+		, o.OfficeLocation
+		, r.ReceiptDate
+ORDER BY ItemCount ASC;
