@@ -699,37 +699,97 @@
                 \end{table}
 
             \subsection{Item Popularity}
-                Top 3 best and worst items overall, correlation to any stores?
+            Top 3 best and worst items overall, correlation to any stores?
 
-                \begin{lstlisting}
-                   
-                \end{lstlisting}
+            \begin{lstlisting}
+                SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+                , i.ItemId
+                , i.ItemDescription
+                , o.OfficeId
+                , o.OfficeLocation
+                    FROM Receipt r
+                        INNER JOIN ReceiptItem ri
+                                    ON ri.ReceiptId = r.ReceiptId
+                        INNER JOIN Item i
+                                    on i.ItemId = ri.ItemId
+                        INNER JOIN Staff s
+                                    on s.StaffId = r.ReceiptStaffId
+                        INNER JOIN Office o
+                                    on o.OfficeId = s.StaffOfficeId
+                    WHERE o.OfficeId = 1
+                    GROUP BY i.ItemId
+                            , i.ItemDescription
+                            , o.OfficeId
+                            , o.OfficeLocation
+                    ORDER BY ItemCount ASC;
+            \end{lstlisting}
 
-                \begin{table}[H]
-                    \centering
-                    \begin{tabular}{|l|l|l|l|}
-                    \hline
-                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
-                    \end{tabular}
-                    \end{table}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|}
+                \hline
+                Office ID & Item ID & Highest Quality 1 & Item ID & Highest Quality 2 & Item ID & Highest Quality 3  \\ \hline
+                1         & 24      & 2144              & 13      & 2153              & 26      & 2176               \\ \hline
+                2         & 7       & 2328              & 28      & 2371              & 5       & 2374               \\ \hline
+                3         & 10      & 1885              & 18      & 1900              & 22      & 2144               \\ \hline
+                4         & 16      & 2151              & 20      & 2157              & 4       & 2185               \\ \hline
+                5         & 20      & 2038              & 27      & 2042              & 10      & 2051               \\ \hline
+                6         & 25      & 1846              & 16      & 1856              & 2       & 1881               \\ \hline
+                7         & 20      & 1807              & 30      & 1808              & 24      & 1864               \\ \hline
+                8         & 5       & 1674              & 8       & 1696              & 16      & 1765               \\ \hline
+                9         & 25      & 3405              & 21      & 3478              & 14      & 3566               \\ \hline
+                10        & 14      & 2376              & 22      & 2384              & 8       & 2436               \\ \hline
+                \end{tabular}
+                \end{table}
+
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|}
+                \hline
+                Office ID & Item ID & Lowest Quality 1 & Item ID & Lowest Quality 2 & Item ID & Lowest Quality 3  \\ \hline
+                1         & 11      & 1756             & 2       & 1765             & 17      & 1866              \\ \hline
+                2         & 27      & 1947             & 9       & 1966             & 2       & 2027              \\ \hline
+                3         & 5       & 1465             & 8       & 1500             & 27      & 1561              \\ \hline
+                4         & 23      & 1767             & 13      & 1810             & 14      & 1829              \\ \hline
+                5         & 1       & 1563             & 8       & 1663             & 6       & 1680              \\ \hline
+                6         & 29      & 1537             & 20      & 1562             & 17      & 1573              \\ \hline
+                7         & 25      & 1397             & 4       & 1471             & 2       & 1494              \\ \hline
+                8         & 14      & 1383             & 17      & 1422             & 24      & 1424              \\ \hline
+                9         & 16      & 2945             & 23      & 3001             & 28      & 3010              \\ \hline
+                10        & 5       & 1939             & 11      & 1962             & 13      & 1980              \\ \hline
+                \end{tabular}
+                \end{table}
 
             \subsection{Worst Performing Item}
                 Correlation to store?
 
                 \begin{lstlisting}
-                    
+                    --worst perfroming items for the company as whole
+                    SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+                            , i.ItemId
+                            , i.ItemDescription
+                    FROM Receipt r
+                        INNER JOIN ReceiptItem ri
+                                    ON ri.ReceiptId = r.ReceiptId
+                        INNER JOIN Item i
+                                    ON i.ItemId = ri.ItemId
+                    GROUP BY i.ItemId, i.ItemDescription
+                    ORDER BY ItemCount ASC;
                 \end{lstlisting}
 
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|}
                     \hline
-                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    ItemCount & ItemId & ItemDescription \\ \hline
+                    19481     & 23     & Drill Bit 6mm   \\ \hline
+                    19613     & 13     & Ruler           \\ \hline
+                    19741     & 2      & Screwdriver Set \\ \hline
+                    19744     & 9      & Box of Screws   \\ \hline
+                    19746     & 17     & Punch           \\ \hline
                     \end{tabular}
                     \end{table}
-
-
-
 
 % ------------------------------------------------------------------------------------------------ %
 % CONCLUSION & RECOMMENDATIONS
