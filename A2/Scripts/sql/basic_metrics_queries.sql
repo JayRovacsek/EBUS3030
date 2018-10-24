@@ -4,9 +4,19 @@
 ** Description: querying the database to find information regarding products and sales.
  */
 
-
 USE EBUS3030A2;
 
+-- Sales Total for all receipts
+SELECT SUM(SubQuery.Sales)
+FROM (
+SELECT CAST(
+		CASE
+		WHEN r.DiscountPrice > 0
+			THEN r.DiscountPrice
+		ELSE r.TotalPrice
+		END AS decimal(19,5)
+		) AS 'Sales'
+ FROM Receipt r) AS SubQuery
 
 -- Sales count per staff member (Receipt Count)
 SELECT COUNT(*) AS 'Sales Count'
