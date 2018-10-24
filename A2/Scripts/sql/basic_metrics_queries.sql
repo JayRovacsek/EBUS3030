@@ -457,3 +457,11 @@ SELECT COUNT(*) AS 'Staff Count', o.[OfficeLocation]
 FROM Staff s
 INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
 GROUP BY o.[OfficeLocation]
+
+-- Customer Count Per Store
+SELECT COUNT(*) AS 'Customer Count', o.[OfficeLocation]
+FROM Customer c
+INNER JOIN Receipt r ON r.ReceiptCustomerId = c.CustomerId
+INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
+GROUP BY o.[OfficeLocation]
