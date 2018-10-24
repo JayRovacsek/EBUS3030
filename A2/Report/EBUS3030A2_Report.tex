@@ -238,12 +238,19 @@
         that allowed us to analyze the data for potential outliers, confirm the business
         requirements of the data and then create tables from which the data model was derived.
         \\
+        
+		\vspace{2mm}        
+        
         The Imported table structure was as follows:
+
+		\vspace{2mm}
+		
         \begin{center}
             \includegraphics{Images/Initial_Import.PNG}
         \end{center}
-
-        \noindent
+		
+		\vspace{5mm}		
+		
         A decision to leave this initial import table as default
         was made to allow easy reference to the initially supplied
         excel data file.
@@ -265,8 +272,12 @@
         To mitigate this, the team developed a simple update to the 
         ReceiptItem was performed, to ensure that a dicount would not be applied to a receipt with 
         less than five items, when potentially the receipt did not 
-        actually have more than four distinct items.
+        actually have more than four distinct items. \\
+        
         The following query was used to determine this information:
+        \vspace{3mm}
+        
+        
         \begin{lstlisting}
         -- Verify that no receipt has duplicate ItemIds and all are unique per order
         SELECT *
@@ -279,6 +290,8 @@
             GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
         WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
         \end{lstlisting}
+
+		\vspace{3mm}
 
         Returning no entries once the data was cleaned with a 
         \hyperref[sec:sharpccleaning]{\color{blue}C\# Script} internally developed.
@@ -358,16 +371,18 @@
             Analysis was performed using Microsoft SQL Management Studio,
             with a flat file of the original data being imported into 
             the table as defined \hyperref[sec:ETL]{\color{blue}here},
-            as with the previous assignment utilisation of decimal(18.7) was our choice over using the money type, again citing
-            the imprecision of money in MSSQL/TSQL\cite{MoneyIssues}
+            as with the previous assignment utilisation of decimal(18.7) was our choice over using the money type, again citing the imprecision of money in MSSQL/TSQL\cite{MoneyIssues}.
 
-            Source files to immitate the analysis below is either included inline or in sources files in the final submission.
+            Source files to imitate the analysis below is either included inline under their respective headers or can be found in the source files within the final submission. The following section also contains tables with a selection of results from the corresponding SQL script. 
 
             \subsection{Raw Results}
 
             \subsubsection{Total Revenue Per Store}
             The total revenue per store after discounts were applied was determined by the following 
-            query:
+            query. Below the query, the selected results were included.
+            
+            \vspace{2mm}
+            
             \begin{lstlisting}
             -- Item Count, total revenue, sold By Office Location with discount
             SELECT (CAST(
@@ -388,7 +403,8 @@
                     , o.OfficeLocation
             ORDER BY Revenue DESC;
             \end{lstlisting}
-            With results:
+
+
             \begin{table}[H]
                 \centering
                 \begin{tabular}{|l|l|l|}
@@ -413,7 +429,7 @@
 
             \subsubsection{Total Number of Sales}
                 The total number of sales per staff member were considered with the following 
-                sql query:
+                query. Below the query, the selected results were included.
                 \begin{lstlisting}
 				SELECT COUNT(*) AS 'Sales Count'
 						, s.StaffId
@@ -452,7 +468,7 @@
                 \end{table}
                 
                 \noindent
-                This suggests to us that select stores had more either more sales or 
+                This suggests to us that individual stores had, either more sales or 
                 higher performing employees, which we wanted to confirm in analysis later, of which can be found here.
 
 %%%%%%%%%%%%%%%%%
@@ -461,7 +477,7 @@
 
             \subsubsection{Total Items Sold}
                 The total items attributed to each staff member were considered also,
-                determined by the query:
+                determined by the query. Below the query, the selected results were included.
                 
                 \begin{lstlisting}
 				SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count'
@@ -507,7 +523,7 @@
                     
             \subsubsection{Discounted Sales Ratio}
                 Consideration of the number of sales made by each staff member was also made,
-                the following query yielding the results we required:
+                the following query yielding the results we required. Below the query, the selected results were included.
 
             \begin{lstlisting}
 				SELECT s.StaffId
@@ -770,14 +786,9 @@
                 \end{tabular}
             \end{table}
 
-            \noindent
-            This suggests that customers generally will shop at a number of stores, not just the single store in their locality, however being an online business 
-            and knowing that the unique pool of customers in this dataset was 600 
-            also suggests that a customer can order from anywhere and have the item
-            delivered or transfered to a local store potentially.
-            \\
-            Given this, we assume that closing a store will not greatly impact 
-            customer retention if an online outlet can be reached.
+
+            This suggests that customers will shop at a number of stores, not just the single store in their locality. As an online business knowing that the unique pool of customers in this dataset was 600 also suggests that a customer can order from anywhere and have the item
+            delivered or transfered to a local store potentially. Given this, we assume that closing a store will not greatly impact customer retention if an online outlet can be reached.
 
 %%%%%%%%%%%%%%%%%
 \newpage
