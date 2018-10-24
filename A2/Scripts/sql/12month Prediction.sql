@@ -7,7 +7,20 @@
 USE EBUS3030A2;
 GO
 
---sum, avg, min, max per item per month
+
+--Avg per month
+SELECT SUM(ri.ReceiptItemQuantity)/12 as Average 
+FROM Receipt r
+  INNER JOIN ReceiptItem ri
+         ON ri.ReceiptId = r.ReceiptId
+  INNER JOIN Item i
+         ON i.ItemId = ri.ItemId
+WHERE ReceiptDate BETWEEN '2017-01-01' AND '2017-12-31'
+ORDER BY Average ASC;
+
+
+
+--sum, avg, min, max per item per month grouped on date 
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
