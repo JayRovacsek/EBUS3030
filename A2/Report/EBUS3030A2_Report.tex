@@ -152,34 +152,32 @@
     
     	The following section outlines the models used in the design and creation of the database. It includes the EER Model with relations, attributes and relationships as well as the database schema from Microsoft SQL Server Management Studio.
     
-    \subsubsection{Database Schema}
-    The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
-        \begin{center}
-            \includegraphics[width=\textwidth,keepaspectratio]{Images/schema.PNG}
-        \end{center}
-    It must be noted that the structure of this data model is 
-    less than efficient, and it would be expected in a datamart
-    situation that only at lower levels of data would this schema
-    remain responsive in the manner it is now, as the outline
-    suggests the datamart is not necessarily the most suitable
-    design for future use, however suits very well currently.
-    \par
-    It would be expected that only at extremely large data sets
-    would this model prove a bad design. In such cases a model 
-    more representative of the snowflake or star schema would be
-    heavily advised.
+        \subsubsection{Database Schema}
+            The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
+                \begin{center}
+                    \includegraphics[width=\textwidth,keepaspectratio]{Images/schema.PNG}
+                \end{center}
+            It must be noted that the structure of this data model is 
+            less than efficient, and it would be expected in a datamart
+            situation that only at lower levels of data would this schema
+            remain responsive in the manner it is now, as the outline
+            suggests the datamart is not necessarily the most suitable
+            design for future use, however suits very well currently.
+            \par
+            It would be expected that only at extremely large data sets
+            would this model prove a bad design. In such cases a model 
+            more representative of the snowflake or star schema would be
+            heavily advised.
 
     \newpage
-    \subsubsection{EER Diagram}
-    An EER diagram of the suggested data model is provided below. 
+        \subsubsection{EER Diagram}
+            An EER diagram of the suggested data model is provided below. 
 
-	\vspace{10mm}    
-    
-    \begin{center}
-        \includegraphics[width=\textwidth-40pt,keepaspectratio]{Images/A2-EERModel.png}
-    \end{center}
+            \bigskip
 
-
+            \begin{center}
+                \includegraphics[width=\textwidth-40pt,keepaspectratio]{Images/A2-EERModel.png}
+            \end{center}
 
 % ------------------------------------------------------------------------------------------------ %
 % DATA LOAD PROCESS
@@ -193,7 +191,7 @@
         \\
         The Imported table structure was as follows:
         \begin{center}
-            %\includegraphics{Images/Initial_Import.PNG}
+            \includegraphics{Images/Initial_Import.PNG}
         \end{center}
 
         \noindent
