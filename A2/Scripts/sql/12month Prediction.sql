@@ -7,23 +7,6 @@
 USE EBUS3030A2;
 GO
 
-
-SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
-    , AVG(ri.ReceiptItemQuantity) AS 'AVG'
-    , MIN(ri.ReceiptItemQuantity) AS 'MIN'
-    , MAX(ri.ReceiptItemQuantity) AS 'MAX'
-    , i.ItemId
-    , i.ItemDescription
-FROM Receipt r
-  INNER JOIN ReceiptItem ri
-         ON ri.ReceiptId = r.ReceiptId
-  INNER JOIN Item i
-         ON i.ItemId = ri.ItemId
-GROUP BY i.ItemId,
-         i.ItemDescription
-ORDER BY ItemCount ASC;
-
-
 --sum, avg, min, max per item per month
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
@@ -49,12 +32,19 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-01-01' AND '2017-01-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
 
 
@@ -63,26 +53,39 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-02-01' AND '2017-02-28'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
-
 
 --sum, avg, min, max per month 3
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-03-01' AND '2017-03-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
 
 
@@ -91,12 +94,19 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-04-01' AND '2017-04-30'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
 
 
@@ -105,12 +115,19 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-05-01' AND '2017-05-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
 
 
@@ -119,12 +136,19 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-06-01' AND '2017-06-30'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
 
 
@@ -133,12 +157,19 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-07-01' AND '2017-07-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
 
 
@@ -147,70 +178,104 @@ SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-08-01' AND '2017-08-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
+
 
 --sum, avg, min, max per month 9
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-09-01' AND '2017-09-30'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
-
 
 --sum, avg, min, max per month 10
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-10-01' AND '2017-10-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
-
-
 
 --sum, avg, min, max per month 11
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-11-01' AND '2017-11-30'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
-
 
 --sum, avg, min, max per month 12
 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
     , AVG(ri.ReceiptItemQuantity) AS 'AVG'
     , MIN(ri.ReceiptItemQuantity) AS 'MIN'
     , MAX(ri.ReceiptItemQuantity) AS 'MAX'
+	, o.OfficeId
+	, o.OfficeLocation
 FROM Receipt r
   INNER JOIN ReceiptItem ri
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
-
+  INNER JOIN Staff s
+		 ON s.StaffId = r.ReceiptStaffId
+  INNER JOIN Office o
+		 ON o.OfficeId = s.StaffOfficeId
 WHERE ReceiptDate BETWEEN '2017-12-01' AND '2017-12-31'
+Group By o.OfficeId, o.OfficeLocation
 ORDER BY ItemCount ASC;
+
+
+
 
 
 
