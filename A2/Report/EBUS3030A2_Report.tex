@@ -168,7 +168,7 @@
         \item Store Item prices can change at any point, however the price the customer pays is the amount listed for the
         store item that is sold on the sale date. We need to keep a record of all store item prices historically so that 
         we can determine what the store item price was at any particular past date.
-        \item Only 1 BIA sales assistant can be attributed to any receipt
+        \item Only one BIA sales assistant can be attributed to any receipt.
         \item Customers may visit multiple stores for purchases (ie they are not locked to a particular store). As a 
         result, all customer records are replicated across all stores, so they do not need to be re-recorded at a 
         store by store level.
@@ -242,15 +242,14 @@
 
         \subsection{Quality Assurance Processes}
         \label{sec:QAP}
-        After a basic query to determine if once again multiple 
+        After performing a basic query to determine if, like our previous project, multiple 
         items of the same ID on a single receipt existed it was 
-        apparent that the same issue existed from the previous 
-        assignment.
+        apparent that the same issue existed in this data set as did in the previous.
         \\
-        A simple update to the ReceiptItem was performed, to ensure
-        that a dicount would not be applied to a receipt with 
-        less than 5 items, when potentially the receipt did not 
-        actually have more than 4 distinct items.
+        To mitigate this, the team developed a simple update to the 
+        ReceiptItem was performed, to ensure that a dicount would not be applied to a receipt with 
+        less than five items, when potentially the receipt did not 
+        actually have more than four distinct items.
         The following query was used to determine this information:
         \begin{lstlisting}
         -- Verify that no receipt has duplicate ItemIds and all are unique per order
@@ -268,7 +267,8 @@
         Returning no entries once the data was cleaned with a 
         \hyperref[sec:sharpccleaning]{\color{blue}C\# Script} internally developed.
         This took into account not only checking for data integrity
-        but generated new sql to facilitate \hyperref[sec:sharpcsqlgeneration]{\color{blue}item consolidation}
+        but generated new sql to facilitate \hyperref[sec:sharpcsqlgeneration]{\color{blue}item consolidation}.
+        These scripts have been listed in the appendices of this report.
 
         \newpage
 % ------------------------------------------------------------------------------------------------ %
@@ -277,16 +277,21 @@
 
         \subsection{Assumptions and Reasoning}
         \label{sec:AR}
+		The following section outlines our assumptions and the reasoning behind certain decisions
+		made by the team at any stage of the project. The team will always try to apply business
+		rules supplied by the firm to any of the decisions made however this is not always possible.
+		In this case, the reasoning has been listed in the section that follows.        
+        
             \subsubsection{Item}
-                There was no major assumptions with the items,
-                they follow the feedback received from the A1 
-                and use the associative entity of ReceiptItem
+                There were no major assumptions made for the items.
+                We followed the feedback received from the previous project 
+                and used the associative entity of ReceiptItem
                 to satisfy requirements of sale price and quantity.
 
             \subsubsection{ReceiptItem}
                 As suggested above, the ReceiptItem table was created
-                to satisfy feedback received on A1, allows for quantity 
-                and price association.
+                to satisfy feedback received on our previous project
+                , allows for quantity and price association.
 
             \subsubsection{Receipt}
                 The receipt had no changes in comparison to the previous
