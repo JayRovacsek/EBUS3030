@@ -34,7 +34,14 @@ namespace ParseDataCSharp
             Console.WriteLine($@"Parsed unique receipts: {receipts.Count}");
             Console.WriteLine($@"Found {invalidReceipts.Count} invalid receipts");
 
-            // Catch to allow user to debug if relevant 
+            var sql = methodHelper.GenerateSQL(receipts);
+            methodHelper.CreateFile("sqlfile.sql", sql);
+
+            //foreach(var item in receipts[105058].Items)
+            //{
+            //    Console.WriteLine($"ItemId: {item.Value.Id}, Quantity: {item.Value.Quantity}");
+            //}
+
             Console.ReadKey();
         }
     }

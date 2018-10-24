@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.IO;
 using System.Linq;
+using System.Text;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 using ExcelDataReader;
 using ParseDataCSharp.Classes;
 
@@ -203,6 +205,73 @@ namespace ParseDataCSharp.Methods
 
             return new Tuple<Dictionary<int, Receipt>, Dictionary<int, Receipt>, int>(receipts, invalidReceipts,
                 counter);
+        }
+
+        public void CreateFile(string filename, string contents)
+        {
+            try
+            {
+                if (File.Exists(filename))
+                {
+                    File.Delete(filename);
+                }
+
+                using(var fileStream = File.Create(filename))
+                {
+                    // Add some text to file
+                    Byte[] title = new UTF8Encoding(true).GetBytes(contents);
+                    fileStream.Write(title, 0, title.Length);
+                }
+
+            }
+            catch(Exception exception)
+            {
+                Console.WriteLine($"An exception occured: {exception.Message}");
+            }
+        }
+
+        public string GenerateSQL(Dictionary<int, Receipt> receipts)
+        {
+            var output = new StringBuilder();
+
+            Parallel.ForEach(receipts, receipt =>
+            {
+                var itemTotalPrices = new Dictionary<int, double>();
+
+                Parallel.ForEach(receipt.Value.Items, item =>
+                {
+                    var totalItemPrice = item.Value.Price * item.Value.Quantity;
+                    itemTotalPrices.Add(item.Key, totalItemPrice);
+                });
+
+                var total = itemTotalPrices.Sum(x => x.Value);
+                var discountTotal = (itemTotalPrices.Count >= 5) ? total * 0.95 : 0;
+
+                var sql = new StringBuilder($@"
+
+    INSERT INTO [Receipt] 
+    VALUES( {receipt.Value.SaleDate},
+            {receipt.Key},
+            '{receipt.Value.Customer.Id}',
+            '{receipt.Value.Staff.Id}',
+            {total},
+            {discountTotal});");
+
+                foreach(var item in itemTotalPrices)
+                {
+                    sql.Append($@"
+    
+    INSERT INTO [ReceiptItem]
+    VALUES( {receipt.Key},
+            {item.Key},
+            {receipt.Value.Items.Select(x => x.Value).Where(y => y.Id == item.Key).FirstOrDefault().Quantity},
+            {receipt.Value.Items.Select(x => x.Value).Where(y => y.Id == item.Key).FirstOrDefault().Price});");
+                }
+
+                output.Append(sql);
+            });
+
+            return output.ToString();
         }
     }
 }
