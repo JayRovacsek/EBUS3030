@@ -465,3 +465,4 @@ INNER JOIN Receipt r ON r.ReceiptCustomerId = c.CustomerId
 INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
 INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
 GROUP BY o.[OfficeLocation]
+ORDER BY 'Customer Count' DESC;
