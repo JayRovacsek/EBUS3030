@@ -41,7 +41,7 @@
     \definecolor{deepgreen}{rgb}{0,0.5,0}
 
     % SQL style for highlighting
-    \lstset{
+    \lstdefinestyle{sql}{
         language=SQL,
         basicstyle=\small,
         commentstyle=\color{gray},
@@ -51,9 +51,42 @@
         numbers=left,
         numberstyle=\small,
         breaklines=true,
-        frame=tb,
+        frame=tblr,
         showstringspaces=false,
-        autogobble=true
+        autogobble=true,
+        rulecolor=\color{black}
+        }
+
+    \lstdefinestyle{sharpc}{
+        language=[Sharp]C,
+        aboveskip=2mm,
+        belowskip=2mm,
+        columns=flexible,
+        basicstyle=\small,
+        commentstyle=\color{gray},
+        otherkeywords={self},
+        keywordstyle=\color{deepblue},
+        stringstyle=\color{deepgreen},
+        emphstyle=\color{deepred},
+        numbers=left,
+        numberstyle=\small,
+        breaklines=true,
+        breakatwhitespace=true,
+        frame=tblr,
+        showstringspaces=false,
+        autogobble=true,
+        rulecolor=\color{black},
+        emph={
+            Dictionary,
+            DataRow,
+            DataTable,
+            Receipt,
+            Staff,
+            Customer,
+            Items,
+            Office,
+            OfficeLocation
+            },
         }
 
     \graphicspath{ {Images/} }
@@ -84,6 +117,7 @@
     \setlist[legal]{label*=\arabic*.}
 
     \begin{document}
+    \lstset{style=sql}
     \AddToShipoutPicture{\backgroundimage}
 
     \begin{titlingpage}
@@ -198,35 +232,75 @@
         A decision to leave this initial import table as default
         was made to allow easy reference to the initially supplied
         excel data file.
-        % \par
-        % In the following sections of \hyperref[sec:QAP]{\color{blue}Quality Assurance Processes}, \hyperref[sec:AR]{\color{blue}Assumptions and Reasoning} and \hyperref[sec:BA]{\color{blue}Base Analysis} we intend to clarify the reasoning behind leaving the imported data in
-        % the default table suggested by SSMS.
 
         \newpage
-
-
-
+        
 % ------------------------------------------------------------------------------------------------ %
 % QA PROCESS
 % ------------------------------------------------------------------------------------------------ %
 
         \subsection{Quality Assurance Processes}
         \label{sec:QAP}
-            Maybe include some C\# code references or whatnot.
+        After a basic query to determine if once again multiple 
+        items of the same ID on a single receipt existed it was 
+        apparent that the same issue existed from the previous 
+        assignment.
+        \\
+        A simple update to the ReceiptItem was performed, to ensure
+        that a dicount would not be applied to a receipt with 
+        less than 5 items, when potentially the receipt did not 
+        actually have more than 4 distinct items.
+        The following query was used to determine this information:
+        \begin{lstlisting}
+        -- Verify that no receipt has duplicate ItemIds and all are unique per order
+        SELECT *
+        FROM
+        (
+            SELECT [ReceiptItem].[ReceiptId], 
+            COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
+            COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
+            FROM [ReceiptItem]
+            GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
+        WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
+        \end{lstlisting}
+
+        Returning no entries once the data was cleaned with a 
+        \hyperref[sec:sharpccleaning]{\color{blue}C\# Script} internally developed.
+        This took into account not only checking for data integrity
+        but generated new sql to facilitate \hyperref[sec:sharpcsqlgeneration]{\color{blue}item consolidation}
+
 % ------------------------------------------------------------------------------------------------ %
 % ASSUMPTIONS/REASONING
 % ------------------------------------------------------------------------------------------------ %
 
-        \newpage
         \subsection{Assumptions and Reasoning}
         \label{sec:AR}
             \subsubsection{Item}
+                There was no major assumptions with the items,
+                they follow the feedback received from the A1 
+                and use the associative entity of ReceiptItem
+                to satisfy requirements of sale price and quantity.
 
             \subsubsection{ReceiptItem}
+                As suggested above, the ReceiptItem table was created
+                to satisfy feedback received on A1, allows for quantity 
+                and price association.
 
             \subsubsection{Receipt}
+                The receipt had no changes in comparison to the previous
+                analysis, the changes occured in related entities 
+                and did not affect the receipt table.
 
             \subsubsection{Staff}
+                Staff were left untouched, the relation to location 
+                however did play a large role in this analysis, and 
+                a major assumption of a staff member only being at one 
+                location at a time or being directly related only to
+                the one location was made.
+                \\
+                This assumption normally would not be made, but 
+                assurances of data cleanliness were made, and the C\#
+                script did not find any discrepencies between our assumption and the supplied information.
 
             \subsubsection{Customer}
 
@@ -241,18 +315,6 @@
         \subsection{Notes on Analysis}
 
             \subsection{Raw Results}
-
-            % A number of metrics were considered to satisfy the request related to the best salesperson,
-            % as we are not certain if this is determined by a specific metric or a set of metrics we 
-            % included a number of analyzed points for the project:
-            % \begin{itemize}
-            %     \item Total receipts attributed to a staff member
-            %     \item Total items sold by a staff member
-            %     \item Ratio of discounted sales to normal sales for each staff member
-            %     \item Total sale value per staff member
-            %     \item Average sale value per staff member
-            %     \item Average item value per staff member
-            % \end{itemize}
 
             \subsubsection{Total Number of Sales}
                 The total number of sales per staff member were considered with the following 
@@ -699,5 +761,219 @@
     \newpage
     \section{Appendix}
     \label{sec:Appendix}
+
+    \subsection{C\# Code Excerpt: Cleaning}
+    \label{sec:sharpccleaning}
+    \lstset{style=sharpc}
+    \begin{lstlisting}
+        public Tuple<Dictionary<int, Receipt>, Dictionary<int, Receipt>, int> GenerateReceipts(DataSet dataSet)
+        {
+            var receipts = new Dictionary<int, Receipt>();
+            var invalidReceipts = new Dictionary<int, Receipt>();
+            var counter = 0;
+
+            // Iterate over each sheet in the dataset, in our case it's only one anyway.
+            foreach (DataTable table in dataSet.Tables)
+                // Iterate over each row in the dataset, it seems this iterates until it finds row with no values in any column.
+                foreach (DataRow row in table.Rows)
+                {
+                    // Ignore the header of the table
+                    if (counter > 0)
+                    {
+                        // Generation of receipt from dataset, ignoring transaction row id as it is not 
+                        // relevant and we are consolidating the duplicate items into total quantities anyway. 
+                        var receipt = new Receipt
+                        {
+                            Id = Convert.ToInt32(row[1]),
+                            Customer = new Customer
+                            {
+                                FirstName = row[3].ToString(),
+                                Id = row[2].ToString(),
+                                Surname = row[4].ToString()
+                            },
+                            Staff = new Staff
+                            {
+                                OfficeId = Convert.ToInt32(row[8]),
+                                Id = row[5].ToString(),
+                                FirstName = row[6].ToString(),
+                                Surname = row[7].ToString()
+                            },
+                            SaleDate = (DateTime)row[0],
+                            Items = new Dictionary<int, Item>
+                        {
+                            {
+                                Convert.ToInt32(row[11]), new Item
+                                {
+                                    Id = Convert.ToInt32(row[11]),
+                                    Description = row[12].ToString(),
+                                    Price = (double) row[14],
+                                    Quantity = Convert.ToInt32(row[13])
+                                }
+                            }
+                        },
+                            Office = new Office
+                            {
+                                Id = Convert.ToInt32(row[8]),
+                                OfficeLocation = ParseEnum<Location>(row[9].ToString())
+                            }
+                        };
+
+
+
+
+
+                        // Check if receipts either is empty or doesn't have a receipt 
+                        // with the same receipt id already, if so add the receipt to 
+                        // receipts.
+                        if (receipts.Count == 0 || !receipts.ContainsKey(receipt.Id))
+                        {
+                            AddToReceipts(receipts, receipt);
+                            Console.WriteLine($@"Added new receipt: {receipt.Id}");
+                        }
+                        // 
+                        else if (receipts.ContainsKey(receipt.Id))
+                        {
+                            var existingReceipt = receipts[receipt.Id];
+
+                            // Be warned; below is a fucking mess.
+
+                            // Check all staff properties match the existing receipt properties.
+                            if (existingReceipt.Staff.Id != receipt.Staff.Id
+                                || existingReceipt.Staff.FirstName != receipt.Staff.FirstName
+                                || existingReceipt.Staff.Surname != receipt.Staff.Surname)
+                            {
+                                AddToReceipts(invalidReceipts, receipt);
+                                Console.WriteLine($"Staff Id mismatch on receipt: {existingReceipt.Id}, " +
+                                                  $"Staff Ids: {existingReceipt.Staff.Id} and {receipt.Staff.Id}, " +
+                                                  $"Staff Names: {existingReceipt.Staff.FirstName} and {receipt.Staff.FirstName}, " +
+                                                  $"Staff Surnames: {existingReceipt.Staff.Surname} and {receipt.Staff.Surname}, ");
+                                continue;
+                            }
+
+                            // Check all office properties match the existing receipt properties.
+                            if (existingReceipt.Office.Id != receipt.Office.Id
+                                || existingReceipt.Office.OfficeLocation != receipt.Office.OfficeLocation)
+                            {
+                                AddToReceipts(invalidReceipts, receipt);
+                                Console.WriteLine($"Office Id mismatch on receipt: {existingReceipt.Id}, " +
+                                              $"Office Ids: {existingReceipt.Office.Id} and {receipt.Office.Id}, " +
+                                              $"Office Locations: {existingReceipt.Office.OfficeLocation} and {receipt.Office.OfficeLocation}");
+                                continue;
+                            }
+
+                            // Check all date properties match the existing receipt properties.
+                            if (existingReceipt.SaleDate != receipt.SaleDate)
+                            {
+                                AddToReceipts(invalidReceipts, receipt);
+                                Console.WriteLine($"Sale date mismatch on receipt: {existingReceipt.Id}, " +
+                                                  $"Dates: {existingReceipt.SaleDate} and {receipt.SaleDate}");
+                                continue;
+                            }
+
+
+
+
+
+
+
+
+
+
+                            
+                            // Check all customer properties match the existing receipt properties.
+                            if (existingReceipt.Customer.Id != receipt.Customer.Id
+                                || existingReceipt.Customer.FirstName != receipt.Customer.FirstName
+                                || existingReceipt.Customer.Surname != receipt.Customer.Surname)
+                            {
+                                AddToReceipts(invalidReceipts, receipt);
+                                Console.WriteLine($"Customer mismatch on receipt: {existingReceipt.Id}, " +
+                                                  $"Customers Ids: {existingReceipt.Customer.Id} and {receipt.Customer.Id}, " +
+                                                  $"Customers Names: {existingReceipt.Customer.FirstName} and {receipt.Customer.FirstName}, " +
+                                                  $"Customers Surnames: {existingReceipt.Customer.Surname} and {receipt.Customer.Surname}, ");
+                                continue;
+                            }
+
+                            // If not item mismatches exist, we need to determine if the item 
+                            // exists in both the compared receipts.
+                            var key = receipt.Items.First().Key;
+                            var value = receipt.Items.First().Value;
+
+                            // Check if the item exists in the existing receipt already.
+                            if (existingReceipt.Items.ContainsKey(receipt.Items.First().Key))
+                            {
+                                var quantity = receipt.Items.First().Value.Quantity;
+                                Console.WriteLine($"Item exists in current receipt with Id: {key}, " +
+                                                  $"updated item quantity from: {existingReceipt.Items[key].Quantity} " +
+                                                  $"to new quantity: {existingReceipt.Items[key].Quantity + quantity}");
+
+                                // Update quantity on item in existing receipt.
+                                existingReceipt.Items[key].Quantity += quantity;
+                                receipts[existingReceipt.Id] = existingReceipt;
+                            }
+                            else
+                            {
+                                // Update the receipt with the new item added.
+                                existingReceipt.Items.Add(key, value);
+                                Console.WriteLine($@"Added item with Id: {value.Id} to existing receipt: {receipt.Id}");
+                            }
+                        }
+                    }
+                    counter++;
+                }
+
+            return new Tuple<Dictionary<int, Receipt>, Dictionary<int, Receipt>, int>(receipts, invalidReceipts,
+                counter);
+        }
+    \end{lstlisting}
+
+    \newpage
+    \subsection{C\# Code Excerpt: SQL Generation}
+    \label{sec:sharpcsqlgeneration}
+    \begin{lstlisting}
+    public string GenerateSQL(Dictionary<int, Receipt> receipts)
+    {
+        var output = new StringBuilder();
+
+        foreach(var receipt in receipts)
+        {
+            var itemTotalPrices = new Dictionary<int, double>();
+
+            foreach (var item in receipt.Value.Items)
+            {
+                var totalItemPrice = item.Value.Price * item.Value.Quantity;
+                itemTotalPrices.Add(item.Key, totalItemPrice);
+            };
+
+            var total = itemTotalPrices.Sum(x => x.Value);
+            var discountTotal = (itemTotalPrices.Count >= 5) ? total * 0.95 : 0;
+
+            var sql = new StringBuilder($@"
+
+
+        INSERT INTO [Receipt] 
+        VALUES('{receipt.Value.SaleDate.ToString("G",CultureInfo.CreateSpecificCulture("en-us"))}',
+                {receipt.Key},
+                '{receipt.Value.Customer.Id}',
+                '{receipt.Value.Staff.Id}',
+                {total},
+                {discountTotal});");
+
+            foreach (var item in itemTotalPrices)
+            {
+                sql.Append($@"
+
+        INSERT INTO [ReceiptItem]
+        VALUES( {receipt.Key},
+                {item.Key},
+                {receipt.Value.Items.Select(x => x.Value).Where(y => y.Id == item.Key).FirstOrDefault().Quantity},
+                {receipt.Value.Items.Select(x => x.Value).Where(y => y.Id == item.Key).FirstOrDefault().Price});");
+            }
+
+            output.Append(sql);
+        };
+
+        return output.ToString();
+    }
+    \end{lstlisting}
     
     \end{document}
