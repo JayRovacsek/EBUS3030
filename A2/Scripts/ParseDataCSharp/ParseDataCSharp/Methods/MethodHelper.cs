@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -230,7 +231,7 @@ namespace ParseDataCSharp.Methods
             }
         }
 
-        public string GenerateSQL(Dictionary<int, Receipt> receipts)
+        public string GenerateSQLThreaded(Dictionary<int, Receipt> receipts)
         {
             var output = new StringBuilder();
 
@@ -257,7 +258,7 @@ namespace ParseDataCSharp.Methods
             {total},
             {discountTotal});");
 
-                foreach(var item in itemTotalPrices)
+                foreach (var item in itemTotalPrices)
                 {
                     sql.Append($@"
     
@@ -270,6 +271,51 @@ namespace ParseDataCSharp.Methods
 
                 output.Append(sql);
             });
+
+            return output.ToString();
+        }
+
+        public string GenerateSQL(Dictionary<int, Receipt> receipts)
+        {
+            var output = new StringBuilder();
+
+            foreach(var receipt in receipts)
+            {
+                var itemTotalPrices = new Dictionary<int, double>();
+
+                foreach (var item in receipt.Value.Items)
+                {
+                    var totalItemPrice = item.Value.Price * item.Value.Quantity;
+                    itemTotalPrices.Add(item.Key, totalItemPrice);
+                };
+
+                var total = itemTotalPrices.Sum(x => x.Value);
+                var discountTotal = (itemTotalPrices.Count >= 5) ? total * 0.95 : 0;
+
+                var sql = new StringBuilder($@"
+
+
+    INSERT INTO [Receipt] 
+    VALUES('{receipt.Value.SaleDate.ToString("G",CultureInfo.CreateSpecificCulture("en-us"))}',
+            {receipt.Key},
+            '{receipt.Value.Customer.Id}',
+            '{receipt.Value.Staff.Id}',
+            {total},
+            {discountTotal});");
+
+                foreach (var item in itemTotalPrices)
+                {
+                    sql.Append($@"
+    
+    INSERT INTO [ReceiptItem]
+    VALUES( {receipt.Key},
+            {item.Key},
+            {receipt.Value.Items.Select(x => x.Value).Where(y => y.Id == item.Key).FirstOrDefault().Quantity},
+            {receipt.Value.Items.Select(x => x.Value).Where(y => y.Id == item.Key).FirstOrDefault().Price});");
+                }
+
+                output.Append(sql);
+            };
 
             return output.ToString();
         }
