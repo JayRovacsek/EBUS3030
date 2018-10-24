@@ -755,7 +755,7 @@
 
             \subsection{Unique Customers Per Store}
                 
-            Total number of customers per store were determine via the below query:
+            Total number of customers per store were determine via the below query: \\
 
             \begin{lstlisting}
                 -- Unique Customer Count Per Store
@@ -787,7 +787,7 @@
             \end{table}
 
 
-            This suggests that customers will shop at a number of stores, not just the single store in their locality. As an online business knowing that the unique pool of customers in this dataset was 600 also suggests that a customer can order from anywhere and have the item
+            This suggests that customers will shop at a number of stores, not just the single store in their locality. Having reflected upon the findings and knowing that the unique pool of customers in this dataset of 600 also suggests that a customer can order from anywhere and have the item
             delivered or transfered to a local store potentially. Given this, we assume that closing a store will not greatly impact customer retention if an online outlet can be reached.
 
 %%%%%%%%%%%%%%%%%
@@ -795,7 +795,9 @@
 %%%%%%%%%%%%%%%%%
 
             \subsection{Item Popularity}
-            Top 3 best and worst items overall, correlation to any stores?
+            
+            The script below addresses the concern of the CEO which required the team to analyse the popularity of items across all stores, and each store individually. The SQL query joins multiple tables in our database and uses an integer, which is a unique identifier for each office location. 
+            The results of this script can be found listed below in two separate outputs. The first outlines the highest performing items per store whereas the second highlights the worst performing items for each store. \\
 
             \begin{lstlisting}
                 SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
@@ -862,7 +864,8 @@
 %%%%%%%%%%%%%%%%%
 
             \subsection{Worst Performing Item}
-                Correlation to store?
+            
+                Listed below is the SQL scripts associated with finding the worst performing item, overall, across the entire company including all locations. The results for this SQL script can be found below. These results list the count of items sold, the items unique identifier and a description of the item. \\
 
                 \begin{lstlisting}
                     --worst perfroming items for the company as whole
