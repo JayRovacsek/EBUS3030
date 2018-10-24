@@ -255,73 +255,148 @@
             % \end{itemize}
 
             \subsubsection{Total Number of Sales}
-            \subsubsection{Total Sales Value}
-            \subsubsection{Total Sales Per Store}
-                % The total number of sales per staff member were considered with the following 
-                % sql query:
-                % \begin{lstlisting}
-                %     -- Sales count per staff member (Receipt Count)
-                %     SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
-                %     FROM Receipt r
-                %     INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-                %     INNER JOIN Item i ON i.ItemId = ri.ItemId
-                %     INNER JOIN Price p ON p.PriceId = ri.PriceId
-                %     INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-                %     GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-                %     ORDER BY 'Sales Count' DESC;
-                % \end{lstlisting}
+                The total number of sales per staff member were considered with the following 
+                sql query:
+                \begin{lstlisting}
+				SELECT COUNT(*) AS 'Sales Count'
+						, s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				FROM Receipt r
+					INNER JOIN ReceiptItem ri
+								 ON r.ReceiptId = ri.ReceiptId
+					INNER JOIN Item i
+								 ON i.ItemId = ri.ItemId
+					INNER JOIN Staff s
+								 ON s.StaffId = r.ReceiptStaffId
+					INNER JOIN Office o
+								 ON o.OfficeId = s.StaffOfficeId
+				GROUP BY s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				ORDER BY 'Sales Count' DESC;
+                \end{lstlisting}
+
+                \begin{table}[H]
+                    \centering
+                  \begin{tabular}{|l|l|l|l|l|l|}
+                    \hline
+                    Sales Count & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
+                    720         & S190    & Samuel         & Anderson     & 4        & Sydney         \\ \hline
+                    688         & S122    & Austin         & Morris       & 6        & Grafton        \\ \hline
+                    678         & S196    & Devin          & Brown        & 6        & Grafton        \\ \hline
+                    666         & S45     & Emma           & Gutierrez    & 3        & Cessnock       \\ \hline
+                    658         & S101    & Jenna          & Cox          & 5        & Port Macquarie \\ \hline
+                  \end{tabular}
+                \end{table}
 
             \subsubsection{Total Items Sold}
-                % The total items attributed to each staff member were considered also,
-                % determined by the query:
+                The total items attributed to each staff member were considered also,
+                determined by the query:
                 
-                % \begin{lstlisting}
-                %     -- Item count per staff member
-                %     SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', s.StaffId,s.StaffFirstName,s.StaffSurname
-                %     FROM Receipt r
-                %     INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-                %     INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-                %     GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-                %     ORDER BY 'Item Count' DESC;
-                % \end{lstlisting}
+                \begin{lstlisting}
+				SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count'
+						, s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				FROM Receipt r
+					INNER JOIN ReceiptItem ri
+									 ON r.ReceiptId = ri.ReceiptId
+					INNER JOIN Staff s
+									 ON s.StaffId = r.ReceiptStaffId
+					INNER JOIN Office o
+									 ON o.OfficeId = s.StaffOfficeId
+				GROUP BY s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				ORDER BY 'Item Count' DESC;
+                \end{lstlisting}
 
                 % Yielding a range of 4217 to 2813, with the top five staff members in this
                 % analysis:
 
-            \subsubsection{Discounted Sales Ratio}
-                % Consideration of the number of sales made by each staff member was also made,
-                % the following query yielding the results we required:
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|l|l|}
+                    \hline
+                    Item Count & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
+                    3978       & S190    & Samuel         & Anderson     & 4        & Sydney         \\ \hline
+                    3787       & S122    & Austin         & Morris       & 6        & Grafton        \\ \hline
+                    3683       & S45     & Emma           & Gutierrez    & 3        & Cessnock       \\ \hline
+                    3679       & S101    & Jenna          & Cox          & 5        & Port Macquarie \\ \hline
+                    3628       & S106    & Mia            & Foster       & 9        & Wagga Wagga    \\ \hline
+                    \end{tabular}
+                    \end{table}
 
-            % \begin{lstlisting}
-            %     -- Sales metrics for discounted and standard sales per staff member
-            %     SELECT s.StaffId,s.StaffFirstName,s.StaffSurname,
-            %     SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales',
-            %     SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
-            %     FROM (
-            %         SELECT CAST(
-            %             CASE
-            %             WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-            %                 THEN 1
-            %             ELSE 0
-            %             END AS int) AS 'Discounted Sales',
-            %         CAST(
-            %             CASE
-            %             WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-            %                 THEN 0
-            %             ELSE 1
-            %         END AS int) AS 'Standard Sales',
-            %         r.ReceiptId
-            %         FROM Receipt r
-            %         INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-            %         INNER JOIN Item i ON i.ItemId = ri.ItemId
-            %         INNER JOIN Price p ON p.PriceId = ri.PriceId
-            %         GROUP BY r.ReceiptId
-            %     ) AS SubQuery
-            %     INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
-            %     INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-            %     INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-            %     GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            % \end{lstlisting}
+            \subsubsection{Discounted Sales Ratio}
+                Consideration of the number of sales made by each staff member was also made,
+                the following query yielding the results we required:
+
+            \begin{lstlisting}
+				SELECT s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+						, SUM(SubQuery.[Discounted Sales]) AS 'Discounted Sales'
+						, SUM(SubQuery.[Standard Sales]) AS 'Standard Sales'
+				FROM (
+					SELECT CAST(
+						CASE
+						WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+							THEN 1
+						ELSE 0
+						END AS INT) AS 'Discounted Sales',
+					CAST(
+						CASE
+						WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+							THEN 0
+						ELSE 1
+					END AS INT) AS 'Standard Sales',
+					r.ReceiptId
+					FROM Receipt r
+						INNER JOIN ReceiptItem ri
+									 ON r.ReceiptId = ri.ReceiptId
+						INNER JOIN Item i
+									 ON i.ItemId = ri.ItemId
+					GROUP BY r.ReceiptId
+				) AS SubQuery
+					INNER JOIN Receipt r
+								 ON SubQuery.ReceiptId = r.ReceiptId
+					INNER JOIN ReceiptItem ri
+								 ON r.ReceiptId = ri.ReceiptId
+					INNER JOIN Staff s
+								 ON s.StaffId = r.ReceiptStaffId
+					INNER JOIN Office o
+								 ON o.OfficeId = s.StaffOfficeId
+				GROUP BY s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				ORDER BY [Discounted Sales];
+            \end{lstlisting}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|l|l|l|}
+                \hline
+                StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation & Discounted Sales & Standard Sales \\ \hline
+                S135    & Lexi           & James        & 4        & Sydney         & 312              & 98             \\ \hline
+                S51     & Haley          & Taylor       & 7        & Dubbo          & 314              & 69             \\ \hline
+                S17     & Daniel         & Baker        & 1        & Newcastle      & 324              & 100            \\ \hline
+                S73     & John           & White        & 2        & Maitland       & 335              & 113            \\ \hline
+                S161    & Jason          & Wood         & 7        & Dubbo          & 336              & 93             \\ \hline
+                \end{tabular}
+                \end{table}
 
             \subsubsection{Total Sales Value per Staff Member}
 
@@ -331,103 +406,245 @@
             % the best performer if discounts were not relevant, however we also recognise this to be too
             % speclutive in nature. The required query was as follows:
 
-            % \begin{lstlisting}
-            % -- Sales total per staff with discounts applied ($)
-            % SELECT CAST(
-            %         CASE
-            %         WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-            %             THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-            %         ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
-            %         END AS decimal(19,5)) AS 'Sales Totals',
-            %         s.StaffId,s.StaffFirstName,s.StaffSurname
-            % FROM Receipt r
-            % INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-            % INNER JOIN Item i ON i.ItemId = ri.ItemId
-            % INNER JOIN Price p ON p.PriceId = ri.PriceId
-            % INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-            % INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
-            % GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            % ORDER BY 'Sales Totals' DESC;
-            % \end{lstlisting}
+            \begin{lstlisting}
+				SELECT CAST(
+						CASE
+						WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+							THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+						ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
+						END AS decimal(19,5)) AS 'Sales Totals'
+						, s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				FROM Receipt r
+					INNER JOIN ReceiptItem ri
+								ON r.ReceiptId = ri.ReceiptId
+					INNER JOIN Item i
+								ON i.ItemId = ri.ItemId
+					INNER JOIN Staff s
+								ON s.StaffId = r.ReceiptStaffId
+					INNER JOIN Customer c
+								ON c.CustomerId = r.ReceiptCustomerId
+					INNER JOIN Office o
+								ON o.OfficeId = s.StaffOfficeId
+				GROUP BY s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				ORDER BY 'Sales Totals' DESC;
+            \end{lstlisting}
 
-            \subsubsection{Average Sale Value Overall}
-            \subsubsection{Average Sale Per Store}
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|l|l|}
+                \hline
+                Sales Total & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
+                74137.05    & S187    & Savannah       & Jones        & 8        & Wollongong     \\ \hline
+                73084.45    & S45     & Emma           & Gutierrez    & 3        & Cessnock       \\ \hline
+                69981.75    & S178    & Kaitlyn        & Nguyen       & 2        & Maitland       \\ \hline
+                69945.65    & S122    & Austin         & Morris       & 6        & Grafton        \\ \hline
+                69875.35    & S71     & Danielle       & Myers        & 6        & Grafton        \\ \hline
+                \end{tabular}
+                \end{table}
+
+            \subsubsection{Average Value Per Sale}
 
             % The average receipt value per staff member was another metric we considered would add
             % value to the descision to be suggested in the 
             % \hyperref[sec:Executive Summary]{\color{blue}executive summary}.
             % The required query to determine this metric was as follows:
 
-            % \begin{lstlisting}
-            % -- Sales average per staff with discounts applied
-            % SELECT (CAST(
-            %         CASE
-            %         WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-            %             THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-            %         ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
-            %         END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average',
-            %         s.StaffId,s.StaffFirstName,s.StaffSurname
-            % FROM Receipt r
-            % INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
-            % INNER JOIN Item i ON i.ItemId = ri.ItemId
-            % INNER JOIN Price p ON p.PriceId = ri.PriceId
-            % INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-            % GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
-            % ORDER BY 'Sales Average' DESC;
-            % \end{lstlisting}
+            \begin{lstlisting}
+				SELECT (CAST(
+						CASE
+						WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+							THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+						ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
+						END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average'
+						, s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+					FROM Receipt r
+					INNER JOIN ReceiptItem ri
+									 ON r.ReceiptId = ri.ReceiptId
+					INNER JOIN Item i
+									 ON i.ItemId = ri.ItemId
+					INNER JOIN Staff s
+									 ON s.StaffId = r.ReceiptStaffId
+					INNER JOIN Office o
+									 ON o.OfficeId = s.StaffOfficeId
+				GROUP BY s.StaffId
+						, s.StaffFirstName
+						, s.StaffSurname
+						, o.OfficeId
+						, o.OfficeLocation
+				ORDER BY 'Sales Average' DESC;
+            \end{lstlisting}
+
+            \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|l|l|}
+                    \hline
+                    Sales Average & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
+                    121.06        & S109    & Nicole         & Hernandez    & 10       & Broken Hill    \\ \hline
+                    120.97        & S199    & Maria          & Smith        & 5        & Port Macquarie \\ \hline
+                    120.07        & S14     & Noah           & Brooks       & 1        & Newcastle      \\ \hline
+                    119.49        & S173    & Jordan         & Parker       & 5        & Port Macquarie \\ \hline
+                    117.86        & S187    & Savannah       & Jones        & 8        & Wollongong     \\ \hline
+                    \end{tabular}
+                    \end{table}
 
             % \par\noindent
-            % Outlier: We recognise that Amber Hill (S3) has the highest Average Sale Total, 
-            % this is backed up by his very high 
-            % Item sales count, showing she is making more sales per Receipt on average 
-            % than any other sales Officer. However She has not made as much revenue as 
-            % some other employees, about \$7.5k behind the most sales at \$78,572. We 
-            % suspected that maybe she was a new employee but after looking at her
-            % sale receipt dates we can confirm this is inacurate and that she was 
-            % working within the business throughout the entirety of 2017. After learning that she 
-            % is not a new employee we can rule the possibility of her being the best 
-            % salesperson out. The data suggests that she has been selling higher cost items to make up 
-            % the lack of transactions shes involed in compared to others. This is 
-            % negligable however since she is under performing compared to others anyway. 
-
+             
             % With results as follows:
-
             % We consider this to be a metric which weighs heavily in our analysis,
             % as multiple factors would impact this result, the number of items on the sale
             % (resulting in a lower total if discount was applied). Another consideration 
             % for this metric would be that it leans towards anyone who could
             % sell a larger quantity of the same item, as this lends itself towards a higher
             % receipt total. 
-			
-			% \par
-			% We see that Ms Amber Hill (S3) has the highest average sale total and this is backed up by
-			% her high item sales count, indicating she is making more sales per receipt on average than
-			% any other sales office. 
-			% However, Ms Hill has not made as much revenue as some other employees, approximately \$7,500
-			% behind the sales leader who achieved \$78,572. Originally, we suspected that perhaps Ms Hill
-			% was a new employee but reviewing sale receipt dates we can confirm this was not a valid
-			% assumption and that she was working within the business throughout the entirety of 2017.
-			% After this revelation, we can rule Ms Hill out of our assessment for the best sales person.
-			% The data suggests that Ms Hill sells higher cost items which makes up for the lack of
-			% transactions she completes when compared to other staff members. 
+            
+            \subsection{Best location based on Items sold and total revenue}
+               
+                \begin{lstlisting}
+				-- Item Count, total revenue, average revenue per item sold By Office Location no discount
+				SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+						, o.OfficeId
+						, o.OfficeLocation
+						, SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) AS Revenue
+						, Cast (SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) as decimal)/SUM(ri.ReceiptItemQuantity) as AverageRevenue
+				FROM Receipt r
+					INNER JOIN ReceiptItem ri
+								ON r.ReceiptId = ri.ReceiptId
+					INNER JOIN Staff s
+								ON s.StaffId = r.ReceiptStaffId
+					INNER JOIN Office o
+								ON s.StaffOfficeId = o.OfficeId
+				GROUP BY o.OfficeId
+						, o.OfficeLocation
+				ORDER BY ItemCount DESC;
+                \end{lstlisting}
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|l|}
+                    \hline
+                    Item Count & OfficeId & OfficeLocation & Revenue    & AverageRevenue \\ \hline
+                    96055      & 9        & Wagga Wagga    & 1744551.50 & 18.16          \\ \hline
+                    65011      & 2        & Maitland       & 1200104.60 & 18.46          \\ \hline
+                    64974      & 10       & Broken Hill    & 1168012.70 & 17.98          \\ \hline
+                    59309      & 1        & Newcastle      & 1069951.80 & 18.04          \\ \hline
+                    58754      & 4        & Sydney         & 1076412.70 & 18.32          \\ \hline
+                    \end{tabular}
+                    \end{table}
 
             \subsection{Total Number of Customers}
+
+            \begin{lstlisting}
+                
+            \end{lstlisting}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|}
+                \hline
+                Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                \end{tabular}
+                \end{table}
 
             \subsection{Top Team-member(s) Analysis}
                 Analysis over all stores, correlation to store we want to nuke?
 
+                \begin{lstlisting}
+                   
+                \end{lstlisting}
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|}
+                    \hline
+                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    \end{tabular}
+                    \end{table}
+
             \subsection{Customer Analysis}
                 Analysis per store - top 3?
+
+                \begin{lstlisting}
+                   
+                \end{lstlisting}
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|}
+                    \hline
+                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    \end{tabular}
+                    \end{table}
+
                 \subsubsection{Customer Frequency}
                     Can we predict future trends in customers? 
 
+                    \begin{lstlisting}
+                        
+                    \end{lstlisting}
+
+                    \begin{table}[H]
+                        \centering
+                        \begin{tabular}{|l|l|l|l|}
+                        \hline
+                        Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                        \end{tabular}
+                        \end{table}
+                    
             \subsection{Items Per Sale}
+
+            \begin{lstlisting}
+                
+            \end{lstlisting}
+
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|l|}
+                \hline
+                Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                \end{tabular}
+                \end{table}
 
             \subsection{Item Popularity}
                 Top 3 best and worst items overall, correlation to any stores?
 
+                \begin{lstlisting}
+                   
+                \end{lstlisting}
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|}
+                    \hline
+                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    \end{tabular}
+                    \end{table}
+
             \subsection{Worst Performing Item}
                 Correlation to store?
+
+                \begin{lstlisting}
+                    
+                \end{lstlisting}
+
+                \begin{table}[H]
+                    \centering
+                    \begin{tabular}{|l|l|l|l|}
+                    \hline
+                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    \end{tabular}
+                    \end{table}
 
 
 
