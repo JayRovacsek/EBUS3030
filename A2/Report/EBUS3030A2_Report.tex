@@ -118,36 +118,30 @@
     \subsection{Datamart Business Rules}
     The following business rules were provided to be used in the context of this assignment:
     \begin{itemize}
-        
-        \item At BIA all customers interacts are in an online environment, all orders are electronic.
-        \item Returning customers can provide POI information via the web interface and look up their
-        record and that will flow with the sale.
+        \item At BIA all customers interacts are in an online environment.We only support electronic orders.
+        \item Returning Customers can provide POI information via the web interface and look up their record 
+        and that will flow with the sale
         \item The sales associate can complete the order form/sale for the client.
         \item Each sale will have a receipt number/id.
-        \item A receipt can have many line items.
-        \item Each line item can only be for a single item, but the customer can purchase multiples 
-        of the same item.
-        \item Where a customer has multiple line items, any sale with 5 or more row items 
-        (containing at least five (5) different items) is provided a 5\% discount.
-        \item The system automatically handles the total for the sale by looking up the item, then 
-        multiplying the costs per item by number purchased, and then should store this final field 
-        total as a record in the system (but should also be able to see clearly sales that were 
-        provided a discount. 
-        \item Item prices can change at any point, and the price the customer
-        pays is the amount listed for the item on the sale date. We need to
-        keep a record of all item prices historically so that we can determine what the store item 
-        price was at any particular past date.
-        \item Only one (1) BIA sales assistant can be attributed to any receipt.
-        \item Customers may visit multiple stores for purchases (ie they are not locked to a particular 
-        store). As a result, all customer records are replicated across all stores, so they do not need 
-        to be re-recorded at a store by store level.
+        \item A receipt can have many line items 
+        \item Each line item can only be for a single item, but the customer can purchase multiples of the same item.
+        \item After consultation with your team, we have made the following change to discount applied to sales: 
+        Where a customer has multiple line items, any sale with 5 or more row items (containing at least 5 different items) 
+        is provided a 5\% discount.
+        \item The system automatically handles the total for the sale by looking up the item, then multiplying the costs 
+        per item by number purchased, and then should store this final field total as a record in the system (but should
+        also be able to see clearly sales that were provided a discount. 
+        \item Store Item prices can change at any point, however the price the customer pays is the amount listed for the
+        store item that is sold on the sale date. We need to keep a record of all store item prices historically so that 
+        we can determine what the store item price was at any particular past date.
+        \item Only 1 BIA sales assistant can be attributed to any receipt
+        \item Customers may visit multiple stores for purchases (ie they are not locked to a particular store). As a 
+        result, all customer records are replicated across all stores, so they do not need to be re-recorded at a 
+        store by store level.
     \end{itemize}
    
     With these considerations in mind, the following report was created to outline
     the discovery, creation and polish to satisfy the assignment requirements.
-
-
-
 
 % ------------------------------------------------------------------------------------------------ %
 % DATA MODEL
@@ -263,6 +257,8 @@
             % \end{itemize}
 
             \subsubsection{Total Number of Sales}
+            \subsubsection{Total Sales Value}
+            \subsubsection{Total Sales Per Store}
                 % The total number of sales per staff member were considered with the following 
                 % sql query:
                 % \begin{lstlisting}
@@ -356,7 +352,8 @@
             % ORDER BY 'Sales Totals' DESC;
             % \end{lstlisting}
 
-            \subsubsection{Average Value Per Sale}
+            \subsubsection{Average Sale Value Overall}
+            \subsubsection{Average Sale Per Store}
 
             % The average receipt value per staff member was another metric we considered would add
             % value to the descision to be suggested in the 
