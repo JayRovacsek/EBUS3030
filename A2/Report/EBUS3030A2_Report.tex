@@ -15,6 +15,7 @@
     \usepackage{enumerate}
     \usepackage{pdflscape}
     \usepackage{afterpage}
+    \usepackage[normalem]{ulem}
     \usepackage{listings,lstautogobble}    
     \usepackage[margin=0.8in]{geometry}
     \usepackage[nottoc,notlot,notlof]{tocbibind}
@@ -126,7 +127,9 @@
 
     \tableofcontents
 
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
     
 % ------------------------------------------------------------------------------------------------ %
 % ASSIGNMENT OUTLINE
@@ -142,7 +145,9 @@
     \section{Executive Summary}
     \label{sec:Executive Summary}
 	
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
 
 
 % ------------------------------------------------------------------------------------------------ %
@@ -181,12 +186,15 @@
 % DATA MODEL
 % ------------------------------------------------------------------------------------------------ %
 
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
     \section{Data Model}
     
     	The following section outlines the models used in the design and creation of the database. It includes the EER Model with relations, attributes and relationships as well as the database schema from Microsoft SQL Server Management Studio.
     
-        \subsubsection{Database Schema}
+        \subsection{Database Schema}
             The below data model is only a suggestion and is still subject to change into the future. A full create script can be found in the \hyperref[sec:Appendix]{\color{blue}appendix}
                 \begin{center}
                     \includegraphics[width=\textwidth,keepaspectratio]{Images/schema.PNG}
@@ -203,8 +211,11 @@
             more representative of the snowflake or star schema would be
             heavily advised.
 
-    \newpage
-        \subsubsection{EER Diagram}
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
+        \subsection{EER Diagram}
             An EER diagram of the suggested data model is provided below. 
 
             \bigskip
@@ -217,7 +228,10 @@
 % DATA LOAD PROCESS
 % ------------------------------------------------------------------------------------------------ %
 
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
     \section{Data Load Process (ETL/ELT)}
     \label{sec:ETL}
         Initial import of the data supplied in the xlsx file generated a very basic table
@@ -234,7 +248,9 @@
         was made to allow easy reference to the initially supplied
         excel data file.
 
-        \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
         
 % ------------------------------------------------------------------------------------------------ %
 % QA PROCESS
@@ -270,7 +286,10 @@
         but generated new sql to facilitate \hyperref[sec:sharpcsqlgeneration]{\color{blue}item consolidation}.
         These scripts have been listed in the appendices of this report.
 
-        \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
 % ------------------------------------------------------------------------------------------------ %
 % ASSUMPTIONS/REASONING
 % ------------------------------------------------------------------------------------------------ %
@@ -310,9 +329,11 @@
                 script did not find any discrepencies between our assumption and the supplied information.
 
             \subsubsection{Customer}
-                We made assumptions that customers are likely to shop at only the one store. Given the geographic distances
+            \sout{We made assumptions that customers are likely to shop at only the one store. Given the geographic distances
                 between stores generally being larger than we deemed 
-                most people would be likely to travel.
+                most people would be likely to travel.}
+                This assumption was quickly invalidated as most customers 
+                seem to have shopped at most if not all stores.
 
             \subsubsection{Office}
                 Our analysis assumed future office potential growth to be 
@@ -323,7 +344,9 @@
                 would be favoured as the growth potential was assumed to 
                 be greater and more predictable into the future.
 
-            \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
 
 % ------------------------------------------------------------------------------------------------ %
 % BASE ANALYSIS
@@ -341,6 +364,52 @@
             Source files to immitate the analysis below is either included inline or in sources files in the final submission.
 
             \subsection{Raw Results}
+
+            \subsubsection{Total Revenue Per Store}
+            The total revenue per store after discounts were applied was determined by the following 
+            query:
+            \begin{lstlisting}
+            -- Item Count, total revenue, sold By Office Location with discount
+            SELECT (CAST(
+                    CASE
+                    WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
+                        THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+                    ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
+                    END AS decimal(19,5))) AS 'Revenue',
+            o.OfficeId, o.OfficeLocation
+            FROM Receipt r
+                INNER JOIN ReceiptItem ri
+                            ON r.ReceiptId = ri.ReceiptId
+                INNER JOIN Staff s
+                            ON s.StaffId = r.ReceiptStaffId
+                INNER JOIN Office o
+                            ON s.StaffOfficeId = o.OfficeId
+            GROUP BY o.OfficeId
+                    , o.OfficeLocation
+            ORDER BY Revenue DESC;
+            \end{lstlisting}
+            With results:
+            \begin{table}[H]
+                \centering
+                \begin{tabular}{|l|l|l|}
+                \hline
+                Revenue       & OfficeId & OfficeLocation \\ \hline
+                \$1807157.30 & 9        & Wagga Wagga    \\ \hline
+                \$1243761.42 & 2        & Maitland       \\ \hline
+                \$1206763.76 & 10       & Broken Hill    \\ \hline
+                \$1113333.40 & 4        & Sydney         \\ \hline
+                \$1109330.77 & 1        & Newcastle      \\ \hline
+                \$1092924.88 & 5        & Port Macquarie \\ \hline
+                \$1006184.56 & 3        & Cessnock       \\ \hline
+                \$1001501.30 & 6        & Grafton        \\ \hline
+                \$934267.47  & 7        & Dubbo          \\ \hline
+                \$891871.68  & 8        & Wollongong     \\ \hline
+                \end{tabular}
+            \end{table}
+
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
 
             \subsubsection{Total Number of Sales}
                 The total number of sales per staff member were considered with the following 
@@ -386,7 +455,9 @@
                 This suggests to us that select stores had more either more sales or 
                 higher performing employees, which we wanted to confirm in analysis later, of which can be found here.
 
-                \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
 
             \subsubsection{Total Items Sold}
                 The total items attributed to each staff member were considered also,
@@ -430,7 +501,9 @@
                     \end{tabular}
                     \end{table}
 
-                    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
                     
             \subsubsection{Discounted Sales Ratio}
                 Consideration of the number of sales made by each staff member was also made,
@@ -810,7 +883,10 @@
 % ------------------------------------------------------------------------------------------------ %
 % CONCLUSION & RECOMMENDATIONS
 % ------------------------------------------------------------------------------------------------ %
-	\newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
     \section{Conclusion and Recommendations}
             % This report is designed to identify the best performing Sales Officer at BIA Inc by 
             % directive of the Head Sales Executive of BIA Inc.
@@ -833,7 +909,10 @@
 % REFERENCES
 % ------------------------------------------------------------------------------------------------ %
     
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
     \begin{thebibliography}{9}
         \raggedright
         \bibitem{MoneyIssues}
@@ -854,7 +933,10 @@
 % APPENDIX
 % ------------------------------------------------------------------------------------------------ %
 
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
     \section{Appendix}
     \label{sec:Appendix}
 
@@ -1022,7 +1104,10 @@
         }
     \end{lstlisting}
 
-    \newpage
+%%%%%%%%%%%%%%%%%
+\newpage
+%%%%%%%%%%%%%%%%%
+
     \subsection{C\# Code Excerpt: SQL Generation}
     \label{sec:sharpcsqlgeneration}
     \begin{lstlisting}
