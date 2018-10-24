@@ -17,7 +17,7 @@ Group by i.ItemId, i.ItemDescription, r.ReceiptDate
 order by ItemCount asc
 
 --sum, avg, min, max per month 1
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
+select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX'
 from Receipt r
 INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
 INNER JOIN Item i on i.ItemId = ri.ItemId
@@ -25,7 +25,7 @@ WHERE ReceiptDate between '2017-01-01' and '2017-01-31'
 order by ItemCount asc
 
 --sum, avg, min, max per month 2 
-select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX' 
+select SUM(ri.ReceiptItemQuantity) AS ItemCount, AVG(ri.ReceiptItemQuantity) AS 'AVG', MIN(ri.ReceiptItemQuantity) AS 'MIN' , MAX(ri.ReceiptItemQuantity) AS 'MAX'
 from Receipt r
 INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
 INNER JOIN Item i on i.ItemId = ri.ItemId
