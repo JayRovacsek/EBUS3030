@@ -452,3 +452,8 @@ FROM Receipt r
 GROUP BY i.ItemId, i.ItemDescription
 ORDER BY ItemCount ASC;
 
+-- Staff Count Per Store
+SELECT COUNT(*) AS 'Staff Count', o.[OfficeLocation]
+FROM Staff s
+INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
+GROUP BY o.[OfficeLocation]
