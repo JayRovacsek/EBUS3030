@@ -219,6 +219,7 @@
 
     \newpage
     \section{Data Load Process (ETL/ELT)}
+    \label{sec:ETL}
         Initial import of the data supplied in the xlsx file generated a very basic table
         that allowed us to analyze the data for potential outliers, confirm the business
         requirements of the data and then create tables from which the data model was derived.
@@ -326,6 +327,16 @@
     \label{sec:BA}
 
         \subsection{Notes on Analysis}
+            Analysis was performed using Microsoft SQL Management Studio,
+            with a flat file of the original data being imported into 
+            the table as defined \hyperref[sec:ETL]{\color{blue}here},
+            as with the previous assignment utilisation of decimal(18.7) was our choice over using the money type, again citing
+            the imprecision of money in MSSQL/TSQL\cite{MoneyIssues}
+
+            Source files to immitate the analysis below is either included inline or in sources files in the final submission.
+
+
+
 
             \subsection{Raw Results}
 
@@ -516,12 +527,12 @@
                 \centering
                 \begin{tabular}{|l|l|l|l|l|l|}
                 \hline
-                Sales Total & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
-                74137.05    & S187    & Savannah       & Jones        & 8        & Wollongong     \\ \hline
-                73084.45    & S45     & Emma           & Gutierrez    & 3        & Cessnock       \\ \hline
-                69981.75    & S178    & Kaitlyn        & Nguyen       & 2        & Maitland       \\ \hline
-                69945.65    & S122    & Austin         & Morris       & 6        & Grafton        \\ \hline
-                69875.35    & S71     & Danielle       & Myers        & 6        & Grafton        \\ \hline
+                Sales Totals & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
+                77152.49250  & S187    & Savannah       & Jones        & 8        & Wollongong     \\ \hline
+                75113.60250  & S45     & Emma           & Gutierrez    & 3        & Cessnock       \\ \hline
+                72475.45250  & S178    & Kaitlyn        & Nguyen       & 2        & Maitland       \\ \hline
+                71814.20500  & S122    & Austin         & Morris       & 6        & Grafton        \\ \hline
+                71497.09500  & S71     & Danielle       & Myers        & 6        & Grafton        \\ \hline
                 \end{tabular}
                 \end{table}
 
@@ -562,17 +573,17 @@
             \end{lstlisting}
 
             \begin{table}[H]
-                    \centering
-                    \begin{tabular}{|l|l|l|l|l|l|}
-                    \hline
-                    Sales Average & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
-                    121.06        & S109    & Nicole         & Hernandez    & 10       & Broken Hill    \\ \hline
-                    120.97        & S199    & Maria          & Smith        & 5        & Port Macquarie \\ \hline
-                    120.07        & S14     & Noah           & Brooks       & 1        & Newcastle      \\ \hline
-                    119.49        & S173    & Jordan         & Parker       & 5        & Port Macquarie \\ \hline
-                    117.86        & S187    & Savannah       & Jones        & 8        & Wollongong     \\ \hline
-                    \end{tabular}
-                    \end{table}
+                \centering
+                \begin{tabular}{|l|l|l|l|l|l|}
+                \hline
+                Sales Average & StaffId & StaffFirstName & StaffSurname & OfficeId & OfficeLocation \\ \hline
+                138.40        & S109    & Nicole         & Hernandez    & 10       & Broken Hill    \\ \hline
+                134.88        & S187    & Savannah       & Jones        & 8        & Wollongong     \\ \hline
+                134.71        & S52     & Isabella       & Rivera       & 5        & Port Macquarie \\ \hline
+                134.53        & S165    & Marcus         & Ross         & 2        & Maitland       \\ \hline
+                134.12        & S199    & Maria          & Smith        & 5        & Port Macquarie \\ \hline
+                \end{tabular}
+                \end{table}
 
             % \par\noindent
              
