@@ -1,28 +1,14 @@
 USE EBUS3030A2;
 
--- Determine current max varchar used in Item_Description
-SELECT MAX(DATALENGTH(Item_Description)) 
-FROM Assignment2Data;
-
--- Verify that no receipt has duplicate ItemIds and all are unique per order
-SELECT *
-FROM
-(
-	SELECT [ReceiptItem].[ReceiptId], 
-	COUNT([ReceiptItem].[ReceiptId]) AS 'ItemCount',
-	COUNT(DISTINCT [ReceiptItem].[ItemId]) AS 'ItemIdCount'
-	FROM [ReceiptItem]
-	GROUP BY [ReceiptItem].[ReceiptId]) AS SubQuery 
-WHERE [SubQuery].[ItemIdCount] != [SubQuery].[ItemCount]
 
 -- Sales count per staff member (Receipt Count)
-SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname
+SELECT COUNT(*) AS 'Sales Count', s.StaffId,s.StaffFirstName,s.StaffSurname, o.OfficeId, o.OfficeLocation
 FROM Receipt r
 INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
 INNER JOIN Item i ON i.ItemId = ri.ItemId
-INNER JOIN Price p ON p.PriceId = ri.PriceId
 INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
-GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+INNER JOIN Office o  ON o.OfficeId = s.StaffOfficeId
+GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname, o.OfficeId, o.OfficeLocation 
 ORDER BY 'Sales Count' DESC;
 
 -- Item count per staff member
@@ -37,31 +23,30 @@ ORDER BY 'Item Count' DESC;
 SELECT CAST(
 		CASE
 		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-			THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-		ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.85
+		ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
 		END AS decimal(19,5)) AS 'Sales Totals',
-		 s.StaffId,s.StaffFirstName,s.StaffSurname
+		 s.StaffId,s.StaffFirstName,s.StaffSurname, o.OfficeId, o.OfficeLocation
 FROM Receipt r
 INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
 INNER JOIN Item i ON i.ItemId = ri.ItemId
-INNER JOIN Price p ON p.PriceId = ri.PriceId
 INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
 INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
-GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
+INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
+GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname, o.OfficeId, o.OfficeLocation
 ORDER BY 'Sales Totals' DESC;
 
 -- Sales average per staff with discounts applied
 SELECT (CAST(
 		CASE
 		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-			THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-		ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+		ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
 		END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average',
 		 s.StaffId,s.StaffFirstName,s.StaffSurname
 FROM Receipt r
 INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
 INNER JOIN Item i ON i.ItemId = ri.ItemId
-INNER JOIN Price p ON p.PriceId = ri.PriceId
 INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
 GROUP BY s.StaffId,s.StaffFirstName,s.StaffSurname
 ORDER BY 'Sales Average' DESC;
@@ -87,7 +72,6 @@ FROM (
 	FROM Receipt r
 	INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
 	INNER JOIN Item i ON i.ItemId = ri.ItemId
-	INNER JOIN Price p ON p.PriceId = ri.PriceId
 	GROUP BY r.ReceiptId
 ) AS SubQuery
 INNER JOIN Receipt r ON SubQuery.ReceiptId = r.ReceiptId
@@ -100,24 +84,33 @@ ORDER BY [Discounted Sales]
 SELECT (CAST(
 		CASE
 		WHEN COUNT(ri.[ReceiptItemQuantity]) >= 5
-			THEN SUM(p.[Price] * ri.[ReceiptItemQuantity]) * 0.85
-		ELSE SUM(p.[Price] * ri.[ReceiptItemQuantity])
+			THEN SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95
+		ELSE SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity])
 		END AS decimal(19,5)) / COUNT(r.ReceiptId)) AS 'Sales Average',
 		 c.CustomerId,c.CustomerFirstName,c.CustomerSurname
 FROM Receipt r
 INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
 INNER JOIN Item i ON i.ItemId = ri.ItemId
-INNER JOIN Price p ON p.PriceId = ri.PriceId
 INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
 INNER JOIN Customer c ON c.CustomerId = r.ReceiptCustomerId
 GROUP BY c.CustomerId,c.CustomerFirstName,c.CustomerSurname
 ORDER BY 'Sales Average' DESC;
 
--- Item Count By Office Location
-SELECT SUM(ri.ReceiptItemQuantity) AS 'Item Count', o.OfficeId, o.OfficeLocation
+-- Item Count, total revenue, average revenue per item sold By Office Location
+SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount, o.OfficeId, o.OfficeLocation, SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95 as Revenue, Cast (SUM(ri.[SalePrice] * ri.[ReceiptItemQuantity]) * 0.95 as decimal)/SUM(ri.ReceiptItemQuantity) as AverageRevenue
 FROM Receipt r
 INNER JOIN ReceiptItem ri ON r.ReceiptId = ri.ReceiptId
 INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
 INNER JOIN Office o on s.StaffOfficeId = o.OfficeId
 GROUP BY o.OfficeId, o.OfficeLocation
-ORDER BY 'Item Count' DESC;
+ORDER BY ItemCount DESC;
+
+--Staff Count per office
+select count(Distinct s.StaffId) AS StaffCount, o.OfficeId, o.OfficeLocation 
+FROM Staff s
+INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
+Group by o.OfficeId, o.OfficeLocation
+
+--3 top and bottom items
+select 
+
