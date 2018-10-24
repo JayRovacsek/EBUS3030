@@ -269,6 +269,7 @@
         This took into account not only checking for data integrity
         but generated new sql to facilitate \hyperref[sec:sharpcsqlgeneration]{\color{blue}item consolidation}
 
+        \newpage
 % ------------------------------------------------------------------------------------------------ %
 % ASSUMPTIONS/REASONING
 % ------------------------------------------------------------------------------------------------ %
@@ -303,8 +304,20 @@
                 script did not find any discrepencies between our assumption and the supplied information.
 
             \subsubsection{Customer}
+                We made assumptions that customers are likely to shop at only the one store. Given the geographic distances
+                between stores generally being larger than we deemed 
+                most people would be likely to travel.
 
             \subsubsection{Office}
+                Our analysis assumed future office potential growth to be 
+                related to the locality of the store. Such an assumption
+                may suggest that we weighed in favour of stores in 
+                high population areas if the analysis was borderline
+                for example: Newcastle and Broken Hill; Newcastle
+                would be favoured as the growth potential was assumed to 
+                be greater and more predictable into the future.
+
+            \newpage
 
 % ------------------------------------------------------------------------------------------------ %
 % BASE ANALYSIS
@@ -879,7 +892,7 @@
 
 
 
-                            
+
                             // Check all customer properties match the existing receipt properties.
                             if (existingReceipt.Customer.Id != receipt.Customer.Id
                                 || existingReceipt.Customer.FirstName != receipt.Customer.FirstName
