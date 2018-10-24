@@ -637,16 +637,35 @@
                     \end{table}
 
             \subsection{Total Number of Customers}
+                
+            Total number of customers per store were determine via the below query:
 
             \begin{lstlisting}
-                
+                -- Customer Count Per Store
+                SELECT COUNT(*) AS 'Customer Count', o.[OfficeLocation]
+                FROM Customer c
+                INNER JOIN Receipt r ON r.ReceiptCustomerId = c.CustomerId
+                INNER JOIN Staff s ON s.StaffId = r.ReceiptStaffId
+                INNER JOIN Office o ON o.OfficeId = s.StaffOfficeId
+                GROUP BY o.[OfficeLocation]
+                ORDER BY 'Customer Count' DESC;
             \end{lstlisting}
 
             \begin{table}[H]
                 \centering
-                \begin{tabular}{|l|l|l|l|}
+                \begin{tabular}{|l|l|}
                 \hline
-                Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                Customer Count & OfficeLocation \\ \hline
+                3221           & Wagga Wagga    \\ \hline
+                2228           & Broken Hill    \\ \hline
+                2192           & Maitland       \\ \hline
+                1980           & Newcastle      \\ \hline
+                1936           & Sydney         \\ \hline
+                1846           & Port Macquarie \\ \hline
+                1755           & Cessnock       \\ \hline
+                1669           & Grafton        \\ \hline
+                1625           & Dubbo          \\ \hline
+                1550           & Wollongong     \\ \hline
                 \end{tabular}
                 \end{table}
 
