@@ -208,6 +208,7 @@ FROM Receipt r
          ON ri.ReceiptId = r.ReceiptId
   INNER JOIN Item i
          ON i.ItemId = ri.ItemId
+
 WHERE ReceiptDate BETWEEN '2017-12-01' AND '2017-12-31'
 ORDER BY ItemCount ASC;
 
