@@ -224,4 +224,11 @@ where o.OfficeId = 10
 Group by i.ItemId, i.ItemDescription, o.OfficeId, o.OfficeLocation
 order by ItemCount asc
 
+--worst perfroming items for the company as whole
+select SUM(ri.ReceiptItemQuantity) AS ItemCount, i.ItemId, i.ItemDescription
+from Receipt r
+INNER JOIN ReceiptItem ri ON ri.ReceiptId = r.ReceiptId
+INNER JOIN Item i on i.ItemId = ri.ItemId
+Group by i.ItemId, i.ItemDescription
+order by ItemCount asc
 
