@@ -746,19 +746,31 @@
                 Correlation to store?
 
                 \begin{lstlisting}
-                    
+                    --worst perfroming items for the company as whole
+                    SELECT SUM(ri.ReceiptItemQuantity) AS ItemCount
+                            , i.ItemId
+                            , i.ItemDescription
+                    FROM Receipt r
+                        INNER JOIN ReceiptItem ri
+                                    ON ri.ReceiptId = r.ReceiptId
+                        INNER JOIN Item i
+                                    ON i.ItemId = ri.ItemId
+                    GROUP BY i.ItemId, i.ItemDescription
+                    ORDER BY ItemCount ASC;
                 \end{lstlisting}
 
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|}
                     \hline
-                    Sales Count & StaffId & StaffFirstName & StaffSurname \\ \hline
+                    ItemCount & ItemId & ItemDescription \\ \hline
+                    19481     & 23     & Drill Bit 6mm   \\ \hline
+                    19613     & 13     & Ruler           \\ \hline
+                    19741     & 2      & Screwdriver Set \\ \hline
+                    19744     & 9      & Box of Screws   \\ \hline
+                    19746     & 17     & Punch           \\ \hline
                     \end{tabular}
                     \end{table}
-
-
-
 
 % ------------------------------------------------------------------------------------------------ %
 % CONCLUSION & RECOMMENDATIONS
