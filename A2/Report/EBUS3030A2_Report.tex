@@ -144,59 +144,18 @@
 
     \section{Executive Summary}
     \label{sec:Executive Summary}
-    This report was created for, and to address the concerns of, the CEO of BIA Incorporated. 
-    The purpose of the report is to provide insight into the methodology employed by our team 
-    in our analysis and logical reasoning for making the recommendations listed through the 
-    document and in the presentation. Citing declining sales of certain items in recent years 
-    and the fact that the company is currently operating at a financial loss, our team understood 
-    the need to reduce costs to ensure the longevity of the company as a whole. To achieve 
-    this, we used tools and frameworks including SQL Server Management Studio (SSMS), 
-    PowerBI, SQL and C\# scripts. To ensure this longevity is sustained, the team first 
-    considered the sales data set provided by the company and the slightly modified business 
-    rules, when compared to our last joint project with the company. We created scripts and 
-    programmed solutions to deal with instances of broken data and to ensure that as the data 
-    is loaded into our database model, it adheres to the rules provided by the business. We 
-    considered specifically the changed discount rate which was different to the rate in use 
-    by the company at the time of our last project. \\
+    This report was created to address the request made by the CEO of BIA Incorporated,
+    analysis within this report includes data from across all 10 offices of BIA Incorporated \\
     
-    After the data had been correctly loaded, we could begin the analysis. The findings of 
-    this process suggested that, based on revenue, the highest performing store was Wagga 
-    Wagga with \$1,807,157.30 in revenue, whereas the store which performed the worst was 
-    Wollongong with \$891,871.68 in revenue, \$42,395.79 behind the second worst performing 
-    store, Dubbo. This analysis was performed after discounts were applied to better reflect the 
-    actual monetary value gained by the company. Overall, we found that customers are not 
-    loyal to any particular store. With the store with the highest amount of unique customers, 
-    Wagga Wagga with 600 only 44 ahead of Wollongong, the store with the lowest amount of 
-    unique customers with 556. For each store, we considered the best and worst performing 
-    items overall. The findings of this can be outlined in the report. We found that there 
-    is no significant discrepancy of any specific item across the company as a whole. 
-    The `Drill Bit (6mm)' had an item sales count of 19,481, the second worse performing 
-    item was the `Ruler' with 19,613 sales. \\
+    We believe based upon the metrics we used that the Wagga Wagga office is the best performing with 
+    \$1,807,157.30 in revenue and that the Wollongong Office is the worst performing with 
+    \$891,871.68 in revenue. \\
     
-    Next we considered total number of sales and total items sold by individual employees 
-    to find whether individual stores had either more sales or higher performing employees. 
-    We found that the highest performing employee was Mr. Samuel Anderson, who is located 
-    at the Sydney store. Mr. Anderson achieved a sales count of 645 overall sales and 4005 
-    items sold. The second placed employee was Mr. Devin Brown who achieve 628 overall sales 
-    with 3796 items sold. Our next consideration was the discounted sales rate per employee. 
-    We found that the employees with the most discounted sales were situated at the Dubbo 
-    store, one of the lowest performing locations overall. Ms. Haley Taylor had 263 discounted 
-    sales compared to 91 standard sales meaning approximately 74\% of Ms. Taylor's overall 
-    sales were discounted. The employee with the second highest amount of discounted sales 
-    was Mr. Jason Wood, also from the Dubbo store. Mr. Wood had 273 discounted sales and 
-    117 standard sales meaning approximately 70\% of Mr. Wood's sales were discounted.  
-    The next metric was the total sales value per staff member. Collectively, we decided 
-    that it was important to present the findings of which staff memberes generate value 
-    for the company. We found that Ms. Savannah Jones of the Wollongong store topped the 
-    list with \$77,152.49 sales value in total. Although the Wollongong store is the worst 
-    performing store overall, Ms. Jones outperforms all other staff members in total sale 
-    value, even when considering the discounted rate which was applied in this analysis. 
-    In addition to this, Ms. Jones placed second in average value per sales, approximately 
-    \$4.00 behind first place, Ms. Nicole Hernandez from the Broken Hill store with an 
-    average sale of \$138.40. \\
-	
-	 
-	 Considering this with the finding listed above, we conclude that ...
+    Wollongong was selected based on the included analysis in this report to be the closed branch.
+    If Wollongong is exempt, then we would recommend the Dubbo Office 
+    be closed. The worst performing item across the whole store is the ‘Drill Bit (6mm)’ 
+    with a sales count of 19,481. For further details please view the conclusion and 
+    recommendations section.
     
 	
 %%%%%%%%%%%%%%%%%
@@ -972,22 +931,72 @@
 %%%%%%%%%%%%%%%%%
 
     \section{Conclusion and Recommendations}
-            % This report is designed to identify the best performing Sales Officer at BIA Inc by 
-            % directive of the Head Sales Executive of BIA Inc.
-            % After considering multiple data points from the newly created Sales Database, 
-            % using sales data from 2017 supplied to us by the Head Sales Executive of BIA Inc.
-            % We conclude that the Best Sales Officer is Mrs Michelle Miller (S8) becasue she 
-            % has a sales total of \$78,572.22 more than \$4k more than the second highest 
-            % revenue maker Mrs Kaitlyn Ortiz (S19).
-            % She does not have the Highest transaction count however because she has sold 
-            % more higher value items this makes up for it. She has sold 4144 compared to 
-            % the highest count of 4217. It works out to be a 73 item difference.
-            % We beleive that the in excess of \$4k extra that Mrs Michelle Miller brings 
-            % to the company out weighs the value of selling 73 extra items. 
-            % There for we recommend Mrs Michelle Miller for the reward as the best Sales 
-            % Officer at BIA Inc. In the event that  Mrs Michelle Miller is not applicable
-            % we would reccomend Mrs Kaitlyn Ortiz whom has 
-			% achieved a high evaluation from all the data points that we analyzed.
+    \label{sec:Executive Summary}
+    This report was created for, and to address the concerns of, the CEO of BIA Incorporated.  
+    The purpose of the report is to provide insight into the methodology employed by our 
+    team in our analysis and logical reasoning for making the recommendations listed through 
+    the document and in the presentation.  Citing declining sales of certain items in recent 
+    years and the fact that the company is currently operating at a financial loss, our team 
+    understood the need to reduce costs to ensure the longevity of the company as a whole.  
+    To achieve this, we used tools and frameworks  including  SQL  Server  Management  
+    Studio (SSMS), PowerBI, SQL  and C\# scripts. To ensure  this longevity is 
+    sustained, the team first considered the sales data set provided by the company 
+    and the slightly modified business rules, when compared to our last joint project 
+    with the company. We created scripts and programmed solutions to deal with instances 
+    of broken data and to ensure that as the data is loaded into our database model, it 
+    adheres to the rules provided by the business.  We considered specifically the changed 
+    discount rate which was different to the rate in use by the company at the time of our last project.\\
+
+    After the data had been correctly loaded, we could begin the analysis. The findings 
+    of this process suggested that, based on revenue, the highest performing store was 
+    Wagga Wagga with \$1,807,157.30 in revenue, whereas the store which performed the 
+    worst was Wollongong with \$891,871.68 in revenue, \$42,395.79 behind the second 
+    worst performing  store,  Dubbo.   This  analysis  was  performed  after  discounts  
+    were  applied  to  better  reflect  the  actual monetary value gained by the company.  
+    Overall, we found that customers are not loyal to any particular store. With the store 
+    with the highest amount of unique customers, Wagga Wagga with 600 only 44 ahead of 
+    Wollongong, the store with the lowest amount of unique customers with 556.  For each 
+    store, we considered the best and worst performing items overall.  The findings of 
+    this can be outlined in the report.  We found that there is no significant discrepancy 
+    of any specific item across the company as a whole.  The ‘Drill Bit (6mm)’ had an 
+    item sales count of19,481, the second worse performing item was the ‘Ruler’ with 
+    19,613 sales.\\
+
+    Next we considered total number of sales and total items sold by individual employees 
+    to find whether individual stores had either more sales or higher performing employees.  
+    We found that the highest performing employee was Mr.  Samuel Anderson, who is located 
+    at the Sydney store.  Mr.  Anderson achieved a sales count of 645 overall sales and 
+    4005 items sold.  The second placed employee was Mr.  Devin Brown who achieve 628 overall sales with3796 items sold.  Our next consideration was the discounted sales rate per employee.  
+    We found that the employees with the most discounted sales were situated at the 
+    Dubbo store, one of the lowest performing locations overall. MS.   Haley  Taylor  
+    had  263  discounted  sales  compared  to  91  standard  sales  meaning  approximately  
+    74\%  of  MS. Taylor’s overall sales were discounted.  The employee with the second 
+    highest amount of discounted sales was Mr. Jason Wood,  also from the Dubbo store.  
+    Mr.  Wood had 273 discounted sales and 117 standard sales meaning approximately  
+    70\%  of  Mr.   Wood’s  sales  were  discounted.   
+    The  next  metric  was  the  total  sales  value  per  staff member.  
+    Collectively, we decided that it was important to present the findings of which 
+    staff members generate value for the company.  We found that Ms.  Savannah Jones 
+    of the Wollongong store topped the list with \$77,152.49 sales value in total.  
+    Although the Wollongong store is the worst performing store overall, Ms.  Jones 
+    outperforms all other staff members in total sale value, even when considering 
+    the discounted rate which was applied in this analysis.  In addition to this, Ms.  
+    Jones placed second in average value per sales, approximately \$4.00 behind first 
+    place, Ms.  Nicole Hernandez from the Broken Hill store with an average sale of \$138.40.\\
+
+    After carefully considering the aforementioned key metrics and reviewing the results, 
+    we can conclude that out of the 10 offices that are under observation the results 
+    point to us closing down the Wollongong branch. This result was not take lightly as 
+    a lot of collaboration with throughout the analytics team reviewing the data. The 
+    Wollongong office was the worst performer \$891,871.68 in revenue, \$42,395.79 behind 
+    the second worst performing  store. The 2018 predictions were also taken in to consideration 
+    when trying to come to a conclusion and it could be seen that even when Wollongong was 
+    predicted to make an improvement in 2018 over 2017 it was still lower than the predicted 
+    of the second worst store Dubbo. Upon this decision we believe that if the Wollongong 
+    office was to be closed then we would recommend that BIA Incorporated would offer Ms.  
+    Savannah Jones a position at one of the other offices close by (e.g. Sydney). 
+    This is because we believe that Ms.  Savannah Jones is a valuable staff member here at 
+    BIA Incorporated  and in 2017 was the staff member who made the most revenue for the company.
 
 % ------------------------------------------------------------------------------------------------ %
 % REFERENCES
