@@ -303,7 +303,8 @@
         \end{center}
 		
 		\vspace{5mm}		
-		
+        
+        \noindent
         A decision to leave this initial import table as default
         was made to allow easy reference to the initially supplied
         excel data file.
@@ -476,11 +477,16 @@
                 \end{tabular}
             \end{table}
 
+            \noindent
+            Consideration of the above table was taken when looking at which
+            store we suggested to close, but was not the only deciding factor 
+            in our conclusion. 
+
 %%%%%%%%%%%%%%%%%
 \newpage
 %%%%%%%%%%%%%%%%%
 
-            \subsubsection{Total Number of Sales}
+            \subsubsection{Total Number of Sales per Staff Member}
                 The total number of sales per staff member were considered with the following 
                 query. Below the query, the selected results were included.
                 \begin{lstlisting}
@@ -522,7 +528,7 @@
                 
                 \noindent
                 This suggests to us that individual stores had, either more sales or 
-                higher performing employees, which we wanted to confirm in analysis later, of which can be found here.
+                higher performing employees, which we wanted to confirm in analysis later, of which can be found \hyperref[sec:StaffSales]{\color{blue}here}.
 
 %%%%%%%%%%%%%%%%%
 \newpage
@@ -554,9 +560,6 @@
 				ORDER BY 'Item Count' DESC;
                 \end{lstlisting}
 
-                % Yielding a range of 4217 to 2813, with the top five staff members in this
-                % analysis:
-
                 \begin{table}[H]
                     \centering
                     \begin{tabular}{|l|l|l|l|l|l|}
@@ -568,7 +571,14 @@
                     3716       & S45     & Emma           & Gutierrez    & 3        & Cessnock       \\ \hline
                     3684       & S108    & Isaiah         & Powell       & 9        & Wagga Wagga    \\ \hline
                     \end{tabular}
-                    \end{table}
+                \end{table}
+
+                \noindent
+                Consideration of the total items sold was important in determining our conclusion also, we recognise that while 
+                the top and bottom 3 performing items was a requirement,
+                the spread of item sales was marginal in the end result as suggested \hyperref[sec:ItemPopularity]{\color{blue}here},
+                with an overall spread of the items sold (quantity) of only
+                roughly 1500 between best and worst performers.
 
 %%%%%%%%%%%%%%%%%
 \newpage
@@ -642,6 +652,7 @@
 %%%%%%%%%%%%%%%%%
 
             \subsubsection{Total Sales Value per Staff Member}
+            \label{sec:StaffSales}
 
             % Consideration of the total sales per staff member was considered a highly important 
             % metric to consider also, we did consider comparing the results of this to the 
@@ -698,11 +709,6 @@
 %%%%%%%%%%%%%%%%%
 
             \subsubsection{Average Value Per Sale}
-
-            % The average receipt value per staff member was another metric we considered would add
-            % value to the descision to be suggested in the 
-            % \hyperref[sec:Executive Summary]{\color{blue}executive summary}.
-            % The required query to determine this metric was as follows:
 
             \begin{lstlisting}
 				SELECT (CAST(
@@ -848,6 +854,7 @@
 %%%%%%%%%%%%%%%%%
 
             \subsection{Item Popularity}
+            \label{sec:ItemPopularity}
             
             The script below addresses the concern of the CEO which required the team to analyse the popularity of items across all stores, and each store individually. The SQL query joins multiple tables in our database and uses an integer, which is a unique identifier for each office location. 
             The results of this script can be found listed below in two separate outputs. The first outlines the highest performing items per store whereas the second highlights the worst performing items for each store. \\
